@@ -8134,8 +8134,8 @@ var _QuadtreeTileSchema = require("./core/QuadtreeTileSchema");
 var _index = require("../src/index");
 
 var map = new _index.Globe({
-  width: 1600,
-  height: 800,
+  width: window.innerWidth - 18,
+  height: window.innerHeight - 24,
   zoom: 3,
   canvas: "mapCanvas",
   coordinate: new _index.GeodeticCoordinate(114.2344412, 33.23313241234342, 10000)
@@ -8173,7 +8173,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59109" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60173" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
