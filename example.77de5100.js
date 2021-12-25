@@ -7011,7 +7011,7 @@ exports.PAN_EVENTS = PAN_EVENTS;
 
 var _kiwi = require("kiwi.matrix");
 
-var _Globe = require("./../Globe");
+var _Globe = require("./Globe");
 
 var _split = require("../../util/split");
 
@@ -7109,7 +7109,7 @@ _Globe.Globe.registerHook(_Globe.Globe.prototype.registerPanHandlerHood);
 
 var _now = require("../../util/now");
 
-var _Globe = require("../Globe");
+var _Globe = require("./Globe");
 
 var _Format = require("../../core/Format");
 
@@ -7193,7 +7193,7 @@ _Globe.Globe.registerHook(_Globe.Globe.prototype.registerZoomHandlerHook);
 },{"../../util/now":"../src/util/now.ts","../Globe":"../src/globe/Globe.ts","../../core/Format":"../src/core/Format.ts","../../util/dom":"../src/util/dom.ts"}],"../src/globe/camera/Globe.Camera.FlyTo.ts":[function(require,module,exports) {
 "use strict";
 
-var _Globe = require("../Globe");
+var _Globe = require("./Globe");
 
 var _Tween = require("../../core/Tween");
 
@@ -7242,7 +7242,7 @@ _Globe.Globe.prototype.flyTo = function (coord, zoom, duration) {
 
 var _kiwi = require("kiwi.matrix");
 
-var _Globe = require("../Globe");
+var _Globe = require("./Globe");
 
 var _Format = require("../../core/Format");
 
@@ -7330,7 +7330,7 @@ exports.clamp = clamp;
 },{}],"../src/globe/camera/Globe.Camera.Zoom.ts":[function(require,module,exports) {
 "use strict";
 
-var _Globe = require("../Globe");
+var _Globe = require("./Globe");
 
 var _clamp = require("../../util/clamp");
 
