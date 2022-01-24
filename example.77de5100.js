@@ -304,6 +304,67 @@ exports.EventEmitter = EventEmitter;
 var t=Math.PI/180,u=function(){};function o(t,u){for(var o=0;o<u.length;o++){var i=u[o];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}function i(t,u,i){return u&&o(t.prototype,u),i&&o(t,i),t}u.EPSILON=1e-6,u.ARRAY_TYPE=Array,u.RANDOM=Math.random,u.ENABLE_SIMD=!0,u.toRadian=function(u){return u*t},u.toDegree=function(u){return u/t},u.equals=function(t,o){return Math.abs(t-o)<=u.EPSILON*Math.max(1,Math.abs(t),Math.abs(o))};var s=function(){function t(){this._out=new Array(9),this._out[0]=1,this._out[1]=0,this._out[2]=0,this._out[3]=0,this._out[4]=1,this._out[5]=0,this._out[6]=0,this._out[7]=0,this._out[8]=1}var o=t.prototype;return o.set=function(t,u,o,i,s,h,_,a,n){return this._out[0]=t,this._out[1]=u,this._out[2]=o,this._out[3]=i,this._out[4]=s,this._out[5]=h,this._out[6]=_,this._out[7]=a,this._out[8]=n,this},o.clone=function(){return(new t).set(this._out[0],this._out[1],this._out[2],this._out[3],this._out[4],this._out[5],this._out[6],this._out[7],this._out[8])},t.fromMat4=function(u){var o=new t;return o.set(u.value[0],u.value[1],u.value[2],u.value[4],u.value[5],u.value[6],u.value[8],u.value[9],u.value[10]),o},o.identity=function(){return this._out[0]=1,this._out[1]=0,this._out[2]=0,this._out[3]=0,this._out[4]=1,this._out[5]=0,this._out[6]=0,this._out[7]=0,this._out[8]=1,this},o.invert=function(){var t=this._out,u=t[0],o=t[1],i=t[2],s=t[3],h=t[4],_=t[5],a=t[6],n=t[7],e=t[8],r=e*h-_*n,l=-e*s+_*a,v=n*s-h*a,M=u*r+o*l+i*v;return M?(this._out[0]=r*(M=1/M),this._out[1]=(-e*o+i*n)*M,this._out[2]=(_*o-i*h)*M,this._out[3]=l*M,this._out[4]=(e*u-i*a)*M,this._out[5]=(-_*u+i*s)*M,this._out[6]=v*M,this._out[7]=(-n*u+o*a)*M,this._out[8]=(h*u-o*s)*M,this):null},o.adjoint=function(){var t=this._out,u=t[0],o=t[1],i=t[2],s=t[3],h=t[4],_=t[5],a=t[6],n=t[7],e=t[8];return this._out[0]=h*e-_*n,this._out[1]=i*n-o*e,this._out[2]=o*_-i*h,this._out[3]=_*a-s*e,this._out[4]=u*e-i*a,this._out[5]=i*s-u*_,this._out[6]=s*n-h*a,this._out[7]=o*a-u*n,this._out[8]=u*h-o*s,this},o.determinant=function(){var t=this._out,u=t[3],o=t[4],i=t[5],s=t[6],h=t[7],_=t[8];return t[0]*(_*o-i*h)+t[1]*(-_*u+i*s)+t[2]*(h*u-o*s)},o.multiply=function(t){var u=this._out,o=u[0],i=u[1],s=u[2],h=u[3],_=u[4],a=u[5],n=u[6],e=u[7],r=u[8],l=t.value,v=l[0],M=l[1],c=l[2],f=l[3],b=l[4],m=l[5],w=l[6],x=l[7],p=l[8];return this._out[0]=v*o+M*h+c*n,this._out[1]=v*i+M*_+c*e,this._out[2]=v*s+M*a+c*r,this._out[3]=f*o+b*h+m*n,this._out[4]=f*i+b*_+m*e,this._out[5]=f*s+b*a+m*r,this._out[6]=w*o+x*h+p*n,this._out[7]=w*i+x*_+p*e,this._out[8]=w*s+x*a+p*r,this},o.translate=function(t){var u=this.value,o=u[0],i=u[1],s=u[2],h=u[3],_=u[4],a=u[5],n=u[6],e=u[7],r=u[8],l=t.value,v=l[0],M=l[1];return this._out[0]=o,this._out[1]=i,this._out[2]=s,this._out[3]=h,this._out[4]=_,this._out[5]=a,this._out[6]=v*o+M*h+n,this._out[7]=v*i+M*_+e,this._out[8]=v*s+M*a+r,this},o.rotate=function(t){var u=this._out,o=u[0],i=u[1],s=u[2],h=u[3],_=u[4],a=u[5],n=u[6],e=u[7],r=u[8],l=Math.sin(t),v=Math.cos(t);return this._out[0]=v*o+l*h,this._out[1]=v*i+l*_,this._out[2]=v*s+l*a,this._out[3]=v*h-l*o,this._out[4]=v*_-l*i,this._out[5]=v*a-l*s,this._out[6]=n,this._out[7]=e,this._out[8]=r,this},o.scale=function(t){var u=t.value,o=u[0],i=u[1];return this._out[0]=o*this._out[0],this._out[1]=o*this._out[1],this._out[2]=o*this._out[2],this._out[3]=i*this._out[3],this._out[4]=i*this._out[4],this._out[5]=i*this._out[5],this},o.fromQuat=function(u){var o=u.value,i=o[0],s=o[1],h=o[2],_=o[3],a=i+i,n=s+s,e=h+h,r=i*a,l=s*a,v=s*n,M=h*a,c=h*n,f=h*e,b=_*a,m=_*n,w=_*e;return(new t).set(1-v-f,l+w,M-m,l-w,1-r-f,c+b,M+m,c-b,1-r-v)},o.normalFromMat4=function(u){var o=u.value,i=o[0],s=o[1],h=o[2],_=o[3],a=o[4],n=o[5],e=o[6],r=o[7],l=o[8],v=o[9],M=o[10],c=o[11],f=o[12],b=o[13],m=o[14],w=o[15],x=i*n-s*a,p=i*e-h*a,y=i*r-_*a,d=s*e-h*n,P=s*r-_*n,S=h*r-_*e,I=l*b-v*f,O=l*m-M*f,N=l*w-c*f,E=v*m-M*b,L=v*w-c*b,g=M*w-c*m,q=x*g-p*L+y*E+d*N-P*O+S*I;if(!q)throw new Error("行列式计算失败");var z=(n*g-e*L+r*E)*(q=1/q),A=(e*N-a*g-r*O)*q,k=(a*L-n*N+r*I)*q,R=(h*L-s*g-_*E)*q,D=(i*g-h*N+_*O)*q,T=(s*N-i*L-_*I)*q,F=(b*S-m*P+w*d)*q,Q=(m*y-f*S-w*p)*q,V=(f*P-b*y+w*x)*q;return(new t).set(z,A,k,R,D,T,F,Q,V)},o.toString=function(){return"mat3("+this._out[0]+", "+this._out[1]+", "+this._out[2]+", "+this._out[3]+", "+this._out[4]+", "+this._out[5]+", "+this._out[6]+", "+this._out[7]+", "+this._out[8]+")"},o.frob=function(){return Math.sqrt(Math.pow(this._out[0],2)+Math.pow(this._out[1],2)+Math.pow(this._out[2],2)+Math.pow(this._out[3],2)+Math.pow(this._out[4],2)+Math.pow(this._out[5],2)+Math.pow(this._out[6],2)+Math.pow(this._out[7],2)+Math.pow(this._out[8],2))},o.add=function(t){return this._out[0]+=t.value[0],this._out[1]+=t.value[1],this._out[2]+=t.value[2],this._out[3]+=t.value[3],this._out[4]+=t.value[4],this._out[5]+=t.value[5],this._out[6]+=t.value[6],this._out[7]+=t.value[7],this._out[8]+=t.value[8],this},o.sub=function(t){return this._out[0]-=t.value[0],this._out[1]-=t.value[1],this._out[2]-=t.value[2],this._out[3]-=t.value[3],this._out[4]-=t.value[4],this._out[5]-=t.value[5],this._out[6]-=t.value[6],this._out[7]-=t.value[7],this._out[8]-=t.value[8],this},o.equals=function(t){var o=this._out,i=o[0],s=o[1],h=o[2],_=o[3],a=o[4],n=o[5],e=o[6],r=o[7],l=o[8],v=t.value,M=v[0],c=v[1],f=v[2],b=v[3],m=v[4],w=v[5],x=v[6],p=v[7],y=v[8];return Math.abs(i-M)<=u.EPSILON*Math.max(1,Math.abs(i),Math.abs(M))&&Math.abs(s-c)<=u.EPSILON*Math.max(1,Math.abs(s),Math.abs(c))&&Math.abs(h-f)<=u.EPSILON*Math.max(1,Math.abs(h),Math.abs(f))&&Math.abs(_-b)<=u.EPSILON*Math.max(1,Math.abs(_),Math.abs(b))&&Math.abs(a-m)<=u.EPSILON*Math.max(1,Math.abs(a),Math.abs(m))&&Math.abs(n-w)<=u.EPSILON*Math.max(1,Math.abs(n),Math.abs(w))&&Math.abs(e-x)<=u.EPSILON*Math.max(1,Math.abs(e),Math.abs(x))&&Math.abs(r-p)<=u.EPSILON*Math.max(1,Math.abs(r),Math.abs(p))&&Math.abs(l-y)<=u.EPSILON*Math.max(1,Math.abs(l),Math.abs(y))},i(t,[{key:"value",get:function(){return this._out}}]),t}(),h=function(){function t(){this._out=new Array(3),this._out[0]=0,this._out[1]=0,this._out[2]=0}var o=t.prototype;return o.set=function(t,u,o){return this._out[0]=t,this._out[1]=u,this._out[2]=o,this},o.clone=function(){var u=new t;return u.set(this._out[0],this._out[1],this._out[2]),u},o.add=function(t){return this._out[0]+=t._out[0],this._out[1]+=t._out[1],this._out[2]+=t._out[2],this},o.sub=function(t){return this._out[0]-=t._out[0],this._out[1]-=t._out[1],this._out[2]-=t._out[2],this},o.multiply=function(t){return this._out[0]*=t._out[0],this._out[1]*=t._out[1],this._out[2]*=t._out[2],this},o.divide=function(t){return this._out[0]/=t._out[0],this._out[1]/=t._out[1],this._out[2]/=t._out[2],this},o.ceil=function(){return this._out[0]=Math.ceil(this._out[0]),this._out[1]=Math.ceil(this._out[1]),this._out[2]=Math.ceil(this._out[2]),this},o.floor=function(){return this._out[0]=Math.floor(this._out[0]),this._out[1]=Math.floor(this._out[1]),this._out[2]=Math.floor(this._out[2]),this},o.round=function(){return this._out[0]=Math.round(this._out[0]),this._out[1]=Math.round(this._out[1]),this._out[2]=Math.round(this._out[2]),this},o.min=function(t){return this._out[0]=Math.min(this._out[0],t._out[0]),this._out[1]=Math.min(this._out[1],t._out[1]),this._out[2]=Math.min(this._out[2],t._out[2]),this},o.max=function(t){return this._out[0]=Math.max(this._out[0],t._out[0]),this._out[1]=Math.max(this._out[1],t._out[1]),this._out[2]=Math.max(this._out[2],t._out[2]),this},o.scale=function(t){return this._out[0]*=t,this._out[1]*=t,this._out[2]*=t,this},o.distance=function(t){var u=this._out,o=t._out,i=u[0]-o[0],s=u[1]-o[1],h=u[2]-o[2];return Math.sqrt(i*i+s*s+h*h)},o.len=function(){return this.distance(new t)},o.negate=function(){return this._out[0]=-this._out[0],this._out[1]=-this._out[1],this._out[2]=-this._out[2],this},o.inverse=function(){return this._out[0]=1/this._out[0],this._out[1]=1/this._out[1],this._out[2]=1/this._out[2],this},o.normalize=function(){var t=this.len();return t>0&&(this._out[0]/=t,this._out[1]/=t,this._out[2]/=t),this},o.dot=function(t){var u=this._out,o=t._out;return u[0]*o[0]+u[1]*o[1]+u[2]*o[2]},o.cross=function(t){var u=this._out,o=u[0],i=u[1],s=u[2],h=t.value,_=h[0],a=h[1],n=h[2];return this._out[0]=i*n-s*a,this._out[1]=s*_-o*n,this._out[2]=o*a-i*_,this},o.lerp=function(t,u){var o=this._out,i=o[0],s=o[1],h=o[2],_=t._out,a=_[1],n=_[2];return this._out[0]=i+u*(_[0]-i),this._out[1]=s+u*(a-s),this._out[2]=h+u*(n-h),this},o.hermite=function(t,u,o,i){var s=i*i,h=s*(2*i-3)+1,_=s*(i-2)+i,a=s*(i-1),n=s*(3-2*i);return this._out[0]=this._out[0]*h+t._out[0]*_+u._out[0]*a+o._out[0]*n,this._out[1]=this._out[1]*h+t._out[1]*_+u._out[1]*a+o._out[1]*n,this._out[2]=this._out[2]*h+t._out[2]*_+u._out[2]*a+o._out[2]*n,this},o.bezier=function(t,u,o,i){var s=1-i,h=s*s,_=i*i,a=h*s,n=3*i*h,e=3*_*s,r=_*i;return this._out[0]=this._out[0]*a+t._out[0]*n+u._out[0]*e+o._out[0]*r,this._out[1]=this._out[1]*a+t._out[1]*n+u._out[1]*e+o._out[1]*r,this._out[2]=this._out[2]*a+t._out[2]*n+u._out[2]*e+o._out[2]*r,this},o.transformMat4=function(t){var u=this._out,o=u[0],i=u[1],s=u[2],h=t.value[3]*o+t.value[7]*i+t.value[11]*s+t.value[15]||1;return this._out[0]=(t.value[0]*o+t.value[4]*i+t.value[8]*s+t.value[12])/h,this._out[1]=(t.value[1]*o+t.value[5]*i+t.value[9]*s+t.value[13])/h,this._out[2]=(t.value[2]*o+t.value[6]*i+t.value[10]*s+t.value[14])/h,this},o.transformMat3=function(t){var u=this._out,o=u[0],i=u[1],s=u[2];return this._out[0]=o*t._out[0]+i*t._out[3]+s*t._out[6],this._out[1]=o*t._out[1]+i*t._out[4]+s*t._out[7],this._out[2]=o*t._out[2]+i*t._out[5]+s*t._out[8],this},o.toString=function(){return"vec3("+this._out[0]+", "+this._out[1]+", "+this._out[2]+")"},o.transformQuat=function(t){var u=this._out,o=u[0],i=u[1],s=u[2],h=t.value,_=h[0],a=h[1],n=h[2],e=h[3],r=e*o+a*s-n*i,l=e*i+n*o-_*s,v=e*s+_*i-a*o,M=-_*o-a*i-n*s;return this._out[0]=r*e+M*-_+l*-n-v*-a,this._out[1]=l*e+M*-a+v*-_-r*-n,this._out[2]=v*e+M*-n+r*-a-l*-_,this},o.rotateX=function(t,u){var o=[],i=[];return o[0]=this._out[0]-t._out[0],o[1]=this._out[1]-t._out[1],o[2]=this._out[2]-t._out[2],i[0]=o[0],i[1]=o[1]*Math.cos(u)-o[2]*Math.sin(u),i[2]=o[1]*Math.sin(u)+o[2]*Math.cos(u),this._out[0]=i[0]+t.value[0],this._out[1]=i[1]+t.value[1],this._out[2]=i[2]+t.value[2],this},o.rotateY=function(t,u){var o=[],i=[];return o[0]=this._out[0]-t._out[0],o[1]=this._out[1]-t._out[1],o[2]=this._out[2]-t._out[2],i[0]=o[2]*Math.sin(u)+o[0]*Math.cos(u),i[1]=o[1],i[2]=o[2]*Math.cos(u)-o[0]*Math.sin(u),this._out[0]=i[0]+t.value[0],this._out[1]=i[1]+t.value[1],this._out[2]=i[2]+t.value[2],this},o.rotateZ=function(t,u){var o=[],i=[];return o[0]=this._out[0]-t._out[0],o[1]=this._out[1]-t._out[1],o[2]=this._out[2]-t._out[2],i[0]=o[0]*Math.cos(u)-o[1]*Math.sin(u),i[1]=o[0]*Math.sin(u)+o[1]*Math.cos(u),i[2]=o[2],this._out[0]=i[0]+t.value[0],this._out[1]=i[1]+t.value[1],this._out[2]=i[2]+t.value[2],this},o.angle=function(t){var u=this.clone().normalize(),o=t.clone().normalize(),i=u.clone().dot(o);return i>1?0:i<-1?Math.PI:Math.acos(i)},o.applyQuat=function(t){var u=this.x,o=this.y,i=this.z,s=t.x,h=t.y,_=t.z,a=t.w,n=a*u+h*i-_*o,e=a*o+_*u-s*i,r=a*i+s*o-h*u,l=-s*u-h*o-_*i;return this._out[0]=n*a+l*-s+e*-_-r*-h,this._out[1]=e*a+l*-h+r*-s-n*-_,this._out[2]=r*a+l*-_+n*-h-e*-s,this},o.equals=function(t){var o=this._out,i=o[0],s=o[1],h=o[2],_=t._out,a=_[0],n=_[1],e=_[2];return Math.abs(i-a)<=u.EPSILON*Math.max(1,Math.abs(i),Math.abs(a))&&Math.abs(s-n)<=u.EPSILON*Math.max(1,Math.abs(s),Math.abs(n))&&Math.abs(h-e)<=u.EPSILON*Math.max(1,Math.abs(h),Math.abs(e))},o.applyMatrix4=function(t){var u=this.x,o=this.y,i=this.z,s=1/(t.value[3]*u+t.value[7]*o+t.value[11]*i+t.value[15]);return this.set((t.value[0]*u+t.value[4]*o+t.value[8]*i+t.value[12])*s,(t.value[1]*u+t.value[5]*o+t.value[9]*i+t.value[13])*s,(t.value[2]*u+t.value[6]*o+t.value[10]*i+t.value[14])*s),this},i(t,[{key:"x",get:function(){return this._out[0]}},{key:"y",get:function(){return this._out[1]}},{key:"z",get:function(){return this._out[2]}},{key:"value",get:function(){return this._out}}]),t}(),_=function(){function t(){this._out=new Array(4),this._out[0]=0,this._out[1]=0,this._out[2]=0,this._out[3]=1}t.fromMat3=function(u){var o,i=new t,s=u.value[0]+u.value[4]+u.value[8];if(s>0)o=Math.sqrt(s+1),i._out[3]=.5*o,i._out[0]=(u._out[5]-u._out[7])*(o=.5/o),i._out[1]=(u._out[6]-u._out[2])*o,i._out[2]=(u._out[1]-u._out[3])*o;else{var h=0;u.value[4]>u.value[0]&&(h=1),u.value[8]>u.value[3*h+h]&&(h=2);var _=(h+1)%3,a=(h+2)%3;o=Math.sqrt(u._out[3*h+h]-u._out[3*_+_]-u._out[3*a+a]+1),i._out[h]=.5*o,i._out[3]=(u._out[3*_+a]-u._out[3*a+_])*(o=.5/o),i._out[_]=(u._out[3*_+h]+u._out[3*h+_])*o,i._out[a]=(u._out[3*a+h]+u._out[3*h+a])*o}return i};var o=t.prototype;return o.set=function(t,u,o,i){return this._out[0]=t,this._out[1]=u,this._out[2]=o,this._out[3]=i,this},o.clone=function(){var u=new t;return u.set(u._out[0],u._out[1],u._out[2],u._out[3]),u},o.identity=function(){return this._out[0]=0,this._out[1]=0,this._out[2]=0,this._out[3]=1,this},o.rotationTo=function(t,u){this._r1=this._r1||new h,this._r2=this._r2||(new h).set(1,0,0),this._r3=this._r3||(new h).set(0,1,0);var o=t.dot(u);return o<-.999999?(this._r1=this._r3.clone().cross(t),this._r1.len()<1e-6&&(this._r1=this._r3.clone().cross(t)),this._r3.normalize(),this.setAxisAngle(this._r1,Math.PI),this):o>.999999?(this._out[0]=0,this._out[1]=0,this._out[2]=0,this._out[3]=1,this):(this._r1=t.clone().cross(u),this._out[0]=this._r1.value[0],this._out[1]=this._r1.value[1],this._out[2]=this._r1.value[2],this._out[3]=1+o,this.normalize())},o.setAxes=function(u,o,i){var h=(new s).set(o.value[0],i.value[0],-u.value[0],o.value[1],i.value[1],-u.value[1],o.value[2],i.value[2],-u.value[2]);return t.fromMat3(h)},o.setAxisAngle=function(t,u){u*=.5;var o=Math.sin(u);return this._out[0]=o*t.value[0],this._out[1]=o*t.value[1],this._out[2]=o*t.value[2],this._out[3]=Math.cos(u),this},o.setFromUnitVectors=function(t,o){var i,s,h,_,a=t.clone().dot(o)+1;return a<u.EPSILON?(a=0,Math.abs(t.x)>Math.abs(t.z)?(i=-t.y,s=t.x,h=0,_=a):(i=0,s=-t.z,h=t.y,_=a)):(i=t.y*o.z-t.z*o.y,s=t.z*o.x-t.x*o.z,h=t.x*o.y-t.y*o.x,_=a),this.set(i,s,h,_).normalize()},o.setFromRotationMatrix=function(t){var u,o,i,s,h,_=t.value,a=_[0],n=_[4],e=_[8],r=_[1],l=_[5],v=_[9],M=_[2],c=_[6],f=_[10],b=a+l+f;return b>0?(o=.25/(u=.5/Math.sqrt(b+1)),i=(c-v)*u,s=(e-M)*u,h=(r-n)*u):a>l&&a>f?(o=(c-v)/(u=2*Math.sqrt(1+a-l-f)),i=.25*u,s=(n+r)/u,h=(e+M)/u):l>f?(o=(e-M)/(u=2*Math.sqrt(1+l-a-f)),i=(n+r)/u,s=.25*u,h=(v+c)/u):(o=(r-n)/(u=2*Math.sqrt(1+f-a-l)),i=(e+M)/u,s=(v+c)/u,h=.25*u),this.set(i,s,h,o)},o.getAxisAngle=function(){var t=2*Math.acos(this._out[3]),u=Math.sin(t/2),o=new h;return 0===u?o.set(1,0,0):o.set(this._out[0]/u,this._out[1]/u,this._out[2]/u),[o,t]},o.add=function(t){return this._out[0]+=t._out[0],this._out[1]+=t._out[1],this._out[2]+=t._out[2],this._out[3]+=t._out[3],this},o.multiply=function(t){var u=this.value,o=u[0],i=u[1],s=u[2],h=u[3],_=t.value,a=_[0],n=_[1],e=_[2],r=_[3];return this._out[0]=o*r+h*a+i*e-s*n,this._out[1]=i*r+h*n+s*a-o*e,this._out[2]=s*r+h*e+o*n-i*a,this._out[3]=h*r-o*a-i*n-s*e,this},o.scale=function(t){return this._out[0]*=t,this._out[1]*=t,this._out[2]*=t,this._out[3]*=t,this},o.rotateX=function(t){t*=.5;var u=this.value,o=u[0],i=u[1],s=u[2],h=u[3],_=Math.sin(t),a=Math.cos(t);return this._out[0]=o*a+h*_,this._out[1]=i*a+s*_,this._out[2]=s*a-i*_,this._out[3]=h*a-o*_,this},o.rotateY=function(t){t*=.5;var u=this._out,o=u[0],i=u[1],s=u[2],h=u[3],_=Math.sin(t),a=Math.cos(t);return this._out[0]=o*a-s*_,this._out[1]=i*a+h*_,this._out[2]=s*a+o*_,this._out[3]=h*a-i*_,this},o.rotateZ=function(t){t*=.5;var u=this._out,o=u[0],i=u[1],s=u[2],h=u[3],_=Math.sin(t),a=Math.cos(t);return this._out[0]=o*a+i*_,this._out[1]=i*a-o*_,this._out[2]=s*a+h*_,this._out[3]=h*a-s*_,this},o.calculateW=function(){var t=this._out,u=t[0],o=t[1],i=t[2];return this._out[3]=Math.sqrt(Math.abs(1-u*u-o*o-i*i)),this},o.dot=function(t){var u=this._out,o=t.value;return u[0]*o[0]+u[1]*o[1]+u[2]*o[2]+u[3]*o[3]},o.lerp=function(t,u){var o=this._out,i=o[0],s=o[1],h=o[2],_=o[3];return this._out[0]=i+u*(t.value[0]-i),this._out[1]=s+u*(t.value[1]-s),this._out[2]=h+u*(t.value[2]-h),this._out[3]=_+u*(t.value[3]-_),this},o.slerp=function(t,u,o){var i,s,h,_,a,n=t.value,e=n[0],r=n[1],l=n[2],v=n[3],M=u.value,c=M[0],f=M[1],b=M[2],m=M[3];return(s=e*c+r*f+l*b+v*m)<0&&(s=-s,c=-c,f=-f,b=-b,m=-m),1-s>1e-6?(i=Math.acos(s),h=Math.sin(i),_=Math.sin((1-o)*i)/h,a=Math.sin(o*i)/h):(_=1-o,a=o),this._out[0]=_*e+a*c,this._out[1]=_*r+a*f,this._out[2]=_*l+a*b,this._out[3]=_*v+a*m,this},o.sqlerp=function(u,o,i,s,h){return this._s1=this._s1||new t,this._s2=this._s2||new t,this._s1=this._s1.clone().slerp(u,s,h),this._s2=this._s2.clone().slerp(o,i,h),(new t).slerp(this._s1,this._s2,2*h*(1-h))},o.invert=function(){var t=this._out,u=t[0],o=t[1],i=t[2],s=t[3],h=u*u+o*o+i*i+s*s,_=h?1/h:0;return this._out[0]=-u*_,this._out[1]=-o*_,this._out[2]=-i*_,this._out[3]=s*_,this},o.conjugate=function(){return this._out[0]=-this._out[0],this._out[1]=-this._out[1],this._out[2]=-this._out[2],this},o.len=function(){var t=this._out,u=t[0],o=t[1],i=t[2],s=t[3];return Math.sqrt(u*u+o*o+i*i+s*s)},o.normalize=function(){var t=this.len();return t>0&&(this._out[0]/=t,this._out[0]/=t,this._out[0]/=t,this._out[0]/=t),this},o.toString=function(){return"quat("+this._out[0]+", "+this._out[1]+", "+this._out[2]+", "+this._out[3]+")"},o.equals=function(t){var o=this._out,i=o[0],s=o[1],h=o[2],_=o[3],a=t._out,n=a[0],e=a[1],r=a[2],l=a[3];return Math.abs(i-n)<=u.EPSILON*Math.max(1,Math.abs(i),Math.abs(n))&&Math.abs(s-e)<=u.EPSILON*Math.max(1,Math.abs(s),Math.abs(e))&&Math.abs(h-r)<=u.EPSILON*Math.max(1,Math.abs(h),Math.abs(r))&&Math.abs(_-l)<=u.EPSILON*Math.max(1,Math.abs(_),Math.abs(l))},i(t,[{key:"x",get:function(){return this._out[0]}},{key:"y",get:function(){return this._out[1]}},{key:"z",get:function(){return this._out[2]}},{key:"w",get:function(){return this._out[3]}},{key:"value",get:function(){return this._out}}]),t}(),a=function(){function t(){this._out=new Array(16),this._out[0]=1,this._out[1]=0,this._out[2]=0,this._out[3]=0,this._out[4]=0,this._out[5]=1,this._out[6]=0,this._out[7]=0,this._out[8]=0,this._out[9]=0,this._out[10]=1,this._out[11]=0,this._out[12]=0,this._out[13]=0,this._out[14]=0,this._out[15]=1}var o=t.prototype;return o.set=function(t,u,o,i,s,h,_,a,n,e,r,l,v,M,c,f){return this._out[0]=t,this._out[1]=u,this._out[2]=o,this._out[3]=i,this._out[4]=s,this._out[5]=h,this._out[6]=_,this._out[7]=a,this._out[8]=n,this._out[9]=e,this._out[10]=r,this._out[11]=l,this._out[12]=v,this._out[13]=M,this._out[14]=c,this._out[15]=f,this},o.clone=function(){var u=new t;return u.set(this._out[0],this._out[1],this._out[2],this._out[3],this._out[4],this._out[5],this._out[6],this._out[7],this._out[8],this._out[9],this._out[10],this._out[11],this._out[12],this._out[13],this._out[14],this._out[15]),u},o.identity=function(){return this.set(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1),this},o.inverseTransformation=function(){var t=this._out[0],u=this._out[1],o=this._out[2],i=this._out[4],s=this._out[5],h=this._out[6],_=this._out[8],a=this._out[9],n=this._out[10],e=this._out[12],r=this._out[13],l=this._out[14],v=-t*e-u*r-o*l,M=-i*e-s*r-h*l,c=-_*e-a*r-n*l;return this._out[0]=t,this._out[1]=i,this._out[2]=_,this._out[3]=0,this._out[4]=u,this._out[5]=s,this._out[6]=a,this._out[7]=0,this._out[8]=o,this._out[9]=h,this._out[10]=n,this._out[11]=0,this._out[12]=v,this._out[13]=M,this._out[14]=c,this._out[15]=1,this},o.invert=function(){var t=this._out,u=t[0],o=t[1],i=t[2],s=t[3],h=t[4],_=t[5],a=t[6],n=t[7],e=t[8],r=t[9],l=t[10],v=t[11],M=t[12],c=t[13],f=t[14],b=t[15],m=u*_-o*h,w=u*a-i*h,x=u*n-s*h,p=o*a-i*_,y=o*n-s*_,d=i*n-s*a,P=e*c-r*M,S=e*f-l*M,I=e*b-v*M,O=r*f-l*c,N=r*b-v*c,E=l*b-v*f,L=m*E-w*N+x*O+p*I-y*S+d*P;return L?(this._out=[(_*E-a*N+n*O)*(L=1/L),(i*N-o*E-s*O)*L,(c*d-f*y+b*p)*L,(l*y-r*d-v*p)*L,(a*I-h*E-n*S)*L,(u*E-i*I+s*S)*L,(f*x-M*d-b*w)*L,(e*d-l*x+v*w)*L,(h*N-_*I+n*P)*L,(o*I-u*N-s*P)*L,(M*y-c*x+b*m)*L,(r*x-e*y-v*m)*L,(_*S-h*O-a*P)*L,(u*O-o*S+i*P)*L,(c*w-M*p-f*m)*L,(e*p-r*w+l*m)*L],this):null},o.transpose=function(){var t=this._out[1],u=this._out[2],o=this._out[3],i=this._out[6],s=this._out[7],h=this._out[11];return this._out[1]=this._out[4],this._out[2]=this._out[8],this._out[3]=this._out[12],this._out[4]=t,this._out[6]=this._out[9],this._out[7]=this._out[13],this._out[8]=u,this._out[9]=i,this._out[11]=this._out[14],this._out[12]=o,this._out[13]=s,this._out[14]=h,this},o.adjoint=function(){var t=this._out,u=t[0],o=t[1],i=t[2],s=t[3],h=t[4],_=t[5],a=t[6],n=t[7],e=t[8],r=t[9],l=t[10],v=t[11],M=t[12],c=t[13],f=t[14],b=t[15];return this._out[0]=_*(l*b-v*f)-r*(a*b-n*f)+c*(a*v-n*l),this._out[1]=-(o*(l*b-v*f)-r*(i*b-s*f)+c*(i*v-s*l)),this._out[2]=o*(a*b-n*f)-_*(i*b-s*f)+c*(i*n-s*a),this._out[3]=-(o*(a*v-n*l)-_*(i*v-s*l)+r*(i*n-s*a)),this._out[4]=-(h*(l*b-v*f)-e*(a*b-n*f)+M*(a*v-n*l)),this._out[5]=u*(l*b-v*f)-e*(i*b-s*f)+M*(i*v-s*l),this._out[6]=-(u*(a*b-n*f)-h*(i*b-s*f)+M*(i*n-s*a)),this._out[7]=u*(a*v-n*l)-h*(i*v-s*l)+e*(i*n-s*a),this._out[8]=h*(r*b-v*c)-e*(_*b-n*c)+M*(_*v-n*r),this._out[9]=-(u*(r*b-v*c)-e*(o*b-s*c)+M*(o*v-s*r)),this._out[10]=u*(_*b-n*c)-h*(o*b-s*c)+M*(o*n-s*_),this._out[11]=-(u*(_*v-n*r)-h*(o*v-s*r)+e*(o*n-s*_)),this._out[12]=-(h*(r*f-l*c)-e*(_*f-a*c)+M*(_*l-a*r)),this._out[13]=u*(r*f-l*c)-e*(o*f-i*c)+M*(o*l-i*r),this._out[14]=-(u*(_*f-a*c)-h*(o*f-i*c)+M*(o*a-i*_)),this._out[15]=u*(_*l-a*r)-h*(o*l-i*r)+e*(o*a-i*_),this},o.determinant=function(){var t=this._out,u=t[0],o=t[1],i=t[2],s=t[3],h=t[4],_=t[5],a=t[6],n=t[7],e=t[8],r=t[9],l=t[10],v=t[11],M=t[12],c=t[13],f=t[14],b=t[15];return(u*_-o*h)*(l*b-v*f)-(u*a-i*h)*(r*b-v*c)+(u*n-s*h)*(r*f-l*c)+(o*a-i*_)*(e*b-v*M)-(o*n-s*_)*(e*f-l*M)+(i*n-s*a)*(e*c-r*M)},o.decompose=function(){var t=(new h).set(this._out[0],this._out[1],this._out[2]).len(),u=(new h).set(this._out[4],this._out[5],this._out[6]).len(),o=(new h).set(this._out[8],this._out[9],this._out[10]).len();this.determinant()<0&&(t=-t);var i=(new h).set(this._out[12],this._out[13],this._out[14]),s=1/t,a=1/u,n=1/o,e=this.clone();return e._out[0]*=s,e._out[1]*=s,e._out[2]*=s,e._out[4]*=a,e._out[5]*=a,e._out[6]*=a,e._out[8]*=n,e._out[9]*=n,e._out[10]*=n,{position:i,quaternion:(new _).setFromRotationMatrix(this),scale:(new h).set(t,u,o)}},o.multiply=function(t){var u=this._out,o=u[0],i=u[1],s=u[2],h=u[3],_=u[4],a=u[5],n=u[6],e=u[7],r=u[8],l=u[9],v=u[10],M=u[11],c=u[12],f=u[13],b=u[14],m=u[15],w=t.value[0],x=t.value[1],p=t.value[2],y=t.value[3];return this._out[0]=w*o+x*_+p*r+y*c,this._out[1]=w*i+x*a+p*l+y*f,this._out[2]=w*s+x*n+p*v+y*b,this._out[3]=w*h+x*e+p*M+y*m,this._out[4]=(w=t.value[4])*o+(x=t.value[5])*_+(p=t.value[6])*r+(y=t.value[7])*c,this._out[5]=w*i+x*a+p*l+y*f,this._out[6]=w*s+x*n+p*v+y*b,this._out[7]=w*h+x*e+p*M+y*m,this._out[8]=(w=t.value[8])*o+(x=t.value[9])*_+(p=t.value[10])*r+(y=t.value[11])*c,this._out[9]=w*i+x*a+p*l+y*f,this._out[10]=w*s+x*n+p*v+y*b,this._out[11]=w*h+x*e+p*M+y*m,this._out[12]=(w=t.value[12])*o+(x=t.value[13])*_+(p=t.value[14])*r+(y=t.value[15])*c,this._out[13]=w*i+x*a+p*l+y*f,this._out[14]=w*s+x*n+p*v+y*b,this._out[15]=w*h+x*e+p*M+y*m,this},o.add=function(t){return this._out[0]+=t.value[0],this._out[1]+=t.value[1],this._out[2]+=t.value[2],this._out[3]+=t.value[3],this._out[4]+=t.value[4],this._out[5]+=t.value[5],this._out[6]+=t.value[6],this._out[7]+=t.value[7],this._out[8]+=t.value[8],this._out[9]+=t.value[9],this._out[10]+=t.value[10],this._out[11]+=t.value[11],this._out[12]+=t.value[12],this._out[13]+=t.value[13],this._out[14]+=t.value[14],this._out[15]+=t.value[15],this},o.translate=function(t){var u=t.value,o=u[0],i=u[1],s=u[2],h=this._out,_=h[1],a=h[2],n=h[3],e=h[5],r=h[6],l=h[7],v=h[9],M=h[10],c=h[11],f=h[13],b=h[14],m=h[15];return this._out[12]=h[0]*o+h[4]*i+h[8]*s+h[12],this._out[13]=_*o+e*i+v*s+f,this._out[14]=a*o+r*i+M*s+b,this._out[15]=n*o+l*i+c*s+m,this},o.scale=function(t){var u=t.value,o=u[0],i=u[1],s=u[2];return this._out[0]*=o,this._out[1]*=o,this._out[2]*=o,this._out[3]*=o,this._out[4]*=i,this._out[5]*=i,this._out[6]*=i,this._out[7]*=i,this._out[8]*=s,this._out[9]*=s,this._out[10]*=s,this._out[11]*=s,this},o.rotate=function(t,o){var i=this.value,s=i[0],h=i[1],_=i[2],a=i[3],n=i[4],e=i[5],r=i[6],l=i[7],v=i[8],M=i[9],c=i[10],f=i[11],b=o.value,m=b[0],w=b[1],x=b[2],p=o.len();if(Math.abs(p)<u.EPSILON)throw new Error("旋转角度过小");var y=1/p;m*=y,w*=y,x*=y;var d=Math.sin(t),P=Math.cos(t),S=1-P,I=m*m*S+P,O=w*m*S+x*d,N=x*m*S-w*d,E=m*w*S-x*d,L=w*w*S+P,g=x*w*S+m*d,q=m*x*S+w*d,z=w*x*S-m*d,A=x*x*S+P;return this._out[0]=s*I+n*O+v*N,this._out[1]=h*I+e*O+M*N,this._out[2]=_*I+r*O+c*N,this._out[3]=a*I+l*O+f*N,this._out[4]=s*E+n*L+v*g,this._out[5]=h*E+e*L+M*g,this._out[6]=_*E+r*L+c*g,this._out[7]=a*E+l*L+f*g,this._out[8]=s*q+n*z+v*A,this._out[9]=h*q+e*z+M*A,this._out[10]=_*q+r*z+c*A,this._out[11]=a*q+l*z+f*A,this},o.rotateX=function(t){var u=Math.sin(t),o=Math.cos(t),i=this._out[4],s=this._out[5],h=this._out[6],_=this._out[7],a=this._out[8],n=this._out[9],e=this._out[10],r=this._out[11];return this._out[4]=i*o+a*u,this._out[5]=s*o+n*u,this._out[6]=h*o+e*u,this._out[7]=_*o+r*u,this._out[8]=a*o-i*u,this._out[9]=n*o-s*u,this._out[10]=e*o-h*u,this._out[11]=r*o-_*u,this},o.rotateY=function(t){var u=Math.sin(t),o=Math.cos(t),i=this._out[0],s=this._out[1],h=this._out[2],_=this._out[3],a=this._out[8],n=this._out[9],e=this._out[10],r=this._out[11];return this._out[0]=i*o-a*u,this._out[1]=s*o-n*u,this._out[2]=h*o-e*u,this._out[3]=_*o-r*u,this._out[8]=i*u+a*o,this._out[9]=s*u+n*o,this._out[10]=h*u+e*o,this._out[11]=_*u+r*o,this},o.rotateZ=function(t){var u=Math.sin(t),o=Math.cos(t),i=this._out[0],s=this._out[1],h=this._out[2],_=this._out[3],a=this._out[4],n=this._out[5],e=this._out[6],r=this._out[7];return this._out[0]=i*o+a*u,this._out[1]=s*o+n*u,this._out[2]=h*o+e*u,this._out[3]=_*o+r*u,this._out[4]=a*o-i*u,this._out[5]=n*o-s*u,this._out[6]=e*o-h*u,this._out[7]=r*o-_*u,this},t.fromVec3Translation=function(u){var o=u.value,i=o[0],s=o[1],h=o[2],_=new t;return _.set(1,0,0,0,0,1,0,0,0,0,1,0,i,s,h,1),_},t.fromMat3Translation=function(u,o){return(new t).set(u._out[0],u._out[3],u._out[6],o.x,u._out[1],u._out[4],u._out[7],o.y,u._out[2],u._out[5],u._out[8],o.z,0,0,0,1)},t.fromScaling=function(u){var o=u.value,i=o[0],s=o[1],h=o[2],_=new t;return _.set(i,0,0,0,0,s,0,0,0,0,h,0,0,0,0,1),_},t.fromRotation=function(o,i){var s,h,_,a=i.value,n=a[0],e=a[1],r=a[2],l=i.len(),v=new t;if(l<u.EPSILON)throw new Error("构造错误");return n*=l=1/l,e*=l,r*=l,s=Math.sin(o),h=Math.cos(o),v.set(n*n*(_=1-h)+h,e*n*_+r*s,r*n*_-e*s,0,n*e*_-r*s,e*e*_+h,r*e*_+n*s,0,n*r*_+e*s,e*r*_-n*s,r*r*_+h,0,0,0,0,1),v},t.fromXRotation=function(u){var o=new t,i=Math.sin(u),s=Math.cos(u);return o.set(1,0,0,0,0,s,i,0,0,-i,s,0,0,0,0,1),o},t.fromYRotation=function(u){var o=new t,i=Math.sin(u),s=Math.cos(u);return o.set(s,0,-i,0,0,1,0,0,i,0,s,0,0,0,0,1),o},t.fromZRotation=function(u){var o=new t,i=Math.sin(u),s=Math.cos(u);return o.set(s,i,0,0,-i,s,0,0,0,0,1,0,0,0,0,1),o},o.getTranslation=function(){var t=new h;return t.set(this._out[12],this._out[13],this._out[14]),t},o.setTranslation=function(t){return this._out[12]=t.x,this._out[13]=t.y,this._out[14]=t.z,this},t.fromRotationTranslation=function(u,o){var i=new t,s=u.value,h=s[0],_=s[1],a=s[2],n=s[3],e=o.value,r=h+h,l=_+_,v=a+a,M=h*r,c=h*l,f=h*v,b=_*l,m=_*v,w=a*v,x=n*r,p=n*l,y=n*v;return i.set(1-(b+w),c+y,f-p,0,c-y,1-(M+w),m+x,0,f+p,m-x,1-(M+b),0,e[0],e[1],e[2],1),i},o.getScaling=function(){var t=this._out[0],u=this._out[1],o=this._out[2],i=this._out[4],s=this._out[5],_=this._out[6],a=this._out[8],n=this._out[9],e=this._out[10],r=Math.sqrt(t*t+u*u+o*o),l=Math.sqrt(i*i+s*s+_*_),v=Math.sqrt(a*a+n*n+e*e);return(new h).set(r,l,v)},o.getRotation=function(){var t,u,o,i,s=0,h=new _,a=this._out[0]+this._out[5]+this._out[10];return a>0?(i=.25*(s=2*Math.sqrt(a+1)),t=(this._out[6]-this._out[9])/s,u=(this._out[8]-this._out[2])/s,o=(this._out[1]-this._out[4])/s):this._out[0]>this._out[5]&&this._out[0]>this._out[10]?(s=2*Math.sqrt(1+this._out[0]-this._out[5]-this._out[10]),i=(this._out[6]-this._out[9])/s,t=.25*s,u=(this._out[1]+this._out[4])/s,o=(this._out[8]+this._out[2])/s):this._out[5]>this._out[10]?(s=2*Math.sqrt(1+this._out[5]-this._out[0]-this._out[10]),i=(this._out[8]-this._out[2])/s,t=(this._out[1]+this._out[4])/s,u=.25*s,o=(this._out[6]+this._out[9])/s):(s=2*Math.sqrt(1+this._out[10]-this._out[0]-this._out[5]),i=(this._out[1]-this._out[4])/s,t=(this._out[8]+this._out[2])/s,u=(this._out[6]+this._out[9])/s,o=.25*s),h.set(t,u,o,i),h},t.fromRotationTranslationScale=function(u,o,i){var s=new t,h=u.value,_=h[0],a=h[1],n=h[2],e=h[3],r=o.value,l=i.value,v=l[0],M=l[1],c=l[2],f=_+_,b=a+a,m=n+n,w=_*f,x=_*b,p=_*m,y=a*b,d=a*m,P=n*m,S=e*f,I=e*b,O=e*m;return s.set((1-(y+P))*v,(x+O)*v,(p-I)*v,0,(x-O)*M,(1-(w+P))*M,(d+S)*M,0,(p+I)*c,(d-S)*c,(1-(w+y))*c,0,r[0],r[1],r[2],1),s},t.fromRotationTranslationScaleOrigin=function(u,o,i,s){var h=new t,_=u.value,a=_[0],n=_[1],e=_[2],r=_[3],l=o.value,v=l[0],M=l[1],c=l[2],f=s.value,b=f[0],m=f[1],w=f[2],x=o.value,p=a+a,y=n+n,d=e+e,P=a*p,S=a*y,I=a*d,O=n*y,N=n*d,E=e*d,L=r*p,g=r*y,q=r*d,z=(1-(O+E))*v,A=(S+q)*v,k=(I-g)*v,R=(S-q)*M,D=(1-(P+E))*M,T=(N+L)*M,F=(I+g)*c,Q=(N-L)*c,V=(1-(P+O))*c;return h.set(z,A,k,0,R,D,T,0,F,Q,V,0,x[0]+b-(z*b+R*m+F*w),x[1]+m-(A*b+D*m+Q*w),x[2]+w-(k*b+T*m+V*w),1),h},t.fromQuat=function(u){var o=new t,i=u.value,s=i[0],h=i[1],_=i[2],a=i[3],n=s+s,e=h+h,r=_+_,l=s*n,v=h*n,M=h*e,c=_*n,f=_*e,b=_*r,m=a*n,w=a*e,x=a*r;return o.set(1-M-b,v+x,c-w,0,v-x,1-l-b,f+m,0,c+w,f-m,1-l-M,0,0,0,0,1),o},t.frustum=function(u,o,i,s,h,_){var a=new t,n=1/(o-u),e=1/(s-i),r=1/(h-_);return a.set(2*h*n,0,0,0,0,2*h*e,0,0,(o+u)*n,(s+i)*e,(_+h)*r,-1,0,0,_*h*2*r,0),a},t.perspective=function(u,o,i,s){var h=new t,_=Math.tan(.5*(Math.PI-u)),a=1/(i-s);return h.set(_/o,0,0,0,0,_,0,0,0,0,(s+i)*a,-1,0,0,2*s*i*a,0),h},t.perspectiveN11=function(u,o,i,s){var h=new t,_=1/Math.tan(u/2),a=1/(i-s);return h.set(_/o,0,0,0,0,_,0,0,0,0,(s+i)*a,-1,0,0,2*s*i*a,0),h},t.perspective01=function(u,o,i,s){var h=new t,_=1/Math.tan(u/2),a=1/(i-s);return h.set(_/o,0,0,0,0,_,0,0,0,0,s*a,-1,0,0,s*i*a,0),h},t.perspectiveFromFieldOfView=function(u,o,i,s,h,_){var a=new t,n=Math.tan(u*Math.PI/180),e=Math.tan(o*Math.PI/180),r=Math.tan(i*Math.PI/180),l=Math.tan(s*Math.PI/180),v=2/(r+l),M=2/(n+e);return a.set(v,0,0,0,0,M,0,0,-(r-l)*v*.5,(n-e)*M*.5,_/(h-_),-1,0,0,_*h/(h-_),0),a},t.ortho=function(u,o,i,s,h,_){var a=new t,n=1/(u-o),e=1/(i-s),r=1/(h-_);return a.set(-2*n,0,0,0,0,-2*e,0,0,0,0,2*r,0,(u+o)*n,(s+i)*e,(_+h)*r,1),a},o.lookAt=function(t,u,o){var i=t.clone().sub(u).normalize(),s=o.clone().cross(i),h=i.clone().cross(s);return this.set(s.value[0],s.value[1],s.value[2],0,h.value[0],h.value[1],h.value[2],0,i.value[0],i.value[1],i.value[2],0,t.value[0],t.value[1],t.value[2],1),this},o.toString=function(){return"mat4("+this._out[0]+", "+this._out[1]+", "+this._out[2]+", "+this._out[3]+", "+this._out[4]+", "+this._out[5]+", "+this._out[6]+", "+this._out[7]+", "+this._out[8]+", "+this._out[9]+", "+this._out[10]+", "+this._out[11]+", "+this._out[12]+", "+this._out[13]+", "+this._out[14]+", "+this._out[15]+")"},o.forb=function(){return Math.sqrt(Math.pow(this._out[0],2)+Math.pow(this._out[1],2)+Math.pow(this._out[2],2)+Math.pow(this._out[3],2)+Math.pow(this._out[4],2)+Math.pow(this._out[5],2)+Math.pow(this._out[6],2)+Math.pow(this._out[7],2)+Math.pow(this._out[8],2)+Math.pow(this._out[9],2)+Math.pow(this._out[10],2)+Math.pow(this._out[11],2)+Math.pow(this._out[12],2)+Math.pow(this._out[13],2)+Math.pow(this._out[14],2)+Math.pow(this._out[15],2))},o.sub=function(t){return this._out[0]-=t.value[0],this._out[1]-=t.value[1],this._out[2]-=t.value[2],this._out[3]-=t.value[3],this._out[4]-=t.value[4],this._out[5]-=t.value[5],this._out[6]-=t.value[6],this._out[7]-=t.value[7],this._out[8]-=t.value[8],this._out[9]-=t.value[9],this._out[10]-=t.value[10],this._out[11]-=t.value[11],this._out[12]-=t.value[12],this._out[13]-=t.value[13],this._out[14]-=t.value[14],this._out[15]-=t.value[15],this},o.equals=function(t){var o=this._out,i=o[0],s=o[1],h=o[2],_=o[3],a=o[4],n=o[5],e=o[6],r=o[7],l=o[8],v=o[9],M=o[10],c=o[11],f=o[12],b=o[13],m=o[14],w=o[15],x=t.value,p=x[0],y=x[1],d=x[2],P=x[3],S=x[4],I=x[5],O=x[6],N=x[7],E=x[8],L=x[9],g=x[10],q=x[11],z=x[12],A=x[13],k=x[14],R=x[15];return Math.abs(i-p)<=u.EPSILON*Math.max(1,Math.abs(i),Math.abs(p))&&Math.abs(s-y)<=u.EPSILON*Math.max(1,Math.abs(s),Math.abs(y))&&Math.abs(h-d)<=u.EPSILON*Math.max(1,Math.abs(h),Math.abs(d))&&Math.abs(_-P)<=u.EPSILON*Math.max(1,Math.abs(_),Math.abs(P))&&Math.abs(a-S)<=u.EPSILON*Math.max(1,Math.abs(a),Math.abs(S))&&Math.abs(n-I)<=u.EPSILON*Math.max(1,Math.abs(n),Math.abs(I))&&Math.abs(e-O)<=u.EPSILON*Math.max(1,Math.abs(e),Math.abs(O))&&Math.abs(r-N)<=u.EPSILON*Math.max(1,Math.abs(r),Math.abs(N))&&Math.abs(l-E)<=u.EPSILON*Math.max(1,Math.abs(l),Math.abs(E))&&Math.abs(v-L)<=u.EPSILON*Math.max(1,Math.abs(v),Math.abs(L))&&Math.abs(M-g)<=u.EPSILON*Math.max(1,Math.abs(M),Math.abs(g))&&Math.abs(c-q)<=u.EPSILON*Math.max(1,Math.abs(c),Math.abs(q))&&Math.abs(f-z)<=u.EPSILON*Math.max(1,Math.abs(f),Math.abs(z))&&Math.abs(b-A)<=u.EPSILON*Math.max(1,Math.abs(b),Math.abs(A))&&Math.abs(m-k)<=u.EPSILON*Math.max(1,Math.abs(m),Math.abs(k))&&Math.abs(w-R)<=u.EPSILON*Math.max(1,Math.abs(w),Math.abs(R))},i(t,[{key:"value",get:function(){return this._out}}]),t}(),n=function(){function t(){this._out=new Array(2),this._out[0]=0,this._out[1]=0}t.random=function(o){void 0===o&&(o=1),o=o||1;var i=2*u.RANDOM()*Math.PI;return(new t).set(Math.cos(i)*o,Math.sin(i)*o)};var o=t.prototype;return o.set=function(t,u){return this._out[0]=t,this._out[1]=u,this},o.clone=function(){var u=new t;return u.set(this._out[0],this._out[1]),u},o.add=function(t){return this._out[0]+=t._out[0],this._out[1]+=t._out[1],this},o.sub=function(t){return this._out[0]-=t._out[0],this._out[1]-=t._out[1],this},o.multiply=function(t){return this._out[0]*=t._out[0],this._out[1]*=t._out[1],this},o.divide=function(t){return this._out[0]/=t._out[0],this._out[1]/=t._out[1],this},o.ceil=function(){return this._out[0]=Math.ceil(this._out[0]),this._out[1]=Math.ceil(this._out[1]),this},o.floor=function(){return this._out[0]=Math.floor(this._out[0]),this._out[1]=Math.floor(this._out[1]),this},o.round=function(){return this._out[0]=Math.round(this._out[0]),this._out[1]=Math.round(this._out[1]),this},o.min=function(t){return this._out[0]=Math.min(this._out[0],t._out[0]),this._out[1]=Math.min(this._out[1],t._out[1]),this},o.max=function(t){return this._out[0]=Math.max(this._out[0],t._out[0]),this._out[1]=Math.max(this._out[1],t._out[1]),this},o.scale=function(t){return this._out[0]*=t,this._out[1]*=t,this},o.distance=function(t){var u=this._out[0]-t._out[0],o=this._out[1]-t._out[1];return Math.sqrt(u*u+o*o)},o.manhattanDistance=function(t){return Math.abs(this._out[0]-t._out[0])+Math.abs(this._out[1]-t._out[1])},o.chebyshevDistance=function(t){var u=Math.abs(this._out[0]-t._out[0]),o=Math.abs(this._out[1]-t._out[1]);return Math.max(u,o)},o.len=function(){return this.distance(new t)},o.negate=function(){return this._out[0]=-this._out[0],this._out[1]=-this._out[1],this},o.inverse=function(){return this._out[0]=1/this._out[0],this._out[1]=1/this._out[1],this},o.normalize=function(){var t=this.len();return t>0&&(this._out[0]/=t,this._out[1]/=t),this},o.dot=function(t){return this._out[0]*t._out[0]+this._out[1]*t._out[1]},o.lerp=function(t,u){var o=this._out,i=o[0],s=o[1],h=t._out,_=h[1];return this._out[0]=i+u*(h[0]-i),this._out[1]=s+u*(_-s),this},o.toString=function(){return"vec2("+this._out[0]+","+this._out[1]+")"},o.transformMat3=function(t){var u=this._out,o=u[0],i=u[1];return this._out[0]=t._out[0]*o+t._out[3]*i+t._out[6],this._out[1]=t._out[1]*o+t._out[4]*i+t._out[7],this},o.transformMat4=function(t){var u=this._out,o=u[0],i=u[1];return this._out[0]=t.value[0]*o+t.value[4]*i+t.value[5],this._out[1]=t.value[1]*o+t.value[5]*i+t.value[13],this},o.equals=function(t){var o=this._out,i=o[0],s=o[1],h=t._out,_=h[0],a=h[1];return Math.abs(i-_)<=u.EPSILON*Math.max(1,Math.abs(i),Math.abs(_))&&Math.abs(s-a)<=u.EPSILON*Math.max(1,Math.abs(s),Math.abs(a))},i(t,[{key:"x",get:function(){return this._out[0]}},{key:"y",get:function(){return this._out[1]}},{key:"value",get:function(){return this._out}}]),t}(),e=function(){function t(){this._out=new Array(4),this._out[0]=0,this._out[1]=0,this._out[2]=0,this._out[3]=0}t.random=function(o){void 0===o&&(o=1),o=o||1;var i=new t;return i.set(u.RANDOM(),u.RANDOM(),u.RANDOM(),u.RANDOM()).normalize().scale(o),i};var o=t.prototype;return o.set=function(t,u,o,i){return this._out[0]=t,this._out[1]=u,this._out[2]=o,this._out[3]=i,this},o.clone=function(){var u=new t;return u.set(this._out[0],this._out[1],this._out[2],this._out[3]),u},o.add=function(t){return this._out[0]+=t.value[0],this._out[1]+=t.value[1],this._out[2]+=t.value[2],this._out[3]+=t.value[3],this},o.sub=function(t){return this._out[0]-=t.value[0],this._out[1]-=t.value[1],this._out[2]-=t.value[2],this._out[3]-=t.value[3],this},o.multiply=function(t){return this._out[0]*=t.value[0],this._out[1]*=t.value[1],this._out[2]*=t.value[2],this._out[3]*=t.value[3],this},o.divide=function(t){return this._out[0]/=t.value[0],this._out[1]/=t.value[1],this._out[2]/=t.value[2],this._out[3]/=t.value[3],this},o.ceil=function(){return this._out[0]=Math.ceil(this._out[0]),this._out[1]=Math.ceil(this._out[1]),this._out[2]=Math.ceil(this._out[2]),this._out[3]=Math.ceil(this._out[3]),this},o.round=function(){return this._out[0]=Math.round(this._out[0]),this._out[1]=Math.round(this._out[1]),this._out[2]=Math.round(this._out[2]),this._out[3]=Math.round(this._out[3]),this},o.floor=function(){return this._out[0]=Math.floor(this._out[0]),this._out[1]=Math.floor(this._out[1]),this._out[2]=Math.floor(this._out[2]),this._out[3]=Math.floor(this._out[3]),this},o.min=function(t){return this._out[0]=Math.min(this._out[0],t.value[0]),this._out[1]=Math.min(this._out[1],t.value[1]),this._out[2]=Math.min(this._out[2],t.value[2]),this._out[3]=Math.min(this._out[3],t.value[3]),this},o.max=function(t){return this._out[0]=Math.max(this._out[0],t.value[0]),this._out[1]=Math.max(this._out[1],t.value[1]),this._out[2]=Math.max(this._out[2],t.value[2]),this._out[3]=Math.max(this._out[3],t._out[3]),this},o.scale=function(t){return this._out[0]*=t,this._out[1]*=t,this._out[2]*=t,this._out[3]*=t,this},o.distance=function(t){var u=this._out,o=t._out,i=u[0]-o[0],s=u[1]-o[1],h=u[2]-o[2],_=u[3]-o[3];return Math.sqrt(i*i+s*s+h*h+_*_)},o.len=function(){return this.distance(new t)},o.negate=function(){return this._out[0]=-this._out[0],this._out[1]=-this._out[1],this._out[2]=-this._out[2],this._out[3]=-this._out[3],this},o.inverse=function(){this._out[0]=1/this._out[0],this._out[1]=1/this._out[1],this._out[2]=1/this._out[2],this._out[3]=1/this._out[3]},o.normalize=function(){var t=this.len();return t>0&&(this._out[0]/=t,this._out[1]/=t,this._out[2]/=t,this._out[3]/=t),this},o.dot=function(t){var u=this.value,o=t.value;return u[0]*o[0]+u[1]*o[1]+u[2]*o[2]+u[3]*o[3]},o.lerp=function(t,u,o){var i=t.value,s=i[0],h=i[1],_=i[2],a=i[3],n=u.value,e=n[1],r=n[2],l=n[3];return this._out[0]=s+o*(n[0]-s),this._out[1]=h+o*(e-h),this._out[2]=_+o*(r-_),this._out[3]=a+o*(l-a),this},o.transformMat4=function(t){var u=this._out,o=u[0],i=u[1],s=u[2],h=u[3];return this._out[0]=t.value[0]*o+t.value[4]*i+t.value[8]*s+t.value[12]*h,this._out[1]=t.value[1]*o+t.value[5]*i+t.value[9]*s+t.value[13]*h,this._out[2]=t.value[2]*o+t.value[6]*i+t.value[10]*s+t.value[14]*h,this._out[3]=t.value[3]*o+t.value[7]*i+t.value[11]*s+t.value[15]*h,this},o.transformQuat=function(t){var u=this._out,o=u[0],i=u[1],s=u[2],h=t.value,_=h[0],a=h[1],n=h[2],e=h[3],r=e*o+a*s-n*i,l=e*i+n*o-_*s,v=e*s+_*i-a*o,M=-_*o-a*i-n*s;return this._out[0]=r*e+M*-_+l*-n-v*-a,this._out[1]=l*e+M*-a+v*-_-r*-n,this._out[2]=v*e+M*-n+r*-a-l*-_,this._out[3]=t.value[3],this},o.toString=function(){return"vec4("+this._out[0]+", "+this._out[1]+", "+this._out[2]+", "+this._out[3]+")"},o.equals=function(t){var o=this._out,i=o[0],s=o[1],h=o[2],_=o[3],a=t._out,n=a[0],e=a[1],r=a[2],l=a[3];return Math.abs(i-n)<=u.EPSILON*Math.max(1,Math.abs(i),Math.abs(n))&&Math.abs(s-e)<=u.EPSILON*Math.max(1,Math.abs(s),Math.abs(e))&&Math.abs(h-r)<=u.EPSILON*Math.max(1,Math.abs(h),Math.abs(r))&&Math.abs(_-l)<=u.EPSILON*Math.max(1,Math.abs(_),Math.abs(l))},i(t,[{key:"x",get:function(){return this._out[0]}},{key:"y",get:function(){return this._out[1]}},{key:"z",get:function(){return this._out[2]}},{key:"w",get:function(){return this._out[3]}},{key:"value",get:function(){return this._out}}]),t}();exports.GLMatrix=u,exports.Mat3=s,exports.Mat4=a,exports.Quat=_,exports.Vec2=n,exports.Vec3=h,exports.Vec4=e;
 
 
+},{}],"../src/core/GeodeticCoordinate.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GeodeticCoordinate = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var GeodeticCoordinate =
+/*#__PURE__*/
+function () {
+  function GeodeticCoordinate(lng, lat) {
+    var _this = this;
+
+    var alt = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.0;
+
+    _classCallCheck(this, GeodeticCoordinate);
+
+    this.toGeodetic = function () {
+      return new GeodeticCoordinate(_this.lng, _this.lat, 0);
+    };
+
+    this.isGeodetic = function () {
+      return _this.alt === 0;
+    };
+
+    this.lng = lng;
+    this.lat = lat;
+    this.alt = alt;
+  }
+
+  _createClass(GeodeticCoordinate, [{
+    key: "Latitude",
+    get: function get() {
+      return this.lat;
+    }
+  }, {
+    key: "Longitude",
+    get: function get() {
+      return this.lng;
+    }
+  }, {
+    key: "Altitude",
+    get: function get() {
+      return this.alt;
+    },
+    set: function set(v) {
+      this.alt = v;
+    }
+  }]);
+
+  return GeodeticCoordinate;
+}();
+
+exports.GeodeticCoordinate = GeodeticCoordinate;
 },{}],"../src/util/fixed.ts":[function(require,module,exports) {
 "use strict";
 
@@ -392,67 +453,6 @@ exports.EPSILON = EPSILON;
   EPSILON[EPSILON["EPSILON12"] = 1e-12] = "EPSILON12";
   EPSILON[EPSILON["EPSILON14"] = 1e-14] = "EPSILON14";
 })(EPSILON || (exports.EPSILON = EPSILON = {}));
-},{}],"../src/core/GeodeticCoordinate.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.GeodeticCoordinate = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var GeodeticCoordinate =
-/*#__PURE__*/
-function () {
-  function GeodeticCoordinate(lng, lat) {
-    var _this = this;
-
-    var alt = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.0;
-
-    _classCallCheck(this, GeodeticCoordinate);
-
-    this.toGeodetic = function () {
-      return new GeodeticCoordinate(_this.lng, _this.lat, 0);
-    };
-
-    this.isGeodetic = function () {
-      return _this.alt === 0;
-    };
-
-    this.lng = lng;
-    this.lat = lat;
-    this.alt = alt;
-  }
-
-  _createClass(GeodeticCoordinate, [{
-    key: "Latitude",
-    get: function get() {
-      return this.lat;
-    }
-  }, {
-    key: "Longitude",
-    get: function get() {
-      return this.lng;
-    }
-  }, {
-    key: "Altitude",
-    get: function get() {
-      return this.alt;
-    },
-    set: function set(v) {
-      this.alt = v;
-    }
-  }]);
-
-  return GeodeticCoordinate;
-}();
-
-exports.GeodeticCoordinate = GeodeticCoordinate;
 },{}],"../src/core/Ellipsoid.ts":[function(require,module,exports) {
 "use strict";
 
@@ -476,8 +476,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var semimajorAxis = Math.max(_physical.EARTH.RADIUS_X, _physical.EARTH.RADIUS_Y, _physical.EARTH.RADIUS_Z);
 
 var Ellipsoid =
 /*#__PURE__*/
@@ -521,8 +519,8 @@ function () {
       return this.oneOverMaximumRadius;
     }
   }, {
-    key: "_geodeticSurfaceNormalCartographic",
-    value: function _geodeticSurfaceNormalCartographic(cartographic) {
+    key: "geodeticSurfaceNormalCartographic",
+    value: function geodeticSurfaceNormalCartographic(cartographic) {
       var longitude = _kiwi.GLMatrix.toRadian(cartographic.Longitude),
           latitude = _kiwi.GLMatrix.toRadian(cartographic.Latitude),
           cosLatitude = (0, _fixed.cos)(latitude);
@@ -533,8 +531,8 @@ function () {
       return new _kiwi.Vec3().set(x, y, z);
     }
   }, {
-    key: "_geodeticSurfaceNormal",
-    value: function _geodeticSurfaceNormal(cartesian) {
+    key: "geodeticSurfaceNormal",
+    value: function geodeticSurfaceNormal(cartesian) {
       var oneOverRadiiSquared = this.oneOverRadiiSquared;
       var result = cartesian.clone().multiply(oneOverRadiiSquared);
       return result.normalize();
@@ -602,9 +600,7 @@ function () {
     key: "spaceToGeographic",
     value: function spaceToGeographic(spaceCoord) {
       var p = this.scaleToGeodeticSurface(spaceCoord);
-
-      var n = this._geodeticSurfaceNormal(p);
-
+      var n = this.geodeticSurfaceNormal(p);
       var h = spaceCoord.clone().sub(p);
       var longitude = Math.atan2(n.y, n.x);
       var latitude = Math.asin(n.z);
@@ -615,9 +611,8 @@ function () {
     key: "geographicToSpace",
     value: function geographicToSpace(geographic) {
       var radiiSquared = this.radiiSquared,
-          n = this._geodeticSurfaceNormalCartographic(geographic),
+          n = this.geodeticSurfaceNormalCartographic(geographic),
           k = radiiSquared.clone().multiply(n);
-
       var gamma = Math.sqrt(n.clone().dot(k));
       k.scale(1 / gamma);
       n.scale(geographic.Altitude);
@@ -631,6 +626,7 @@ function () {
 exports.Ellipsoid = Ellipsoid;
 var WGS84 = new Ellipsoid(_physical.EARTH.RADIUS_X, _physical.EARTH.RADIUS_Y, _physical.EARTH.RADIUS_Z);
 exports.WGS84 = WGS84;
+var semimajorAxis = Math.max(_physical.EARTH.RADIUS_X, _physical.EARTH.RADIUS_Y, _physical.EARTH.RADIUS_Z);
 var PSEUDOMERCATOR = new Ellipsoid(semimajorAxis, semimajorAxis, semimajorAxis);
 exports.PSEUDOMERCATOR = PSEUDOMERCATOR;
 },{"kiwi.matrix":"../node_modules/kiwi.matrix/dist/bundle.js","../util/physical":"../src/util/physical.ts","../util/epsilon":"../src/util/epsilon.ts","../util/fixed":"../src/util/fixed.ts","./GeodeticCoordinate":"../src/core/GeodeticCoordinate.ts"}],"../src/core/Projection.ts":[function(require,module,exports) {
@@ -643,11 +639,11 @@ exports.WebMercatorProjection = exports.Projection = void 0;
 
 var _kiwi = require("kiwi.matrix");
 
+var _GeodeticCoordinate = require("./GeodeticCoordinate");
+
 var _fixed = require("../util/fixed");
 
 var _Ellipsoid = require("./Ellipsoid");
-
-var _GeodeticCoordinate = require("./GeodeticCoordinate");
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -770,7 +766,7 @@ function (_Projection) {
 }(Projection);
 
 exports.WebMercatorProjection = WebMercatorProjection;
-},{"kiwi.matrix":"../node_modules/kiwi.matrix/dist/bundle.js","../util/fixed":"../src/util/fixed.ts","./Ellipsoid":"../src/core/Ellipsoid.ts","./GeodeticCoordinate":"../src/core/GeodeticCoordinate.ts"}],"../src/globe/Globe.ts":[function(require,module,exports) {
+},{"kiwi.matrix":"../node_modules/kiwi.matrix/dist/bundle.js","./GeodeticCoordinate":"../src/core/GeodeticCoordinate.ts","../util/fixed":"../src/util/fixed.ts","./Ellipsoid":"../src/core/Ellipsoid.ts"}],"../src/globe/Globe.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -848,7 +844,9 @@ function (_EventEmitter) {
       });
     };
 
-    _this.initAuxTools = function () {};
+    _this.initAuxTools = function () {
+      _this.EnableCursorAuxTool();
+    };
 
     _this.add = function (skpd) {
       _this.sketchpads.push(skpd);
@@ -944,7 +942,5070 @@ function (_EventEmitter) {
 
 exports.Globe = Globe;
 Globe.hooks = [];
-},{"../util/browser":"../src/util/browser.ts","../util/isString":"../src/util/isString.ts","../core/EventEmitter":"../src/core/EventEmitter.ts","../core/Projection":"../src/core/Projection.ts"}],"../src/core/Ray.ts":[function(require,module,exports) {
+},{"../util/browser":"../src/util/browser.ts","../util/isString":"../src/util/isString.ts","../core/EventEmitter":"../src/core/EventEmitter.ts","../core/Projection":"../src/core/Projection.ts"}],"../src/util/split.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.split = void 0;
+
+var trim = function trim(input) {
+  return ((input || '') + '').replace(/^\s+|\s+$/g, '');
+};
+
+var split = function split(input) {
+  return trim(input).split(/\s+/);
+};
+
+exports.split = split;
+},{}],"../src/util/dom.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.stopPropagation = exports.removeDOMEvent = exports.preventDefault = exports.getEventContainerPosition = exports.addDOMEvent = void 0;
+
+var _split = require("./split");
+
+var _browser = require("./browser");
+
+var PREFIX = '_geosketchpad_';
+
+var addDOMEvent = function addDOMEvent(element, eventName, handler, context) {
+  var eventHandler = function eventHandler(e) {
+    e = e || window.event;
+    handler.call(context || element, e);
+  };
+
+  (0, _split.split)(eventName).forEach(function (type) {
+    var key = "".concat(PREFIX, "_").concat(type);
+    element[key] = element[key] || [];
+    var hit = listenDOMEvent(element, type, handler);
+    if (hit >= 0) removeDOMEvent(element, type, handler);
+    element[key].push(eventHandler);
+    if (_browser.browser.ie) element.addEventListener(type, eventHandler, false);else element.addEventListener(type, eventHandler, {
+      capture: false,
+      passive: false
+    });
+  });
+};
+
+exports.addDOMEvent = addDOMEvent;
+
+var listenDOMEvent = function listenDOMEvent(element, type, handler) {
+  var Key = "".concat(PREFIX, "_").concat(type);
+  if (!element || !element[Key] || !handler) return -1;
+  var handlers = element[Key];
+
+  for (var i = 0, len = handlers.length; i < len; i++) {
+    if (handlers[i] === handler) return i;
+  }
+
+  return -1;
+};
+
+var removeDOMEvent = function removeDOMEvent(element, eventName, handler) {
+  var remove = function remove(type, fn) {
+    element.removeEventListener(type, fn, false);
+  };
+
+  var types = (0, _split.split)(eventName);
+  types.forEach(function (type) {
+    var key = "".concat(PREFIX, "_").concat(type);
+
+    if (!handler && element[key]) {
+      var handlers = element[key];
+      handlers === null || handlers === void 0 ? void 0 : handlers.forEach(function (listener) {
+        remove(type, listener);
+      });
+      delete element[key];
+    }
+
+    var hit = listenDOMEvent(element, type, handler);
+    if (hit > 0) remove(type, element[key]);
+    element[key].splice(hit, 1);
+  });
+};
+
+exports.removeDOMEvent = removeDOMEvent;
+
+var preventDefault = function preventDefault(e) {
+  if (e.preventDefault) e.preventDefault();else e.returnValue = false;
+};
+
+exports.preventDefault = preventDefault;
+
+var stopPropagation = function stopPropagation(e) {
+  if (e.stopPropagation) e.stopPropagation();else e.cancelBubble = true;
+};
+
+exports.stopPropagation = stopPropagation;
+
+var getEventContainerPosition = function getEventContainerPosition(e, dom) {
+  var targetEvent = e instanceof MouseEvent ? e : e.touches[0];
+  var style = window.getComputedStyle(dom);
+  var padding = [parseInt(style['padding-left']), parseInt(style['padding-top'])];
+  var rect = dom.getBoundingClientRect();
+  var offsetWidth = dom.offsetWidth,
+      offsetHeight = dom.offsetHeight;
+  var scaleX = offsetWidth ? rect.width / offsetWidth : 1;
+  var scaleY = offsetHeight ? rect.height / offsetHeight : 1;
+  var position = [rect.left + padding[0], rect.top + padding[1], scaleX, scaleY];
+  return {
+    clientX: (targetEvent.clientX - position[0] - dom.clientLeft) / position[2],
+    clientY: (targetEvent.clientY - position[1] - dom.clientTop) / position[3]
+  };
+};
+
+exports.getEventContainerPosition = getEventContainerPosition;
+},{"./split":"../src/util/split.ts","./browser":"../src/util/browser.ts"}],"../node_modules/pipegl/src/util/check.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.check = void 0;
+
+const check = (pred, message) => {
+  if (!pred) throw new Error(`pipegl:${message}`);
+};
+
+exports.check = check;
+},{}],"../node_modules/pipegl/src/pool/BufferPool.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.bufferPool0 = void 0;
+
+const nextPow16 = v => {
+  for (let i = 16, max = 1 << 28; i <= max; i *= 16) if (v <= i) return i;
+
+  return 0;
+};
+
+const nextLog2 = v => {
+  let shift = 0;
+  let r = +(v > 0xFFFF) << 4;
+  v >>>= r;
+  shift = +(v > 0xFF) << 3;
+  v >>>= shift;
+  r |= shift;
+  shift = +(v > 0xF) << 2;
+  v >>>= shift;
+  r |= shift;
+  shift = +(v > 0x3) << 1;
+  v >>>= shift;
+  r |= shift;
+  return r | v >> 1;
+};
+
+const interLoop = n => {
+  const r = [];
+
+  for (let i = 0; i < n; i++) r[i] = [];
+
+  return r;
+};
+
+class BufferPool {
+  constructor() {
+    this.bufferPool = interLoop(8);
+
+    this.alloc = size => {
+      const bufferPool = this.bufferPool,
+            actualSize = nextPow16(size),
+            bin = bufferPool[nextLog2(actualSize) >> 2];
+      return bin.length > 0 ? bin.pop() : new ArrayBuffer(actualSize);
+    };
+
+    this.allocType = (scomponent, size) => {
+      const alloc = this.alloc;
+      let arr = null;
+
+      switch (scomponent) {
+        case 'BYTE':
+          arr = new Int8Array(alloc(size), 0, size);
+          break;
+
+        case 'UNSIGNED_BYTE':
+          arr = new Uint8Array(alloc(size), 0, size);
+          break;
+
+        case 'SHORT':
+          arr = new Int16Array(alloc(2 * size), 0, size);
+          break;
+
+        case 'UNSIGNED_SHORT':
+          arr = new Uint16Array(alloc(2 * size), 0, size);
+          break;
+
+        case 'INT':
+          arr = new Int32Array(alloc(4 * size), 0, size);
+          break;
+
+        case 'UNSIGNED_INT':
+          arr = new Uint32Array(alloc(4 * size), 0, size);
+          break;
+
+        case 'FLOAT':
+          arr = new Float32Array(alloc(4 * size), 0, size);
+          break;
+      }
+
+      if (arr.length !== size) arr = arr.subarray(0, size);
+      return arr;
+    };
+
+    this.free = buffer => {
+      if (!buffer) return;
+      const bufferPool = this.bufferPool;
+      bufferPool[nextLog2(buffer.byteLength) >> 2].push(buffer);
+    };
+
+    this.freeType = typedArraybuffer => {
+      this.free(typedArraybuffer.buffer);
+    };
+  }
+
+}
+
+const bufferPool0 = new BufferPool();
+exports.bufferPool0 = bufferPool0;
+},{}],"../node_modules/pipegl/src/core/Constant.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CWebGLStatusVariable = exports.CWebGLStatusTYPE = exports.CWebGLStatusFLAG = exports.CVector = exports.CUsage = exports.CTextureWrapTarget = exports.CTextureMapTarget = exports.CTextureMINFilter = exports.CTextureMAGFilter = exports.CTextureFillTarget = exports.CTextureCompressed = exports.CTextureComponentSize = exports.CTextureComponent = exports.CTextureColor2Component = exports.CTextureColor = exports.CTextureChannelCount = exports.CShaderTarget = exports.CRenderbufferColor = exports.CPrimitive = exports.CMipmapHint = exports.CDimension = exports.CComponent = exports.CColorSpace = exports.CBlendFunc = exports.CAttributeTS = exports.CAttachmentTarget = exports.CArraybufferTarget = exports.CActiveTarget = void 0;
+const CBlendFunc = {
+  FUNC_ADD: 0x8006,
+  FUNC_SUBTRACT: 0x800A,
+  FUNC_REVERSE_SUBTRACT: 0x800B,
+  MIN_EXT: 0x8007,
+  MAX_EXT: 0x8008
+};
+exports.CBlendFunc = CBlendFunc;
+const CComponent = {
+  BYTE: 0x1400,
+  UNSIGNED_BYTE: 0x1401,
+  SHORT: 0x1402,
+  UNSIGNED_SHORT: 0x1403,
+  INT: 0x1404,
+  UNSIGNED_INT: 0x1405,
+  FLOAT: 0x1406
+};
+exports.CComponent = CComponent;
+const CPrimitive = {
+  POINTS: 0,
+  LINES: 1,
+  LINE_LOOP: 2,
+  LINE_STRIP: 3,
+  TRIANGLES: 4,
+  TRIANGLE_STRIP: 5,
+  TRIANGLE_FAN: 6
+};
+exports.CPrimitive = CPrimitive;
+const CTextureMapTarget = {
+  TEXTURE_2D: 0x0DE1,
+  TEXTURE_CUBE_MAP: 0x8513,
+  TEXTURE_CUBE_MAP_POSITIVE_X: 0x8515,
+  TEXTURE_CUBE_MAP_NEGATIVE_X: 0x8516,
+  TEXTURE_CUBE_MAP_POSITIVE_Y: 0x8517,
+  TEXTURE_CUBE_MAP_NEGATIVE_Y: 0x8518,
+  TEXTURE_CUBE_MAP_POSITIVE_Z: 0x8519,
+  TEXTURE_CUBE_MAP_NEGATIVE_Z: 0x851A
+};
+exports.CTextureMapTarget = CTextureMapTarget;
+const CShaderTarget = {
+  FRAGMENT_SHADER: 0x8B30,
+  VERTEX_SHADER: 0x8B31
+};
+exports.CShaderTarget = CShaderTarget;
+const CArraybufferTarget = {
+  ARRAY_BUFFER: 0x8892,
+  ELEMENT_ARRAY_BUFFER: 0x8893
+};
+exports.CArraybufferTarget = CArraybufferTarget;
+const CUsage = {
+  STATIC_DRAW: 0x88E4,
+  STREAM_DRAW: 0x88E0,
+  DYNAMIC_DRAW: 0x88E8
+};
+exports.CUsage = CUsage;
+const CDimension = {
+  POINTS: 1,
+  LINES: 2,
+  TRIANGLES: 3
+};
+exports.CDimension = CDimension;
+const CActiveTarget = {
+  ACTIVE_ATTRIBUTES: 0x8B89,
+  ACTIVE_UNIFORMS: 0x8B86
+};
+exports.CActiveTarget = CActiveTarget;
+const CVector = {
+  SCALAR: 1,
+  VEC2: 2,
+  VEC3: 3,
+  VEC4: 4,
+  MAT2: 4,
+  MAT3: 9,
+  MAT4: 16
+};
+exports.CVector = CVector;
+const CAttachmentTarget = {
+  TEXTURE_2D: 0x0DE1,
+  RENDERBUFFER: 0x8D41
+};
+exports.CAttachmentTarget = CAttachmentTarget;
+const CTextureFillTarget = {
+  REPEAT: 0x2901,
+  CLAMP_TO_EDGE: 0x812F,
+  MIRRORED_REPEAT: 0x8370
+};
+exports.CTextureFillTarget = CTextureFillTarget;
+const CMipmapHint = {
+  DONT_CARE: 0x1100,
+  FASTEST: 0x1101,
+  NICEST: 0x1102
+};
+exports.CMipmapHint = CMipmapHint;
+const CTextureWrapTarget = {
+  TEXTURE_WRAP_S: 0x2802,
+  TEXTURE_WRAP_T: 0x2803
+};
+exports.CTextureWrapTarget = CTextureWrapTarget;
+const CTextureMAGFilter = {
+  NEAREST: 0x2600,
+  LINEAR: 0x2601
+};
+exports.CTextureMAGFilter = CTextureMAGFilter;
+const CTextureMINFilter = {
+  NEAREST: 0x2600,
+  LINEAR: 0x2601,
+  NEAREST_MIPMAP_NEAREST: 0x2700,
+  LINEAR_MIPMAP_NEAREST: 0x2701,
+  NEAREST_MIPMAP_LINEAR: 0x2702,
+  LINEAR_MIPMAP_LINEAR: 0x2703
+};
+exports.CTextureMINFilter = CTextureMINFilter;
+const CColorSpace = {
+  NONE: 0,
+  BROWSER_DEFAULT_WEBGL: 0x9244
+};
+exports.CColorSpace = CColorSpace;
+const CTextureComponent = {
+  BYTE: 0x1400,
+  UNSIGNED_BYTE: 0x1401,
+  SHORT: 0x1402,
+  UNSIGNED_SHORT: 0x1403,
+  INT: 0x1404,
+  UNSIGNED_INT: 0x1405,
+  FLOAT: 0x1406,
+  UNSIGNED_SHORT_4_4_4_4: 0x8033,
+  UNSIGNED_SHORT_5_5_5_1: 0x8034,
+  UNSIGNED_SHORT_5_6_5: 0x8363,
+  HALF_FLOAT_OES: 0x8D61,
+  UNSIGNED_INT_24_8_WEBGL: 0x84FA
+};
+exports.CTextureComponent = CTextureComponent;
+const CTextureColor = {
+  ALPHA: 0x1906,
+  RGB: 0x1907,
+  RGBA: 0x1908,
+  RGBA4: 0x8056,
+  RGB5_A1: 0x8057,
+  RGB565: 0x8D62,
+  LUMINANCE: 0x1909,
+  LUMINANCE_ALPHA: 0x190A,
+  SRGB_EXT: 0x8c40,
+  SRGB_ALPHA_EXT: 0x8c42,
+  DEPTH_COMPONENT: 0x1902,
+  DEPTH_STENCIL: 0x84F9
+};
+exports.CTextureColor = CTextureColor;
+const CTextureColor2Component = {
+  RGBA4: 'UNSIGNED_SHORT_4_4_4_4',
+  RGB5_A1: 'UNSIGNED_SHORT_5_5_5_1'
+};
+exports.CTextureColor2Component = CTextureColor2Component;
+const CTextureCompressed = {
+  COMPRESSED_RGB_S3TC_DXT1_EXT: 0x83F0,
+  COMPRESSED_RGBA_S3TC_DXT1_EXT: 0x83F1,
+  COMPRESSED_RGBA_S3TC_DXT3_EXT: 0x83F2,
+  COMPRESSED_RGBA_S3TC_DXT5_EXT: 0x83F3
+};
+exports.CTextureCompressed = CTextureCompressed;
+const CTextureComponentSize = {
+  0x1400: 1,
+  0x1401: 1,
+  0x1402: 2,
+  0x1403: 2,
+  0x1404: 4,
+  0x1405: 4,
+  0x1406: 4,
+  0x8D61: 2,
+  0x8363: 2,
+  0x8033: 2,
+  0x8034: 2,
+  0x84FA: 4
+};
+exports.CTextureComponentSize = CTextureComponentSize;
+const CTextureChannelCount = {
+  0x1909: 1,
+  0x1906: 1,
+  0x1902: 1,
+  0x84F9: 2,
+  0x190A: 2,
+  0x1907: 3,
+  0x8c40: 3,
+  0x1908: 4,
+  0x8c42: 4
+};
+exports.CTextureChannelCount = CTextureChannelCount;
+const CRenderbufferColor = {
+  RGBA4: 0x8056,
+  RGB565: 0x8D62,
+  RGB5_A1: 0x8057,
+  DEPTH_COMPONENT16: 0x81A5,
+  STENCIL_INDEX8: 0x8D48,
+  DEPTH_STENCIL: 0x84F9,
+  SRGB8_ALPHA8_EXT: 0x8c43,
+  RGB16F_EXT: 0x881B,
+  RGBA16F_EXT: 0x881A,
+  RGBA32F_EXT: 0x8814
+};
+exports.CRenderbufferColor = CRenderbufferColor;
+const CWebGLStatusTYPE = {
+  FLAG: 1,
+  BOOLEAN: 2,
+  ARRAY: 3,
+  DECARRAY: 4,
+  NUMBER: 5
+};
+exports.CWebGLStatusTYPE = CWebGLStatusTYPE;
+const CWebGLStatusFLAG = {
+  DITHER: CWebGLStatusTYPE.FLAG,
+  BLEND: CWebGLStatusTYPE.FLAG,
+  DEPTH_TEST: CWebGLStatusTYPE.FLAG,
+  CULL_FACE: CWebGLStatusTYPE.FLAG,
+  POLYGON_OFFSET_FILL: CWebGLStatusTYPE.FLAG,
+  SAMPLE_ALPHA_TO_COVERAGE: CWebGLStatusTYPE.FLAG,
+  SAMPLE_COVERAGE: CWebGLStatusTYPE.FLAG,
+  STENCIL_TEST: CWebGLStatusTYPE.FLAG,
+  SCISSOR_TEST: CWebGLStatusTYPE.FLAG
+};
+exports.CWebGLStatusFLAG = CWebGLStatusFLAG;
+const CWebGLStatusVariable = {
+  blendColor: CWebGLStatusTYPE.ARRAY,
+  scissor: CWebGLStatusTYPE.DECARRAY,
+  blendEquationSeparate: CWebGLStatusTYPE.DECARRAY,
+  blendFuncSeparate: CWebGLStatusTYPE.DECARRAY,
+  blendFunc: CWebGLStatusTYPE.DECARRAY,
+  depthFunc: CWebGLStatusTYPE.NUMBER,
+  depthRange: CWebGLStatusTYPE.DECARRAY,
+  depthMask: CWebGLStatusTYPE.BOOLEAN,
+  colorMask: CWebGLStatusTYPE.DECARRAY,
+  cullFace: CWebGLStatusTYPE.NUMBER,
+  frontFace: CWebGLStatusTYPE.NUMBER,
+  lineWidth: CWebGLStatusTYPE.NUMBER,
+  polygonOffset: CWebGLStatusTYPE.DECARRAY,
+  sampleCoverage: CWebGLStatusTYPE.DECARRAY,
+  stencilMask: CWebGLStatusTYPE.NUMBER,
+  stencilFunc: CWebGLStatusTYPE.DECARRAY,
+  stencilOpSeparate: CWebGLStatusTYPE.DECARRAY,
+  stencilOp: CWebGLStatusTYPE.DECARRAY,
+  viewport: CWebGLStatusTYPE.DECARRAY
+};
+exports.CWebGLStatusVariable = CWebGLStatusVariable;
+const CAttributeTS = {
+  5126: 1,
+  35664: 2,
+  35665: 3,
+  35666: 4,
+  35667: 2,
+  35668: 3,
+  35669: 4,
+  35671: 2,
+  35672: 3,
+  35673: 4
+};
+exports.CAttributeTS = CAttributeTS;
+},{}],"../node_modules/pipegl/src/core/Limit.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Limit = void 0;
+
+var _BufferPool = require("./../pool/BufferPool");
+
+var _Constant = require("./Constant");
+
+const MAX_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FF;
+const MAX_DRAW_BUFFERS_WEBGL = 0x8824;
+const MAX_COLOR_ATTACHMENTS_WEBGL = 0x8CDF;
+
+class Limit {
+  constructor(gl, extLib) {
+    this.maxAnisotropic = 1;
+    this.maxDrawbuffers = 1;
+    this.maxColorAttachments = 1;
+    this.readFloat = false;
+    this.npotTextureCube = true;
+    this.colorBits = new Array(4);
+    this.info = {};
+    if (extLib.get('EXT_texture_filter_anisotropic')) this.maxAnisotropic = gl.getParameter(MAX_TEXTURE_MAX_ANISOTROPY_EXT);
+
+    if (extLib.get('WEBGL_draw_buffers')) {
+      this.maxDrawbuffers = gl.getParameter(MAX_DRAW_BUFFERS_WEBGL);
+      this.maxColorAttachments = gl.getParameter(MAX_COLOR_ATTACHMENTS_WEBGL);
+    }
+
+    if (extLib.get('OES_texture_float')) {
+      this.readFloat = true;
+      const readFloatTexture = gl.createTexture();
+      gl.bindTexture(_Constant.CTextureMapTarget.TEXTURE_2D, readFloatTexture);
+      gl.texImage2D(_Constant.CTextureMapTarget.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, _Constant.CComponent.FLOAT, null);
+      const fbo = gl.createFramebuffer();
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, _Constant.CTextureMapTarget.TEXTURE_2D, readFloatTexture, 0);
+      gl.bindTexture(_Constant.CTextureMapTarget.TEXTURE_2D, null);
+      if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) this.readFloat = false;else {
+        gl.viewport(0, 0, 1, 1);
+        gl.clearColor(1.0, 0.0, 0.0, 1.0);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+
+        const pixels = _BufferPool.bufferPool0.allocType('FLOAT', 4);
+
+        gl.readPixels(0, 0, 1, 1, gl.RGBA, _Constant.CComponent.FLOAT, pixels);
+        if (gl.getError()) this.readFloat = false;else {
+          gl.deleteFramebuffer(fbo);
+          gl.deleteTexture(readFloatTexture);
+          this.readFloat = pixels[0] === 1.0;
+        }
+
+        _BufferPool.bufferPool0.freeType(pixels);
+      }
+    }
+
+    const cubeTexture = gl.createTexture();
+
+    const data = _BufferPool.bufferPool0.allocType('UNSIGNED_BYTE', 36);
+
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(_Constant.CTextureMapTarget.TEXTURE_CUBE_MAP, cubeTexture);
+    gl.texImage2D(_Constant.CTextureMapTarget.TEXTURE_CUBE_MAP_NEGATIVE_X, 0, gl.RGBA, 3, 3, 0, gl.RGBA, _Constant.CComponent.UNSIGNED_BYTE, data);
+
+    _BufferPool.bufferPool0.freeType(data);
+
+    gl.bindTexture(_Constant.CTextureMapTarget.TEXTURE_CUBE_MAP, null);
+    gl.deleteTexture(cubeTexture);
+    this.npotTextureCube = !gl.getError();
+    this.colorBits.push(...[gl.getParameter(gl.RED_BITS), gl.getParameter(gl.GREEN_BITS), gl.getParameter(gl.BLUE_BITS), gl.getParameter(gl.ALPHA_BITS)]);
+    this.depthBits = gl.getParameter(gl.DEPTH_BITS);
+    this.stencilBits = gl.getParameter(gl.STENCIL_BITS);
+    this.pointSizeDims = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
+    this.lineWidthDims = gl.getParameter(gl.ALIASED_LINE_WIDTH_RANGE);
+    this.maxViewportDims = gl.getParameter(gl.MAX_VIEWPORT_DIMS);
+    this.maxCombineTextureUnits = gl.getParameter(gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS);
+    this.maxCubeMapSize = gl.getParameter(gl.MAX_CUBE_MAP_TEXTURE_SIZE);
+    this.maxRenderbufferSize = gl.getParameter(gl.MAX_RENDERBUFFER_SIZE);
+    this.maxTextureUnits = gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS);
+    this.maxTextureSize = gl.getParameter(gl.MAX_TEXTURE_SIZE);
+    this.maxAttributes = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
+    this.maxVertexUniforms = gl.getParameter(gl.MAX_VERTEX_UNIFORM_VECTORS);
+    this.maxFragmentUniforms = gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS);
+    this.maxVertexTextureUnits = gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS);
+    this.maxVaryingVectors = gl.getParameter(gl.MAX_VARYING_VECTORS);
+    this.info.glsl = gl.getParameter(gl.SHADING_LANGUAGE_VERSION);
+    this.info.vendor = gl.getParameter(gl.VENDOR);
+    this.info.version = gl.getParameter(gl.VERSION);
+    this.info.renderer = gl.getParameter(gl.RENDERER);
+  }
+
+}
+
+exports.Limit = Limit;
+},{"./../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts","./Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/core/Extension.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Extension = void 0;
+
+class Extension {
+  constructor(gl, ...extNames) {
+    this.get = extName => {
+      return this.extensions[extName];
+    };
+
+    this.getByForce = extName => {
+      const gl = this.gl,
+            extensions = this.extensions;
+      const ext = extensions[extName] = extensions[extName] || gl.getExtension(extName);
+      return ext;
+    };
+
+    this.gl = gl;
+    this.extensions = {};
+
+    for (let i = 0, len = extNames.length; i < len; i++) {
+      const extName = extNames[i];
+      const ext = gl.getExtension(extName);
+
+      if (!!ext) {
+        this.extensions[extName] = ext;
+        console.log(`pipegl extension ${extName} load successful`);
+      } else {
+        console.log(`pipegl extension ${extName} load fail`);
+      }
+    }
+  }
+
+}
+
+exports.Extension = Extension;
+},{}],"../node_modules/pipegl/src/util/getIdx.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getIdx = void 0;
+let id = 0;
+
+const getIdx = () => {
+  return id++;
+};
+
+exports.getIdx = getIdx;
+},{}],"../node_modules/pipegl/src/core/Dispose.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Dispose = void 0;
+
+var _getIdx = require("../util/getIdx");
+
+class Dispose {
+  constructor() {
+    this.id = (0, _getIdx.getIdx)();
+    this.refCount = 0;
+  }
+
+  get ID() {
+    return this.id;
+  }
+
+}
+
+exports.Dispose = Dispose;
+},{"../util/getIdx":"../node_modules/pipegl/src/util/getIdx.ts"}],"../node_modules/pipegl/src/res/GShader.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.VERTSHADER_SET = exports.GShader = exports.FRAGSHADER_SET = void 0;
+
+var _check = require("../util/check");
+
+var _Dispose = require("../core/Dispose");
+
+var _Constant = require("../core/Constant");
+
+const FRAGSHADER_SET = new Map();
+exports.FRAGSHADER_SET = FRAGSHADER_SET;
+const VERTSHADER_SET = new Map();
+exports.VERTSHADER_SET = VERTSHADER_SET;
+
+class GShader extends _Dispose.Dispose {
+  constructor(gl, id, source, target) {
+    super();
+    this.id = id;
+    this.gl = gl;
+    this.target = _Constant.CShaderTarget[target];
+    this.shader = gl.createShader(this.target);
+    this.source = source;
+    gl.shaderSource(this.shader, source);
+    gl.compileShader(this.shader);
+    (0, _check.check)(gl.getShaderParameter(this.shader, gl.COMPILE_STATUS), `shader编译错误 - ${gl.getShaderInfoLog(this.shader)}`);
+    this.target === _Constant.CShaderTarget['FRAGMENT_SHADER'] ? FRAGSHADER_SET.set(this.ID, this) : VERTSHADER_SET.set(this.ID, this);
+  }
+
+  dispose() {
+    throw new Error('Method not implemented.');
+  }
+
+  decRef() {
+    throw new Error('Method not implemented.');
+  }
+
+  get Shader() {
+    return this.shader;
+  }
+
+}
+
+exports.GShader = GShader;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/ShaderState.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ShaderState = void 0;
+
+var _GShader = require("../res/GShader");
+
+class ShaderState {
+  constructor(gl, stringState, stats) {
+    this.createShader = (target, id) => {
+      const SHADER_SET = target === 'FRAGMENT_SHADER' ? ShaderState.FRAGSHADER_SET : ShaderState.VERTSHADER_SET;
+      let shader = SHADER_SET.get(id);
+
+      if (!shader) {
+        const source = this.stringState.str(id);
+        shader = new _GShader.GShader(this.gl, id, source, target);
+      }
+
+      return shader;
+    };
+
+    this.gl = gl;
+    this.stringState = stringState;
+    this.stats = stats;
+  }
+
+}
+
+exports.ShaderState = ShaderState;
+ShaderState.FRAGSHADER_SET = _GShader.FRAGSHADER_SET;
+ShaderState.VERTSHADER_SET = _GShader.VERTSHADER_SET;
+},{"../res/GShader":"../node_modules/pipegl/src/res/GShader.ts"}],"../node_modules/pipegl/src/state/StringState.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.StringState = void 0;
+
+class StringState {
+  constructor() {
+    this.stringValues = [];
+
+    this.id = str => {
+      let result = StringState.STRINGSTATE_SET.get(str);
+      if (result) return result;
+      result = this.stringValues.length;
+      StringState.STRINGSTATE_SET.set(str, result);
+      this.stringValues.push(str);
+      return result;
+    };
+
+    this.str = id => {
+      return this.stringValues[id];
+    };
+  }
+
+}
+
+exports.StringState = StringState;
+StringState.STRINGSTATE_SET = new Map();
+},{}],"../node_modules/pipegl/src/util/detectComponent.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.detectComponent = void 0;
+
+const detectComponent = data => {
+  const ne = Object.prototype.toString.call(data);
+
+  switch (ne) {
+    case `[object Int8Array]`:
+      return 'BYTE';
+
+    case `[object ArrayBuffer]`:
+    case `[object Float64Array]`:
+    case `[object Uint8ClampedArray]`:
+    case `[object Uint8Array]`:
+      return 'UNSIGNED_BYTE';
+
+    case `[object Int16Array]`:
+      return 'SHORT';
+
+    case `[object Uint16Array]`:
+      return 'UNSIGNED_SHORT';
+
+    case `[object Int32Array]`:
+      return 'INT';
+
+    case `[object Uint32Array]`:
+      return 'UNSIGNED_INT';
+
+    case `[object Float32Array]`:
+      return 'FLOAT';
+
+    default:
+      return 'FLOAT';
+  }
+};
+
+exports.detectComponent = detectComponent;
+},{}],"../node_modules/pipegl/src/util/getFlatten.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getDimension = exports.getArrayShape = exports.flattenArrayWithShape = exports.flattenArray = void 0;
+
+var _BufferPool = require("../pool/BufferPool");
+
+const getArrayShape = array => {
+  const shape = [];
+  let arr = array;
+
+  while (arr.length > 0) {
+    shape.push(arr.length);
+    arr = arr[0];
+  }
+
+  return shape;
+};
+
+exports.getArrayShape = getArrayShape;
+
+const getDimension = shape => {
+  return shape.reduce((pre, cur) => {
+    return cur * pre;
+  }) || 0;
+};
+
+exports.getDimension = getDimension;
+
+const flatten1D = (arr, len0, out) => {
+  for (let i = 0; i < len0; ++i) out[i] = arr[i];
+};
+
+const flatten2D = (arr, len0, len1, out) => {
+  let ptr = 0;
+
+  for (let i = 0; i < len0; ++i) {
+    const row = arr[i];
+
+    for (let j = 0; j < len1; ++j) out[ptr++] = row[j];
+  }
+};
+
+const flatten3D = (arr, len0, len1, len2, out, ptr_ = 0) => {
+  let ptr = ptr_;
+
+  for (let i = 0; i < len0; ++i) {
+    let row = arr[i];
+
+    for (let j = 0; j < len1; ++j) {
+      let col = row[j];
+
+      for (let k = 0; k < len2; ++k) out[ptr++] = col[k];
+    }
+  }
+};
+
+const flattenArrayWithShape = (array, shape, scomponent, out_ = null) => {
+  const size = getDimension(shape);
+
+  const out = out_ || _BufferPool.bufferPool0.allocType(scomponent, size);
+
+  switch (shape.length) {
+    case 0:
+      break;
+
+    case 1:
+      flatten1D(array, shape[0], out);
+      break;
+
+    case 2:
+      flatten2D(array, shape[0], shape[1], out);
+      break;
+
+    case 3:
+      flatten3D(array, shape[0], shape[1], shape[2], out, 0);
+      break;
+
+    default:
+      throw new Error(`pipegl: flatten did't support ${shape.length} D array`);
+  }
+
+  return out;
+};
+
+exports.flattenArrayWithShape = flattenArrayWithShape;
+
+const flattenArray = (array, scomponent, out_ = null) => {
+  const shape = getArrayShape(array);
+  return flattenArrayWithShape(array, shape, scomponent, out_);
+};
+
+exports.flattenArray = flattenArray;
+},{"../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts"}],"../node_modules/pipegl/src/res/GBuffer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GBuffer = exports.BUFFER_SET = void 0;
+
+var _check = require("../util/check");
+
+var _Dispose = require("../core/Dispose");
+
+var _BufferPool = require("../pool/BufferPool");
+
+var _detectComponent = require("../util/detectComponent");
+
+var _getFlatten = require("../util/getFlatten");
+
+var _Constant = require("../core/Constant");
+
+const BUFFER_SET = new Map();
+exports.BUFFER_SET = BUFFER_SET;
+
+class GBuffer extends _Dispose.Dispose {
+  constructor(gl, target, usage = 'STATIC_DRAW', component = 'FLOAT', dimension = 'POINTS') {
+    super();
+
+    this.setSubData = (data, offset) => {
+      const gl = this.gl,
+            size = offset + data.byteLength;
+      (0, _check.check)(size <= this.byteLength, `subdata错误，写入数据长度${size}超过原始长度${this.byteLength},写入失败`);
+      gl.bufferSubData(this.target, offset, data);
+    };
+
+    this.bufferTypedArray = data => {
+      this.byteLength = data.byteLength;
+      this.gl.bufferData(this.target, data, this.usage);
+    };
+
+    this.paddingWithData = (data, usage, component) => {
+      this.usage = _Constant.CUsage[usage || 'STATIC_DRAW'];
+      const shape = (0, _getFlatten.getArrayShape)(data);
+      const d0 = shape.length === 1 ? data[0] : shape.length === 2 ? data[0][0] : shape.length === 3 ? data[0][0][0] : 0;
+      component = component || (0, _detectComponent.detectComponent)(d0) || 'FLOAT';
+      this.component = _Constant.CComponent[component];
+      const flatData = (0, _getFlatten.flattenArrayWithShape)(data, shape, component);
+      this.bufferTypedArray(flatData);
+
+      _BufferPool.bufferPool0.freeType(flatData);
+
+      return this;
+    };
+
+    this.subData = (data, offset = 0) => {
+      this.bind();
+      const shape = (0, _getFlatten.getArrayShape)(data);
+      const d0 = shape.length === 1 ? data[0] : shape.length === 2 ? data[0][0] : shape.length === 3 ? data[0][0][0] : 0;
+      const scomponent = (0, _detectComponent.detectComponent)(d0) || 'FLOAT';
+      this.component = _Constant.CComponent[scomponent];
+      const flatData = (0, _getFlatten.flattenArrayWithShape)(data, shape, scomponent);
+      this.setSubData(flatData, offset);
+
+      _BufferPool.bufferPool0.freeType(flatData);
+    };
+
+    this.bind = () => {
+      this.gl.bindBuffer(this.target, this.buffer);
+    };
+
+    this.unbind = () => {
+      this.gl.bindBuffer(this.target, null);
+      this.decRef();
+    };
+
+    this.gl = gl;
+    this.byteLength = 0;
+    this.buffer = gl.createBuffer();
+    this.target = _Constant.CArraybufferTarget[target];
+    this.usage = _Constant.CUsage[usage || 'STATIC_DRAW'];
+    this.dimension = _Constant.CDimension[dimension || 'POINTS'];
+    this.component = _Constant.CComponent[component || 'UNSIGNED_BYTE'];
+    BUFFER_SET.set(this.ID, this);
+  }
+
+  decRef() {
+    this.refCount--;
+  }
+
+  dispose() {
+    throw new Error('Method not implemented.');
+  }
+
+  get Dimension() {
+    return this.dimension;
+  }
+
+  get ByteLength() {
+    return this.byteLength;
+  }
+
+  get Component() {
+    return this.component;
+  }
+
+}
+
+exports.GBuffer = GBuffer;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts","../util/detectComponent":"../node_modules/pipegl/src/util/detectComponent.ts","../util/getFlatten":"../node_modules/pipegl/src/util/getFlatten.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/BufferState.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BufferState = void 0;
+
+var _GBuffer = require("../res/GBuffer");
+
+var _Constant = require("../core/Constant");
+
+class BufferState {
+  constructor(gl, stats) {
+    this.streamPool = [];
+
+    this.createBuffer = opts => {
+      const data = opts.data,
+            byteLength = opts.byteLength || 0,
+            usage = opts.usage || 'STATIC_DRAW',
+            component = opts.component || 'FLOAT',
+            dimension = opts.dimension || 'POINTS',
+            target = opts.target || 'ARRAY_BUFFER';
+      const buffer = new _GBuffer.GBuffer(this.gl, target, usage, component, dimension);
+      buffer.bind();
+      if (!data && byteLength > 0) this.gl.bufferData(_Constant.CArraybufferTarget[target], byteLength, _Constant.CUsage[usage]);else buffer.paddingWithData(data, usage, component);
+      this.reglBuffer = buffer;
+      this.stats.bufferCount++;
+      return buffer;
+    };
+
+    this.createStreambuffer = (data, target) => {
+      const usage = 'STREAM_DRAW',
+            component = 'FLOAT',
+            dimension = 'POINTS';
+      const buffer = this.streamPool.pop() || new _GBuffer.GBuffer(this.gl, target, usage, component, dimension);
+      buffer.bind();
+      buffer.paddingWithData(data, usage, component);
+      this.reglBuffer = buffer;
+      return buffer;
+    };
+
+    this.destoryStreambuffer = streambuffer => {
+      this.streamPool.push(streambuffer);
+    };
+
+    this.gl = gl;
+    this.stats = stats;
+  }
+
+}
+
+exports.BufferState = BufferState;
+BufferState.REGLBUFFER_SET = _GBuffer.BUFFER_SET;
+},{"../res/GBuffer":"../node_modules/pipegl/src/res/GBuffer.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/getExtendCopy.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getExtend = exports.getCopy = void 0;
+
+const getExtend = (target, ...exts) => {
+  exts.forEach(ext => {
+    const keys = Object.keys(ext);
+
+    for (let i = 0, len = keys.length; i < len; ++i) target[keys[i]] = ext[keys[i]];
+  });
+  return target;
+};
+
+exports.getExtend = getExtend;
+
+const getCopy = (target, ...exts) => {
+  exts.forEach(ext => {
+    var _a;
+
+    (_a = Object.keys(target)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
+      if (ext[key] !== undefined && ext[key] !== null) target[key] = ext[key];
+    });
+  });
+  return target;
+};
+
+exports.getCopy = getCopy;
+},{}],"../node_modules/pipegl/src/util/toHalfFloat.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.toHalfFloat = void 0;
+
+var _BufferPool = require("./../pool/BufferPool");
+
+const FLOAT = new Float32Array(1),
+      INT = new Uint32Array(FLOAT.buffer);
+
+const toHalfFloat = array => {
+  const len = array.length;
+
+  const ushorts = _BufferPool.bufferPool0.allocType('UNSIGNED_SHORT', len);
+
+  for (let i = 0; i < len; ++i) {
+    if (isNaN(array[i])) ushorts[i] = 0xffff;else if (array[i] === Infinity) ushorts[i] = 0x7c00;else if (array[i] === -Infinity) ushorts[i] = 0xfc00;else {
+      FLOAT[0] = array[i];
+      const x = INT[0];
+      const sgn = x >>> 31 << 15;
+      const exp = (x << 1 >>> 24) - 127;
+      const frac = x >> 13 & (1 << 10) - 1;
+      if (exp < -24) ushorts[i] = sgn;else if (exp < -14) {
+        const s = -14 - exp;
+        ushorts[i] = sgn + (frac + (1 << 10) >> s);
+      } else if (exp > 15) ushorts[i] = sgn + 0x7c00;else ushorts[i] = sgn + (exp + 15 << 10) + frac;
+    }
+  }
+
+  return ushorts;
+};
+
+exports.toHalfFloat = toHalfFloat;
+},{"./../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts"}],"../node_modules/pipegl/src/core/Transpose.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Transpose = void 0;
+
+var _toHalfFloat = require("../util/toHalfFloat");
+
+var _BufferPool = require("../pool/BufferPool");
+
+class Transpose {}
+
+exports.Transpose = Transpose;
+
+Transpose.preConvert = (image, size) => {
+  const component = image.component === 'HALF_FLOAT_OES' ? 'FLOAT' : image.component;
+  return _BufferPool.bufferPool0.allocType(component, size);
+};
+
+Transpose.postConvert = (image, data) => {
+  if (image.component === 'HALF_FLOAT_OES') {
+    image.data = (0, _toHalfFloat.toHalfFloat)(data);
+
+    _BufferPool.bufferPool0.freeType(data);
+  } else image.data = data;
+};
+
+Transpose.TransposeData = (image, arr, sx, sy, sc, offset) => {
+  if (!arr) return arr;
+  const w = image.width,
+        h = image.height,
+        c = image.channels,
+        size = w * h * c;
+  const data = Transpose.preConvert(image, size);
+  let p = 0;
+
+  for (let i = 0; i < h; ++i) for (let j = 0; j < w; ++j) for (let k = 0; k < c; ++k) data[p++] = arr[sx * j + sy * i + sc * k + offset];
+
+  Transpose.postConvert(image, data);
+};
+},{"../util/toHalfFloat":"../node_modules/pipegl/src/util/toHalfFloat.ts","../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts"}],"../node_modules/pipegl/src/util/createTexFlag.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createTexFlag = void 0;
+
+const createTexFlag = () => {
+  const texFlags = {
+    inTexColor: 'RGBA',
+    texColor: 'RGBA',
+    component: 'UNSIGNED_BYTE',
+    compressed: false,
+    premultiplyAlpha: false,
+    flipY: false,
+    unpackAlignment: 1,
+    colorSpace: 'BROWSER_DEFAULT_WEBGL',
+    width: 0,
+    height: 0,
+    channels: 0
+  };
+  return texFlags;
+};
+
+exports.createTexFlag = createTexFlag;
+},{}],"../node_modules/pipegl/src/pool/TexImagePool.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.texImagePool0 = void 0;
+
+var _getExtendCopy = require("../util/getExtendCopy");
+
+var _BufferPool = require("./BufferPool");
+
+var _createTexFlag = require("./../util/createTexFlag");
+
+const createTexImage = () => {
+  return {
+    xOffset: 0,
+    yOffset: 0,
+    data: null,
+    neddsCopy: false,
+    neddsFree: false
+  };
+};
+
+class TexImagePool {
+  constructor() {
+    this.texImageQueue = [];
+
+    this.allocImage = () => {
+      if (this.texImageQueue.length > 0) return this.texImageQueue.pop();
+      const A = createTexImage(),
+            B = (0, _createTexFlag.createTexFlag)();
+      return (0, _getExtendCopy.getExtend)(A, B);
+    };
+
+    this.freeImage = texImage => {
+      if (texImage.neddsFree) _BufferPool.bufferPool0.free(texImage.data);
+      (0, _getExtendCopy.getExtend)(texImage, createTexImage());
+      this.texImageQueue.push(texImage);
+    };
+  }
+
+}
+
+const texImagePool0 = new TexImagePool();
+exports.texImagePool0 = texImagePool0;
+},{"../util/getExtendCopy":"../node_modules/pipegl/src/util/getExtendCopy.ts","./BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts","./../util/createTexFlag":"../node_modules/pipegl/src/util/createTexFlag.ts"}],"../node_modules/pipegl/src/pool/MipmapPool.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.mipmapPool0 = void 0;
+
+var _Constant = require("../core/Constant");
+
+var _createTexFlag = require("../util/createTexFlag");
+
+var _getExtendCopy = require("../util/getExtendCopy");
+
+var _TexImagePool = require("./TexImagePool");
+
+class MipmapPool {
+  constructor() {
+    this.mipmapQueue = [];
+
+    this.allocMipmap = () => {
+      const mipmap = this.mipmapQueue.pop() || (0, _createTexFlag.createTexFlag)();
+      (0, _getExtendCopy.getExtend)(mipmap, (0, _createTexFlag.createTexFlag)());
+      mipmap.genMipmaps = false;
+      mipmap.mipmapHint = _Constant.CMipmapHint['DONT_CARE'];
+      mipmap.mipmask = 0;
+      mipmap.images = new Array(16);
+      return mipmap;
+    };
+
+    this.freeMipmap = mipmap => {
+      const texImages = mipmap.images;
+
+      for (let i = 0, len = texImages.length; i < len; ++i) {
+        const texImage = texImages[i];
+        if (texImage) _TexImagePool.texImagePool0.freeImage(texImage);
+        texImages[i] = null;
+      }
+
+      this.mipmapQueue.push(mipmap);
+    };
+  }
+
+}
+
+const mipmapPool0 = new MipmapPool();
+exports.mipmapPool0 = mipmapPool0;
+},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../util/createTexFlag":"../node_modules/pipegl/src/util/createTexFlag.ts","../util/getExtendCopy":"../node_modules/pipegl/src/util/getExtendCopy.ts","./TexImagePool":"../node_modules/pipegl/src/pool/TexImagePool.ts"}],"../node_modules/pipegl/src/res/GTexture.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TEXTURE_UNIT_ARR = exports.TEXTURE_SET = exports.GTexture = void 0;
+
+var _check = require("../util/check");
+
+var _Dispose = require("../core/Dispose");
+
+var _Constant = require("../core/Constant");
+
+const TEXTURE_SET = new Map();
+exports.TEXTURE_SET = TEXTURE_SET;
+const TEXTURE_UNIT_ARR = [];
+exports.TEXTURE_UNIT_ARR = TEXTURE_UNIT_ARR;
+const TEXTURE0$1 = 0x84C0;
+const TEXTURE2D$1 = 0x0DE1;
+
+class GTexture extends _Dispose.Dispose {
+  constructor(gl, limLib, target, stats) {
+    super();
+    this.isCubeTexture = false;
+
+    this.bind = () => {
+      const gl = this.gl,
+            target = this.target;
+      const numTexUnits = this.limLib.maxTextureUnits;
+      this.bindCount++;
+
+      if (this.unit < 0) {
+        for (let i = 0; i < numTexUnits; ++i) {
+          const other = TEXTURE_UNIT_ARR[i];
+
+          if (other) {
+            if (other.bindCount > 0) continue;
+            other.unit = -1;
+          }
+
+          TEXTURE_UNIT_ARR[i] = this;
+          this.unit = i;
+          break;
+        }
+
+        (0, _check.check)(this.unit < numTexUnits, `REGLTexture错误：使用纹理超过设备支持上限${this.limLib.maxTextureUnits}`);
+        gl.activeTexture(gl.TEXTURE0 + this.unit);
+        gl.bindTexture(target, this.texture);
+      }
+
+      return this.unit;
+    };
+
+    this.unbind = () => {
+      return this.bindCount--;
+    };
+
+    this.tempBind = () => {
+      const gl = this.gl,
+            target = this.target;
+      gl.activeTexture(TEXTURE0$1);
+      gl.bindTexture(target, this.texture);
+    };
+
+    this.tempRestore = () => {
+      const gl = this.gl,
+            prev = TEXTURE_UNIT_ARR[0];
+
+      if (prev) {
+        const target = prev.target;
+        gl.bindTexture(target, prev.texture);
+      } else gl.bindTexture(TEXTURE2D$1, null);
+    };
+
+    this.gl = gl;
+    this.target = _Constant.CTextureMapTarget[target || 'TEXTURE_2D'];
+    this.bindCount = 0;
+    this.unit = -1;
+    this.limLib = limLib;
+    this.refCount = 1;
+    this.texture = gl.createTexture();
+    this.stats = stats;
+    if (this.target === _Constant.CTextureMapTarget.TEXTURE_2D) this.stats.textureCount++;else if (this.target === _Constant.CTextureMapTarget.TEXTURE_CUBE_MAP) {
+      this.isCubeTexture = true;
+      this.stats.cubeCount++;
+    }
+    TEXTURE_SET.set(this.ID, this);
+  }
+
+  dispose() {
+    throw new Error('Method not implemented.');
+  }
+
+  decRef() {
+    if (--this.refCount <= 0) this.dispose();
+  }
+
+  set TexInfo(v) {
+    this.texInfo = v;
+  }
+
+  get TexInfo() {
+    return this.texInfo;
+  }
+
+  set TexFlag(v) {
+    this.texFlag = v;
+  }
+
+  get TexFlag() {
+    return this.texFlag;
+  }
+
+  set Mipmap(v) {
+    this.mipmap = v;
+  }
+
+  get Mipmap() {
+    return this.mipmap;
+  }
+
+  get Width() {
+    return this.mipmap.width;
+  }
+
+  get Height() {
+    return this.mipmap.height;
+  }
+
+  get Channels() {
+    return this.mipmap.channels;
+  }
+
+  get Texutre() {
+    return this.texture;
+  }
+
+  get IsCubeTexture() {
+    return this.isCubeTexture;
+  }
+
+}
+
+exports.GTexture = GTexture;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/isPowerOf2.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isPowerOf2 = void 0;
+
+const isPowerOf2 = n => {
+  return n > 0 && (n & n - 1) == 0;
+};
+
+exports.isPowerOf2 = isPowerOf2;
+},{}],"../node_modules/pipegl/src/util/getPixelSize.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getPixelSize = void 0;
+
+var _Constant = require("../core/Constant");
+
+const getPixelSize = (component, channels) => {
+  switch (component) {
+    case 'UNSIGNED_SHORT_4_4_4_4':
+    case 'UNSIGNED_SHORT_5_5_5_1':
+    case 'UNSIGNED_SHORT_5_6_5':
+      return 2;
+
+    case 'UNSIGNED_INT_24_8_WEBGL':
+      return 4;
+
+    default:
+      return _Constant.CTextureComponentSize[_Constant.CTextureComponent[component]] * channels;
+  }
+};
+
+exports.getPixelSize = getPixelSize;
+},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/checkTexture.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.checkTextureCube = exports.checkTexture2D = exports.checkMipmapTexture2D = void 0;
+
+var _check = require("./check");
+
+var _isPowerOf = require("./isPowerOf2");
+
+var _getPixelSize = require("./getPixelSize");
+
+var _Constant = require("../core/Constant");
+
+const checkTexture2D = (opts, extLib, limLib) => {
+  opts.component = opts.component || 'BYTE';
+  opts.width = opts.width || 1;
+  opts.height = opts.height || 1;
+  opts.texColor = opts.texColor || 'RGBA';
+  opts.channels = opts.channels || _Constant.CTextureChannelCount[_Constant.CTextureColor[opts.texColor]];
+  opts.compressed = _Constant.CTextureCompressed[opts.texColor] ? true : false;
+  (0, _check.check)(opts.component === 'FLOAT' && extLib.get('OES_texture_float'), `CheckTexture2D error: 指定纹理类型需要启用OES_texture_float插件`);
+  (0, _check.check)(opts.component === 'HALF_FLOAT_OES' && extLib.get('OES_texture_float'), `CheckTexture2D error: 指定纹理类型需要启用OES_texture_float插件`);
+  (0, _check.check)((opts.component === 'UNSIGNED_SHORT' || opts.component === 'UNSIGNED_INT' || opts.component === 'UNSIGNED_INT_24_8_WEBGL') && extLib.get('WEBGL_depth_texture'), `CheckTexture2D error: 指定纹理类型需要启用WEBGL_depth_texture插件`);
+  (0, _check.check)(opts.channels > 0 && opts.channels <= 4, `CheckTexture2D error: 纹理通道数错误`);
+  (0, _check.check)(opts.width > 0 && opts.width <= limLib.maxTextureSize && opts.height > 0 && opts.height <= limLib.maxTextureSize, `CheckTexture2D error: 纹理分辨率错误，长或宽超过设备支持上限${limLib.maxTextureSize}`);
+};
+
+exports.checkTexture2D = checkTexture2D;
+
+const checkMipmapTexture2D = (texInfo, mipData, extLib, limLib) => {
+  const w = mipData.width,
+        h = mipData.height,
+        c = mipData.channels;
+  (0, _check.check)(w > 0 && w <= limLib.maxTextureSize && h > 0 && h <= limLib.maxTextureSize, `CheckTexture2D error: 纹理分辨率错误，长或宽超过设备支持上限${limLib.maxTextureSize}`);
+  if (texInfo.wrapS !== 'CLAMP_TO_EDGE' || texInfo.wrapT !== 'CLAMP_TO_EDGE') (0, _check.check)((0, _isPowerOf.isPowerOf2)(w) && (0, _isPowerOf.isPowerOf2)(h), `CheckTexture2D error: 纹理模式非CLAMP时要求分辨率为2的幂`);
+
+  if (mipData.mipmask === 1) {
+    if (w !== 1 && h !== 1) (0, _check.check)(texInfo.minFilter !== 'LINEAR_MIPMAP_LINEAR' && texInfo.minFilter !== 'LINEAR_MIPMAP_NEAREST' && texInfo.minFilter !== 'NEAREST_MIPMAP_LINEAR' && texInfo.minFilter !== 'NEAREST_MIPMAP_NEAREST', `CheckTexture2D error: min filter必须是mimap类型`);
+  } else {
+    (0, _check.check)((0, _isPowerOf.isPowerOf2)(w) && (0, _isPowerOf.isPowerOf2)(h), `CheckTexture2D error:纹理模式非CLAMP时要求分辨率为2的幂`);
+    (0, _check.check)(mipData.mipmask === (w << 1) - 1, `CheckTexture2D error:丢失/不合法的mipmask`);
+  }
+
+  if (mipData.component === 'FLOAT') {
+    (0, _check.check)(extLib.get('OES_texture_float'), `CheckTexture2D error: FLOAT类型纹理需要开启OES_texture_float`);
+    (0, _check.check)((texInfo.minFilter !== 'NEAREST' || texInfo.magFilter !== 'NEAREST') && extLib.get('OES_texture_float_linear'), `CheckTexture2D error: filter 不支持非NEAREST插值，需开启OES_texture_float_linear`);
+    (0, _check.check)(!texInfo.genMipmaps, `CheckTexture2D error: mipmap生成不支持float纹理类型`);
+  }
+
+  for (let i = 0; i < 16; ++i) {
+    const mipimg = mipData.images[i];
+
+    if (mipimg) {
+      const mw = w >> i,
+            mh = h >> i;
+      (0, _check.check)(mipData.mipmask & 1 << i, `CheckTexture2D error: mipmap数据缺失`);
+      (0, _check.check)(mipimg.width === mw && mipimg.height === mh, `CheckTexture2D error: 错误的mipmap images shape信息`);
+      (0, _check.check)(mipimg.texColor === mipData.texColor && mipimg.inTexColor === mipData.inTexColor && mipimg.component === mipData.component, `CheckTexture2D error: 不合适的mipmap image数据类型`);
+
+      if (mipimg.compressed) {} else if (mipimg.data) {
+        const rowSize = Math.ceil((0, _getPixelSize.getPixelSize)(mipimg.component, c) * mw / mipimg.unpackAlignment) * mipimg.unpackAlignment;
+        (0, _check.check)(mipimg.data.byteLength === rowSize * mh, `CheckTexture2D error: 数据缓冲的大小与image格式对应的数据长度不一致`);
+      }
+    }
+  }
+
+  if (mipData.compressed) (0, _check.check)(!mipData.genMipmaps, `CheckTexture2D error: 纹理压缩格式不支持生成mipmap`);
+};
+
+exports.checkMipmapTexture2D = checkMipmapTexture2D;
+
+const checkTextureCube = (info, mipmap, faces, limLib) => {
+  const w = mipmap.width,
+        h = mipmap.height,
+        c = mipmap.channels;
+  (0, _check.check)(w > 0 && w <= limLib.maxTextureSize && h > 0 && h <= limLib.maxTextureSize, `checkTextureCube error: 超过设备支持纹理上限`);
+  (0, _check.check)(w === h, `checkTextureCube error: 立方体贴图必须是正方形`);
+  (0, _check.check)(info.wrapS === 'CLAMP_TO_EDGE' && info.wrapT === 'CLAMP_TO_EDGE', `checkTextureCube error: 立方体贴图wrap模式只支持CLAMP_TO_EDGE`);
+  faces.forEach(face => {
+    (0, _check.check)(face.width === w && face.height === h, `checkTextureCube error: 立方体每个纹理单元分辨率必须一致，${face}分辨率错误`);
+    const mipmaps = face.images;
+
+    for (let k = 0; k < 16; k++) {
+      const img = mipmaps[k];
+
+      if (img) {
+        const mw = w >> k,
+              mh = h >> k;
+        (0, _check.check)(face.mipmask & 1 << k, `checkTextureCube error: mipmap数据丢失`);
+        (0, _check.check)(img.width === mw && img.height === mh, `checkTextureCube error: mipmap纹理分辨率错误`);
+        (0, _check.check)(img.component === mipmap.component && img.inTexColor === mipmap.inTexColor && img.texColor === mipmap.texColor, `checkTextureCube error: 子图像参数需要一直，包括component/inTexColor/texColor`);
+
+        if (img.compressed) {} else if (img.data) {
+          (0, _check.check)(img.data.byteLength === mw * mh * Math.max((0, _getPixelSize.getPixelSize)(img.component, c), img.unpackAlignment), `checkTextureCube error: 为压缩格式生成mipmap失败`);
+        } else {}
+      }
+    }
+  });
+};
+
+exports.checkTextureCube = checkTextureCube;
+},{"./check":"../node_modules/pipegl/src/util/check.ts","./isPowerOf2":"../node_modules/pipegl/src/util/isPowerOf2.ts","./getPixelSize":"../node_modules/pipegl/src/util/getPixelSize.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/TextureState.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TextureState = void 0;
+
+var _check = require("../util/check");
+
+var _getExtendCopy = require("../util/getExtendCopy");
+
+var _Transpose = require("../core/Transpose");
+
+var _detectComponent = require("../util/detectComponent");
+
+var _MipmapPool = require("../pool/MipmapPool");
+
+var _TexImagePool = require("../pool/TexImagePool");
+
+var _GTexture = require("../res/GTexture");
+
+var _checkTexture = require("../util/checkTexture");
+
+var _Constant = require("../core/Constant");
+
+const GL_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FE;
+const GL_TEXTURE_CUBE_MAPS = ['TEXTURE_CUBE_MAP_POSITIVE_X', 'TEXTURE_CUBE_MAP_NEGATIVE_X', 'TEXTURE_CUBE_MAP_POSITIVE_Y', 'TEXTURE_CUBE_MAP_NEGATIVE_Y', 'TEXTURE_CUBE_MAP_POSITIVE_Z', 'TEXTURE_CUBE_MAP_NEGATIVE_Z'];
+const CHANNEL_TEX_COLOR = {
+  1: 'LUMINANCE',
+  2: 'LUMINANCE_ALPHA',
+  3: 'RGB',
+  4: 'RGBA'
+};
+
+class TextureState {
+  constructor(gl, extLib, limLib, stats) {
+    this.setImage = (info, target, mipLevel) => {
+      const gl = this.gl,
+            data = info.data,
+            inTexColor = info.inTexColor,
+            texColor = info.texColor,
+            component = info.component,
+            width = info.width,
+            height = info.height,
+            target0 = _Constant.CTextureMapTarget[target];
+
+      if (info.compressed) {
+        gl.compressedTexImage2D(target0, mipLevel, _Constant.CTextureColor[inTexColor], width, height, 0, data || null);
+      } else if (info.neddsCopy) {
+        gl.copyTexImage2D(target0, mipLevel, _Constant.CTextureColor[texColor], info.xOffset, info.yOffset, width, height, 0);
+      } else {
+        gl.texImage2D(target0, mipLevel, _Constant.CTextureColor[inTexColor], width, height, 0, _Constant.CTextureColor[texColor], _Constant.CTextureComponent[component], data || null);
+      }
+    };
+
+    this.setMipmap = (mimap, target) => {
+      const images = mimap.images;
+
+      for (let i = 0, len = images.length; i < len; i++) {
+        const image = images[i];
+        if (!image) return;
+        this.setImage(image, target, i);
+      }
+    };
+
+    this.setTexFlags = flags => {
+      const gl = this.gl;
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, flags.flipY);
+      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, flags.premultiplyAlpha);
+      gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL, _Constant.CColorSpace[flags.colorSpace]);
+      gl.pixelStorei(gl.UNPACK_ALIGNMENT, flags.unpackAlignment);
+    };
+
+    this.setTexInfo = (info, target) => {
+      const extLib = this.extLib,
+            gl = this.gl,
+            target0 = _Constant.CTextureMapTarget[target];
+      if (info.minFilter) gl.texParameteri(target0, gl.TEXTURE_MIN_FILTER, _Constant.CTextureMINFilter[info.minFilter]);
+      if (info.magFilter) gl.texParameteri(target0, gl.TEXTURE_MAG_FILTER, _Constant.CTextureMAGFilter[info.magFilter]);
+      if (info.wrapS) gl.texParameteri(target0, gl.TEXTURE_WRAP_S, _Constant.CTextureFillTarget[info.wrapS]);
+      if (info.wrapT) gl.texParameteri(target0, gl.TEXTURE_WRAP_T, _Constant.CTextureFillTarget[info.wrapT]);
+      if (info.anisotropic && extLib.get('EXT_texture_filter_anisotropic')) gl.texParameteri(target0, GL_TEXTURE_MAX_ANISOTROPY_EXT, info.anisotropic);
+
+      if (info.genMipmaps) {
+        gl.hint(gl.GENERATE_MIPMAP_HINT, info.mimmapHint);
+        gl.generateMipmap(target0);
+      }
+    };
+
+    this.fixTexInfo = opts => {
+      const texInfo = {
+        minFilter: 'NEAREST',
+        magFilter: 'NEAREST',
+        wrapS: 'CLAMP_TO_EDGE',
+        wrapT: 'CLAMP_TO_EDGE',
+        anisotropic: 1,
+        genMipmaps: false,
+        mimmapHint: _Constant.CMipmapHint['DONT_CARE']
+      };
+
+      if (opts.min) {
+        texInfo.minFilter = opts.min;
+        if (TextureState.MIPMAP_FILTERS.indexOf(_Constant.CTextureMINFilter[texInfo.minFilter]) >= 0) texInfo.genMipmaps = true;
+      }
+
+      if (opts.mag) {
+        texInfo.magFilter = opts.mag;
+      }
+
+      if (opts.wrapS) {
+        texInfo.wrapS = opts.wrapS;
+      }
+
+      if (opts.wrapT) {
+        texInfo.wrapT = opts.wrapT;
+      }
+
+      if (opts.anisotropic) {
+        const num = opts.anisotropic;
+        (0, _check.check)(num >= 1 && num <= this.limLib.maxAnisotropic, `TextureState error: 各项异性过滤不在可用范围[${1}, ${this.limLib.maxAnisotropic}]`);
+        texInfo.anisotropic = num;
+      }
+
+      if (opts.mipmap && !opts.min) texInfo.minFilter = 'NEAREST_MIPMAP_NEAREST';
+      return texInfo;
+    };
+
+    this.fixMipmap = (mipmap, arr, shape, stride, offset, opts = {}) => {
+      const imageData = mipmap.images[0] = _TexImagePool.texImagePool0.allocImage();
+
+      (0, _getExtendCopy.getCopy)(imageData, mipmap, opts);
+      (0, _check.check)(!imageData.compressed || arr instanceof Uint8Array, `TextureState error: 压缩纹理必须以Uint8Array格式传输`);
+      imageData.component = mipmap.component = (0, _detectComponent.detectComponent)(arr);
+      const w = shape[0],
+            h = shape[1],
+            c = shape[2];
+      imageData.width = w;
+      imageData.height = h;
+      imageData.channels = c;
+      imageData.texColor = imageData.inTexColor = CHANNEL_TEX_COLOR[c];
+      imageData.neddsFree = true;
+
+      _Transpose.Transpose.TransposeData(imageData, arr, stride[0], stride[1], stride[2], offset);
+
+      (0, _getExtendCopy.getCopy)(mipmap, mipmap.images[0], opts);
+      return mipmap;
+    };
+
+    this.createTexture2D = (data, w, h, c, opts = {}) => {
+      const gl = this.gl;
+      const offset = opts.offset || 0;
+      const stride = opts.stride || [0, 0, 0];
+      const gTexture = new _GTexture.GTexture(gl, this.limLib, 'TEXTURE_2D', this.stats);
+      const texInfo = this.fixTexInfo(opts);
+      gTexture.TexInfo = texInfo;
+
+      const mipmap = _MipmapPool.mipmapPool0.allocMipmap();
+
+      const imageData = mipmap.images[0] = _TexImagePool.texImagePool0.allocImage();
+
+      mipmap.mipmask = 1;
+      imageData.width = mipmap.width = w;
+      imageData.height = mipmap.height = h;
+      imageData.channels = mipmap.channels = c || 4;
+
+      if (stride[0] === 0 && stride[1] === 0 && stride[2] === 0) {
+        stride[0] = imageData.channels;
+        stride[1] = imageData.channels * imageData.width;
+        stride[2] = 1;
+      }
+
+      (0, _check.check)(imageData.channels >= 1 && imageData.channels <= 4, `TextureState error: 纹理通道必须在1-4之间`);
+      if (gTexture.TexInfo.genMipmaps) mipmap.mipmask = (mipmap.width << 1) - 1;
+      gTexture.TexFlag = mipmap;
+      gTexture.Mipmap = this.fixMipmap(mipmap, data, [imageData.width, imageData.height, imageData.channels], stride, offset, opts);
+      (0, _checkTexture.checkMipmapTexture2D)(texInfo, mipmap, this.extLib, this.limLib);
+      if (texInfo.genMipmaps) gTexture.Mipmap.mipmask = (mipmap.width << 1) - 1;
+      gTexture.tempBind();
+      this.setTexFlags(gTexture.TexFlag);
+      this.setMipmap(gTexture.Mipmap, 'TEXTURE_2D');
+      this.setTexInfo(gTexture.TexInfo, 'TEXTURE_2D');
+      gTexture.tempRestore();
+
+      _MipmapPool.mipmapPool0.freeMipmap(mipmap);
+
+      return gTexture;
+    };
+
+    this.createTextureCube = (faces, w, h, c, opts = {}) => {
+      const offset = opts.offset || 0;
+      const stride = opts.stride || [0, 0, 0];
+      const gTexture = new _GTexture.GTexture(this.gl, this.limLib, 'TEXTURE_CUBE_MAP', this.stats);
+      const texInfo = this.fixTexInfo(opts);
+      gTexture.TexInfo = texInfo;
+      const gFaces = [];
+      Object.keys(faces).forEach(key => {
+        const data = faces[key];
+
+        const mipmap = _MipmapPool.mipmapPool0.allocMipmap();
+
+        const imageData = mipmap.images[0] = _TexImagePool.texImagePool0.allocImage();
+
+        mipmap.mipmask = 1;
+        imageData.width = mipmap.width = w;
+        imageData.height = mipmap.height = h;
+        imageData.channels = mipmap.channels = c || 4;
+
+        if (stride[0] === 0 && stride[1] === 0 && stride[2] === 0) {
+          stride[0] = imageData.channels;
+          stride[1] = imageData.channels * imageData.width;
+          stride[2] = 1;
+        }
+
+        (0, _check.check)(imageData.channels >= 1 && imageData.channels <= 4, `TextureState error: 纹理通道必须在1-4之间`);
+        this.fixMipmap(mipmap, data, [imageData.width, imageData.height, imageData.channels], stride, offset, opts);
+        gFaces.push(mipmap);
+      });
+      gTexture.Mipmap = gFaces[0];
+      if (texInfo.genMipmaps) gTexture.Mipmap.mipmask = (gFaces[0].width << 1) - 1;else gTexture.Mipmap.mipmask = gFaces[0].mipmask;
+      gTexture.TexFlag = gFaces[0];
+      (0, _checkTexture.checkTextureCube)(texInfo, gTexture.Mipmap, gFaces, this.limLib);
+      gTexture.tempBind();
+      this.setTexFlags(gTexture.TexFlag);
+      gFaces.forEach((mipmap, i) => {
+        this.setMipmap(mipmap, GL_TEXTURE_CUBE_MAPS[i]);
+      });
+      this.setTexInfo(texInfo, 'TEXTURE_CUBE_MAP');
+      gTexture.tempRestore();
+      gFaces.forEach(mipmap => {
+        _MipmapPool.mipmapPool0.freeMipmap(mipmap);
+      });
+      return gTexture;
+    };
+
+    this.gl = gl;
+    this.extLib = extLib;
+    this.limLib = limLib;
+    this.stats = stats;
+  }
+
+}
+
+exports.TextureState = TextureState;
+TextureState.TEXTURE_SET = _GTexture.TEXTURE_SET;
+TextureState.MIPMAP_FILTERS = [0x2700, 0x2702, 0x2701, 0x2703];
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../util/getExtendCopy":"../node_modules/pipegl/src/util/getExtendCopy.ts","../core/Transpose":"../node_modules/pipegl/src/core/Transpose.ts","../util/detectComponent":"../node_modules/pipegl/src/util/detectComponent.ts","../pool/MipmapPool":"../node_modules/pipegl/src/pool/MipmapPool.ts","../pool/TexImagePool":"../node_modules/pipegl/src/pool/TexImagePool.ts","../res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts","../util/checkTexture":"../node_modules/pipegl/src/util/checkTexture.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/res/GProgram.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.PROGRAM_SET = exports.GProgram = void 0;
+
+var _check = require("../util/check");
+
+var _Dispose = require("../core/Dispose");
+
+var _Constant = require("../core/Constant");
+
+const PROGRAM_SET = new Map();
+exports.PROGRAM_SET = PROGRAM_SET;
+
+class GProgram extends _Dispose.Dispose {
+  constructor(gl, shaderState, stringState, fragShaderId, vertShaderId, attribLocations) {
+    super();
+
+    this.use = () => {
+      (0, _check.check)(this.program, `Program错误，空的program无法切换使用`);
+      this.gl.useProgram(this.program);
+    };
+
+    this.link = attributeLocations => {
+      const gl = this.gl,
+            shaderState = this.shaderState,
+            fragId = this.fragId,
+            vertId = this.vertId;
+      const fragShader = shaderState.createShader('FRAGMENT_SHADER', fragId);
+      const vertShader = shaderState.createShader('VERTEX_SHADER', vertId);
+      const program = this.program = gl.createProgram();
+      gl.attachShader(program, fragShader.Shader);
+      gl.attachShader(program, vertShader.Shader);
+      attributeLocations === null || attributeLocations === void 0 ? void 0 : attributeLocations.forEach((v, i) => {
+        const binding = attributeLocations[i];
+        gl.bindAttribLocation(program, i, binding);
+      });
+      gl.linkProgram(program);
+      (0, _check.check)(gl.getProgramParameter(program, gl.LINK_STATUS), `Program错误，编译错误${gl.getProgramInfoLog(program)}`);
+      this.activeUniforms();
+      this.activeAttributes();
+    };
+
+    this.activeUniforms = () => {
+      const insertActvieInfo = info => {
+        for (let i = 0, len = this.uniforms.length; i < len; i++) {
+          if (this.uniforms[i].id === info.id) {
+            this.uniforms[i].location = info.location;
+            return;
+          }
+        }
+
+        this.uniforms.push(info);
+      };
+
+      const gl = this.gl,
+            program = this.program,
+            stringState = this.stringState;
+      const numUniforms = gl.getProgramParameter(program, _Constant.CActiveTarget['ACTIVE_UNIFORMS']);
+
+      for (let i = 0; i < numUniforms; ++i) {
+        const info = gl.getActiveUniform(program, i);
+
+        if (info) {
+          if (info.size > 1) {
+            for (let j = 0, len = info.size; j < len; ++j) {
+              const name = info.name.replace(`[0]`, `[${j}]`);
+              insertActvieInfo({
+                name: name,
+                id: stringState.id(name),
+                location: gl.getUniformLocation(program, name),
+                info: info
+              });
+            }
+          }
+
+          let uniName = info.name;
+
+          if (info.size > 1) {
+            uniName = uniName.replace('[0]', '');
+          }
+
+          insertActvieInfo({
+            name: uniName,
+            id: stringState.id(uniName),
+            location: gl.getUniformLocation(program, uniName),
+            info: info
+          });
+        }
+      }
+    };
+
+    this.activeAttributes = () => {
+      const insertActiveInfo = info => {
+        for (let i = 0, len = this.attributes.length; i < len; i++) {
+          if (this.attributes[i].id === info.id) {
+            this.attributes[i].location = info.location;
+            return;
+          }
+        }
+
+        this.attributes.push(info);
+      };
+
+      const gl = this.gl,
+            program = this.program;
+      const numAttributes = gl.getProgramParameter(program, _Constant.CActiveTarget['ACTIVE_ATTRIBUTES']);
+
+      for (let i = 0; i < numAttributes; ++i) {
+        const info = gl.getActiveAttrib(program, i);
+        if (info) insertActiveInfo({
+          name: info.name,
+          id: this.stringState.id(info.name),
+          location: gl.getAttribLocation(program, info.name),
+          info
+        });
+      }
+    };
+
+    this.gl = gl;
+    this.fragId = fragShaderId;
+    this.vertId = vertShaderId;
+    this.program = null;
+    this.uniforms = [];
+    this.attributes = [];
+    this.shaderState = shaderState;
+    this.stringState = stringState;
+    this.link(attribLocations);
+    PROGRAM_SET.set(this.ID, this);
+  }
+
+  dispose() {
+    throw new Error('Method not implemented.');
+  }
+
+  decRef() {
+    throw new Error('Method not implemented.');
+  }
+
+  get Uniforms() {
+    return this.uniforms;
+  }
+
+  get Attributes() {
+    return this.attributes;
+  }
+
+  get AttActiveInfo() {
+    if (!this.attPosition) {
+      this.attPosition = new Map();
+      this.attributes.forEach(att => {
+        this.attPosition.set(att.name, att);
+      });
+    }
+
+    return this.attPosition;
+  }
+
+}
+
+exports.GProgram = GProgram;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/ProgramState.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ProgramState = void 0;
+
+var _check = require("../util/check");
+
+var _GProgram = require("../res/GProgram");
+
+class ProgramState {
+  constructor(gl, shaderState, stringState) {
+    this.createProgram = (frag, vert, attribLocations) => {
+      (0, _check.check)(vert.length >= 0, `ProgramState error: vertex shader is missing`);
+      (0, _check.check)(frag.length >= 0, `ProgramState error: fragment shader is missing`);
+      const gl = this.gl,
+            shaderState = this.shaderState,
+            stringState = this.stringState;
+      const fragShader = shaderState.createShader('FRAGMENT_SHADER', stringState.id(frag));
+      const vertShader = shaderState.createShader('VERTEX_SHADER', stringState.id(vert));
+      const reglProgram = new _GProgram.GProgram(gl, shaderState, stringState, fragShader.ID, vertShader.ID, attribLocations);
+      return reglProgram;
+    };
+
+    this.useProgram = reglProgramId => {
+      const reglProgram = ProgramState.PROGRAM_SET.get(reglProgramId);
+      reglProgram.use();
+      this.reglProgram = reglProgram;
+    };
+
+    this.gl = gl;
+    this.shaderState = shaderState;
+    this.stringState = stringState;
+    this.reglProgram = null;
+  }
+
+  get Current() {
+    return this.reglProgram;
+  }
+
+}
+
+exports.ProgramState = ProgramState;
+ProgramState.PROGRAM_SET = _GProgram.PROGRAM_SET;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../res/GProgram":"../node_modules/pipegl/src/res/GProgram.ts"}],"../node_modules/pipegl/src/res/GElementsbuffer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.REGLELEMENTBUFFER_SET = exports.GElementsbuffer = void 0;
+
+var _Dispose = require("../core/Dispose");
+
+var _Constant = require("../core/Constant");
+
+const REGLELEMENTBUFFER_SET = new Map();
+exports.REGLELEMENTBUFFER_SET = REGLELEMENTBUFFER_SET;
+
+class GElementsbuffer extends _Dispose.Dispose {
+  constructor(reglBuffer, primitive = 'TRIANGLES') {
+    super();
+
+    this.subData = (data, offset) => {
+      this.reglBuffer.subData(data, offset);
+    };
+
+    this.paddingWithData = (data, usage, component) => {
+      this.reglBuffer.paddingWithData(data, usage, component);
+    };
+
+    this.bind = () => {
+      this.reglBuffer.bind();
+    };
+
+    this.vertCount = 0;
+    this.reglBuffer = reglBuffer;
+    this.primitive = _Constant.CPrimitive[primitive || 'TRIANGLES'];
+    REGLELEMENTBUFFER_SET.set(this.ID, this);
+  }
+
+  dispose() {
+    this;
+  }
+
+  decRef() {
+    throw new Error("Method not implemented.");
+  }
+
+  get Dimension() {
+    return this.reglBuffer.Dimension;
+  }
+
+  get ByteLength() {
+    return this.reglBuffer.ByteLength;
+  }
+
+  set Primitive(v) {
+    this.primitive = v;
+  }
+
+  get Primitive() {
+    return this.primitive;
+  }
+
+  get VertCount() {
+    return this.vertCount;
+  }
+
+  set VertCount(v) {
+    this.vertCount = v;
+  }
+
+  get Component() {
+    return this.reglBuffer.Component;
+  }
+
+}
+
+exports.GElementsbuffer = GElementsbuffer;
+},{"../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/ElementState.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ElementsState = void 0;
+
+var _check = require("../util/check");
+
+var _Constant = require("../core/Constant");
+
+var _GElementsbuffer = require("../res/GElementsbuffer");
+
+class ElementsState {
+  constructor(gl, extLib, bufferState, stats) {
+    this.streamPool = [];
+
+    this.initElements = opts => {
+      opts.reglElementbuffer.bind();
+      opts.reglElementbuffer.paddingWithData(opts.data, opts.usage, opts.component);
+
+      if (!opts.primitive) {
+        opts.reglElementbuffer.Primitive = opts.reglElementbuffer.Dimension === 1 ? _Constant.CPrimitive['POINTS'] : opts.reglElementbuffer.Dimension === 2 ? _Constant.CPrimitive['LINES'] : opts.reglElementbuffer.Dimension === 3 ? _Constant.CPrimitive['TRIANGLES'] : _Constant.CPrimitive[opts.primitive];
+      } else opts.reglElementbuffer.Primitive = _Constant.CPrimitive[opts.primitive || 'TRIANGLES'];
+
+      opts.count = opts.count || opts.reglElementbuffer.ByteLength;
+      if (opts.component === 'UNSIGNED_SHORT') opts.count >>= 1;else if (opts.component === 'UNSIGNED_INT') opts.count >>= 2;
+      opts.reglElementbuffer.VertCount = opts.count;
+      return opts.reglElementbuffer;
+    };
+
+    this.fixComponent = component => {
+      switch (component) {
+        case 'UNSIGNED_BYTE':
+        case 'BYTE':
+          component = 'UNSIGNED_BYTE';
+          break;
+
+        case 'UNSIGNED_SHORT':
+        case 'SHORT':
+          component = 'UNSIGNED_SHORT';
+          break;
+
+        case 'UNSIGNED_INT':
+        case 'INT':
+          component = this.extLib.get('OES_element_index_uint') ? 'UNSIGNED_INT' : 'UNSIGNED_SHORT';
+          break;
+
+        default:
+          (0, _check.check)(false, `ElementsState Error: unvilade paramter ${component}`);
+      }
+
+      return component;
+    };
+
+    this.getElementsbuffer = id => {
+      return ElementsState.ELEMENTBUFFER_SET.get(id);
+    };
+
+    this.createElementsbuffer = opts => {
+      const data = opts.data,
+            count = opts.count || 0,
+            usage = opts.usage || 'STATIC_DRAW',
+            target = 'ELEMENT_ARRAY_BUFFER',
+            component = this.fixComponent(opts.component) || 'UNSIGNED_SHORT',
+            dimension = opts.dimension || 'TRIANGLES',
+            primitive = opts.primitive || 'TRIANGLES',
+            byteLength = opts.data.length;
+      const reglbuffer = this.bufferState.createBuffer({
+        target: target,
+        data: data,
+        usage: usage,
+        component: component,
+        dimension: dimension,
+        byteLength: byteLength
+      });
+      const reglElementbuffer = new _GElementsbuffer.GElementsbuffer(reglbuffer, primitive);
+      this.stats.elementsCount++;
+      return this.initElements({
+        reglElementbuffer: reglElementbuffer,
+        data: data,
+        component: component,
+        usage: usage,
+        primitive: primitive,
+        count: count
+      });
+    };
+
+    this.createStreamElementsbuffer = opts => {
+      const data = opts.data,
+            count = opts.count || 0,
+            usage = opts.usage || 'STREAM_DRAW',
+            target = 'ELEMENT_ARRAY_BUFFER',
+            component = this.fixComponent(opts.component) || 'UNSIGNED_SHORT',
+            dimension = opts.dimension || 'TRIANGLES',
+            primitive = opts.primitive || 'TRIANGLES',
+            byteLength = opts.data.length;
+      const reglbuffer = this.bufferState.createBuffer({
+        target: target,
+        data: data,
+        usage: usage,
+        component: component,
+        dimension: dimension,
+        byteLength: byteLength
+      });
+      const reglElementbuffer = new _GElementsbuffer.GElementsbuffer(reglbuffer, primitive);
+      this.stats.elementsCount++;
+      return this.initElements({
+        reglElementbuffer: reglElementbuffer,
+        data: data,
+        component: component,
+        usage: usage,
+        primitive: primitive,
+        count: count
+      });
+    };
+
+    this.destoryStreamElementsbuffer = streamElementbuffer => {
+      this.streamPool.push(streamElementbuffer);
+    };
+
+    this.gl = gl;
+    this.extLib = extLib;
+    this.bufferState = bufferState;
+    this.stats = stats;
+  }
+
+}
+
+exports.ElementsState = ElementsState;
+ElementsState.ELEMENTBUFFER_SET = _GElementsbuffer.REGLELEMENTBUFFER_SET;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../res/GElementsbuffer":"../node_modules/pipegl/src/res/GElementsbuffer.ts"}],"../node_modules/pipegl/src/util/isNDArray.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isNDArray = void 0;
+
+var _getFlatten = require("./getFlatten");
+
+const isNDArray = v => {
+  if (Array.isArray(v)) {
+    const shape = (0, _getFlatten.getArrayShape)(v);
+    if (shape.length > 0 && shape.length < 3) return true;
+  }
+
+  return false;
+};
+
+exports.isNDArray = isNDArray;
+},{"./getFlatten":"../node_modules/pipegl/src/util/getFlatten.ts"}],"../node_modules/pipegl/src/util/isTypedArray.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isTypedArray = void 0;
+
+const isTypedArray = v => {
+  return v instanceof Uint8Array || v instanceof Uint16Array || v instanceof Uint32Array || v instanceof Int8Array || v instanceof Int16Array || v instanceof Int32Array || v instanceof Float32Array || v instanceof Float64Array || v instanceof Uint8ClampedArray;
+};
+
+exports.isTypedArray = isTypedArray;
+},{}],"../node_modules/pipegl/src/util/isBufferArray.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isBufferArray = void 0;
+
+var _isNDArray = require("./isNDArray");
+
+var _isTypedArray = require("./isTypedArray");
+
+const isBufferArray = v => {
+  return Array.isArray(v) || (0, _isTypedArray.isTypedArray)(v) || (0, _isNDArray.isNDArray)(v);
+};
+
+exports.isBufferArray = isBufferArray;
+},{"./isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts","./isTypedArray":"../node_modules/pipegl/src/util/isTypedArray.ts"}],"../node_modules/pipegl/src/util/checkAttribute.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.checkAttribute = void 0;
+
+var _check = require("./check");
+
+var _isNDArray = require("./isNDArray");
+
+var _ = require("..");
+
+const checkAttribute = v => {
+  let checkResult = false;
+  if ((0, _isNDArray.isNDArray)(v)) checkResult = true;
+  if (v.buffer) checkResult = true;
+  if (v instanceof _.Props) checkResult = true;
+  (0, _check.check)(checkResult, `不支持的attribute类型，当前仅支持number[], number[][], number[][][], Props<T>, IAttributeBuffer类型`);
+};
+
+exports.checkAttribute = checkAttribute;
+},{"./check":"../node_modules/pipegl/src/util/check.ts","./isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts","..":"../node_modules/pipegl/src/index.ts"}],"../node_modules/pipegl/src/util/defaultValue.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.defaultValue = void 0;
+
+const defaultValue = (v, dv) => {
+  return v === null || v === undefined ? dv : v;
+};
+
+exports.defaultValue = defaultValue;
+},{}],"../node_modules/pipegl/src/res/GVertexArrayObject.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.VAO_SET = exports.GVertexArrayObject = void 0;
+
+var _check = require("../util/check");
+
+var _GBuffer = require("./GBuffer");
+
+var _Dispose = require("../core/Dispose");
+
+var _defaultValue = require("../util/defaultValue");
+
+var _Constant = require("../core/Constant");
+
+const VAO_SET = new Map();
+exports.VAO_SET = VAO_SET;
+
+class GVertexArrayObject extends _Dispose.Dispose {
+  constructor(opts) {
+    super();
+    this.attributeSet = new Map();
+
+    this.refresh = opts => {
+      this.attributeSet = opts.recordSet || this.attributeSet;
+      this.elements = opts.elements || this.elements;
+      this.offset = (0, _defaultValue.defaultValue)(opts.offset, this.offset);
+      this.count = (0, _defaultValue.defaultValue)(opts.count, this.count);
+      this.instances = (0, _defaultValue.defaultValue)(opts.instances, this.instances);
+      this.primitive = (0, _defaultValue.defaultValue)(_Constant.CPrimitive[opts.primitive], this.primitive);
+      this.bindings = false;
+    };
+
+    this.bindAttrs = () => {
+      var _a;
+
+      this.refCount++;
+      this.extVAO.bindVertexArrayOES(this.vao);
+      if (this.bindings) return;
+      const gl = this.gl;
+      (_a = this.attributeSet) === null || _a === void 0 ? void 0 : _a.forEach((att, loc) => {
+        if (att.buffer) {
+          if (att.buffer instanceof _GBuffer.GBuffer) {
+            const act = this.programState.Current.AttActiveInfo.get(loc);
+            (0, _check.check)(act, `GVertexArrayObject 错误: VAO绑定属性与当前Program不一致`);
+            const pos = act.location;
+            const size = _Constant.CAttributeTS[act.info.type];
+            gl.vertexAttribPointer(pos, size, att.component, att.normalized, att.stride, att.offset);
+            gl.enableVertexAttribArray(pos);
+            if (this.extITA && att.divisor) this.extITA.vertexAttribDivisorANGLE(pos, att.divisor);
+          } else if (Array.isArray(att.buffer)) {
+            const act = this.programState.Current.AttActiveInfo.get(loc);
+            (0, _check.check)(act, `GVertexArrayObject 错误: VAO绑定属性与当前Program不一致`);
+            const pos = act.location;
+            gl.disableVertexAttribArray(pos);
+            gl.vertexAttrib4fv(pos, att.buffer);
+          }
+        }
+      });
+      this.elements ? gl.bindBuffer(_Constant.CArraybufferTarget['ELEMENT_ARRAY_BUFFER'], this.elements) : gl.bindBuffer(_Constant.CArraybufferTarget['ELEMENT_ARRAY_BUFFER'], null);
+      this.bindings = true;
+    };
+
+    this.gl = opts.gl;
+    this.extVAO = opts.extVAO;
+    this.extITA = opts.extITA;
+    this.programState = opts.programState;
+    this.instances = -1;
+    this.offset = 0;
+    this.count = 0;
+    this.bindings = false;
+    this.primitive = _Constant.CPrimitive['TRIANGLES'];
+    this.stats = opts.stats;
+    this.vao = this.extVAO.createVertexArrayOES();
+    this.stats.vaoCount++;
+    VAO_SET.set(this.ID, this);
+  }
+
+  dispose() {
+    throw new Error("Method not implemented.");
+  }
+
+  decRef() {
+    if (this.refCount-- == 0) {
+      this.dispose();
+    }
+  }
+
+  set Elements(v) {
+    this.elements = v;
+  }
+
+  get Elements() {
+    return this.elements;
+  }
+
+  get Offset() {
+    return this.offset;
+  }
+
+  get Count() {
+    return this.count;
+  }
+
+  get Instances() {
+    return this.instances;
+  }
+
+  get Primitive() {
+    return this.primitive;
+  }
+
+}
+
+exports.GVertexArrayObject = GVertexArrayObject;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","./GBuffer":"../node_modules/pipegl/src/res/GBuffer.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../util/defaultValue":"../node_modules/pipegl/src/util/defaultValue.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/AttributeState.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AttributeState = void 0;
+
+var _check = require("../util/check");
+
+var _Constant = require("../core/Constant");
+
+var _isBufferArray = require("../util/isBufferArray");
+
+var _GElementsbuffer = require("../res/GElementsbuffer");
+
+var _checkAttribute = require("../util/checkAttribute");
+
+var _GVertexArrayObject = require("../res/GVertexArrayObject");
+
+class AttributeState {
+  constructor(gl, extLib, limLib, bufferState, elementState, programState, stats) {
+    this.getAttribute = i => {
+      return this.attributeBindings[i];
+    };
+
+    this.applyAttribute = attrs => {
+      var _a;
+
+      const RECORD_SET = new Map();
+      (_a = Object.keys(attrs)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
+        const v = attrs[key];
+        (0, _checkAttribute.checkAttribute)(v);
+        const record = {
+          name: key
+        };
+
+        if ((0, _isBufferArray.isBufferArray)(v)) {
+          const v0 = v;
+          const buf = this.bufferState.createBuffer({
+            data: v0,
+            target: 'ARRAY_BUFFER'
+          });
+          record.buffer = buf;
+          record.component = buf.Component;
+          record.divisor = 0;
+          record.offset = 0;
+          record.stride = 0;
+          record.normalized = false;
+        } else if (v.buffer) {
+          const v0 = v;
+          const buf = (0, _isBufferArray.isBufferArray)(v0.buffer) ? this.bufferState.createBuffer({
+            data: v0.buffer,
+            target: 'ARRAY_BUFFER'
+          }) : v0.buffer;
+          record.offset = v0.offset | 0;
+          (0, _check.check)(record.offset >= 0, `offset只能是大于等于0的数字`);
+          record.stride = v0.stride | 0;
+          (0, _check.check)(record.stride >= 0 && record.stride < 256, `扫描线宽取值范围必须[0,255]`);
+          record.normalized = !!v0.normalized;
+          record.component = _Constant.CComponent[v0.component] || buf.Component;
+          (0, _check.check)(Object.values(_Constant.CComponent).indexOf(record.component) !== -1, `数据类型只能是${Object.values(_Constant.CComponent)}`);
+          (0, _check.check)(v0.divisor === 0 || this.extLib.get('ANGLE_instanced_arrays'), `不支持ANGLE_instanced_arrays插件，不能设置实例化参数divisor`);
+          (0, _check.check)(v0.divisor >= 0, `不支持的divisor值`);
+          record.buffer = buf;
+          record.component = buf.Component;
+        }
+
+        RECORD_SET.set(record.name, record);
+      });
+      return RECORD_SET;
+    };
+
+    this.createREGLVertexArrayObject = (attrs, opts = {}) => {
+      const RECORD_SET = this.applyAttribute(attrs);
+      let ELEMENTS = null;
+
+      if (opts.elements) {
+        if (opts.elements instanceof _GElementsbuffer.GElementsbuffer) ELEMENTS = opts.elements;else ELEMENTS = this.elementState.createElementsbuffer({
+          data: opts.elements,
+          component: 'UNSIGNED_SHORT',
+          primitive: opts.primitive || 'TRIANGLES'
+        });
+      }
+
+      const vertexArrayObject = new _GVertexArrayObject.GVertexArrayObject({
+        gl: this.gl,
+        extVAO: this.extVAO,
+        extITA: this.extITA,
+        programState: this.programState,
+        stats: this.stats
+      });
+      vertexArrayObject.refresh({
+        recordSet: RECORD_SET,
+        elements: ELEMENTS,
+        offset: opts.offset,
+        count: opts.count,
+        instances: opts.instances,
+        primitive: opts.primitive
+      });
+      return vertexArrayObject;
+    };
+
+    this.setVAO = vao => {
+      var _a;
+
+      if (vao) this.current = vao;else {
+        (_a = this.Current) === null || _a === void 0 ? void 0 : _a.decRef();
+        this.current = null;
+      }
+    };
+
+    this.gl = gl;
+    this.extLib = extLib;
+    this.limLib = limLib;
+    this.bufferState = bufferState;
+    this.elementState = elementState;
+    this.programState = programState;
+    this.current = null;
+    this.extVAO = extLib.getByForce('OES_vertex_array_object');
+    this.extITA = extLib.getByForce('ANGLE_instanced_arrays');
+    this.attributeBindings = new Array(limLib.maxAttributes);
+
+    for (let i = 0; i < limLib.maxAttributes; i++) this.attributeBindings[i] = {};
+
+    this.stats = stats;
+  }
+
+  get Current() {
+    return this.current;
+  }
+
+}
+
+exports.AttributeState = AttributeState;
+AttributeState.VAO_SET = _GVertexArrayObject.VAO_SET;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../util/isBufferArray":"../node_modules/pipegl/src/util/isBufferArray.ts","../res/GElementsbuffer":"../node_modules/pipegl/src/res/GElementsbuffer.ts","../util/checkAttribute":"../node_modules/pipegl/src/util/checkAttribute.ts","../res/GVertexArrayObject":"../node_modules/pipegl/src/res/GVertexArrayObject.ts"}],"../node_modules/pipegl/src/res/GRenderbuffer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.RENDERBUFFER_SET = exports.GRenderbuffer = void 0;
+
+var _Dispose = require("../core/Dispose");
+
+var _Constant = require("../core/Constant");
+
+const RENDERBUFFER_SET = new Map();
+exports.RENDERBUFFER_SET = RENDERBUFFER_SET;
+
+class GRenderbuffer extends _Dispose.Dispose {
+  constructor(gl, width, height, format, stats) {
+    super();
+
+    this.bind = () => {
+      const gl = this.gl;
+      gl.bindRenderbuffer(gl.RENDERBUFFER, this.renderbuffer);
+      gl.renderbufferStorage(gl.RENDERBUFFER, this.Format, this.width, this.height);
+      this.refCount++;
+    };
+
+    this.gl = gl;
+    this.renderbuffer = gl.createRenderbuffer();
+    this.format = format || 'RGBA4';
+    this.width = width;
+    this.height = height;
+    this.stats = stats;
+    this.stats.renderbufferCount++;
+    RENDERBUFFER_SET.set(this.ID, this);
+  }
+
+  dispose() {
+    const gl = this.gl;
+    const handler = this.renderbuffer;
+    gl.bindRenderbuffer(gl.RENDERBUFFER, null);
+    gl.deleteRenderbuffer(handler);
+    this.renderbuffer = null;
+    this.refCount = 0;
+    RENDERBUFFER_SET.delete(this.ID);
+    this.stats.renderbufferCount--;
+  }
+
+  decRef() {
+    if (--this.refCount <= 0) this.dispose();
+  }
+
+  get Width() {
+    return this.width;
+  }
+
+  get Height() {
+    return this.height;
+  }
+
+  get Renderbuffer() {
+    return this.renderbuffer;
+  }
+
+  get Format() {
+    return _Constant.CRenderbufferColor[this.format];
+  }
+
+}
+
+exports.GRenderbuffer = GRenderbuffer;
+},{"../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/res/GAttachment.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GAttachment = void 0;
+
+var _Dispose = require("../core/Dispose");
+
+var _GTexture = require("./GTexture");
+
+var _GRenderbuffer = require("./GRenderbuffer");
+
+var _Constant = require("../core/Constant");
+
+class GAttachment extends _Dispose.Dispose {
+  constructor(gl, target, attach) {
+    var _a, _b, _c, _d;
+
+    super();
+
+    this.attach = (location, textureTarget = -1) => {
+      const gl = this.gl,
+            target = textureTarget === -1 ? this.target : textureTarget;
+      if (this.reglTexture) gl.framebufferTexture2D(gl.FRAMEBUFFER, location, target, this.reglTexture.Texutre, 0);else gl.framebufferRenderbuffer(gl.FRAMEBUFFER, location, target, this.reglRenderbuffer.Renderbuffer);
+    };
+
+    this.gl = gl;
+    this.target = _Constant.CAttachmentTarget[target || 'TEXTURE_2D'] || 0;
+    if (attach instanceof _GTexture.GTexture) this.reglTexture = attach;else if (attach instanceof _GRenderbuffer.GRenderbuffer) this.reglRenderbuffer = attach;
+    this.width = ((_a = this.reglTexture) === null || _a === void 0 ? void 0 : _a.Width) || ((_b = this.reglRenderbuffer) === null || _b === void 0 ? void 0 : _b.Width) || 0;
+    this.height = ((_c = this.reglTexture) === null || _c === void 0 ? void 0 : _c.Height) || ((_d = this.reglRenderbuffer) === null || _d === void 0 ? void 0 : _d.Height) || 0;
+  }
+
+  dispose() {
+    throw new Error("Method not implemented.");
+  }
+
+  decRef() {
+    if (--this.refCount <= 0) this.dispose();
+  }
+
+  get Texture() {
+    return this.reglTexture;
+  }
+
+}
+
+exports.GAttachment = GAttachment;
+},{"../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","./GTexture":"../node_modules/pipegl/src/res/GTexture.ts","./GRenderbuffer":"../node_modules/pipegl/src/res/GRenderbuffer.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/res/GFramebuffer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GFramebuffer = exports.FRAMEBUFFER_SET = void 0;
+
+var _check = require("../util/check");
+
+var _Dispose = require("../core/Dispose");
+
+const COLOR_ATTACHMENT0_WEBGL = 0x8CE0;
+const TEXTURE_CUBE_MAP_POSITIVE_X = 0x8515;
+const FRAMEBUFFER_SET = new Map();
+exports.FRAMEBUFFER_SET = FRAMEBUFFER_SET;
+
+class GFramebuffer extends _Dispose.Dispose {
+  constructor(gl, limLib, stats) {
+    super();
+    this.colorAttachments = [];
+    this.depthAttachment = null;
+    this.stencilAttachment = null;
+    this.depthStencilAttachment = null;
+
+    this.refreshAttachment = opts => {
+      this.colorDrawbuffers = [];
+      this.colorAttachments = opts.colorAttachments;
+      this.depthAttachment = opts.depthAttachment;
+      this.stencilAttachment = opts.stencilAttachment;
+      this.depthStencilAttachment = opts.depthStencilAttachment;
+      this.colorAttachments.forEach((attachment, index) => this.colorDrawbuffers.push(COLOR_ATTACHMENT0_WEBGL + index));
+    };
+
+    this.bind = (target = 0) => {
+      if (!this.IsCubeMapAttachment) {
+        (0, _check.check)(target === 0, `GFramebuffer Error: 非cube map FBO时只允许绑定0号fbo。`);
+        this.refCount++;
+        this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, this.framebuffer);
+      } else {
+        (0, _check.check)(target >= 0 && target < 6, `GFramebuffer Error: cube map FBO只允许绑定0-5号FBO。`);
+        this.refCount++;
+        this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, this.framebufferCube[target]);
+      }
+    };
+
+    this.unbind = () => {
+      this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, null);
+    };
+
+    this.updateStencilDetphBuffer = gl => {
+      for (let i = this.colorAttachments.length; i < this.limLib.maxColorAttachments; ++i) {
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0 + i, gl.TEXTURE_2D, null, 0);
+      }
+
+      if (this.depthAttachment) {
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.TEXTURE_2D, null, 0);
+        this.depthAttachment.attach(gl.DEPTH_ATTACHMENT);
+      }
+
+      if (this.stencilAttachment) {
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.TEXTURE_2D, null, 0);
+        this.depthAttachment.attach(gl.STENCIL_ATTACHMENT);
+      }
+
+      if (this.depthStencilAttachment) {
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_STENCIL_ATTACHMENT, gl.TEXTURE_2D, null, 0);
+        this.depthAttachment.attach(gl.DEPTH_STENCIL_ATTACHMENT);
+      }
+    };
+
+    this.chechFramebufferStatus = gl => {
+      const status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
+      (0, _check.check)(!gl.isContextLost() && status === gl.FRAMEBUFFER_COMPLETE, `GFramebuffer 错误: 错误码${status}`);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      const ERROR = gl.getError();
+      (0, _check.check)(ERROR === gl.NO_ERROR, `GFramebuffer 错误: gl上下文错误, 错误码 ${ERROR}`);
+      (0, _check.check)(ERROR !== gl.INVALID_ENUM, `GFramebuffer 错误: 请检查是否使用了多个颜色附件，多颜色附件必须开启插件WEBGL_draw_buffers`);
+    };
+
+    this.updateFramebuffer = () => {
+      var _a;
+
+      const gl = this.gl;
+
+      if (!this.IsCubeMapAttachment) {
+        gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffer);
+        (_a = this.colorAttachments) === null || _a === void 0 ? void 0 : _a.forEach((colorAttachment, i) => {
+          colorAttachment.attach(gl.COLOR_ATTACHMENT0 + i);
+        });
+        this.updateStencilDetphBuffer(gl);
+        this.chechFramebufferStatus(gl);
+      } else {
+        (0, _check.check)(this.colorAttachments.length === 1, `GFramebuffer Error: cube map贴图时仅支持colorAttachment0为cube map Attachment`);
+        const cubeAttachment = this.colorAttachments[0];
+        this.framebufferCube = [gl.createFramebuffer(), gl.createFramebuffer(), gl.createFramebuffer(), gl.createFramebuffer(), gl.createFramebuffer(), gl.createFramebuffer()];
+        this.framebufferCube.forEach((fb, i) => {
+          gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+          cubeAttachment.attach(gl.COLOR_ATTACHMENT0, TEXTURE_CUBE_MAP_POSITIVE_X + i);
+          this.updateStencilDetphBuffer(gl);
+          this.chechFramebufferStatus(gl);
+        });
+      }
+    };
+
+    this.gl = gl;
+    this.framebuffer = gl.createFramebuffer();
+    this.width = 0;
+    this.height = 0;
+    this.limLib = limLib;
+    this.stats = stats;
+    this.stats.framebufferCount++;
+    FRAMEBUFFER_SET.set(this.ID, this);
+  }
+
+  dispose() {
+    const gl = this.gl;
+    (0, _check.check)(this.framebuffer, `REGLFramebuffer 错误: 请不要重复清理FBO`);
+    gl.deleteFramebuffer(this.framebuffer);
+    this.framebuffer = null;
+    this.stats.framebufferCount--;
+    FRAMEBUFFER_SET.delete(this.ID);
+  }
+
+  decRef() {
+    var _a;
+
+    (_a = this.colorAttachments) === null || _a === void 0 ? void 0 : _a.forEach(attachment => {
+      attachment.decRef();
+    });
+    this.depthAttachment.decRef();
+    this.stencilAttachment.decRef();
+    this.depthStencilAttachment.decRef();
+    if (--this.refCount <= 0) this.dispose();
+  }
+
+  get ColorAttachments() {
+    return this.colorAttachments;
+  }
+
+  get ColorDrawbuffers() {
+    return this.colorDrawbuffers;
+  }
+
+  get IsCubeMapAttachment() {
+    var _a;
+
+    return (_a = this.colorAttachments[0]) === null || _a === void 0 ? void 0 : _a.Texture.IsCubeTexture;
+  }
+
+  get FBO() {
+    return this.IsCubeMapAttachment ? this.framebufferCube : [this.framebuffer];
+  }
+
+}
+
+exports.GFramebuffer = GFramebuffer;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts"}],"../node_modules/pipegl/src/state/FramebufferState.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FramebufferState = void 0;
+
+var _GTexture = require("../res/GTexture");
+
+var _GAttachment = require("../res/GAttachment");
+
+var _GFramebuffer = require("../res/GFramebuffer");
+
+const UINT8EMPTY0 = new Uint8Array(0);
+
+class FramebufferState {
+  constructor(gl, textureState, renderbufferState, extLib, limLib, stats) {
+    this.allocAttachment = opts => {
+      const gl = this.gl;
+
+      if (opts.isTexture) {
+        const texture = this.textureState.createTexture2D(UINT8EMPTY0, opts.w, opts.h, opts.c);
+        return new _GAttachment.GAttachment(gl, 'TEXTURE_2D', texture);
+      } else {
+        const rbo = this.renderbufferState.createRenderbuffer({
+          w: opts.w,
+          h: opts.h,
+          format: opts.format || 'RGBA4'
+        });
+        return new _GAttachment.GAttachment(gl, 'RENDERBUFFER', rbo);
+      }
+    };
+
+    this.createFramebuffer = opts => {
+      var _a;
+
+      const gl = this.gl;
+      const fbo = new _GFramebuffer.GFramebuffer(gl, this.limLib, this.stats);
+      const colorAttachments = [];
+      (_a = opts.colors) === null || _a === void 0 ? void 0 : _a.forEach(color => {
+        const TYPE = color instanceof _GTexture.GTexture ? 'TEXTURE_2D' : 'RENDERBUFFER';
+        colorAttachments.push(new _GAttachment.GAttachment(gl, TYPE, color));
+      });
+      const depthAttachment = !opts.depth ? null : new _GAttachment.GAttachment(gl, 'RENDERBUFFER', opts.depth);
+      const stencilAttachment = !opts.stencil ? null : new _GAttachment.GAttachment(gl, 'RENDERBUFFER', opts.stencil);
+      const depthStencilAttachment = !opts.depthStencil ? null : new _GAttachment.GAttachment(gl, 'RENDERBUFFER', opts.depthStencil);
+      fbo.refreshAttachment({
+        colorAttachments,
+        depthAttachment,
+        stencilAttachment,
+        depthStencilAttachment
+      });
+      fbo.updateFramebuffer();
+      return fbo;
+    };
+
+    this.gl = gl;
+    this.textureState = textureState;
+    this.renderbufferState = renderbufferState;
+    this.extLib = extLib;
+    this.limLib = limLib;
+    this.stats = stats;
+  }
+
+  set Current(v) {
+    this.current = v;
+  }
+
+  get Current() {
+    return this.current;
+  }
+
+  set Next(v) {
+    this.next = v;
+  }
+
+  get Next() {
+    return this.next;
+  }
+
+}
+
+exports.FramebufferState = FramebufferState;
+FramebufferState.FRAMEBUFFER_SET = _GFramebuffer.FRAMEBUFFER_SET;
+},{"../res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts","../res/GAttachment":"../node_modules/pipegl/src/res/GAttachment.ts","../res/GFramebuffer":"../node_modules/pipegl/src/res/GFramebuffer.ts"}],"../node_modules/pipegl/src/state/RenderbufferState.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.RenderbufferState = void 0;
+
+var _check = require("../util/check");
+
+var _GRenderbuffer = require("../res/GRenderbuffer");
+
+class RenderbufferState {
+  constructor(gl, extLib, limLib, stats) {
+    this.createRenderbuffer = opts => {
+      const gl = this.gl,
+            w = opts.w || 0,
+            h = opts.h || 0,
+            f = opts.format || 'RGBA4';
+      (0, _check.check)(w > 0 && h > 0 && w <= this.limLib.maxTextureSize && h <= this.limLib.maxTextureSize, `Renderbuffer error: 分辨率错误`);
+      const rbo = new _GRenderbuffer.GRenderbuffer(gl, w, h, f, this.stats);
+      rbo.bind();
+      return rbo;
+    };
+
+    this.gl = gl;
+    this.extLib = extLib;
+    this.limLib = limLib;
+    this.stats = stats;
+  }
+
+}
+
+exports.RenderbufferState = RenderbufferState;
+RenderbufferState.RENDERBUFFER_SET = _GRenderbuffer.RENDERBUFFER_SET;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../res/GRenderbuffer":"../node_modules/pipegl/src/res/GRenderbuffer.ts"}],"../node_modules/pipegl/src/util/createStats.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createStats = void 0;
+
+const createStats = () => {
+  const stats = {
+    vaoCount: 0,
+    bufferCount: 0,
+    elementsCount: 0,
+    framebufferCount: 0,
+    framebufferCubeCount: 0,
+    shaderCount: 0,
+    textureCount: 0,
+    cubeCount: 0,
+    renderbufferCount: 0,
+    maxTextureUnits: 0
+  };
+  return stats;
+};
+
+exports.createStats = createStats;
+},{}],"../node_modules/pipegl/src/compiler/parseConfigure.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseConfigure = exports.defaultWebGLOptions = void 0;
+const defaultWebGLOptions = {
+  alpha: true,
+  antialias: false,
+  depth: true,
+  failIfMajorPerformanceCaveat: true,
+  powerPreference: 'high-performance',
+  premultipliedAlpha: false,
+  preserveDrawingBuffer: false,
+  stencil: true
+};
+exports.defaultWebGLOptions = defaultWebGLOptions;
+
+const createCanvasElement = (container, width, height, devicePixelRatio) => {
+  const canvas = document.createElement('canvas');
+  const w = width || container.clientWidth || window.innerWidth;
+  const h = height || container.clientHeight || window.innerHeight;
+  canvas.width = w * devicePixelRatio;
+  canvas.height = h * devicePixelRatio;
+  canvas.style.border = `0px`;
+  canvas.style.margin = `0px`;
+  canvas.style.padding = `0px`;
+  canvas.style.top = `0px`;
+  canvas.style.left = `0px`;
+  canvas.style.width = `${w}px`;
+  canvas.style.height = `${h}px`;
+  container === document.body ? canvas.style.position = 'absolute' : null;
+  container.appendChild(canvas);
+  return canvas;
+};
+
+const parseConfigure = (opts = {}) => {
+  opts.devicePixelRatio = opts.devicePixelRatio || devicePixelRatio || 1.0;
+  opts.webglOptions = opts.webglOptions || defaultWebGLOptions;
+  opts.container = opts.container || document.body;
+  opts.canvas = opts.gl ? opts.gl.canvas : opts.canvas ? opts.canvas : createCanvasElement(opts.container, opts.width, opts.height, opts.devicePixelRatio);
+  opts.width = parseInt(opts.canvas.style.width);
+  opts.height = parseInt(opts.canvas.style.height);
+  opts.gl = opts.gl || opts.canvas.getContext('webgl', opts.webglOptions);
+  opts.extensions = opts.extensions || [];
+  opts.profile = false;
+  return opts;
+};
+
+exports.parseConfigure = parseConfigure;
+},{}],"../node_modules/pipegl/src/compiler/emitElement.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.emitElement = void 0;
+
+var _Constant = require("../core/Constant");
+
+const emitElement = (pipeline, extLib, vao, iBlock, element, instances) => {
+  const GL_NAME = pipeline.getVariable('gl');
+  const COUNT_NAME = !vao ? pipeline.getVariable('count') : vao.Count;
+  const PRIMITIVE_NAME = !vao ? pipeline.getVariable('primitive') : vao.Primitive;
+  const OFFSET_NAME = !vao ? pipeline.getVariable('offset') : vao.Offset;
+  const INSTANCES_NAME = !vao ? pipeline.getVariable('instances') : vao.Instances;
+
+  if (extLib.get('ANGLE_instanced_arrays') && instances > 0) {
+    if (element) {
+      const ELEMENT_NAME = iBlock.def(`${pipeline.getVariable('elementState')}.getElementsbuffer(${element.ID})`);
+      iBlock.push(`${ELEMENT_NAME}.bind()`);
+      iBlock.push(`${pipeline.getVariable('extLib')}.get('ANGLE_instanced_arrays').drawElementsInstancedANGLE(${ELEMENT_NAME}.Primitive, ${ELEMENT_NAME}.VertCount,${ELEMENT_NAME}.Component, ${OFFSET_NAME}<<(${ELEMENT_NAME}.Component - ${_Constant.CComponent.UNSIGNED_BYTE})>>1, ${INSTANCES_NAME})`);
+    } else iBlock.push(`${pipeline.getVariable('extLib')}.get('ANGLE_instanced_arrays').drawArraysInstancedANGLE(${PRIMITIVE_NAME}, ${OFFSET_NAME},${COUNT_NAME}, ${INSTANCES_NAME})`);
+  } else if (element) {
+    const ELEMENT_NAME = iBlock.def(`${pipeline.getVariable('elementState')}.getElementsbuffer(${element.ID})`);
+    iBlock.push(`${ELEMENT_NAME}.bind()`);
+    iBlock.push(`${GL_NAME}.drawElements(${ELEMENT_NAME}.Primitive, ${ELEMENT_NAME}.VertCount,${ELEMENT_NAME}.Component, ${OFFSET_NAME}<<(${ELEMENT_NAME}.Component - ${_Constant.CComponent.UNSIGNED_BYTE})>>1)`);
+  } else {
+    iBlock.push(`${GL_NAME}.drawArrays(${PRIMITIVE_NAME}, ${OFFSET_NAME}, ${COUNT_NAME})`);
+  }
+
+  if (vao) iBlock.push(`${pipeline.getVariable('attributeState')}.setVAO(null)`);
+  const PERFORMANCE_NAME = pipeline.getVariable('performance');
+  iBlock.push(`${PERFORMANCE_NAME}.count++`);
+};
+
+exports.emitElement = emitElement;
+},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/compiler/emitUniform.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.emitUniform = void 0;
+
+var _check = require("../util/check");
+
+var _GTexture = require("../res/GTexture");
+
+var _isNDArray = require("../util/isNDArray");
+
+const UComponent = component => {
+  const UTYPE = {
+    prefix: '',
+    isMatrix: false
+  };
+
+  switch (component) {
+    case 5126:
+      UTYPE.prefix = '1f';
+      break;
+
+    case 35664:
+      UTYPE.prefix = '2f';
+      break;
+
+    case 35665:
+      UTYPE.prefix = '3f';
+      break;
+
+    case 35666:
+      UTYPE.prefix = '4f';
+      break;
+
+    case 35674:
+      UTYPE.prefix = 'Matrix2f';
+      UTYPE.isMatrix = true;
+      break;
+
+    case 35675:
+      UTYPE.prefix = 'Matrix3f';
+      UTYPE.isMatrix = true;
+      break;
+
+    case 35676:
+      UTYPE.prefix = 'Matrix4f';
+      UTYPE.isMatrix = true;
+      break;
+
+    case 35670:
+    case 5124:
+      UTYPE.prefix = '1i';
+      break;
+
+    case 35671:
+    case 35667:
+      UTYPE.prefix = '2i';
+      break;
+
+    case 35672:
+    case 35668:
+      UTYPE.prefix = '3i';
+      break;
+
+    case 35673:
+    case 35669:
+      UTYPE.prefix = '4i';
+      break;
+
+    case 35678:
+    case 35680:
+      UTYPE.prefix = '1i';
+      break;
+
+    default:
+      (0, _check.check)(false, `emitUniforms error:不支持的uniform类型${component}`);
+  }
+
+  return UTYPE;
+};
+
+const emitUniform = (pipeline, iBlock, oBlock, uniforms, uniformRecordSet, input0) => {
+  const GL_NAME = pipeline.getVariable('gl');
+  const PERFORMANCE_NAME = pipeline.getVariable('performance');
+  const ISNDARRAY_NAME = pipeline.getVariable('isNDArray');
+  const ISNUMBER_NAME = pipeline.getVariable('isNumber');
+  const ISTEXTURE_NAME = pipeline.getVariable('isTexture');
+  uniforms === null || uniforms === void 0 ? void 0 : uniforms.forEach(u => {
+    const name = u.name;
+    const component = u.info.type;
+    const size = u.info.size;
+    const record = uniformRecordSet.get(name);
+    (0, _check.check)(record, `emitUniform error:应用unifrom错误，${name}和TAttribute定义不一致，请检查`);
+
+    if (size > 1) {}
+
+    record.ln = pipeline.link(u);
+    const {
+      prefix,
+      isMatrix
+    } = UComponent(component);
+
+    if (record.v) {
+      if (record.v instanceof _GTexture.GTexture) {
+        record.dn = pipeline.link(record.v);
+        iBlock.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${record.dn}.bind())`);
+        oBlock.push(`${record.dn}.unbind()`);
+      } else {
+        const sufix = (0, _isNDArray.isNDArray)(record.v) ? `${prefix}v` : prefix;
+        record.dn = iBlock.def(record.v);
+        iBlock.push(`${GL_NAME}.uniform${sufix}(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dn})`);
+      }
+    } else if (record.f) {
+      record.dn = pipeline.link(record.f);
+      record.dyn = iBlock.def(`${record.dn}.call(this, ${PERFORMANCE_NAME},${pipeline.BatchID})`);
+      const cond0 = iBlock.createConditionT(`${ISNDARRAY_NAME}(${record.dyn})`);
+      cond0.Then.push(`${GL_NAME}.uniform${prefix}v(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dyn})`);
+      const cond1 = iBlock.createConditionT(`${ISNUMBER_NAME}(${record.dyn})`);
+      cond1.Then.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dyn})`);
+      const cond2 = iBlock.createConditionT(`${ISTEXTURE_NAME}(${record.dyn})`);
+      cond2.Then.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${record.dyn}.bind())`);
+      const cond2_0 = oBlock.createConditionT(`${ISTEXTURE_NAME}(${record.dyn})`);
+      cond2_0.Then.push(`${record.dyn}.unbind()`);
+    } else if (record.p) {
+      record.dyn = iBlock.def(`${input0}${record.p.KEY}`);
+      const cond1 = iBlock.createConditionTE(`${ISTEXTURE_NAME}(${record.dyn})`);
+      cond1.Then.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${record.dyn}.bind())`);
+      const cond11 = oBlock.createConditionT(`${ISTEXTURE_NAME}(${record.dyn})`);
+      cond11.Then.push(`${record.dyn}.unbind()`);
+      const cond12 = cond1.Else.createConditionTE(`${ISNDARRAY_NAME}(${record.dyn})`);
+      cond12.Then.push(`${GL_NAME}.uniform${prefix}v(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dyn})`);
+      cond12.Else.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dyn})`);
+    }
+  });
+};
+
+exports.emitUniform = emitUniform;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts","../util/isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts"}],"../node_modules/pipegl/src/compiler/emitAttribute.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.emitAttribute = void 0;
+
+var _Constant = require("../core/Constant");
+
+const emitBuffer = (pipeline, iBlock, attribute, record, extLib, input0) => {
+  const GL_NAME = pipeline.getVariable('gl'),
+        ATTRIBUTE_NAME = pipeline.link(attribute),
+        BUFFER_NAME = record.ln,
+        LOCATION_NAME = iBlock.def(`${ATTRIBUTE_NAME}.location`),
+        SIZE_NAME = iBlock.def(`${record.size || _Constant.CAttributeTS[attribute.info.type]}`),
+        BINDING_NAME = iBlock.def(`${pipeline.getVariable('attributeState')}.getAttribute(${attribute.location})`);
+  const cond1 = iBlock.createConditionT(`!${BINDING_NAME}.buffer`);
+  cond1.Then.push(`${GL_NAME}.enableVertexAttribArray(${LOCATION_NAME})`);
+
+  if (record.p) {
+    const BUFFERSTATE_NAME = pipeline.getVariable('bufferState');
+    const ISNDARRAY_NAME = pipeline.getVariable('isNDArray');
+    record.dyn = iBlock.def(`${input0}${record.p.KEY}`);
+    const cond3 = iBlock.createConditionTE(`!${BINDING_NAME}.buffer`);
+    const cond3_0 = cond3.Then.createConditionTE(`${ISNDARRAY_NAME}(${record.dyn})`);
+    cond3_0.Then.push(`${BINDING_NAME}.buffer=${BUFFERSTATE_NAME}.createBuffer({data:${record.dyn},target: 'ARRAY_BUFFER'})`);
+    cond3_0.Else.push(`${BINDING_NAME}.buffer=${record.dyn}`);
+    cond3.Then.push(`${BINDING_NAME}.component=${BINDING_NAME}.buffer.component`);
+    cond3.Then.push(`${BINDING_NAME}.size=${SIZE_NAME}`);
+    cond3.Then.push(`${BINDING_NAME}.normalized=${record.normalized || false}`);
+    cond3.Then.push(`${BINDING_NAME}.offset=${record.offset || 0}`);
+    cond3.Then.push(`${BINDING_NAME}.stride=${record.stride || 0}`);
+    cond3.Then.push(`${BINDING_NAME}.divisor=${record.divisor || 0}`);
+    cond3.Then.push(`${BINDING_NAME}.buffer.bind()`);
+    cond3.Then.push(`${GL_NAME}.vertexAttribPointer(${LOCATION_NAME},${BINDING_NAME}.size,${BINDING_NAME}.component, ${BINDING_NAME}.normalized, ${BINDING_NAME}.offset, ${BINDING_NAME}.stride)`);
+    const cond3_1 = cond3.Else.createConditionTE(`${ISNDARRAY_NAME}(${record.dyn})`);
+    cond3_1.Then.push(`${BINDING_NAME}.buffer.subData(${record.dyn})`);
+    cond3_1.Else.push(`${BINDING_NAME}.buffer=${record.dyn}`);
+    cond3_1.Else.push(`${BINDING_NAME}.buffer.bind()`);
+    cond3_1.Else.push(`${GL_NAME}.vertexAttribPointer(${LOCATION_NAME},${BINDING_NAME}.size,${BINDING_NAME}.component, ${BINDING_NAME}.normalized, ${BINDING_NAME}.offset, ${BINDING_NAME}.stride)`);
+  } else {
+    const cond2 = iBlock.createConditionT(`${BINDING_NAME}.component!==${BUFFER_NAME}.component||${BINDING_NAME}.size!==${SIZE_NAME}||${BINDING_NAME}.buffer!==${BUFFER_NAME}||${BINDING_NAME}.normalized!==${record.normalized || false}||${BINDING_NAME}.offset!==${record.offset || 0}||${BINDING_NAME}.stride!==${record.stride || 0}`);
+    cond2.Then.push(`${BINDING_NAME}.component=${BUFFER_NAME}.component`);
+    cond2.Then.push(`${BINDING_NAME}.size=${SIZE_NAME}`);
+    cond2.Then.push(`${BINDING_NAME}.buffer=${BUFFER_NAME}`);
+    cond2.Then.push(`${BINDING_NAME}.normalized=${record.normalized || false}`);
+    cond2.Then.push(`${BINDING_NAME}.offset=${record.offset || 0}`);
+    cond2.Then.push(`${BINDING_NAME}.stride=${record.stride || 0}`);
+    cond2.Then.push(`${GL_NAME}.bindBuffer(${_Constant.CArraybufferTarget['ARRAY_BUFFER']},${BUFFER_NAME}.buffer)`);
+    cond2.Then.push(`${GL_NAME}.vertexAttribPointer(${LOCATION_NAME},${BINDING_NAME}.size,${BINDING_NAME}.component, ${BINDING_NAME}.normalized, ${BINDING_NAME}.offset, ${BINDING_NAME}.stride)`);
+  }
+
+  if (extLib.get('ANGLE_instanced_arrays')) {
+    const DIVISOR = record.divisor || 0;
+    const cond4 = iBlock.createConditionT(`${BINDING_NAME}.divisor!==${DIVISOR}`);
+    cond4.Then.push(`${pipeline.getVariable('extLib')}.get('ANGLE_instanced_arrays').vertexAttribDivisorANGLE(${LOCATION_NAME}, ${DIVISOR})`);
+    cond4.Then.push(`${BINDING_NAME}.divisor=${DIVISOR}`);
+  }
+};
+
+const emitAttribute = (pipeline, iBlock, extLib, vao, attributes, attributeRecordSet, input0) => {
+  const cond0 = iBlock.createConditionTE(`${pipeline.getVariable('vao')}`);
+  cond0.Then.push(`${pipeline.getVariable('attributeState')}.setVAO(${pipeline.getVariable('vao')})`);
+  cond0.Then.push(`${pipeline.getVariable('vao')}.bindAttrs()`);
+  cond0.Else.push(`${pipeline.getVariable('attributeState')}.setVAO(null)`);
+
+  if (!vao) {
+    attributes.forEach(att => {
+      const name = att.name;
+      const record = attributeRecordSet.get(name);
+      emitBuffer(pipeline, iBlock, att, record, extLib, input0);
+    });
+  }
+};
+
+exports.emitAttribute = emitAttribute;
+},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/compiler/emitBatch.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.emitBatch = void 0;
+
+var _emitElement = require("./emitElement");
+
+var _emitUniform = require("./emitUniform");
+
+var _emitAttribute = require("./emitAttribute");
+
+const emitBatch = (pipeline, batchBlock, pipelineData, extLib, instances) => {
+  const LOOP_BATCH_NAME = batchBlock.def(0);
+  const P0_NAME = `p0[${LOOP_BATCH_NAME}]`;
+  batchBlock.push(`for(${LOOP_BATCH_NAME};${LOOP_BATCH_NAME}<p0.length;++${LOOP_BATCH_NAME}){`);
+  const scope0 = batchBlock.createScope(),
+        iBlock = scope0.Entry,
+        oBlock = scope0.Exit;
+  (0, _emitAttribute.emitAttribute)(pipeline, iBlock, extLib, pipelineData.vao, pipelineData.program.Attributes, pipelineData.attributeRecordSet, P0_NAME);
+  (0, _emitUniform.emitUniform)(pipeline, iBlock, oBlock, pipelineData.program.Uniforms, pipelineData.uniformRecordSet, P0_NAME);
+  (0, _emitElement.emitElement)(pipeline, extLib, pipelineData.vao, iBlock, pipelineData.element, instances);
+  batchBlock.push(`}`);
+};
+
+exports.emitBatch = emitBatch;
+},{"./emitElement":"../node_modules/pipegl/src/compiler/emitElement.ts","./emitUniform":"../node_modules/pipegl/src/compiler/emitUniform.ts","./emitAttribute":"../node_modules/pipegl/src/compiler/emitAttribute.ts"}],"../node_modules/pipegl/src/compiler/emitStatus.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.emitStatus = void 0;
+
+const emitStatus = (pipeline, iBlock, status) => {
+  if (status) {
+    const STATUS_NAME = pipeline.link(status);
+    status.StatusList.forEach(v => {
+      const cond = iBlock.createConditionT(`${STATUS_NAME}.needRefresh('${v}')`);
+      cond.Then.push(`${STATUS_NAME}.refresh('${v}')`);
+    });
+  }
+};
+
+exports.emitStatus = emitStatus;
+},{}],"../node_modules/pipegl/src/compiler/emitProgram.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.emitProgram = void 0;
+
+const emitProgram = (pipeline, iBlock, pipelineData) => {
+  const PROGRAMSTATE_NAME = pipeline.getVariable('programState');
+  const cond = iBlock.createConditionT(`!${PROGRAMSTATE_NAME}.Current||${PROGRAMSTATE_NAME}.Current.ID!==${pipelineData.program.ID}`);
+  cond.Then.push(`${PROGRAMSTATE_NAME}.useProgram(${pipelineData.program.ID})`);
+};
+
+exports.emitProgram = emitProgram;
+},{}],"../node_modules/pipegl/src/core/Status.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Status = void 0;
+
+var _check = require("./../util/check");
+
+var _Constant = require("./Constant");
+
+class Status {
+  constructor(gl) {
+    this.NEXT_FLAG_SET = new Map();
+    this.NEXT_VARIABLE_SET = new Map();
+    this.statusList = [];
+
+    this.needRefresh = key => {
+      if (_Constant.CWebGLStatusFLAG[key]) {
+        const k = key;
+        const cur = Status.CURRENT_FLAG_SET.get(k);
+        const next = this.NEXT_FLAG_SET.get(k);
+        return cur != next;
+      } else if (_Constant.CWebGLStatusVariable[key]) {
+        const k = key;
+        const cur = Status.CURRENT_VARIABLE_SET.get(k);
+        const next = this.NEXT_VARIABLE_SET.get(k);
+        if (!cur) return true;else if (cur.length !== next.length) return true;else return cur.join() !== next.join();
+      } else (0, _check.check)(false, `Status 错误: 不支持的webgl状态${key}修改，请检查状态是否合法`);
+    };
+
+    this.refresh = key => {
+      const gl = this.gl;
+
+      if (_Constant.CWebGLStatusFLAG[key]) {
+        const k = key;
+        const v = this.NEXT_FLAG_SET.get(k);
+        v ? gl.enable(gl[k]) : gl.disable(gl[k]);
+        Status.CURRENT_FLAG_SET.set(k, v);
+      } else if (_Constant.CWebGLStatusVariable[key]) {
+        const k = key;
+        const v = this.NEXT_VARIABLE_SET.get(k);
+        gl[k].apply(gl, v);
+        Status.CURRENT_VARIABLE_SET.set(k, v);
+      } else (0, _check.check)(false, `Status 错误: 不支持的webgl状态${key}修改，请检查状态是否合法`);
+    };
+
+    this.setFlag = (key, v) => {
+      this.NEXT_FLAG_SET.set(key, v);
+      this.statusList.push(key);
+    };
+
+    this.setVariable = (key, v) => {
+      this.NEXT_VARIABLE_SET.set(key, v.slice());
+      this.statusList.push(key);
+    };
+
+    this.gl = gl;
+    this.setFlag('DITHER', false);
+    this.setFlag('BLEND', false);
+    this.setVariable('blendColor', [0, 0, 0, 0]);
+    this.setVariable('blendEquationSeparate', [gl.FUNC_ADD, gl.FUNC_ADD]);
+    this.setVariable('blendFuncSeparate', [gl.ONE, gl.ZERO, gl.ONE, gl.ZERO]);
+    this.setFlag('DEPTH_TEST', true);
+    this.setVariable('depthFunc', [gl.LESS]);
+    this.setVariable('depthRange', [0, 1]);
+    this.setVariable('depthMask', [true]);
+    this.setVariable('colorMask', [true, true, true, true]);
+    this.setFlag('CULL_FACE', false);
+    this.setVariable('cullFace', [gl.BACK]);
+    this.setVariable('frontFace', [gl.CCW]);
+    this.setVariable('lineWidth', [1]);
+    this.setFlag('POLYGON_OFFSET_FILL', false);
+    this.setVariable('polygonOffset', [0, 0]);
+    this.setFlag('SAMPLE_ALPHA_TO_COVERAGE', false);
+    this.setFlag('SAMPLE_COVERAGE', false);
+    this.setVariable('sampleCoverage', [1, false]);
+    this.setFlag('STENCIL_TEST', false);
+    this.setVariable('stencilMask', [-1]);
+    this.setVariable('stencilOpSeparate', [gl.FRONT, gl.KEEP, gl.KEEP, gl.KEEP]);
+    this.setFlag('SCISSOR_TEST', false);
+    this.setVariable('scissor', [0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight]);
+    this.setVariable('viewport', [0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight]);
+  }
+
+  get StatusList() {
+    return this.statusList;
+  }
+
+}
+
+exports.Status = Status;
+Status.CURRENT_FLAG_SET = new Map();
+Status.CURRENT_VARIABLE_SET = new Map();
+},{"./../util/check":"../node_modules/pipegl/src/util/check.ts","./Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/compiler/parseStatus.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseStatus = void 0;
+
+var _check = require("../util/check");
+
+var _Status = require("../core/Status");
+
+var _Constant = require("../core/Constant");
+
+const parseStatus = opts => {
+  var _a;
+
+  const {
+    gl,
+    status
+  } = opts;
+  const s0 = new _Status.Status(gl);
+  (_a = Object.keys(status)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
+    const v = status[key];
+    if (_Constant.CWebGLStatusFLAG[key]) s0.setFlag(key, v);else if (_Constant.CWebGLStatusVariable[key]) s0.setVariable(key, v);else (0, _check.check)(false, `ParseStatus error:不支持的WebGL状态设置${key}`);
+  });
+  return s0;
+};
+
+exports.parseStatus = parseStatus;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Status":"../node_modules/pipegl/src/core/Status.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/compiler/parseProgram.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseProgram = void 0;
+
+const parseProgram = (opts, locations) => {
+  const {
+    frag,
+    vert,
+    stringState,
+    shaderState,
+    programState
+  } = opts;
+  const fragId = stringState.id(frag),
+        fragShader = shaderState.createShader('FRAGMENT_SHADER', fragId);
+  const vertId = stringState.id(vert),
+        vertShader = shaderState.createShader('VERTEX_SHADER', vertId);
+  const program = programState.createProgram(frag, vert, locations);
+  return {
+    fragId,
+    vertId,
+    fragShader,
+    vertShader,
+    program
+  };
+};
+
+exports.parseProgram = parseProgram;
+},{}],"../node_modules/pipegl/src/compiler/parseElement.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.praseElements = void 0;
+
+var _isNDArray = require("../util/isNDArray");
+
+const praseElements = opts => {
+  const {
+    elements,
+    elementState
+  } = opts;
+
+  if (elements && (0, _isNDArray.isNDArray)(elements)) {
+    return elementState.createElementsbuffer({
+      data: elements,
+      component: 'UNSIGNED_SHORT',
+      primitive: opts.primitive || 'TRIANGLES'
+    });
+  }
+};
+
+exports.praseElements = praseElements;
+},{"../util/isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts"}],"../node_modules/pipegl/src/compiler/emitFramebuffer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.emitFramebuffer = void 0;
+
+var _GFramebuffer = require("../res/GFramebuffer");
+
+const emitFramebuffer = (pipeline, iBlock, oBlock, framebuffer, extLib) => {
+  const GL_NAME = pipeline.getVariable('gl'),
+        FRAMEBUFFERSTATE_NAME = pipeline.getVariable('framebufferState'),
+        EXT_DRAWBUFFERS_NAME = extLib.get('WEBGL_draw_buffers') ? pipeline.def(`${pipeline.getVariable('extLib')}.get('WEBGL_draw_buffers')`) : null,
+        NEXT_NAME = `${FRAMEBUFFERSTATE_NAME}.Next`,
+        CURRENT_NAME = `${FRAMEBUFFERSTATE_NAME}.Current`;
+
+  if (framebuffer && framebuffer.framebuffer instanceof _GFramebuffer.GFramebuffer) {
+    const FRAMEBUFFER_NAME = pipeline.link(framebuffer.framebuffer);
+    const NEXT_FRAMEBUFFER_CACHED_NAME = iBlock.def(`${NEXT_NAME}`);
+    iBlock.push(`${NEXT_NAME}=${FRAMEBUFFER_NAME}`);
+    oBlock.push(`${NEXT_NAME}=${NEXT_FRAMEBUFFER_CACHED_NAME}`);
+    const LOOP_FBO_NAME = iBlock.def(0);
+    iBlock.push(`for(${LOOP_FBO_NAME};${LOOP_FBO_NAME}<${FRAMEBUFFER_NAME}.FBO.length;++${LOOP_FBO_NAME}){`);
+    const cond0 = iBlock.createConditionT(`${FRAMEBUFFER_NAME}!==${CURRENT_NAME}`);
+    const cond0_1 = cond0.Then.createConditionTE(`${FRAMEBUFFER_NAME}`);
+    cond0_1.Then.push(`${FRAMEBUFFER_NAME}.bind(${LOOP_FBO_NAME})`);
+    if (EXT_DRAWBUFFERS_NAME) cond0_1.Then.push(`${EXT_DRAWBUFFERS_NAME}.drawBuffersWEBGL(${FRAMEBUFFER_NAME}.ColorDrawbuffers)`);
+    cond0_1.Else.push(`${GL_NAME}.bindFramebuffer(${GL_NAME}.FRAMEBUFFER, null)`);
+    iBlock.push(`${FRAMEBUFFERSTATE_NAME}.Current=${NEXT_NAME}`);
+    oBlock.push(`}`);
+  } else if (framebuffer && framebuffer.framebuffer) {
+    const FN_NAME = pipeline.link(framebuffer.framebuffer);
+    const FRAMEBUFFER_NAME = iBlock.def(`${FN_NAME}.call(this, ${pipeline.getVariable('performance')}, ${pipeline.BatchID})`);
+    const NEXT_FRAMEBUFFER_CACHED_NAME = iBlock.def(`${FRAMEBUFFERSTATE_NAME}.Next`);
+    oBlock.push(`${FRAMEBUFFERSTATE_NAME}.Next=${NEXT_FRAMEBUFFER_CACHED_NAME}`);
+    iBlock.push(`${FRAMEBUFFERSTATE_NAME}.Next=${NEXT_FRAMEBUFFER_CACHED_NAME}`);
+    const cond0 = iBlock.createConditionT(`${FRAMEBUFFER_NAME}&&${NEXT_NAME}!==${FRAMEBUFFERSTATE_NAME}.Current`);
+    const cond0_1 = cond0.Then.createConditionTE(`${FRAMEBUFFER_NAME}`);
+    cond0_1.Then.push(`${FRAMEBUFFER_NAME}.bind()`);
+    if (EXT_DRAWBUFFERS_NAME) cond0_1.Then.push(`${EXT_DRAWBUFFERS_NAME}.drawBuffersWEBGL(${FRAMEBUFFER_NAME}.ColorDrawbuffers)`);
+    cond0_1.Else.push(`${GL_NAME}.bindFramebuffer(${GL_NAME}.FRAMEBUFFER, null)`);
+    iBlock.push(`${FRAMEBUFFERSTATE_NAME}.Current=${NEXT_NAME}`);
+  } else {
+    const cond0 = iBlock.createConditionT(`${CURRENT_NAME}!==null`);
+    cond0.Then.push(`${GL_NAME}.bindFramebuffer(${GL_NAME}.FRAMEBUFFER, null)`);
+    cond0.Then.push(`${CURRENT_NAME}=null`);
+  }
+
+  if (framebuffer && framebuffer.color) iBlock.push(`${GL_NAME}.clearColor(${framebuffer.color})`);
+  if (framebuffer && framebuffer.clearBit) iBlock.push(`${GL_NAME}.clear(${framebuffer.clearBit})`);
+};
+
+exports.emitFramebuffer = emitFramebuffer;
+},{"../res/GFramebuffer":"../node_modules/pipegl/src/res/GFramebuffer.ts"}],"../node_modules/pipegl/src/util/isFunction.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isFunction = void 0;
+
+const isFunction = v => typeof v === 'function';
+
+exports.isFunction = isFunction;
+},{}],"../node_modules/pipegl/src/core/Props.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Props = void 0;
+
+class Props {
+  constructor(key) {
+    this.key = `['${key}']`;
+  }
+
+  get KEY() {
+    return this.key;
+  }
+
+}
+
+exports.Props = Props;
+},{}],"../node_modules/pipegl/src/compiler/parseUniform.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseUniform = void 0;
+
+var _isFunction = require("../util/isFunction");
+
+var _Props = require("../core/Props");
+
+const parseUniform = opts => {
+  var _a;
+
+  const {
+    uniforms
+  } = opts;
+  const UNIFORMS = new Map();
+  uniforms && ((_a = Object.keys(uniforms)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
+    const v = uniforms[key];
+    const record = {
+      key: key
+    };
+    if ((0, _isFunction.isFunction)(v)) record.f = v;else if (v instanceof _Props.Props) record.p = v;else record.v = v;
+    UNIFORMS.set(key, record);
+  }));
+  return UNIFORMS;
+};
+
+exports.parseUniform = parseUniform;
+},{"../util/isFunction":"../node_modules/pipegl/src/util/isFunction.ts","../core/Props":"../node_modules/pipegl/src/core/Props.ts"}],"../node_modules/kiwi.codegen/src/util/slice.ts":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.slice = void 0;
+var slice = function (x) {
+    return Array.prototype.slice.call(x);
+};
+exports.slice = slice;
+
+},{}],"../node_modules/kiwi.codegen/src/util/join.ts":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.join = void 0;
+var slice_1 = require("./slice");
+var join = function (x) {
+    return (0, slice_1.slice)(x).join('');
+};
+exports.join = join;
+
+},{"./slice":"../node_modules/kiwi.codegen/src/util/slice.ts"}],"../node_modules/kiwi.codegen/src/util/getId.ts":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getId = void 0;
+var id = 1;
+var getId = function () {
+    return id++;
+};
+exports.getId = getId;
+
+},{}],"../node_modules/kiwi.codegen/src/core/Compilable.ts":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Compilable = void 0;
+var getId_1 = require("../util/getId");
+/**
+ * @date 2021/8/15
+ * @description complie code
+ * @author axmand
+ * @example
+ * //inherit
+ * class BlockClass extends Compilable{ }
+ */
+var Compilable = /** @class */ (function () {
+    function Compilable() {
+        var _this = this;
+        this.id = "compilable-".concat((0, getId_1.getId)());
+        this.regularize = function (raw) {
+            return raw.replace(/\n/g, '').replace(/;/g, ';\n').replace(/}/g, '}\n').replace(/{/g, '{\n');
+        };
+        this.compile = function () {
+            throw new Error("".concat(_this.ID, " unimplemented method"));
+        };
+    }
+    Object.defineProperty(Compilable.prototype, "ID", {
+        get: function () {
+            return this.id;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Compilable;
+}());
+exports.Compilable = Compilable;
+
+},{"../util/getId":"../node_modules/kiwi.codegen/src/util/getId.ts"}],"../node_modules/kiwi.codegen/src/code/Scope.ts":[function(require,module,exports) {
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Scope = void 0;
+var Block_1 = require("./Block");
+var Compilable_1 = require("../core/Compilable");
+/**
+ * @description
+ * codeblock seems like:
+ * //entry
+ * const a = '112233'
+ * ...
+ * ...
+ * //exit, always in tail
+ * const b = a;
+ */
+var Scope = /** @class */ (function (_super) {
+    __extends(Scope, _super);
+    function Scope() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        /**
+         * entry block
+         */
+        _this.entrytBlock = new Block_1.Block();
+        /**
+         * tail block
+         */
+        _this.exitBlock = new Block_1.Block();
+        _this.compile = function () {
+            return _this.regularize("".concat(_this.Entry.compile()).concat(_this.Exit.compile()));
+        };
+        return _this;
+    }
+    Object.defineProperty(Scope.prototype, "Entry", {
+        get: function () {
+            return this.entrytBlock;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Scope.prototype, "Exit", {
+        get: function () {
+            return this.exitBlock;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Scope;
+}(Compilable_1.Compilable));
+exports.Scope = Scope;
+
+},{"./Block":"../node_modules/kiwi.codegen/src/code/Block.ts","../core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts"}],"../node_modules/kiwi.codegen/src/code/Condition.ts":[function(require,module,exports) {
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ConditionTE = exports.ConditionT = void 0;
+var join_1 = require("./../util/join");
+var Block_1 = require("./Block");
+var Compilable_1 = require("../core/Compilable");
+/**
+ * @description
+ * code block seems like:
+ * if(cond){
+ *  //then block
+ * }
+ * else{
+ *  //else block
+ * }
+ */
+var ConditionTE = /** @class */ (function (_super) {
+    __extends(ConditionTE, _super);
+    function ConditionTE() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var _this = _super.call(this) || this;
+        /**
+         * then block body
+         */
+        _this.thenBlock = new Block_1.Block();
+        /**
+         * else block body
+         */
+        _this.elseBlock = new Block_1.Block();
+        _this.compile = function () {
+            return _this.regularize("if(".concat(_this.predSource, "){").concat(_this.Then.compile(), "}else{").concat(_this.Else.compile(), "}"));
+        };
+        _this.predSource = (0, join_1.join)(args);
+        return _this;
+    }
+    Object.defineProperty(ConditionTE.prototype, "Then", {
+        /**
+         * @description then block codelines
+         * @example
+         * cond.Then.push(`console(true)`);
+         */
+        get: function () {
+            return this.thenBlock;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ConditionTE.prototype, "Else", {
+        /**
+         * @description else block codelines
+         * @example
+         * cond.Else.push(`alert(0)`);
+         */
+        get: function () {
+            return this.elseBlock;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return ConditionTE;
+}(Compilable_1.Compilable));
+exports.ConditionTE = ConditionTE;
+/**
+ * @description
+ * code block seems like
+ * if(cond){
+ *  //then block
+ * }
+ */
+var ConditionT = /** @class */ (function (_super) {
+    __extends(ConditionT, _super);
+    function ConditionT() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var _this = _super.call(this) || this;
+        /**
+         *
+         */
+        _this.thenBlock = new Block_1.Block();
+        _this.compile = function () {
+            return _this.regularize("if(".concat(_this.predSource, "){").concat(_this.Then.compile(), "}"));
+        };
+        _this.predSource = (0, join_1.join)(args);
+        return _this;
+    }
+    Object.defineProperty(ConditionT.prototype, "Then", {
+        get: function () {
+            return this.thenBlock;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return ConditionT;
+}(Compilable_1.Compilable));
+exports.ConditionT = ConditionT;
+
+},{"./../util/join":"../node_modules/kiwi.codegen/src/util/join.ts","./Block":"../node_modules/kiwi.codegen/src/code/Block.ts","../core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts"}],"../node_modules/kiwi.codegen/src/util/check.ts":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.codegenValueError = exports.codegenError = void 0;
+/**
+ * @description check error by cond 'pred'
+ * @param pred
+ * @param message
+ */
+var codegenError = function (pred, message) {
+    if (!pred) {
+        var error = new Error("error-".concat(message));
+        throw error;
+    }
+};
+exports.codegenError = codegenError;
+/**
+ * @description check o is null or undefined or empty
+ * @param o
+ * @param message
+ */
+var codegenValueError = function (o, message) {
+    var cond = true;
+    if (Array.isArray(o))
+        cond = false;
+    else if (Number(o) !== NaN)
+        cond = false;
+    else if (o !== null || o !== undefined)
+        cond = false;
+    codegenError(!cond, message);
+};
+exports.codegenValueError = codegenValueError;
+
+},{}],"../node_modules/kiwi.codegen/src/code/Block.ts":[function(require,module,exports) {
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Block = void 0;
+var Scope_1 = require("./Scope");
+var Compilable_1 = require("../core/Compilable");
+var Condition_1 = require("./Condition");
+var slice_1 = require("../util/slice");
+var check_1 = require("./../util/check");
+var getId_1 = require("../util/getId");
+var join_1 = require("../util/join");
+var Block = /** @class */ (function (_super) {
+    __extends(Block, _super);
+    function Block() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        /**
+         * codeline count
+         */
+        _this.lc = 0;
+        /**
+         * variable declare array
+         */
+        _this.VARIABLE_NAME_ARR = [];
+        _this.CODELINE_SET = new Map();
+        _this.MERGE_BLOCKS_ARR = [];
+        /**
+         * @description declare varaible, assign with default value 'v'
+         * @example
+         * const name = block.def([1,2]); //var g0 = [1,2];
+         * @param v
+         */
+        _this.def = function (v) {
+            (0, check_1.codegenValueError)(v, "v does not support null/undefined");
+            var NAME = "b".concat((0, getId_1.getId)()), CODELINE_ARR = _this.CODELINE_SET, VARIABLE_NAME_ARR = _this.VARIABLE_NAME_ARR;
+            VARIABLE_NAME_ARR.push(NAME);
+            var lines = [];
+            lines.push(NAME, "=");
+            Array.isArray(v) ? lines.push("[".concat((0, slice_1.slice)(v), "]")) : lines.push(v);
+            lines.push(";");
+            CODELINE_ARR.set(_this.lc++, lines);
+            return NAME;
+        };
+        /**
+         * @description combine block/scope/condition after this codeline
+         * @param v
+         */
+        _this.combine = function (v) {
+            _this.CODELINE_SET.set(_this.lc++, v);
+        };
+        /**
+         * @description append exist block in tail
+         * @param block
+         */
+        _this.appendBlock = function (block) {
+            (0, check_1.codegenError)(!_this.MERGE_BLOCKS_ARR.find(function (b) { return b.ID === block.ID; }), "Duplicate block merges are not allowed");
+            _this.MERGE_BLOCKS_ARR.push(block);
+        };
+        /**
+         * @description create new Block from this line
+         * @returns
+         */
+        _this.createBlock = function () {
+            var block = new Block();
+            _this.CODELINE_SET.set(_this.lc++, block);
+            return block;
+        };
+        /**
+         * @description create Scope and combie in this codeline
+         * @returns
+         */
+        _this.createScope = function () {
+            var scope = new Scope_1.Scope();
+            _this.CODELINE_SET.set(_this.lc++, scope);
+            return scope;
+        };
+        /**
+         * @description create ConditionT
+         * @param args
+         * @returns
+         */
+        _this.createConditionT = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            var cond = new (Condition_1.ConditionT.bind.apply(Condition_1.ConditionT, __spreadArray([void 0], args, false)))();
+            _this.combine(cond);
+            return cond;
+        };
+        /**
+         * @description create ConditionTE
+         * @param args
+         * @returns
+         */
+        _this.createConditionTE = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            var cond = new (Condition_1.ConditionTE.bind.apply(Condition_1.ConditionTE, __spreadArray([void 0], args, false)))();
+            _this.combine(cond);
+            return cond;
+        };
+        /**
+         * @description compile block
+         * @returns
+         */
+        _this.compile = function () {
+            var CODELINE_SET = _this.CODELINE_SET, MERGE_BLOCKS_ARR = _this.MERGE_BLOCKS_ARR, VARIABLE_NAME_ARR = _this.VARIABLE_NAME_ARR;
+            var declareSource = VARIABLE_NAME_ARR.length > 0 ? "var ".concat(VARIABLE_NAME_ARR.join(','), ";") : "";
+            var bodySource = "";
+            CODELINE_SET.forEach(function (line) {
+                bodySource += (line instanceof Block ||
+                    line instanceof Condition_1.ConditionTE ||
+                    line instanceof Condition_1.ConditionT ||
+                    line instanceof Scope_1.Scope) ? line.compile() : (0, join_1.join)(line);
+            });
+            var mergeSource = MERGE_BLOCKS_ARR.reduce(function (pre, cur) { return pre + cur.compile(); }, "");
+            return _this.regularize("".concat(declareSource).concat(bodySource).concat(mergeSource));
+        };
+        return _this;
+    }
+    /**
+     * @description add new codeline
+     * @param args
+     * @example
+     * //add new codelines
+     * block.push(`ccc=`, [2124,3], `;`);
+     * //add new codeline
+     * block.push(`ccc=0`);
+     * @returns
+     */
+    Block.prototype.push = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var lines = [], CODELINE_ARR = this.CODELINE_SET;
+        args.forEach(function (v) {
+            Array.isArray(v) ? lines.push("[".concat((0, slice_1.slice)(v), "]")) : lines.push(v);
+        });
+        if (lines.length > 0
+            && "".concat(lines[lines.length - 1]).lastIndexOf('{') !== lines[lines.length - 1].length - 1
+            && "".concat(lines[lines.length - 1]).lastIndexOf('}') !== lines[lines.length - 1].length - 1
+            && "".concat(lines[lines.length - 1]).lastIndexOf(';') !== lines[lines.length - 1].length - 1)
+            lines.push(';');
+        CODELINE_ARR.set(this.lc++, lines);
+        return this;
+    };
+    return Block;
+}(Compilable_1.Compilable));
+exports.Block = Block;
+
+},{"./Scope":"../node_modules/kiwi.codegen/src/code/Scope.ts","../core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts","./Condition":"../node_modules/kiwi.codegen/src/code/Condition.ts","../util/slice":"../node_modules/kiwi.codegen/src/util/slice.ts","./../util/check":"../node_modules/kiwi.codegen/src/util/check.ts","../util/getId":"../node_modules/kiwi.codegen/src/util/getId.ts","../util/join":"../node_modules/kiwi.codegen/src/util/join.ts"}],"../node_modules/kiwi.codegen/src/code/Procedure.ts":[function(require,module,exports) {
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Procedure = void 0;
+var Scope_1 = require("./Scope");
+var Compilable_1 = require("../core/Compilable");
+/**
+ * @description
+ * codeline seems like:
+ * add:funciton(p0){
+ *  //do something
+ * }
+ */
+var Procedure = /** @class */ (function (_super) {
+    __extends(Procedure, _super);
+    function Procedure(fnName, parameterCount) {
+        if (parameterCount === void 0) { parameterCount = 0; }
+        var _this = _super.call(this) || this;
+        /**
+         *
+         */
+        _this.inputArguments = [];
+        /**
+         *
+         */
+        _this.bodyScope = new Scope_1.Scope();
+        _this.registArgs = function () {
+            var ne = "p".concat(_this.inputArguments.length);
+            _this.inputArguments.push(ne);
+            return ne;
+        };
+        _this.compile = function () {
+            var inputArgumentsSource = _this.inputArguments.join();
+            return _this.regularize("function(".concat(inputArgumentsSource, "){").concat(_this.bodyScope.compile(), "}"));
+        };
+        _this.name = fnName;
+        _this.parameterCount = parameterCount;
+        for (var i = 0; i < _this.parameterCount; i++)
+            _this.registArgs();
+        return _this;
+    }
+    Object.defineProperty(Procedure.prototype, "Name", {
+        /**
+         *
+         */
+        get: function () {
+            return this.name;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Procedure.prototype, "Entry", {
+        get: function () {
+            return this.bodyScope.Entry;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Procedure.prototype, "Exit", {
+        get: function () {
+            return this.bodyScope.Exit;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Procedure.prototype, "Scope", {
+        get: function () {
+            return this.bodyScope;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Procedure;
+}(Compilable_1.Compilable));
+exports.Procedure = Procedure;
+
+},{"./Scope":"../node_modules/kiwi.codegen/src/code/Scope.ts","../core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts"}],"../node_modules/kiwi.codegen/src/index.ts":[function(require,module,exports) {
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ConditionTE = exports.ConditionT = exports.Procedure = exports.Template = exports.Scope = exports.Block = void 0;
+var join_1 = require("./util/join");
+var getId_1 = require("./util/getId");
+var Block_1 = require("./code/Block");
+Object.defineProperty(exports, "Block", { enumerable: true, get: function () { return Block_1.Block; } });
+var Scope_1 = require("./code/Scope");
+Object.defineProperty(exports, "Scope", { enumerable: true, get: function () { return Scope_1.Scope; } });
+var Procedure_1 = require("./code/Procedure");
+Object.defineProperty(exports, "Procedure", { enumerable: true, get: function () { return Procedure_1.Procedure; } });
+var Compilable_1 = require("./core/Compilable");
+var Condition_1 = require("./code/Condition");
+Object.defineProperty(exports, "ConditionT", { enumerable: true, get: function () { return Condition_1.ConditionT; } });
+Object.defineProperty(exports, "ConditionTE", { enumerable: true, get: function () { return Condition_1.ConditionTE; } });
+/**
+ * @author axmand
+ * @description
+ */
+var Template = /** @class */ (function (_super) {
+    __extends(Template, _super);
+    function Template() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        /**
+         * func name - func
+         */
+        _this.PROCEDURE_SET = new Map();
+        _this.GLOBAL_NAME_ARR = [];
+        _this.GLOBAL_VALUE_ARR = [];
+        _this.bathcId = "0";
+        _this.globalBlock = new Block_1.Block();
+        /**
+         * @description link global object
+         * @example
+         * const g = template.link({});
+         * @param v
+         * @returns
+         */
+        _this.link = function (v) {
+            var GLOBAL_VALUE_ARR = _this.GLOBAL_VALUE_ARR, GLOBAL_NAME_ARR = _this.GLOBAL_NAME_ARR;
+            for (var i = 0, len = GLOBAL_VALUE_ARR.length; i < len; i++)
+                if (GLOBAL_VALUE_ARR[i] === v)
+                    return GLOBAL_NAME_ARR[i];
+            var gln = "g".concat((0, getId_1.getId)());
+            GLOBAL_NAME_ARR.push(gln);
+            GLOBAL_VALUE_ARR.push(v);
+            return gln;
+        };
+        /**
+         * @de define o
+         * @param o
+         * @returns
+         */
+        _this.def = function (o) {
+            return _this.globalBlock.def(o);
+        };
+        /**
+         * @description create return function 'procedure'
+         * @param name
+         * @param parameterCount
+         * @returns
+         */
+        _this.procedure = function (name, parameterCount) {
+            if (parameterCount === void 0) { parameterCount = 0; }
+            var procedure = new Procedure_1.Procedure(name, parameterCount);
+            _this.PROCEDURE_SET.set(procedure.Name, procedure);
+            return procedure;
+        };
+        /**
+         * @description
+         * compile block
+         * seems like:
+         * (function anonymous(linkNames){
+         *  //main
+         *  return{
+         *      fnName:function(p0){
+         *      },
+         *      //....
+         *  }
+         * })
+         */
+        _this.compile = function () {
+            var proces = [];
+            _this.PROCEDURE_SET.forEach(function (v, k) {
+                proces.push("\"".concat(k, "\":").concat(v.compile(), ","));
+            });
+            var source = _this.regularize("\"use strict\";".concat(_this.globalBlock.compile(), "return{").concat((0, join_1.join)(proces), "}"));
+            /**
+             * link name as inputs
+             * such as:
+             * [gl].concat(str);
+             * excuted as:
+             * function(gl){//str};
+             */
+            var proc = Function.apply(null, _this.GLOBAL_NAME_ARR.concat(source));
+            /**
+             * reference:
+             * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+             * executed in strict, apply(null)
+             */
+            return proc.apply(null, _this.GLOBAL_VALUE_ARR);
+        };
+        return _this;
+    }
+    Object.defineProperty(Template.prototype, "BatchID", {
+        get: function () {
+            return this.bathcId;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Template;
+}(Compilable_1.Compilable));
+exports.Template = Template;
+
+},{"./util/join":"../node_modules/kiwi.codegen/src/util/join.ts","./util/getId":"../node_modules/kiwi.codegen/src/util/getId.ts","./code/Block":"../node_modules/kiwi.codegen/src/code/Block.ts","./code/Scope":"../node_modules/kiwi.codegen/src/code/Scope.ts","./code/Procedure":"../node_modules/kiwi.codegen/src/code/Procedure.ts","./core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts","./code/Condition":"../node_modules/kiwi.codegen/src/code/Condition.ts"}],"../node_modules/pipegl/src/core/Pipeline.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Pipeline = void 0;
+
+var _GTexture = require("../res/GTexture");
+
+var _isNDArray = require("../util/isNDArray");
+
+var _GFramebuffer = require("../res/GFramebuffer");
+
+var _kiwi = require("kiwi.codegen");
+
+const PipelineConstant = {
+  isNDArray: _isNDArray.isNDArray,
+  isNumber: v => !isNaN(parseFloat(v)) && isFinite(v),
+  isTexture: v => v instanceof _GTexture.GTexture,
+  isFramebuffer: v => v instanceof _GFramebuffer.GFramebuffer
+};
+
+class Pipeline {
+  constructor(pipelineSchema) {
+    var _a;
+
+    this.variableNameSet = new Map();
+
+    this.getVariable = v => {
+      return this.variableNameSet.get(v);
+    };
+
+    this.appendData = (v, linkName) => {
+      var _a;
+
+      this.link(v, linkName);
+      (_a = Object.keys(v)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
+        this.variableNameSet.set(key, this.template.def(`${this.getVariable(linkName)}.${key}`));
+      });
+    };
+
+    this.append = v => {
+      const ne = v.attributeState !== undefined && v.bufferState !== undefined ? 'pipeState' : 'pipeData';
+      this.appendData(v, ne);
+    };
+
+    this.proc = (name, parameterCount) => {
+      return this.template.procedure(name, parameterCount);
+    };
+
+    this.def = v => {
+      return this.template.def(v);
+    };
+
+    this.compile = () => {
+      return this.template.compile();
+    };
+
+    this.template = new _kiwi.Template();
+    this.pipelineSchema = pipelineSchema;
+    this.batchId = 0;
+    this.append(pipelineSchema);
+    this.link(PipelineConstant, 'pipeConstant');
+    (_a = Object.keys(PipelineConstant)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
+      this.variableNameSet.set(key, this.template.def(`${this.getVariable('pipeConstant')}.${key}`));
+    });
+  }
+
+  get BatchID() {
+    return this.batchId;
+  }
+
+  link(v, name) {
+    const v0 = this.template.link(v);
+    if (name) this.variableNameSet.set(name, v0);else this.variableNameSet.set(v0, v0);
+    return v0;
+  }
+
+}
+
+exports.Pipeline = Pipeline;
+},{"../res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts","../util/isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts","../res/GFramebuffer":"../node_modules/pipegl/src/res/GFramebuffer.ts","kiwi.codegen":"../node_modules/kiwi.codegen/src/index.ts"}],"../node_modules/pipegl/src/compiler/parseAttribute.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseAttribute = void 0;
+
+var _check = require("../util/check");
+
+var _Constant = require("../core/Constant");
+
+var _Props = require("../core/Props");
+
+var _isBufferArray = require("../util/isBufferArray");
+
+var _checkAttribute = require("../util/checkAttribute");
+
+const parseAttribute = opts => {
+  var _a;
+
+  const {
+    pipeline,
+    attributes,
+    extLib,
+    bufferState
+  } = opts;
+  const RECORD_SET = new Map();
+  (_a = Object.keys(attributes)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
+    const v = attributes[key];
+    (0, _checkAttribute.checkAttribute)(v);
+    const record = {
+      name: key
+    };
+
+    if ((0, _isBufferArray.isBufferArray)(v)) {
+      const v0 = v;
+      const buf = bufferState.createBuffer({
+        data: v0,
+        target: 'ARRAY_BUFFER'
+      });
+      record.buffer = buf;
+      record.component = buf.Component;
+      record.divisor = 0;
+      record.offset = 0;
+      record.stride = 0;
+      record.normalized = false;
+      record.ln = pipeline.link(buf);
+    } else if (v.buffer) {
+      const v0 = v;
+      const buf = (0, _isBufferArray.isBufferArray)(v0.buffer) ? bufferState.createBuffer({
+        data: v0.buffer,
+        target: 'ARRAY_BUFFER'
+      }) : v0.buffer;
+      record.offset = v0.offset | 0;
+      (0, _check.check)(record.offset >= 0, `offset只能是大于等于0的数字`);
+      record.stride = v0.stride | 0;
+      (0, _check.check)(record.stride >= 0 && record.stride < 256, `扫描线宽取值范围必须[0,255]`);
+      record.normalized = !!v0.normalized;
+      record.component = _Constant.CComponent[v0.component] || buf.Component;
+      (0, _check.check)(Object.values(_Constant.CComponent).indexOf(record.component) !== -1, `数据类型只能是${Object.values(_Constant.CComponent)}`);
+      (0, _check.check)(v0.divisor === 0 || extLib.get('ANGLE_instanced_arrays'), `不支持ANGLE_instanced_arrays插件，不能设置实例化参数divisor`);
+      (0, _check.check)(v0.divisor >= 0, `不支持的divisor值`);
+      record.divisor = v0.divisor || 0;
+      record.buffer = buf;
+      record.component = buf.Component;
+      record.ln = pipeline.link(buf);
+    } else if (v instanceof _Props.Props) {
+      record.p = v;
+      record.offset = 0;
+      record.stride = 0;
+      record.normalized = false;
+      record.component = _Constant.CComponent['FLOAT'];
+      record.divisor === 0;
+    }
+
+    RECORD_SET.set(record.name, record);
+  });
+  return RECORD_SET;
+};
+
+exports.parseAttribute = parseAttribute;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../core/Props":"../node_modules/pipegl/src/core/Props.ts","../util/isBufferArray":"../node_modules/pipegl/src/util/isBufferArray.ts","../util/checkAttribute":"../node_modules/pipegl/src/util/checkAttribute.ts"}],"../node_modules/pipegl/src/compiler/parseFramebuffer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseFramebuffer = void 0;
+
+var _check = require("../util/check");
+
+const parseFramebuffer = opts => {
+  if (!opts.framebuffer) return null;
+  const fb = opts.framebuffer,
+        gl = opts.gl;
+  const response = {};
+  response.framebuffer = opts.framebuffer.framebuffer;
+  const bit = gl.COLOR_BUFFER_BIT;
+
+  if (fb.clear && fb.clear.color) {
+    const color = fb.clear.color;
+    (0, _check.check)(color.length === 4, `Error: clear color must consist of 4`);
+    response.color = color;
+    response.clearBit = bit;
+  }
+
+  if (fb.clear && fb.clear.depth) response.clearBit = (response.clearBit || bit) | gl.DEPTH_BUFFER_BIT;
+  if (fb.clear && fb.clear.stencil) response.clearBit = (response.clearBit || bit) | gl.STENCIL_BUFFER_BIT;
+  return response;
+};
+
+exports.parseFramebuffer = parseFramebuffer;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts"}],"../node_modules/pipegl/src/compiler/CompilerCore.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CompilerCore = void 0;
+
+var _emitBatch = require("./emitBatch");
+
+var _emitStatus = require("./emitStatus");
+
+var _Constant = require("../core/Constant");
+
+var _emitProgram = require("./emitProgram");
+
+var _emitUniform = require("./emitUniform");
+
+var _emitElement = require("./emitElement");
+
+var _parseStatus = require("./parseStatus");
+
+var _parseProgram = require("./parseProgram");
+
+var _parseElement = require("./parseElement");
+
+var _emitAttribute = require("./emitAttribute");
+
+var _emitFramebuffer = require("./emitFramebuffer");
+
+var _parseUniform = require("./parseUniform");
+
+var _Pipeline = require("../core/Pipeline");
+
+var _parseAttribute = require("./parseAttribute");
+
+var _parseFramebuffer = require("./parseFramebuffer");
+
+class CompilerCore {
+  constructor(opts) {
+    this.perparePipelineData = opts => {
+      let elementbuffer = null,
+          attributeRecordSet = null;
+      const framebuffer = (0, _parseFramebuffer.parseFramebuffer)(opts);
+      const status = (0, _parseStatus.parseStatus)(opts);
+
+      if (!opts.vao) {
+        elementbuffer = (0, _parseElement.praseElements)(opts);
+        attributeRecordSet = (0, _parseAttribute.parseAttribute)(opts);
+      }
+
+      const uniformRecordSet = (0, _parseUniform.parseUniform)(opts);
+      const program = (0, _parseProgram.parseProgram)(opts, null);
+      const pipelineData = {
+        attributeRecordSet,
+        uniformRecordSet,
+        program: program.program,
+        fragShader: program.fragShader,
+        vertShader: program.vertShader,
+        fragId: program.fragId,
+        vertId: program.vertId,
+        status,
+        vao: opts.vao,
+        element: elementbuffer,
+        performance: this.performance,
+        framebuffer
+      };
+      opts.pipeline.append(pipelineData);
+      return pipelineData;
+    };
+
+    this.applyBatchProcPipelineData = opts => {
+      const {
+        pipeline,
+        pipelineData,
+        extLib,
+        instances
+      } = opts;
+      const drawProc = pipeline.proc('batch', 1);
+      const scope0 = drawProc.Entry.createScope();
+      const iBlock = scope0.Entry;
+      (0, _emitStatus.emitStatus)(pipeline, iBlock, pipelineData.status);
+      (0, _emitFramebuffer.emitFramebuffer)(pipeline, iBlock, scope0.Exit, pipelineData.framebuffer, extLib);
+      (0, _emitProgram.emitProgram)(pipeline, iBlock, pipelineData);
+      (0, _emitBatch.emitBatch)(pipeline, iBlock, pipelineData, extLib, instances);
+    };
+
+    this.applyDrawProcPipelineData = opts => {
+      const {
+        pipeline,
+        pipelineData,
+        extLib
+      } = opts;
+      const drawProc = pipeline.proc('draw', 1);
+      const scope0 = drawProc.Entry.createScope();
+      const scope1 = drawProc.Exit.createScope();
+      const iBlock = scope0.Entry;
+      const oBlock = scope1.Exit;
+      const P0_NAME = `p0`;
+      (0, _emitStatus.emitStatus)(pipeline, iBlock, pipelineData.status);
+      (0, _emitFramebuffer.emitFramebuffer)(pipeline, iBlock, oBlock, pipelineData.framebuffer, extLib);
+      (0, _emitProgram.emitProgram)(pipeline, iBlock, pipelineData);
+      (0, _emitAttribute.emitAttribute)(pipeline, iBlock, extLib, pipelineData.vao, pipelineData.program.Attributes, pipelineData.attributeRecordSet, P0_NAME);
+      (0, _emitUniform.emitUniform)(pipeline, iBlock, oBlock, pipelineData.program.Uniforms, pipelineData.uniformRecordSet, P0_NAME);
+      (0, _emitElement.emitElement)(pipeline, extLib, pipelineData.vao, iBlock, pipelineData.element, opts.instances);
+    };
+
+    this.compile = opts => {
+      const count = opts.count || 0,
+            offset = opts.offset || 0,
+            instances = opts.instances || 0,
+            framebuffer = opts.framebuffer || null,
+            primitive = _Constant.CPrimitive[opts.primitive || 'TRIANGLES'],
+            status = opts.status || {};
+      const pipeline = new _Pipeline.Pipeline({
+        gl: this.gl,
+        extLib: this.extLib,
+        limLib: this.limLib,
+        attributeState: this.attributeState,
+        bufferState: this.bufferState,
+        elementState: this.elementState,
+        programState: this.programState,
+        shaderState: this.shaderState,
+        stringState: this.stringState,
+        textureState: this.textureState,
+        renderbufferState: this.renderbufferState,
+        framebufferState: this.framebufferState,
+        performance: this.performance,
+        offset,
+        count,
+        primitive,
+        instances
+      });
+      const pipelineData = this.perparePipelineData({
+        gl: this.gl,
+        pipeline: pipeline,
+        attributes: opts.attributes,
+        uniforms: opts.uniforms,
+        elements: opts.elements,
+        frag: opts.frag,
+        vert: opts.vert,
+        extLib: this.extLib,
+        limLib: this.limLib,
+        attributeState: this.attributeState,
+        bufferState: this.bufferState,
+        elementState: this.elementState,
+        programState: this.programState,
+        shaderState: this.shaderState,
+        stringState: this.stringState,
+        textureState: this.textureState,
+        renderbufferState: this.renderbufferState,
+        framebufferState: this.framebufferState,
+        vao: opts.vao,
+        primitive: opts.primitive || 'TRIANGLES',
+        framebuffer,
+        status
+      });
+      this.applyDrawProcPipelineData({
+        pipeline,
+        pipelineData,
+        extLib: this.extLib,
+        count,
+        instances
+      });
+      this.applyBatchProcPipelineData({
+        pipeline,
+        pipelineData,
+        extLib: this.extLib,
+        count,
+        instances
+      });
+      return pipeline.compile();
+    };
+
+    this.gl = opts.gl;
+    this.stats = opts.stats;
+    this.performance = opts.performance;
+    this.extLib = opts.extLib;
+    this.limLib = opts.limLib;
+    this.bufferState = opts.bufferState;
+    this.textureState = opts.textureState;
+    this.elementState = opts.elementState;
+    this.attributeState = opts.attributeState;
+    this.stringState = opts.stringState;
+    this.shaderState = opts.shaderState;
+    this.programState = opts.programState;
+    this.renderbufferState = opts.renderbufferState;
+    this.framebufferState = opts.framebufferState;
+  }
+
+}
+
+exports.CompilerCore = CompilerCore;
+},{"./emitBatch":"../node_modules/pipegl/src/compiler/emitBatch.ts","./emitStatus":"../node_modules/pipegl/src/compiler/emitStatus.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","./emitProgram":"../node_modules/pipegl/src/compiler/emitProgram.ts","./emitUniform":"../node_modules/pipegl/src/compiler/emitUniform.ts","./emitElement":"../node_modules/pipegl/src/compiler/emitElement.ts","./parseStatus":"../node_modules/pipegl/src/compiler/parseStatus.ts","./parseProgram":"../node_modules/pipegl/src/compiler/parseProgram.ts","./parseElement":"../node_modules/pipegl/src/compiler/parseElement.ts","./emitAttribute":"../node_modules/pipegl/src/compiler/emitAttribute.ts","./emitFramebuffer":"../node_modules/pipegl/src/compiler/emitFramebuffer.ts","./parseUniform":"../node_modules/pipegl/src/compiler/parseUniform.ts","../core/Pipeline":"../node_modules/pipegl/src/core/Pipeline.ts","./parseAttribute":"../node_modules/pipegl/src/compiler/parseAttribute.ts","./parseFramebuffer":"../node_modules/pipegl/src/compiler/parseFramebuffer.ts"}],"../node_modules/pipegl/src/util/createPerformance.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createPerformance = void 0;
+
+const createPerformance = () => {
+  const stats = {
+    gupTime: 0.0,
+    cpuTime: 0.0,
+    count: 0
+  };
+  return stats;
+};
+
+exports.createPerformance = createPerformance;
+},{}],"../node_modules/pipegl/src/core/Pipe.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.PipeGL = void 0;
+
+var _check = require("../util/check");
+
+var _Limit = require("./Limit");
+
+var _Extension = require("./Extension");
+
+var _ShaderState = require("../state/ShaderState");
+
+var _StringState = require("../state/StringState");
+
+var _BufferState = require("../state/BufferState");
+
+var _TextureState = require("../state/TextureState");
+
+var _ProgramState = require("../state/ProgramState");
+
+var _ElementState = require("../state/ElementState");
+
+var _AttributeState = require("../state/AttributeState");
+
+var _FramebufferState = require("../state/FramebufferState");
+
+var _RenderbufferState = require("../state/RenderbufferState");
+
+var _createStats = require("../util/createStats");
+
+var _parseConfigure = require("../compiler/parseConfigure");
+
+var _CompilerCore = require("../compiler/CompilerCore");
+
+var _createPerformance = require("../util/createPerformance");
+
+class PipeGL {
+  constructor(opts) {
+    this.compile = opts => {
+      return this.compilerCore.compile(opts);
+    };
+
+    this.vao = (atts, opts = {}) => {
+      return this.attributeState.createREGLVertexArrayObject(atts, opts);
+    };
+
+    this.texture2D = (data, w, h, c, opts = {}) => {
+      return this.textureState.createTexture2D(data, w, h, c, opts);
+    };
+
+    this.texture2DEmpty = (w, h, c, opts = {}) => {
+      const emptyData = new Uint8Array(w * h * c);
+      return this.texture2D(emptyData, w, h, c, opts);
+    };
+
+    this.textureCube = (faces, w, h, c, opts = {}) => {
+      return this.textureState.createTextureCube(faces, w, h, c, opts);
+    };
+
+    this.renderbuffer = opts => {
+      return this.renderbufferState.createRenderbuffer(opts);
+    };
+
+    this.buffer = (data, opts = {}) => {
+      return this.bufferState.createBuffer({
+        data,
+        usage: opts.usage,
+        component: opts.component,
+        target: opts.target,
+        dimension: opts.dimension,
+        byteLength: opts.byteLength
+      });
+    };
+
+    this.framebuffer = opts => {
+      return this.framebufferState.createFramebuffer(opts);
+    };
+
+    this.clear = opts => {
+      const gl = this.gl;
+      const {
+        color,
+        depth,
+        stencil
+      } = opts;
+      (0, _check.check)(color.length === 4, `Error: clear color must consist of 4`);
+      gl.clearColor(color[0], color[1], color[2], color[3]);
+      let bit = gl.COLOR_BUFFER_BIT;
+      if (depth) bit = bit | gl.DEPTH_BUFFER_BIT;
+      if (stencil) bit = bit | gl.STENCIL_BUFFER_BIT;
+      gl.clear(bit);
+    };
+
+    this.stats = (0, _createStats.createStats)();
+    this.performance = (0, _createPerformance.createPerformance)();
+    this.configure = (0, _parseConfigure.parseConfigure)(opts);
+    this.extLib = new _Extension.Extension(this.gl, ...this.configure.extensions);
+    this.limLib = new _Limit.Limit(this.gl, this.extLib);
+    this.stringState = new _StringState.StringState();
+    this.bufferState = new _BufferState.BufferState(this.gl, this.stats);
+    this.textureState = new _TextureState.TextureState(this.gl, this.extLib, this.limLib, this.stats);
+    this.elementState = new _ElementState.ElementsState(this.gl, this.extLib, this.bufferState, this.stats);
+    this.shaderState = new _ShaderState.ShaderState(this.gl, this.stringState, this.stats);
+    this.programState = new _ProgramState.ProgramState(this.gl, this.shaderState, this.stringState);
+    this.attributeState = new _AttributeState.AttributeState(this.gl, this.extLib, this.limLib, this.bufferState, this.elementState, this.programState, this.stats);
+    this.renderbufferState = new _RenderbufferState.RenderbufferState(this.gl, this.extLib, this.limLib, this.stats);
+    this.framebufferState = new _FramebufferState.FramebufferState(this.gl, this.textureState, this.renderbufferState, this.extLib, this.limLib, this.stats);
+    this.compilerCore = new _CompilerCore.CompilerCore({
+      gl: this.gl,
+      stats: this.stats,
+      performance: this.performance,
+      extLib: this.extLib,
+      limLib: this.limLib,
+      bufferState: this.bufferState,
+      textureState: this.textureState,
+      elementState: this.elementState,
+      attributeState: this.attributeState,
+      stringState: this.stringState,
+      shaderState: this.shaderState,
+      programState: this.programState,
+      renderbufferState: this.renderbufferState,
+      framebufferState: this.framebufferState
+    });
+  }
+
+  get gl() {
+    return this.configure.gl;
+  }
+
+}
+
+exports.PipeGL = PipeGL;
+},{"../util/check":"../node_modules/pipegl/src/util/check.ts","./Limit":"../node_modules/pipegl/src/core/Limit.ts","./Extension":"../node_modules/pipegl/src/core/Extension.ts","../state/ShaderState":"../node_modules/pipegl/src/state/ShaderState.ts","../state/StringState":"../node_modules/pipegl/src/state/StringState.ts","../state/BufferState":"../node_modules/pipegl/src/state/BufferState.ts","../state/TextureState":"../node_modules/pipegl/src/state/TextureState.ts","../state/ProgramState":"../node_modules/pipegl/src/state/ProgramState.ts","../state/ElementState":"../node_modules/pipegl/src/state/ElementState.ts","../state/AttributeState":"../node_modules/pipegl/src/state/AttributeState.ts","../state/FramebufferState":"../node_modules/pipegl/src/state/FramebufferState.ts","../state/RenderbufferState":"../node_modules/pipegl/src/state/RenderbufferState.ts","../util/createStats":"../node_modules/pipegl/src/util/createStats.ts","../compiler/parseConfigure":"../node_modules/pipegl/src/compiler/parseConfigure.ts","../compiler/CompilerCore":"../node_modules/pipegl/src/compiler/CompilerCore.ts","../util/createPerformance":"../node_modules/pipegl/src/util/createPerformance.ts"}],"../node_modules/pipegl/src/index.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "GBuffer", {
+  enumerable: true,
+  get: function () {
+    return _GBuffer.GBuffer;
+  }
+});
+Object.defineProperty(exports, "GFramebuffer", {
+  enumerable: true,
+  get: function () {
+    return _GFramebuffer.GFramebuffer;
+  }
+});
+Object.defineProperty(exports, "GTexture", {
+  enumerable: true,
+  get: function () {
+    return _GTexture.GTexture;
+  }
+});
+Object.defineProperty(exports, "GVertexArrayObject", {
+  enumerable: true,
+  get: function () {
+    return _GVertexArrayObject.GVertexArrayObject;
+  }
+});
+Object.defineProperty(exports, "IAttributeBuffer", {
+  enumerable: true,
+  get: function () {
+    return _parseAttribute.IAttributeBuffer;
+  }
+});
+Object.defineProperty(exports, "IPerformance", {
+  enumerable: true,
+  get: function () {
+    return _createPerformance.IPerformance;
+  }
+});
+Object.defineProperty(exports, "IPipeCommand", {
+  enumerable: true,
+  get: function () {
+    return _Pipe.IPipeCommand;
+  }
+});
+Object.defineProperty(exports, "PipeGL", {
+  enumerable: true,
+  get: function () {
+    return _Pipe.PipeGL;
+  }
+});
+Object.defineProperty(exports, "Props", {
+  enumerable: true,
+  get: function () {
+    return _Props.Props;
+  }
+});
+Object.defineProperty(exports, "TAttribute", {
+  enumerable: true,
+  get: function () {
+    return _parseAttribute.TAttribute;
+  }
+});
+Object.defineProperty(exports, "TProps", {
+  enumerable: true,
+  get: function () {
+    return _Props.TProps;
+  }
+});
+Object.defineProperty(exports, "TUniform", {
+  enumerable: true,
+  get: function () {
+    return _parseUniform.TUniform;
+  }
+});
+
+var _Pipe = require("./core/Pipe");
+
+var _createPerformance = require("./util/createPerformance");
+
+var _GFramebuffer = require("./res/GFramebuffer");
+
+var _GTexture = require("./res/GTexture");
+
+var _GVertexArrayObject = require("./res/GVertexArrayObject");
+
+var _GBuffer = require("./res/GBuffer");
+
+var _Props = require("./core/Props");
+
+var _parseUniform = require("./compiler/parseUniform");
+
+var _parseAttribute = require("./compiler/parseAttribute");
+},{"./core/Pipe":"../node_modules/pipegl/src/core/Pipe.ts","./util/createPerformance":"../node_modules/pipegl/src/util/createPerformance.ts","./res/GFramebuffer":"../node_modules/pipegl/src/res/GFramebuffer.ts","./res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts","./res/GVertexArrayObject":"../node_modules/pipegl/src/res/GVertexArrayObject.ts","./res/GBuffer":"../node_modules/pipegl/src/res/GBuffer.ts","./core/Props":"../node_modules/pipegl/src/core/Props.ts","./compiler/parseUniform":"../node_modules/pipegl/src/compiler/parseUniform.ts","./compiler/parseAttribute":"../node_modules/pipegl/src/compiler/parseAttribute.ts"}],"../src/globe/auxiliar/Globe.auxiliar.Cursor.ts":[function(require,module,exports) {
+"use strict";
+
+var _Globe = require("./../Globe");
+
+var _dom = require("../../util/dom");
+
+var _pipegl = require("pipegl");
+
+_Globe.Globe.prototype.EnableCursorAuxTool = function () {
+  var g = this;
+  g._state_aux_cursor_ = g._state_aux_cursor_ || {};
+
+  if (!g._state_aux_cursor_.d0) {
+    var ctx3d = g.getContext3D();
+    var camera = g._state_camera_.camera;
+    g._state_aux_cursor_.d0 = ctx3d.compile({
+      vert: "precision mediump float;\n\n            uniform vec3 position;\n            uniform mat4 viewProjection;\n\n            void main(){\n                gl_PointSize = 10.0;\n                gl_Position = viewProjection*vec4(position, 1.0);\n            }",
+      frag: "precision mediump float;\n\n            void main(){\n                gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);\n            }",
+      attributes: {},
+      uniforms: {
+        position: new _pipegl.Props('position'),
+        viewProjection: function viewProjection(performance, batchId) {
+          return camera.ViewProjectionMatrix.value;
+        }
+      },
+      primitive: 'POINTS',
+      count: 1,
+      status: {
+        DEPTH_TEST: true
+      }
+    });
+    g.on('mousemove', g.CursorToolEventHandler, g);
+    g.on('auxtool', g.CursorToolRenderHandler, g);
+  }
+};
+
+_Globe.Globe.prototype.CursorToolEventHandler = function (param) {
+  var g = this;
+  var currentPosition = (0, _dom.getEventContainerPosition)(param.domEvent, g.Canvas);
+  var surfacePoint = g.rayTrackOnSphere(currentPosition);
+
+  if (surfacePoint) {
+    g._state_aux_cursor_.surfacePoint = surfacePoint;
+    var lnglat = g.spaceCoordinateToGeographic(surfacePoint);
+    g.emit('coordinate', lnglat);
+  }
+};
+
+_Globe.Globe.prototype.CursorToolRenderHandler = function (framestramp) {
+  var g = this;
+  var p0 = g._state_aux_cursor_.surfacePoint;
+
+  if (p0) {
+    var d0 = g._state_aux_cursor_.d0;
+    d0.batch([{
+      position: p0.value
+    }]);
+  }
+};
+},{"./../Globe":"../src/globe/Globe.ts","../../util/dom":"../src/util/dom.ts","pipegl":"../node_modules/pipegl/src/index.ts"}],"../src/core/Ray.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1030,7 +6091,7 @@ function () {
     this.updateProjectionMatrix = function () {
       var cameraMatrix = new _kiwi.Mat4().lookAt(_this.position, _this.target, _this.up);
       _this.cameraMatrix = cameraMatrix.clone();
-      _this.viewMatrix = cameraMatrix.invert();
+      _this.viewMatrix = cameraMatrix.clone().invert();
       _this.viewProjectionMatrix = _this.projectionMatrix.clone().multiply(_this.viewMatrix);
     };
 
@@ -1140,7 +6201,7 @@ _Globe.Globe.prototype.registerCamera = function (coord) {
       width = box.width,
       height = box.height;
   g._state_camera_ = {
-    camera: new _PerspectiveCamera.PerspectiveCamera(60, width, height, 100, g.Ellipsoid.MaximumRadius * 10),
+    camera: new _PerspectiveCamera.PerspectiveCamera(60, width, height, height / 2 / Math.tan(_kiwi.GLMatrix.toRadian(60)), g.Ellipsoid.MaximumRadius * 10),
     viewContainer: {
       left: left,
       top: top,
@@ -1180,146 +6241,24 @@ _Globe.Globe.prototype.normalizedDeviceCoordinateToSpaceCoordinate = function (p
 
   var m4 = g._state_camera_.camera.CameraMatrix.clone().multiply(g._state_camera_.camera.ProjectionMatrix.clone().invert());
 
-  var space = pndc.clone().applyMatrix4(m4);
-  return space;
+  return pndc.clone().applyMatrix4(m4);
 };
 
 _Globe.Globe.prototype.spaceCoordinateToNormaziledDeveiceCoordinate = function (space) {
   var g = this;
-  var ndc = space.clone().applyMatrix4(g._state_camera_.camera.ViewProjectionMatrix);
-  return ndc;
+  return space.clone().applyMatrix4(g._state_camera_.camera.ViewProjectionMatrix);
 };
 
 _Globe.Globe.prototype.geographicToSpaceCoordinate = function (coord) {
   var g = this;
-  var space = g.Ellipsoid.geographicToSpace(coord);
-  return space;
+  return g.Ellipsoid.geographicToSpace(coord);
 };
 
 _Globe.Globe.prototype.spaceCoordinateToGeographic = function (spaceCoord) {
   var g = this;
-  var geoCoord = g.Ellipsoid.spaceToGeographic(spaceCoord);
-  return geoCoord;
+  return g.Ellipsoid.spaceToGeographic(spaceCoord);
 };
-},{"kiwi.matrix":"../node_modules/kiwi.matrix/dist/bundle.js","./Globe":"../src/globe/Globe.ts","../core/Ray":"../src/core/Ray.ts","../camera/PerspectiveCamera":"../src/camera/PerspectiveCamera.ts"}],"../src/util/split.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.split = void 0;
-
-var trim = function trim(input) {
-  return ((input || '') + '').replace(/^\s+|\s+$/g, '');
-};
-
-var split = function split(input) {
-  return trim(input).split(/\s+/);
-};
-
-exports.split = split;
-},{}],"../src/util/dom.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.stopPropagation = exports.removeDOMEvent = exports.preventDefault = exports.getEventContainerPosition = exports.addDOMEvent = void 0;
-
-var _split = require("./split");
-
-var _browser = require("./browser");
-
-var PREFIX = '_geosketchpad_';
-
-var addDOMEvent = function addDOMEvent(element, eventName, handler, context) {
-  var eventHandler = function eventHandler(e) {
-    e = e || window.event;
-    handler.call(context || element, e);
-  };
-
-  (0, _split.split)(eventName).forEach(function (type) {
-    var key = "".concat(PREFIX, "_").concat(type);
-    element[key] = element[key] || [];
-    var hit = listenDOMEvent(element, type, handler);
-    if (hit >= 0) removeDOMEvent(element, type, handler);
-    element[key].push(eventHandler);
-    if (_browser.browser.ie) element.addEventListener(type, eventHandler, false);else element.addEventListener(type, eventHandler, {
-      capture: false,
-      passive: false
-    });
-  });
-};
-
-exports.addDOMEvent = addDOMEvent;
-
-var listenDOMEvent = function listenDOMEvent(element, type, handler) {
-  var Key = "".concat(PREFIX, "_").concat(type);
-  if (!element || !element[Key] || !handler) return -1;
-  var handlers = element[Key];
-
-  for (var i = 0, len = handlers.length; i < len; i++) {
-    if (handlers[i] === handler) return i;
-  }
-
-  return -1;
-};
-
-var removeDOMEvent = function removeDOMEvent(element, eventName, handler) {
-  var remove = function remove(type, fn) {
-    element.removeEventListener(type, fn, false);
-  };
-
-  var types = (0, _split.split)(eventName);
-  types.forEach(function (type) {
-    var key = "".concat(PREFIX, "_").concat(type);
-
-    if (!handler && element[key]) {
-      var handlers = element[key];
-      handlers === null || handlers === void 0 ? void 0 : handlers.forEach(function (listener) {
-        remove(type, listener);
-      });
-      delete element[key];
-    }
-
-    var hit = listenDOMEvent(element, type, handler);
-    if (hit > 0) remove(type, element[key]);
-    element[key].splice(hit, 1);
-  });
-};
-
-exports.removeDOMEvent = removeDOMEvent;
-
-var preventDefault = function preventDefault(e) {
-  if (e.preventDefault) e.preventDefault();else e.returnValue = false;
-};
-
-exports.preventDefault = preventDefault;
-
-var stopPropagation = function stopPropagation(e) {
-  if (e.stopPropagation) e.stopPropagation();else e.cancelBubble = true;
-};
-
-exports.stopPropagation = stopPropagation;
-
-var getEventContainerPosition = function getEventContainerPosition(e, dom) {
-  var evt = e instanceof MouseEvent ? e : e.touches[0];
-  var style = window.getComputedStyle(dom);
-  var padding = [parseInt(style['padding-left']), parseInt(style['padding-top'])];
-  var rect = dom.getBoundingClientRect();
-  var offsetWidth = dom.offsetWidth,
-      offsetHeight = dom.offsetHeight;
-  var scaleX = offsetWidth ? rect.width / offsetWidth : 1;
-  var scaleY = offsetHeight ? rect.height / offsetHeight : 1;
-  var position = [rect.left + padding[0], rect.top + padding[1], scaleX, scaleY];
-  return {
-    clientX: (evt.clientX - position[0] - dom.clientLeft) / position[2],
-    clientY: (evt.clientY - position[1] - dom.clientTop) / position[3]
-  };
-};
-
-exports.getEventContainerPosition = getEventContainerPosition;
-},{"./split":"../src/util/split.ts","./browser":"../src/util/browser.ts"}],"../src/util/now.ts":[function(require,module,exports) {
+},{"kiwi.matrix":"../node_modules/kiwi.matrix/dist/bundle.js","./Globe":"../src/globe/Globe.ts","../core/Ray":"../src/core/Ray.ts","../camera/PerspectiveCamera":"../src/camera/PerspectiveCamera.ts"}],"../src/util/now.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1835,4835 +6774,7 @@ _Globe.Globe.prototype.updateQuadtreeTileByDistanceError = function () {
 };
 
 _Globe.Globe.registerHook(_Globe.Globe.prototype.registerQuadtree, _QuadtreeTileSchema.webMercatorTileSchema);
-},{"./Globe":"../src/globe/Globe.ts","./../core/QuadtreeTile":"../src/core/QuadtreeTile.ts","./../core/QuadtreeTileSchema":"../src/core/QuadtreeTileSchema.ts"}],"../node_modules/pipegl/src/pool/BufferPool.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.bufferPool0 = void 0;
-
-const nextPow16 = v => {
-  for (let i = 16, max = 1 << 28; i <= max; i *= 16) if (v <= i) return i;
-
-  return 0;
-};
-
-const nextLog2 = v => {
-  let shift = 0;
-  let r = +(v > 0xFFFF) << 4;
-  v >>>= r;
-  shift = +(v > 0xFF) << 3;
-  v >>>= shift;
-  r |= shift;
-  shift = +(v > 0xF) << 2;
-  v >>>= shift;
-  r |= shift;
-  shift = +(v > 0x3) << 1;
-  v >>>= shift;
-  r |= shift;
-  return r | v >> 1;
-};
-
-const interLoop = n => {
-  const r = [];
-
-  for (let i = 0; i < n; i++) r[i] = [];
-
-  return r;
-};
-
-class BufferPool {
-  constructor() {
-    this.bufferPool = interLoop(8);
-
-    this.alloc = size => {
-      const bufferPool = this.bufferPool,
-            actualSize = nextPow16(size),
-            bin = bufferPool[nextLog2(actualSize) >> 2];
-      return bin.length > 0 ? bin.pop() : new ArrayBuffer(actualSize);
-    };
-
-    this.allocType = (scomponent, size) => {
-      const alloc = this.alloc;
-      let arr = null;
-
-      switch (scomponent) {
-        case 'BYTE':
-          arr = new Int8Array(alloc(size), 0, size);
-          break;
-
-        case 'UNSIGNED_BYTE':
-          arr = new Uint8Array(alloc(size), 0, size);
-          break;
-
-        case 'SHORT':
-          arr = new Int16Array(alloc(2 * size), 0, size);
-          break;
-
-        case 'UNSIGNED_SHORT':
-          arr = new Uint16Array(alloc(2 * size), 0, size);
-          break;
-
-        case 'INT':
-          arr = new Int32Array(alloc(4 * size), 0, size);
-          break;
-
-        case 'UNSIGNED_INT':
-          arr = new Uint32Array(alloc(4 * size), 0, size);
-          break;
-
-        case 'FLOAT':
-          arr = new Float32Array(alloc(4 * size), 0, size);
-          break;
-      }
-
-      if (arr.length !== size) arr = arr.subarray(0, size);
-      return arr;
-    };
-
-    this.free = buffer => {
-      if (!buffer) return;
-      const bufferPool = this.bufferPool;
-      bufferPool[nextLog2(buffer.byteLength) >> 2].push(buffer);
-    };
-
-    this.freeType = typedArraybuffer => {
-      this.free(typedArraybuffer.buffer);
-    };
-  }
-
-}
-
-const bufferPool0 = new BufferPool();
-exports.bufferPool0 = bufferPool0;
-},{}],"../node_modules/pipegl/src/core/Constant.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CWebGLStatusVariable = exports.CWebGLStatusTYPE = exports.CWebGLStatusFLAG = exports.CVector = exports.CUsage = exports.CTextureWrapTarget = exports.CTextureMapTarget = exports.CTextureMINFilter = exports.CTextureMAGFilter = exports.CTextureFillTarget = exports.CTextureCompressed = exports.CTextureComponentSize = exports.CTextureComponent = exports.CTextureColor2Component = exports.CTextureColor = exports.CTextureChannelCount = exports.CShaderTarget = exports.CRenderbufferColor = exports.CPrimitive = exports.CMipmapHint = exports.CDimension = exports.CComponent = exports.CColorSpace = exports.CBlendFunc = exports.CAttributeTS = exports.CAttachmentTarget = exports.CArraybufferTarget = exports.CActiveTarget = void 0;
-const CBlendFunc = {
-  FUNC_ADD: 0x8006,
-  FUNC_SUBTRACT: 0x800A,
-  FUNC_REVERSE_SUBTRACT: 0x800B,
-  MIN_EXT: 0x8007,
-  MAX_EXT: 0x8008
-};
-exports.CBlendFunc = CBlendFunc;
-const CComponent = {
-  BYTE: 0x1400,
-  UNSIGNED_BYTE: 0x1401,
-  SHORT: 0x1402,
-  UNSIGNED_SHORT: 0x1403,
-  INT: 0x1404,
-  UNSIGNED_INT: 0x1405,
-  FLOAT: 0x1406
-};
-exports.CComponent = CComponent;
-const CPrimitive = {
-  POINTS: 0,
-  LINES: 1,
-  LINE_LOOP: 2,
-  LINE_STRIP: 3,
-  TRIANGLES: 4,
-  TRIANGLE_STRIP: 5,
-  TRIANGLE_FAN: 6
-};
-exports.CPrimitive = CPrimitive;
-const CTextureMapTarget = {
-  TEXTURE_2D: 0x0DE1,
-  TEXTURE_CUBE_MAP: 0x8513,
-  TEXTURE_CUBE_MAP_POSITIVE_X: 0x8515,
-  TEXTURE_CUBE_MAP_NEGATIVE_X: 0x8516,
-  TEXTURE_CUBE_MAP_POSITIVE_Y: 0x8517,
-  TEXTURE_CUBE_MAP_NEGATIVE_Y: 0x8518,
-  TEXTURE_CUBE_MAP_POSITIVE_Z: 0x8519,
-  TEXTURE_CUBE_MAP_NEGATIVE_Z: 0x851A
-};
-exports.CTextureMapTarget = CTextureMapTarget;
-const CShaderTarget = {
-  FRAGMENT_SHADER: 0x8B30,
-  VERTEX_SHADER: 0x8B31
-};
-exports.CShaderTarget = CShaderTarget;
-const CArraybufferTarget = {
-  ARRAY_BUFFER: 0x8892,
-  ELEMENT_ARRAY_BUFFER: 0x8893
-};
-exports.CArraybufferTarget = CArraybufferTarget;
-const CUsage = {
-  STATIC_DRAW: 0x88E4,
-  STREAM_DRAW: 0x88E0,
-  DYNAMIC_DRAW: 0x88E8
-};
-exports.CUsage = CUsage;
-const CDimension = {
-  POINTS: 1,
-  LINES: 2,
-  TRIANGLES: 3
-};
-exports.CDimension = CDimension;
-const CActiveTarget = {
-  ACTIVE_ATTRIBUTES: 0x8B89,
-  ACTIVE_UNIFORMS: 0x8B86
-};
-exports.CActiveTarget = CActiveTarget;
-const CVector = {
-  SCALAR: 1,
-  VEC2: 2,
-  VEC3: 3,
-  VEC4: 4,
-  MAT2: 4,
-  MAT3: 9,
-  MAT4: 16
-};
-exports.CVector = CVector;
-const CAttachmentTarget = {
-  TEXTURE_2D: 0x0DE1,
-  RENDERBUFFER: 0x8D41
-};
-exports.CAttachmentTarget = CAttachmentTarget;
-const CTextureFillTarget = {
-  REPEAT: 0x2901,
-  CLAMP_TO_EDGE: 0x812F,
-  MIRRORED_REPEAT: 0x8370
-};
-exports.CTextureFillTarget = CTextureFillTarget;
-const CMipmapHint = {
-  DONT_CARE: 0x1100,
-  FASTEST: 0x1101,
-  NICEST: 0x1102
-};
-exports.CMipmapHint = CMipmapHint;
-const CTextureWrapTarget = {
-  TEXTURE_WRAP_S: 0x2802,
-  TEXTURE_WRAP_T: 0x2803
-};
-exports.CTextureWrapTarget = CTextureWrapTarget;
-const CTextureMAGFilter = {
-  NEAREST: 0x2600,
-  LINEAR: 0x2601
-};
-exports.CTextureMAGFilter = CTextureMAGFilter;
-const CTextureMINFilter = {
-  NEAREST: 0x2600,
-  LINEAR: 0x2601,
-  NEAREST_MIPMAP_NEAREST: 0x2700,
-  LINEAR_MIPMAP_NEAREST: 0x2701,
-  NEAREST_MIPMAP_LINEAR: 0x2702,
-  LINEAR_MIPMAP_LINEAR: 0x2703
-};
-exports.CTextureMINFilter = CTextureMINFilter;
-const CColorSpace = {
-  NONE: 0,
-  BROWSER_DEFAULT_WEBGL: 0x9244
-};
-exports.CColorSpace = CColorSpace;
-const CTextureComponent = {
-  BYTE: 0x1400,
-  UNSIGNED_BYTE: 0x1401,
-  SHORT: 0x1402,
-  UNSIGNED_SHORT: 0x1403,
-  INT: 0x1404,
-  UNSIGNED_INT: 0x1405,
-  FLOAT: 0x1406,
-  UNSIGNED_SHORT_4_4_4_4: 0x8033,
-  UNSIGNED_SHORT_5_5_5_1: 0x8034,
-  UNSIGNED_SHORT_5_6_5: 0x8363,
-  HALF_FLOAT_OES: 0x8D61,
-  UNSIGNED_INT_24_8_WEBGL: 0x84FA
-};
-exports.CTextureComponent = CTextureComponent;
-const CTextureColor = {
-  ALPHA: 0x1906,
-  RGB: 0x1907,
-  RGBA: 0x1908,
-  RGBA4: 0x8056,
-  RGB5_A1: 0x8057,
-  RGB565: 0x8D62,
-  LUMINANCE: 0x1909,
-  LUMINANCE_ALPHA: 0x190A,
-  SRGB_EXT: 0x8c40,
-  SRGB_ALPHA_EXT: 0x8c42,
-  DEPTH_COMPONENT: 0x1902,
-  DEPTH_STENCIL: 0x84F9
-};
-exports.CTextureColor = CTextureColor;
-const CTextureColor2Component = {
-  RGBA4: 'UNSIGNED_SHORT_4_4_4_4',
-  RGB5_A1: 'UNSIGNED_SHORT_5_5_5_1'
-};
-exports.CTextureColor2Component = CTextureColor2Component;
-const CTextureCompressed = {
-  COMPRESSED_RGB_S3TC_DXT1_EXT: 0x83F0,
-  COMPRESSED_RGBA_S3TC_DXT1_EXT: 0x83F1,
-  COMPRESSED_RGBA_S3TC_DXT3_EXT: 0x83F2,
-  COMPRESSED_RGBA_S3TC_DXT5_EXT: 0x83F3
-};
-exports.CTextureCompressed = CTextureCompressed;
-const CTextureComponentSize = {
-  0x1400: 1,
-  0x1401: 1,
-  0x1402: 2,
-  0x1403: 2,
-  0x1404: 4,
-  0x1405: 4,
-  0x1406: 4,
-  0x8D61: 2,
-  0x8363: 2,
-  0x8033: 2,
-  0x8034: 2,
-  0x84FA: 4
-};
-exports.CTextureComponentSize = CTextureComponentSize;
-const CTextureChannelCount = {
-  0x1909: 1,
-  0x1906: 1,
-  0x1902: 1,
-  0x84F9: 2,
-  0x190A: 2,
-  0x1907: 3,
-  0x8c40: 3,
-  0x1908: 4,
-  0x8c42: 4
-};
-exports.CTextureChannelCount = CTextureChannelCount;
-const CRenderbufferColor = {
-  RGBA4: 0x8056,
-  RGB565: 0x8D62,
-  RGB5_A1: 0x8057,
-  DEPTH_COMPONENT16: 0x81A5,
-  STENCIL_INDEX8: 0x8D48,
-  DEPTH_STENCIL: 0x84F9,
-  SRGB8_ALPHA8_EXT: 0x8c43,
-  RGB16F_EXT: 0x881B,
-  RGBA16F_EXT: 0x881A,
-  RGBA32F_EXT: 0x8814
-};
-exports.CRenderbufferColor = CRenderbufferColor;
-const CWebGLStatusTYPE = {
-  FLAG: 1,
-  BOOLEAN: 2,
-  ARRAY: 3,
-  DECARRAY: 4,
-  NUMBER: 5
-};
-exports.CWebGLStatusTYPE = CWebGLStatusTYPE;
-const CWebGLStatusFLAG = {
-  DITHER: CWebGLStatusTYPE.FLAG,
-  BLEND: CWebGLStatusTYPE.FLAG,
-  DEPTH_TEST: CWebGLStatusTYPE.FLAG,
-  CULL_FACE: CWebGLStatusTYPE.FLAG,
-  POLYGON_OFFSET_FILL: CWebGLStatusTYPE.FLAG,
-  SAMPLE_ALPHA_TO_COVERAGE: CWebGLStatusTYPE.FLAG,
-  SAMPLE_COVERAGE: CWebGLStatusTYPE.FLAG,
-  STENCIL_TEST: CWebGLStatusTYPE.FLAG,
-  SCISSOR_TEST: CWebGLStatusTYPE.FLAG
-};
-exports.CWebGLStatusFLAG = CWebGLStatusFLAG;
-const CWebGLStatusVariable = {
-  blendColor: CWebGLStatusTYPE.ARRAY,
-  scissor: CWebGLStatusTYPE.DECARRAY,
-  blendEquationSeparate: CWebGLStatusTYPE.DECARRAY,
-  blendFuncSeparate: CWebGLStatusTYPE.DECARRAY,
-  blendFunc: CWebGLStatusTYPE.DECARRAY,
-  depthFunc: CWebGLStatusTYPE.NUMBER,
-  depthRange: CWebGLStatusTYPE.DECARRAY,
-  depthMask: CWebGLStatusTYPE.BOOLEAN,
-  colorMask: CWebGLStatusTYPE.DECARRAY,
-  cullFace: CWebGLStatusTYPE.NUMBER,
-  frontFace: CWebGLStatusTYPE.NUMBER,
-  lineWidth: CWebGLStatusTYPE.NUMBER,
-  polygonOffset: CWebGLStatusTYPE.DECARRAY,
-  sampleCoverage: CWebGLStatusTYPE.DECARRAY,
-  stencilMask: CWebGLStatusTYPE.NUMBER,
-  stencilFunc: CWebGLStatusTYPE.DECARRAY,
-  stencilOpSeparate: CWebGLStatusTYPE.DECARRAY,
-  stencilOp: CWebGLStatusTYPE.DECARRAY,
-  viewport: CWebGLStatusTYPE.DECARRAY
-};
-exports.CWebGLStatusVariable = CWebGLStatusVariable;
-const CAttributeTS = {
-  5126: 1,
-  35664: 2,
-  35665: 3,
-  35666: 4,
-  35667: 2,
-  35668: 3,
-  35669: 4,
-  35671: 2,
-  35672: 3,
-  35673: 4
-};
-exports.CAttributeTS = CAttributeTS;
-},{}],"../node_modules/pipegl/src/core/Limit.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Limit = void 0;
-
-var _BufferPool = require("./../pool/BufferPool");
-
-var _Constant = require("./Constant");
-
-const MAX_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FF;
-const MAX_DRAW_BUFFERS_WEBGL = 0x8824;
-const MAX_COLOR_ATTACHMENTS_WEBGL = 0x8CDF;
-
-class Limit {
-  constructor(gl, extLib) {
-    this.maxAnisotropic = 1;
-    this.maxDrawbuffers = 1;
-    this.maxColorAttachments = 1;
-    this.readFloat = false;
-    this.npotTextureCube = true;
-    this.colorBits = new Array(4);
-    this.info = {};
-    if (extLib.get('EXT_texture_filter_anisotropic')) this.maxAnisotropic = gl.getParameter(MAX_TEXTURE_MAX_ANISOTROPY_EXT);
-
-    if (extLib.get('WEBGL_draw_buffers')) {
-      this.maxDrawbuffers = gl.getParameter(MAX_DRAW_BUFFERS_WEBGL);
-      this.maxColorAttachments = gl.getParameter(MAX_COLOR_ATTACHMENTS_WEBGL);
-    }
-
-    if (extLib.get('OES_texture_float')) {
-      this.readFloat = true;
-      const readFloatTexture = gl.createTexture();
-      gl.bindTexture(_Constant.CTextureMapTarget.TEXTURE_2D, readFloatTexture);
-      gl.texImage2D(_Constant.CTextureMapTarget.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, _Constant.CComponent.FLOAT, null);
-      const fbo = gl.createFramebuffer();
-      gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
-      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, _Constant.CTextureMapTarget.TEXTURE_2D, readFloatTexture, 0);
-      gl.bindTexture(_Constant.CTextureMapTarget.TEXTURE_2D, null);
-      if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) this.readFloat = false;else {
-        gl.viewport(0, 0, 1, 1);
-        gl.clearColor(1.0, 0.0, 0.0, 1.0);
-        gl.clear(gl.COLOR_BUFFER_BIT);
-
-        const pixels = _BufferPool.bufferPool0.allocType('FLOAT', 4);
-
-        gl.readPixels(0, 0, 1, 1, gl.RGBA, _Constant.CComponent.FLOAT, pixels);
-        if (gl.getError()) this.readFloat = false;else {
-          gl.deleteFramebuffer(fbo);
-          gl.deleteTexture(readFloatTexture);
-          this.readFloat = pixels[0] === 1.0;
-        }
-
-        _BufferPool.bufferPool0.freeType(pixels);
-      }
-    }
-
-    const cubeTexture = gl.createTexture();
-
-    const data = _BufferPool.bufferPool0.allocType('UNSIGNED_BYTE', 36);
-
-    gl.activeTexture(gl.TEXTURE0);
-    gl.bindTexture(_Constant.CTextureMapTarget.TEXTURE_CUBE_MAP, cubeTexture);
-    gl.texImage2D(_Constant.CTextureMapTarget.TEXTURE_CUBE_MAP_NEGATIVE_X, 0, gl.RGBA, 3, 3, 0, gl.RGBA, _Constant.CComponent.UNSIGNED_BYTE, data);
-
-    _BufferPool.bufferPool0.freeType(data);
-
-    gl.bindTexture(_Constant.CTextureMapTarget.TEXTURE_CUBE_MAP, null);
-    gl.deleteTexture(cubeTexture);
-    this.npotTextureCube = !gl.getError();
-    this.colorBits.push(...[gl.getParameter(gl.RED_BITS), gl.getParameter(gl.GREEN_BITS), gl.getParameter(gl.BLUE_BITS), gl.getParameter(gl.ALPHA_BITS)]);
-    this.depthBits = gl.getParameter(gl.DEPTH_BITS);
-    this.stencilBits = gl.getParameter(gl.STENCIL_BITS);
-    this.pointSizeDims = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
-    this.lineWidthDims = gl.getParameter(gl.ALIASED_LINE_WIDTH_RANGE);
-    this.maxViewportDims = gl.getParameter(gl.MAX_VIEWPORT_DIMS);
-    this.maxCombineTextureUnits = gl.getParameter(gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS);
-    this.maxCubeMapSize = gl.getParameter(gl.MAX_CUBE_MAP_TEXTURE_SIZE);
-    this.maxRenderbufferSize = gl.getParameter(gl.MAX_RENDERBUFFER_SIZE);
-    this.maxTextureUnits = gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS);
-    this.maxTextureSize = gl.getParameter(gl.MAX_TEXTURE_SIZE);
-    this.maxAttributes = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
-    this.maxVertexUniforms = gl.getParameter(gl.MAX_VERTEX_UNIFORM_VECTORS);
-    this.maxFragmentUniforms = gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS);
-    this.maxVertexTextureUnits = gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS);
-    this.maxVaryingVectors = gl.getParameter(gl.MAX_VARYING_VECTORS);
-    this.info.glsl = gl.getParameter(gl.SHADING_LANGUAGE_VERSION);
-    this.info.vendor = gl.getParameter(gl.VENDOR);
-    this.info.version = gl.getParameter(gl.VERSION);
-    this.info.renderer = gl.getParameter(gl.RENDERER);
-  }
-
-}
-
-exports.Limit = Limit;
-},{"./../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts","./Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/check.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.check = void 0;
-
-const check = (pred, message) => {
-  if (!pred) throw new Error(`pipegl:${message}`);
-};
-
-exports.check = check;
-},{}],"../node_modules/pipegl/src/util/getIdx.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getIdx = void 0;
-let id = 0;
-
-const getIdx = () => {
-  return id++;
-};
-
-exports.getIdx = getIdx;
-},{}],"../node_modules/pipegl/src/core/Dispose.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Dispose = void 0;
-
-var _getIdx = require("../util/getIdx");
-
-class Dispose {
-  constructor() {
-    this.id = (0, _getIdx.getIdx)();
-    this.refCount = 0;
-  }
-
-  get ID() {
-    return this.id;
-  }
-
-}
-
-exports.Dispose = Dispose;
-},{"../util/getIdx":"../node_modules/pipegl/src/util/getIdx.ts"}],"../node_modules/pipegl/src/res/GTexture.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.TEXTURE_UNIT_ARR = exports.TEXTURE_SET = exports.GTexture = void 0;
-
-var _check = require("../util/check");
-
-var _Dispose = require("../core/Dispose");
-
-var _Constant = require("../core/Constant");
-
-const TEXTURE_SET = new Map();
-exports.TEXTURE_SET = TEXTURE_SET;
-const TEXTURE_UNIT_ARR = [];
-exports.TEXTURE_UNIT_ARR = TEXTURE_UNIT_ARR;
-const TEXTURE0$1 = 0x84C0;
-const TEXTURE2D$1 = 0x0DE1;
-
-class GTexture extends _Dispose.Dispose {
-  constructor(gl, limLib, target, stats) {
-    super();
-
-    this.bind = () => {
-      const gl = this.gl,
-            target = this.target;
-      const numTexUnits = this.limLib.maxTextureUnits;
-      this.bindCount++;
-
-      if (this.unit < 0) {
-        for (let i = 0; i < numTexUnits; ++i) {
-          const other = TEXTURE_UNIT_ARR[i];
-
-          if (other) {
-            if (other.bindCount > 0) continue;
-            other.unit = -1;
-          }
-
-          TEXTURE_UNIT_ARR[i] = this;
-          this.unit = i;
-          break;
-        }
-
-        (0, _check.check)(this.unit < numTexUnits, `REGLTexture错误：使用纹理超过设备支持上限${this.limLib.maxTextureUnits}`);
-        gl.activeTexture(gl.TEXTURE0 + this.unit);
-        gl.bindTexture(target, this.texture);
-      }
-
-      return this.unit;
-    };
-
-    this.unbind = () => {
-      return this.bindCount--;
-    };
-
-    this.tempBind = () => {
-      const gl = this.gl,
-            target = this.target;
-      gl.activeTexture(TEXTURE0$1);
-      gl.bindTexture(target, this.texture);
-    };
-
-    this.tempRestore = () => {
-      const gl = this.gl,
-            prev = TEXTURE_UNIT_ARR[0];
-
-      if (prev) {
-        const target = prev.target;
-        gl.bindTexture(target, prev.texture);
-      } else gl.bindTexture(TEXTURE2D$1, null);
-    };
-
-    this.gl = gl;
-    this.target = _Constant.CTextureMapTarget[target || 'TEXTURE_2D'];
-    this.bindCount = 0;
-    this.unit = -1;
-    this.limLib = limLib;
-    this.refCount = 1;
-    this.texture = gl.createTexture();
-    this.stats = stats;
-    if (this.target === _Constant.CTextureMapTarget.TEXTURE_2D) this.stats.textureCount++;else if (this.target === _Constant.CTextureMapTarget.TEXTURE_CUBE_MAP) this.stats.cubeCount++;
-    TEXTURE_SET.set(this.ID, this);
-  }
-
-  dispose() {
-    throw new Error('Method not implemented.');
-  }
-
-  decRef() {
-    if (--this.refCount <= 0) this.dispose();
-  }
-
-  set TexInfo(v) {
-    this.texInfo = v;
-  }
-
-  get TexInfo() {
-    return this.texInfo;
-  }
-
-  set TexFlag(v) {
-    this.texFlag = v;
-  }
-
-  get TexFlag() {
-    return this.texFlag;
-  }
-
-  set Mipmap(v) {
-    this.mipmap = v;
-  }
-
-  get Mipmap() {
-    return this.mipmap;
-  }
-
-  get Width() {
-    return this.mipmap.width;
-  }
-
-  get Height() {
-    return this.mipmap.height;
-  }
-
-  get Channels() {
-    return this.mipmap.channels;
-  }
-
-  get Texutre() {
-    return this.texture;
-  }
-
-}
-
-exports.GTexture = GTexture;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/getFlatten.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getDimension = exports.getArrayShape = exports.flattenArrayWithShape = exports.flattenArray = void 0;
-
-var _BufferPool = require("../pool/BufferPool");
-
-const getArrayShape = array => {
-  const shape = [];
-  let arr = array;
-
-  while (arr.length > 0) {
-    shape.push(arr.length);
-    arr = arr[0];
-  }
-
-  return shape;
-};
-
-exports.getArrayShape = getArrayShape;
-
-const getDimension = shape => {
-  return shape.reduce((pre, cur) => {
-    return cur * pre;
-  }) || 0;
-};
-
-exports.getDimension = getDimension;
-
-const flatten1D = (arr, len0, out) => {
-  for (let i = 0; i < len0; ++i) out[i] = arr[i];
-};
-
-const flatten2D = (arr, len0, len1, out) => {
-  let ptr = 0;
-
-  for (let i = 0; i < len0; ++i) {
-    const row = arr[i];
-
-    for (let j = 0; j < len1; ++j) out[ptr++] = row[j];
-  }
-};
-
-const flatten3D = (arr, len0, len1, len2, out, ptr_ = 0) => {
-  let ptr = ptr_;
-
-  for (let i = 0; i < len0; ++i) {
-    let row = arr[i];
-
-    for (let j = 0; j < len1; ++j) {
-      let col = row[j];
-
-      for (let k = 0; k < len2; ++k) out[ptr++] = col[k];
-    }
-  }
-};
-
-const flattenArrayWithShape = (array, shape, scomponent, out_ = null) => {
-  const size = getDimension(shape);
-
-  const out = out_ || _BufferPool.bufferPool0.allocType(scomponent, size);
-
-  switch (shape.length) {
-    case 0:
-      break;
-
-    case 1:
-      flatten1D(array, shape[0], out);
-      break;
-
-    case 2:
-      flatten2D(array, shape[0], shape[1], out);
-      break;
-
-    case 3:
-      flatten3D(array, shape[0], shape[1], shape[2], out, 0);
-      break;
-
-    default:
-      throw new Error(`pipegl: flatten did't support ${shape.length} D array`);
-  }
-
-  return out;
-};
-
-exports.flattenArrayWithShape = flattenArrayWithShape;
-
-const flattenArray = (array, scomponent, out_ = null) => {
-  const shape = getArrayShape(array);
-  return flattenArrayWithShape(array, shape, scomponent, out_);
-};
-
-exports.flattenArray = flattenArray;
-},{"../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts"}],"../node_modules/pipegl/src/util/isNDArray.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isNDArray = void 0;
-
-var _getFlatten = require("./getFlatten");
-
-const isNDArray = v => {
-  if (Array.isArray(v)) {
-    const shape = (0, _getFlatten.getArrayShape)(v);
-    if (shape.length > 0 && shape.length < 3) return true;
-  }
-
-  return false;
-};
-
-exports.isNDArray = isNDArray;
-},{"./getFlatten":"../node_modules/pipegl/src/util/getFlatten.ts"}],"../node_modules/pipegl/src/res/GFramebuffer.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.GFramebuffer = exports.FRAMEBUFFER_SET = void 0;
-
-var _check = require("../util/check");
-
-var _Dispose = require("../core/Dispose");
-
-const COLOR_ATTACHMENT0_WEBGL = 0x8CE0;
-const FRAMEBUFFER_SET = new Map();
-exports.FRAMEBUFFER_SET = FRAMEBUFFER_SET;
-
-class GFramebuffer extends _Dispose.Dispose {
-  constructor(gl, limLib, stats) {
-    super();
-    this.colorAttachments = [];
-    this.depthAttachment = null;
-    this.stencilAttachment = null;
-    this.depthStencilAttachment = null;
-
-    this.refreshAttachment = opts => {
-      this.colorDrawbuffers = [];
-      this.colorAttachments = opts.colorAttachments;
-      this.depthAttachment = opts.depthAttachment;
-      this.stencilAttachment = opts.stencilAttachment;
-      this.depthStencilAttachment = opts.depthStencilAttachment;
-      this.colorAttachments.forEach((attachment, index) => this.colorDrawbuffers.push(COLOR_ATTACHMENT0_WEBGL + index));
-    };
-
-    this.bind = () => {
-      this.refCount++;
-      this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, this.framebuffer);
-    };
-
-    this.unbind = () => {
-      this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, null);
-    };
-
-    this.updateFramebuffer = () => {
-      var _a;
-
-      const gl = this.gl;
-      gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffer);
-      (_a = this.colorAttachments) === null || _a === void 0 ? void 0 : _a.forEach((colorAttachment, i) => {
-        colorAttachment.attach(gl.COLOR_ATTACHMENT0 + i);
-      });
-
-      for (let i = this.colorAttachments.length; i < this.limLib.maxColorAttachments; ++i) {
-        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0 + i, gl.TEXTURE_2D, null, 0);
-      }
-
-      if (this.depthAttachment) {
-        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.TEXTURE_2D, null, 0);
-        this.depthAttachment.attach(gl.DEPTH_ATTACHMENT);
-      }
-
-      if (this.stencilAttachment) {
-        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.TEXTURE_2D, null, 0);
-        this.depthAttachment.attach(gl.STENCIL_ATTACHMENT);
-      }
-
-      if (this.depthStencilAttachment) {
-        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.DEPTH_STENCIL_ATTACHMENT, gl.TEXTURE_2D, null, 0);
-        this.depthAttachment.attach(gl.DEPTH_STENCIL_ATTACHMENT);
-      }
-
-      const status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
-      (0, _check.check)(!gl.isContextLost() && status === gl.FRAMEBUFFER_COMPLETE, `GFramebuffer 错误: 错误码${status}`);
-      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-      const ERROR = gl.getError();
-      (0, _check.check)(ERROR === gl.NO_ERROR, `GFramebuffer 错误: gl上下文错误, 错误码 ${ERROR}`);
-      (0, _check.check)(ERROR !== gl.INVALID_ENUM, `GFramebuffer 错误: 请检查是否使用了多个颜色附件，多颜色附件必须开启插件WEBGL_draw_buffers`);
-    };
-
-    this.gl = gl;
-    this.framebuffer = gl.createFramebuffer();
-    this.width = 0;
-    this.height = 0;
-    this.limLib = limLib;
-    this.stats = stats;
-    this.stats.framebufferCount++;
-    FRAMEBUFFER_SET.set(this.ID, this);
-  }
-
-  dispose() {
-    const gl = this.gl;
-    (0, _check.check)(this.framebuffer, `REGLFramebuffer 错误: 请不要重复清理FBO`);
-    gl.deleteFramebuffer(this.framebuffer);
-    this.framebuffer = null;
-    this.stats.framebufferCount--;
-    FRAMEBUFFER_SET.delete(this.ID);
-  }
-
-  decRef() {
-    var _a;
-
-    (_a = this.colorAttachments) === null || _a === void 0 ? void 0 : _a.forEach(attachment => {
-      attachment.decRef();
-    });
-    this.depthAttachment.decRef();
-    this.stencilAttachment.decRef();
-    this.depthStencilAttachment.decRef();
-    if (--this.refCount <= 0) this.dispose();
-  }
-
-  get ColorAttachments() {
-    return this.colorAttachments;
-  }
-
-  get ColorDrawbuffers() {
-    return this.colorDrawbuffers;
-  }
-
-}
-
-exports.GFramebuffer = GFramebuffer;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts"}],"../node_modules/kiwi.codegen/src/util/slice.ts":[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.slice = void 0;
-var slice = function (x) {
-    return Array.prototype.slice.call(x);
-};
-exports.slice = slice;
-
-},{}],"../node_modules/kiwi.codegen/src/util/join.ts":[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.join = void 0;
-var slice_1 = require("./slice");
-var join = function (x) {
-    return (0, slice_1.slice)(x).join('');
-};
-exports.join = join;
-
-},{"./slice":"../node_modules/kiwi.codegen/src/util/slice.ts"}],"../node_modules/kiwi.codegen/src/util/getId.ts":[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getId = void 0;
-var id = 1;
-var getId = function () {
-    return id++;
-};
-exports.getId = getId;
-
-},{}],"../node_modules/kiwi.codegen/src/core/Compilable.ts":[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Compilable = void 0;
-var getId_1 = require("../util/getId");
-/**
- * @date 2021/8/15
- * @description complie code
- * @author axmand
- * @example
- * //inherit
- * class BlockClass extends Compilable{ }
- */
-var Compilable = /** @class */ (function () {
-    function Compilable() {
-        var _this = this;
-        this.id = "compilable-" + (0, getId_1.getId)();
-        this.regularize = function (raw) {
-            return raw.replace(/\n/g, '').replace(/;/g, ';\n').replace(/}/g, '}\n').replace(/{/g, '{\n');
-        };
-        this.compile = function () {
-            throw new Error(_this.ID + " unimplemented method");
-        };
-    }
-    Object.defineProperty(Compilable.prototype, "ID", {
-        get: function () {
-            return this.id;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Compilable;
-}());
-exports.Compilable = Compilable;
-
-},{"../util/getId":"../node_modules/kiwi.codegen/src/util/getId.ts"}],"../node_modules/kiwi.codegen/src/code/Scope.ts":[function(require,module,exports) {
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Scope = void 0;
-var Block_1 = require("./Block");
-var Compilable_1 = require("../core/Compilable");
-/**
- * @description
- * codeblock seems like:
- * //entry
- * const a = '112233'
- * ...
- * ...
- * //exit, always in tail
- * const b = a;
- */
-var Scope = /** @class */ (function (_super) {
-    __extends(Scope, _super);
-    function Scope() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        /**
-         * entry block
-         */
-        _this.entrytBlock = new Block_1.Block();
-        /**
-         * tail block
-         */
-        _this.exitBlock = new Block_1.Block();
-        _this.compile = function () {
-            return _this.regularize("" + _this.Entry.compile() + _this.Exit.compile());
-        };
-        return _this;
-    }
-    Object.defineProperty(Scope.prototype, "Entry", {
-        get: function () {
-            return this.entrytBlock;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Scope.prototype, "Exit", {
-        get: function () {
-            return this.exitBlock;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Scope;
-}(Compilable_1.Compilable));
-exports.Scope = Scope;
-
-},{"./Block":"../node_modules/kiwi.codegen/src/code/Block.ts","../core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts"}],"../node_modules/kiwi.codegen/src/code/Condition.ts":[function(require,module,exports) {
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ConditionTE = exports.ConditionT = void 0;
-var join_1 = require("./../util/join");
-var Block_1 = require("./Block");
-var Compilable_1 = require("../core/Compilable");
-/**
- * @description
- * code block seems like:
- * if(cond){
- *  //then block
- * }
- * else{
- *  //else block
- * }
- */
-var ConditionTE = /** @class */ (function (_super) {
-    __extends(ConditionTE, _super);
-    function ConditionTE() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        var _this = _super.call(this) || this;
-        /**
-         * then block body
-         */
-        _this.thenBlock = new Block_1.Block();
-        /**
-         * else block body
-         */
-        _this.elseBlock = new Block_1.Block();
-        _this.compile = function () {
-            return _this.regularize("if(" + _this.predSource + "){" + _this.Then.compile() + "}else{" + _this.Else.compile() + "}");
-        };
-        _this.predSource = (0, join_1.join)(args);
-        return _this;
-    }
-    Object.defineProperty(ConditionTE.prototype, "Then", {
-        /**
-         * @description then block codelines
-         * @example
-         * cond.Then.push(`console(true)`);
-         */
-        get: function () {
-            return this.thenBlock;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(ConditionTE.prototype, "Else", {
-        /**
-         * @description else block codelines
-         * @example
-         * cond.Else.push(`alert(0)`);
-         */
-        get: function () {
-            return this.elseBlock;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return ConditionTE;
-}(Compilable_1.Compilable));
-exports.ConditionTE = ConditionTE;
-/**
- * @description
- * code block seems like
- * if(cond){
- *  //then block
- * }
- */
-var ConditionT = /** @class */ (function (_super) {
-    __extends(ConditionT, _super);
-    function ConditionT() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        var _this = _super.call(this) || this;
-        /**
-         *
-         */
-        _this.thenBlock = new Block_1.Block();
-        _this.compile = function () {
-            return _this.regularize("if(" + _this.predSource + "){" + _this.Then.compile() + "}");
-        };
-        _this.predSource = (0, join_1.join)(args);
-        return _this;
-    }
-    Object.defineProperty(ConditionT.prototype, "Then", {
-        get: function () {
-            return this.thenBlock;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return ConditionT;
-}(Compilable_1.Compilable));
-exports.ConditionT = ConditionT;
-
-},{"./../util/join":"../node_modules/kiwi.codegen/src/util/join.ts","./Block":"../node_modules/kiwi.codegen/src/code/Block.ts","../core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts"}],"../node_modules/kiwi.codegen/src/util/check.ts":[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.codegenValueError = exports.codegenError = void 0;
-/**
- * @description check error by cond 'pred'
- * @param pred
- * @param message
- */
-var codegenError = function (pred, message) {
-    if (!pred) {
-        var error = new Error("error-" + message);
-        throw error;
-    }
-};
-exports.codegenError = codegenError;
-/**
- * @description check o is null or undefined or empty
- * @param o
- * @param message
- */
-var codegenValueError = function (o, message) {
-    var cond = true;
-    if (Array.isArray(o))
-        cond = false;
-    else if (Number(o) !== NaN)
-        cond = false;
-    else if (o !== null || o !== undefined)
-        cond = false;
-    codegenError(!cond, message);
-};
-exports.codegenValueError = codegenValueError;
-
-},{}],"../node_modules/kiwi.codegen/src/code/Block.ts":[function(require,module,exports) {
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Block = void 0;
-var Scope_1 = require("./Scope");
-var Compilable_1 = require("../core/Compilable");
-var Condition_1 = require("./Condition");
-var slice_1 = require("../util/slice");
-var check_1 = require("./../util/check");
-var getId_1 = require("../util/getId");
-var join_1 = require("../util/join");
-var Block = /** @class */ (function (_super) {
-    __extends(Block, _super);
-    function Block() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        /**
-         * codeline count
-         */
-        _this.lc = 0;
-        /**
-         * variable declare array
-         */
-        _this.VARIABLE_NAME_ARR = [];
-        _this.CODELINE_SET = new Map();
-        _this.MERGE_BLOCKS_ARR = [];
-        /**
-         * @description declare varaible, assign with default value 'v'
-         * @example
-         * const name = block.def([1,2]); //var g0 = [1,2];
-         * @param v
-         */
-        _this.def = function (v) {
-            (0, check_1.codegenValueError)(v, "v does not support null/undefined");
-            var NAME = "b" + (0, getId_1.getId)(), CODELINE_ARR = _this.CODELINE_SET, VARIABLE_NAME_ARR = _this.VARIABLE_NAME_ARR;
-            VARIABLE_NAME_ARR.push(NAME);
-            var lines = [];
-            lines.push(NAME, "=");
-            Array.isArray(v) ? lines.push("[" + (0, slice_1.slice)(v) + "]") : lines.push(v);
-            lines.push(";");
-            CODELINE_ARR.set(_this.lc++, lines);
-            return NAME;
-        };
-        /**
-         * @description combine block/scope/condition after this codeline
-         * @param v
-         */
-        _this.combine = function (v) {
-            _this.CODELINE_SET.set(_this.lc++, v);
-        };
-        /**
-         * @description append exist block in tail
-         * @param block
-         */
-        _this.appendBlock = function (block) {
-            (0, check_1.codegenError)(!_this.MERGE_BLOCKS_ARR.find(function (b) { return b.ID === block.ID; }), "Duplicate block merges are not allowed");
-            _this.MERGE_BLOCKS_ARR.push(block);
-        };
-        /**
-         * @description create new Block from this line
-         * @returns
-         */
-        _this.createBlock = function () {
-            var block = new Block();
-            _this.CODELINE_SET.set(_this.lc++, block);
-            return block;
-        };
-        /**
-         * @description create Scope and combie in this codeline
-         * @returns
-         */
-        _this.createScope = function () {
-            var scope = new Scope_1.Scope();
-            _this.CODELINE_SET.set(_this.lc++, scope);
-            return scope;
-        };
-        /**
-         * @description create ConditionT
-         * @param args
-         * @returns
-         */
-        _this.createConditionT = function () {
-            var args = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args[_i] = arguments[_i];
-            }
-            var cond = new (Condition_1.ConditionT.bind.apply(Condition_1.ConditionT, __spreadArray([void 0], args, false)))();
-            _this.combine(cond);
-            return cond;
-        };
-        /**
-         * @description create ConditionTE
-         * @param args
-         * @returns
-         */
-        _this.createConditionTE = function () {
-            var args = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args[_i] = arguments[_i];
-            }
-            var cond = new (Condition_1.ConditionTE.bind.apply(Condition_1.ConditionTE, __spreadArray([void 0], args, false)))();
-            _this.combine(cond);
-            return cond;
-        };
-        /**
-         * @description compile block
-         * @returns
-         */
-        _this.compile = function () {
-            var CODELINE_SET = _this.CODELINE_SET, MERGE_BLOCKS_ARR = _this.MERGE_BLOCKS_ARR, VARIABLE_NAME_ARR = _this.VARIABLE_NAME_ARR;
-            var declareSource = VARIABLE_NAME_ARR.length > 0 ? "var " + VARIABLE_NAME_ARR.join(',') + ";" : "";
-            var bodySource = "";
-            CODELINE_SET.forEach(function (line) {
-                bodySource += (line instanceof Block ||
-                    line instanceof Condition_1.ConditionTE ||
-                    line instanceof Condition_1.ConditionT ||
-                    line instanceof Scope_1.Scope) ? line.compile() : (0, join_1.join)(line);
-            });
-            var mergeSource = MERGE_BLOCKS_ARR.reduce(function (pre, cur) { return pre + cur.compile(); }, "");
-            return _this.regularize("" + declareSource + bodySource + mergeSource);
-        };
-        return _this;
-    }
-    /**
-     * @description add new codeline
-     * @param args
-     * @example
-     * //add new codelines
-     * block.push(`ccc=`, [2124,3], `;`);
-     * //add new codeline
-     * block.push(`ccc=0`);
-     * @returns
-     */
-    Block.prototype.push = function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        var lines = [], CODELINE_ARR = this.CODELINE_SET;
-        args.forEach(function (v) {
-            Array.isArray(v) ? lines.push("[" + (0, slice_1.slice)(v) + "]") : lines.push(v);
-        });
-        if (lines.length > 0
-            && ("" + lines[lines.length - 1]).lastIndexOf('{') !== lines[lines.length - 1].length - 1
-            && ("" + lines[lines.length - 1]).lastIndexOf('}') !== lines[lines.length - 1].length - 1
-            && ("" + lines[lines.length - 1]).lastIndexOf(';') !== lines[lines.length - 1].length - 1)
-            lines.push(';');
-        CODELINE_ARR.set(this.lc++, lines);
-        return this;
-    };
-    return Block;
-}(Compilable_1.Compilable));
-exports.Block = Block;
-
-},{"./Scope":"../node_modules/kiwi.codegen/src/code/Scope.ts","../core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts","./Condition":"../node_modules/kiwi.codegen/src/code/Condition.ts","../util/slice":"../node_modules/kiwi.codegen/src/util/slice.ts","./../util/check":"../node_modules/kiwi.codegen/src/util/check.ts","../util/getId":"../node_modules/kiwi.codegen/src/util/getId.ts","../util/join":"../node_modules/kiwi.codegen/src/util/join.ts"}],"../node_modules/kiwi.codegen/src/code/Procedure.ts":[function(require,module,exports) {
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Procedure = void 0;
-var Scope_1 = require("./Scope");
-var Compilable_1 = require("../core/Compilable");
-/**
- * @description
- * codeline seems like:
- * add:funciton(p0){
- *  //do something
- * }
- */
-var Procedure = /** @class */ (function (_super) {
-    __extends(Procedure, _super);
-    function Procedure(fnName, parameterCount) {
-        if (parameterCount === void 0) { parameterCount = 0; }
-        var _this = _super.call(this) || this;
-        /**
-         *
-         */
-        _this.inputArguments = [];
-        /**
-         *
-         */
-        _this.bodyScope = new Scope_1.Scope();
-        _this.registArgs = function () {
-            var ne = "p" + _this.inputArguments.length;
-            _this.inputArguments.push(ne);
-            return ne;
-        };
-        _this.compile = function () {
-            var inputArgumentsSource = _this.inputArguments.join();
-            return _this.regularize("function(" + inputArgumentsSource + "){" + _this.bodyScope.compile() + "}");
-        };
-        _this.name = fnName;
-        _this.parameterCount = parameterCount;
-        for (var i = 0; i < _this.parameterCount; i++)
-            _this.registArgs();
-        return _this;
-    }
-    Object.defineProperty(Procedure.prototype, "Name", {
-        /**
-         *
-         */
-        get: function () {
-            return this.name;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Procedure.prototype, "Entry", {
-        get: function () {
-            return this.bodyScope.Entry;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Procedure.prototype, "Exit", {
-        get: function () {
-            return this.bodyScope.Exit;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Procedure.prototype, "Scope", {
-        get: function () {
-            return this.bodyScope;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Procedure;
-}(Compilable_1.Compilable));
-exports.Procedure = Procedure;
-
-},{"./Scope":"../node_modules/kiwi.codegen/src/code/Scope.ts","../core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts"}],"../node_modules/kiwi.codegen/src/index.ts":[function(require,module,exports) {
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ConditionTE = exports.ConditionT = exports.Procedure = exports.Template = exports.Scope = exports.Block = void 0;
-var join_1 = require("./util/join");
-var getId_1 = require("./util/getId");
-var Block_1 = require("./code/Block");
-Object.defineProperty(exports, "Block", { enumerable: true, get: function () { return Block_1.Block; } });
-var Scope_1 = require("./code/Scope");
-Object.defineProperty(exports, "Scope", { enumerable: true, get: function () { return Scope_1.Scope; } });
-var Procedure_1 = require("./code/Procedure");
-Object.defineProperty(exports, "Procedure", { enumerable: true, get: function () { return Procedure_1.Procedure; } });
-var Compilable_1 = require("./core/Compilable");
-var Condition_1 = require("./code/Condition");
-Object.defineProperty(exports, "ConditionT", { enumerable: true, get: function () { return Condition_1.ConditionT; } });
-Object.defineProperty(exports, "ConditionTE", { enumerable: true, get: function () { return Condition_1.ConditionTE; } });
-/**
- * @author axmand
- * @description
- */
-var Template = /** @class */ (function (_super) {
-    __extends(Template, _super);
-    function Template() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        /**
-         * func name - func
-         */
-        _this.PROCEDURE_SET = new Map();
-        _this.GLOBAL_NAME_ARR = [];
-        _this.GLOBAL_VALUE_ARR = [];
-        _this.bathcId = "0";
-        _this.globalBlock = new Block_1.Block();
-        /**
-         * @description link global object
-         * @example
-         * const g = template.link({});
-         * @param v
-         * @returns
-         */
-        _this.link = function (v) {
-            var GLOBAL_VALUE_ARR = _this.GLOBAL_VALUE_ARR, GLOBAL_NAME_ARR = _this.GLOBAL_NAME_ARR;
-            for (var i = 0, len = GLOBAL_VALUE_ARR.length; i < len; i++)
-                if (GLOBAL_VALUE_ARR[i] === v)
-                    return GLOBAL_NAME_ARR[i];
-            var gln = "g" + (0, getId_1.getId)();
-            GLOBAL_NAME_ARR.push(gln);
-            GLOBAL_VALUE_ARR.push(v);
-            return gln;
-        };
-        /**
-         * @de define o
-         * @param o
-         * @returns
-         */
-        _this.def = function (o) {
-            return _this.globalBlock.def(o);
-        };
-        /**
-         * @description create return function 'procedure'
-         * @param name
-         * @param parameterCount
-         * @returns
-         */
-        _this.procedure = function (name, parameterCount) {
-            if (parameterCount === void 0) { parameterCount = 0; }
-            var procedure = new Procedure_1.Procedure(name, parameterCount);
-            _this.PROCEDURE_SET.set(procedure.Name, procedure);
-            return procedure;
-        };
-        /**
-         * @description
-         * compile block
-         * seems like:
-         * (function anonymous(linkNames){
-         *  //main
-         *  return{
-         *      fnName:function(p0){
-         *      },
-         *      //....
-         *  }
-         * })
-         */
-        _this.compile = function () {
-            var proces = [];
-            _this.PROCEDURE_SET.forEach(function (v, k) {
-                proces.push("\"" + k + "\":" + v.compile() + ",");
-            });
-            var source = _this.regularize("\"use strict\";" + _this.globalBlock.compile() + "return{" + (0, join_1.join)(proces) + "}");
-            /**
-             * link name as inputs
-             * such as:
-             * [gl].concat(str);
-             * excuted as:
-             * function(gl){//str};
-             */
-            var proc = Function.apply(null, _this.GLOBAL_NAME_ARR.concat(source));
-            /**
-             * reference:
-             * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
-             * executed in strict, apply(null)
-             */
-            return proc.apply(null, _this.GLOBAL_VALUE_ARR);
-        };
-        return _this;
-    }
-    Object.defineProperty(Template.prototype, "BatchID", {
-        get: function () {
-            return this.bathcId;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Template;
-}(Compilable_1.Compilable));
-exports.Template = Template;
-
-},{"./util/join":"../node_modules/kiwi.codegen/src/util/join.ts","./util/getId":"../node_modules/kiwi.codegen/src/util/getId.ts","./code/Block":"../node_modules/kiwi.codegen/src/code/Block.ts","./code/Scope":"../node_modules/kiwi.codegen/src/code/Scope.ts","./code/Procedure":"../node_modules/kiwi.codegen/src/code/Procedure.ts","./core/Compilable":"../node_modules/kiwi.codegen/src/core/Compilable.ts","./code/Condition":"../node_modules/kiwi.codegen/src/code/Condition.ts"}],"../node_modules/pipegl/src/core/Pipeline.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Pipeline = void 0;
-
-var _GTexture = require("../res/GTexture");
-
-var _isNDArray = require("../util/isNDArray");
-
-var _GFramebuffer = require("../res/GFramebuffer");
-
-var _kiwi = require("kiwi.codegen");
-
-const PipelineConstant = {
-  isNDArray: _isNDArray.isNDArray,
-  isNumber: v => !isNaN(parseFloat(v)) && isFinite(v),
-  isTexture: v => v instanceof _GTexture.GTexture,
-  isFramebuffer: v => v instanceof _GFramebuffer.GFramebuffer
-};
-
-class Pipeline {
-  constructor(pipelineSchema) {
-    var _a;
-
-    this.variableNameSet = new Map();
-
-    this.getVariable = v => {
-      return this.variableNameSet.get(v);
-    };
-
-    this.appendData = (v, linkName) => {
-      var _a;
-
-      this.link(v, linkName);
-      (_a = Object.keys(v)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
-        this.variableNameSet.set(key, this.template.def(`${this.getVariable(linkName)}.${key}`));
-      });
-    };
-
-    this.append = v => {
-      const ne = v.attributeState !== undefined && v.bufferState !== undefined ? 'pipeState' : 'pipeData';
-      this.appendData(v, ne);
-    };
-
-    this.proc = (name, parameterCount) => {
-      return this.template.procedure(name, parameterCount);
-    };
-
-    this.def = v => {
-      return this.template.def(v);
-    };
-
-    this.compile = () => {
-      return this.template.compile();
-    };
-
-    this.template = new _kiwi.Template();
-    this.pipelineSchema = pipelineSchema;
-    this.batchId = 0;
-    this.append(pipelineSchema);
-    this.link(PipelineConstant, 'pipeConstant');
-    (_a = Object.keys(PipelineConstant)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
-      this.variableNameSet.set(key, this.template.def(`${this.getVariable('pipeConstant')}.${key}`));
-    });
-  }
-
-  get BatchID() {
-    return this.batchId;
-  }
-
-  link(v, name) {
-    const v0 = this.template.link(v);
-    if (name) this.variableNameSet.set(name, v0);else this.variableNameSet.set(v0, v0);
-    return v0;
-  }
-
-}
-
-exports.Pipeline = Pipeline;
-},{"../res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts","../util/isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts","../res/GFramebuffer":"../node_modules/pipegl/src/res/GFramebuffer.ts","kiwi.codegen":"../node_modules/kiwi.codegen/src/index.ts"}],"../node_modules/pipegl/src/compiler/emitAttribute.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.emitAttribute = void 0;
-
-var _Constant = require("../core/Constant");
-
-const emitBuffer = (pipeline, iBlock, attribute, record, extLib, input0) => {
-  const GL_NAME = pipeline.getVariable('gl'),
-        ATTRIBUTE_NAME = pipeline.link(attribute),
-        BUFFER_NAME = record.ln,
-        LOCATION_NAME = iBlock.def(`${ATTRIBUTE_NAME}.location`),
-        SIZE_NAME = iBlock.def(`${record.size || _Constant.CAttributeTS[attribute.info.type]}`),
-        BINDING_NAME = iBlock.def(`${pipeline.getVariable('attributeState')}.getAttribute(${attribute.location})`);
-  const cond1 = iBlock.createConditionT(`!${BINDING_NAME}.buffer`);
-  cond1.Then.push(`${GL_NAME}.enableVertexAttribArray(${LOCATION_NAME})`);
-
-  if (record.p) {
-    const BUFFERSTATE_NAME = pipeline.getVariable('bufferState');
-    const ISNDARRAY_NAME = pipeline.getVariable('isNDArray');
-    record.dyn = iBlock.def(`${input0}${record.p.KEY}`);
-    const cond3 = iBlock.createConditionTE(`!${BINDING_NAME}.buffer`);
-    const cond3_0 = cond3.Then.createConditionTE(`${ISNDARRAY_NAME}(${record.dyn})`);
-    cond3_0.Then.push(`${BINDING_NAME}.buffer=${BUFFERSTATE_NAME}.createBuffer({data:${record.dyn},target: 'ARRAY_BUFFER'})`);
-    cond3_0.Else.push(`${BINDING_NAME}.buffer=${record.dyn}`);
-    cond3.Then.push(`${BINDING_NAME}.component=${BINDING_NAME}.buffer.component`);
-    cond3.Then.push(`${BINDING_NAME}.size=${SIZE_NAME}`);
-    cond3.Then.push(`${BINDING_NAME}.normalized=${record.normalized || false}`);
-    cond3.Then.push(`${BINDING_NAME}.offset=${record.offset || 0}`);
-    cond3.Then.push(`${BINDING_NAME}.stride=${record.stride || 0}`);
-    cond3.Then.push(`${BINDING_NAME}.divisor=${record.divisor || 0}`);
-    cond3.Then.push(`${BINDING_NAME}.buffer.bind()`);
-    cond3.Then.push(`${GL_NAME}.vertexAttribPointer(${LOCATION_NAME},${BINDING_NAME}.size,${BINDING_NAME}.component, ${BINDING_NAME}.normalized, ${BINDING_NAME}.offset, ${BINDING_NAME}.stride)`);
-    const cond3_1 = cond3.Else.createConditionTE(`${ISNDARRAY_NAME}(${record.dyn})`);
-    cond3_1.Then.push(`${BINDING_NAME}.buffer.subData(${record.dyn})`);
-    cond3_1.Else.push(`${BINDING_NAME}.buffer=${record.dyn}`);
-    cond3_1.Else.push(`${BINDING_NAME}.buffer.bind()`);
-    cond3_1.Else.push(`${GL_NAME}.vertexAttribPointer(${LOCATION_NAME},${BINDING_NAME}.size,${BINDING_NAME}.component, ${BINDING_NAME}.normalized, ${BINDING_NAME}.offset, ${BINDING_NAME}.stride)`);
-  } else {
-    const cond2 = iBlock.createConditionT(`${BINDING_NAME}.component!==${BUFFER_NAME}.component||${BINDING_NAME}.size!==${SIZE_NAME}||${BINDING_NAME}.buffer!==${BUFFER_NAME}||${BINDING_NAME}.normalized!==${record.normalized || false}||${BINDING_NAME}.offset!==${record.offset || 0}||${BINDING_NAME}.stride!==${record.stride || 0}`);
-    cond2.Then.push(`${BINDING_NAME}.component=${BUFFER_NAME}.component`);
-    cond2.Then.push(`${BINDING_NAME}.size=${SIZE_NAME}`);
-    cond2.Then.push(`${BINDING_NAME}.buffer=${BUFFER_NAME}`);
-    cond2.Then.push(`${BINDING_NAME}.normalized=${record.normalized || false}`);
-    cond2.Then.push(`${BINDING_NAME}.offset=${record.offset || 0}`);
-    cond2.Then.push(`${BINDING_NAME}.stride=${record.stride || 0}`);
-    cond2.Then.push(`${GL_NAME}.bindBuffer(${_Constant.CArraybufferTarget['ARRAY_BUFFER']},${BUFFER_NAME}.buffer)`);
-    cond2.Then.push(`${GL_NAME}.vertexAttribPointer(${LOCATION_NAME},${BINDING_NAME}.size,${BINDING_NAME}.component, ${BINDING_NAME}.normalized, ${BINDING_NAME}.offset, ${BINDING_NAME}.stride)`);
-  }
-
-  if (extLib.get('ANGLE_instanced_arrays')) {
-    const DIVISOR = record.divisor || 0;
-    const cond4 = iBlock.createConditionT(`${BINDING_NAME}.divisor!==${DIVISOR}`);
-    cond4.Then.push(`${pipeline.getVariable('extLib')}.get('ANGLE_instanced_arrays').vertexAttribDivisorANGLE(${LOCATION_NAME}, ${DIVISOR})`);
-    cond4.Then.push(`${BINDING_NAME}.divisor=${DIVISOR}`);
-  }
-};
-
-const emitAttribute = (pipeline, iBlock, extLib, vao, attributes, attributeRecordSet, input0) => {
-  const cond0 = iBlock.createConditionTE(`${pipeline.getVariable('vao')}`);
-  cond0.Then.push(`${pipeline.getVariable('attributeState')}.setVAO(${pipeline.getVariable('vao')})`);
-  cond0.Then.push(`${pipeline.getVariable('vao')}.bindAttrs()`);
-  cond0.Else.push(`${pipeline.getVariable('attributeState')}.setVAO(null)`);
-
-  if (!vao) {
-    attributes.forEach(att => {
-      const name = att.name;
-      const record = attributeRecordSet.get(name);
-      emitBuffer(pipeline, iBlock, att, record, extLib, input0);
-    });
-  }
-};
-
-exports.emitAttribute = emitAttribute;
-},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/compiler/emitElement.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.emitElement = void 0;
-
-var _Constant = require("../core/Constant");
-
-const emitElement = (pipeline, extLib, vao, iBlock, element, instances) => {
-  const GL_NAME = pipeline.getVariable('gl');
-  const COUNT_NAME = !vao ? pipeline.getVariable('count') : vao.Count;
-  const PRIMITIVE_NAME = !vao ? pipeline.getVariable('primitive') : vao.Primitive;
-  const OFFSET_NAME = !vao ? pipeline.getVariable('offset') : vao.Offset;
-  const INSTANCES_NAME = !vao ? pipeline.getVariable('instances') : vao.Instances;
-
-  if (extLib.get('ANGLE_instanced_arrays') && instances > 0) {
-    if (element) {
-      const ELEMENT_NAME = iBlock.def(`${pipeline.getVariable('elementState')}.getElementsbuffer(${element.ID})`);
-      iBlock.push(`${ELEMENT_NAME}.bind()`);
-      iBlock.push(`${pipeline.getVariable('extLib')}.get('ANGLE_instanced_arrays').drawElementsInstancedANGLE(${ELEMENT_NAME}.Primitive, ${ELEMENT_NAME}.VertCount,${ELEMENT_NAME}.Component, ${OFFSET_NAME}<<(${ELEMENT_NAME}.Component - ${_Constant.CComponent.UNSIGNED_BYTE})>>1, ${INSTANCES_NAME})`);
-    } else iBlock.push(`${pipeline.getVariable('extLib')}.get('ANGLE_instanced_arrays').drawArraysInstancedANGLE(${PRIMITIVE_NAME}, ${OFFSET_NAME},${COUNT_NAME}, ${INSTANCES_NAME})`);
-  } else if (element) {
-    const ELEMENT_NAME = iBlock.def(`${pipeline.getVariable('elementState')}.getElementsbuffer(${element.ID})`);
-    iBlock.push(`${ELEMENT_NAME}.bind()`);
-    iBlock.push(`${GL_NAME}.drawElements(${ELEMENT_NAME}.Primitive, ${ELEMENT_NAME}.VertCount,${ELEMENT_NAME}.Component, ${OFFSET_NAME}<<(${ELEMENT_NAME}.Component - ${_Constant.CComponent.UNSIGNED_BYTE})>>1)`);
-  } else {
-    iBlock.push(`${GL_NAME}.drawArrays(${PRIMITIVE_NAME}, ${OFFSET_NAME}, ${COUNT_NAME})`);
-  }
-
-  if (vao) iBlock.push(`${pipeline.getVariable('attributeState')}.setVAO(null)`);
-  const PERFORMANCE_NAME = pipeline.getVariable('performance');
-  iBlock.push(`${PERFORMANCE_NAME}.count++`);
-};
-
-exports.emitElement = emitElement;
-},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/compiler/emitUniform.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.emitUniform = void 0;
-
-var _GTexture = require("../res/GTexture");
-
-var _check = require("../util/check");
-
-var _isNDArray = require("../util/isNDArray");
-
-const UComponent = component => {
-  const UTYPE = {
-    prefix: '',
-    isMatrix: false
-  };
-
-  switch (component) {
-    case 5126:
-      UTYPE.prefix = '1f';
-      break;
-
-    case 35664:
-      UTYPE.prefix = '2f';
-      break;
-
-    case 35665:
-      UTYPE.prefix = '3f';
-      break;
-
-    case 35666:
-      UTYPE.prefix = '4f';
-      break;
-
-    case 35674:
-      UTYPE.prefix = 'Matrix2f';
-      UTYPE.isMatrix = true;
-      break;
-
-    case 35675:
-      UTYPE.prefix = 'Matrix3f';
-      UTYPE.isMatrix = true;
-      break;
-
-    case 35676:
-      UTYPE.prefix = 'Matrix4f';
-      UTYPE.isMatrix = true;
-      break;
-
-    case 35670:
-    case 5124:
-      UTYPE.prefix = '1i';
-      break;
-
-    case 35671:
-    case 35667:
-      UTYPE.prefix = '2i';
-      break;
-
-    case 35672:
-    case 35668:
-      UTYPE.prefix = '3i';
-      break;
-
-    case 35673:
-    case 35669:
-      UTYPE.prefix = '4i';
-      break;
-
-    case 35678:
-    case 35680:
-      UTYPE.prefix = '1i';
-      break;
-
-    default:
-      (0, _check.check)(false, `emitUniforms error:不支持的uniform类型${component}`);
-  }
-
-  return UTYPE;
-};
-
-const emitUniform = (pipeline, iBlock, oBlock, uniforms, uniformRecordSet, input0) => {
-  const GL_NAME = pipeline.getVariable('gl');
-  const PERFORMANCE_NAME = pipeline.getVariable('performance');
-  const ISNDARRAY_NAME = pipeline.getVariable('isNDArray');
-  const ISNUMBER_NAME = pipeline.getVariable('isNumber');
-  const ISTEXTURE_NAME = pipeline.getVariable('isTexture');
-  uniforms === null || uniforms === void 0 ? void 0 : uniforms.forEach(u => {
-    const name = u.name;
-    const component = u.info.type;
-    const size = u.info.size;
-    const record = uniformRecordSet.get(name);
-    (0, _check.check)(record, `emitUniform error:应用unifrom错误，${name}和TAttribute定义不一致，请检查`);
-
-    if (size > 1) {}
-
-    record.ln = pipeline.link(u);
-    const {
-      prefix,
-      isMatrix
-    } = UComponent(component);
-
-    if (record.v) {
-      if (record.v instanceof _GTexture.GTexture) {
-        record.dn = pipeline.link(record.v);
-        iBlock.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${record.dn}.bind())`);
-        oBlock.push(`${record.dn}.unbind()`);
-      } else {
-        const sufix = (0, _isNDArray.isNDArray)(record.v) ? `${prefix}v` : prefix;
-        record.dn = iBlock.def(record.v);
-        iBlock.push(`${GL_NAME}.uniform${sufix}(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dn})`);
-      }
-    } else if (record.f) {
-      record.dn = pipeline.link(record.f);
-      record.dyn = iBlock.def(`${record.dn}.call(this, ${PERFORMANCE_NAME},${pipeline.BatchID})`);
-      const cond0 = iBlock.createConditionT(`${ISNDARRAY_NAME}(${record.dyn})`);
-      cond0.Then.push(`${GL_NAME}.uniform${prefix}v(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dyn})`);
-      const cond1 = iBlock.createConditionT(`${ISNUMBER_NAME}(${record.dyn})`);
-      cond1.Then.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dyn})`);
-      const cond2 = iBlock.createConditionT(`${ISTEXTURE_NAME}(${record.dyn})`);
-      cond2.Then.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${record.dyn}.bind())`);
-      const cond2_0 = oBlock.createConditionT(`${ISTEXTURE_NAME}(${record.dyn})`);
-      cond2_0.Then.push(`${record.dyn}.unbind()`);
-    } else if (record.p) {
-      record.dyn = iBlock.def(`${input0}${record.p.KEY}`);
-      const cond1 = iBlock.createConditionTE(`${ISTEXTURE_NAME}(${record.dyn})`);
-      cond1.Then.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${record.dyn}.bind())`);
-      const cond11 = oBlock.createConditionT(`${ISTEXTURE_NAME}(${record.dyn})`);
-      cond11.Then.push(`${record.dyn}.unbind()`);
-      const cond12 = cond1.Else.createConditionTE(`${ISNDARRAY_NAME}(${record.dyn})`);
-      cond12.Then.push(`${GL_NAME}.uniform${prefix}v(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dyn})`);
-      cond12.Else.push(`${GL_NAME}.uniform${prefix}(${record.ln}.location, ${isMatrix ? 'false,' : ''}${record.dyn})`);
-    }
-  });
-};
-
-exports.emitUniform = emitUniform;
-},{"../res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts","../util/check":"../node_modules/pipegl/src/util/check.ts","../util/isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts"}],"../node_modules/pipegl/src/compiler/emitBatch.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.emitBatch = void 0;
-
-var _emitAttribute = require("./emitAttribute");
-
-var _emitElement = require("./emitElement");
-
-var _emitUniform = require("./emitUniform");
-
-const emitBatch = (pipeline, batchBlock, pipelineData, extLib, instances) => {
-  const LOOP_NAME = batchBlock.def(0);
-  const P0_NAME = `p0[${LOOP_NAME}]`;
-  batchBlock.push(`for(${LOOP_NAME};${LOOP_NAME}<p0.length;++${LOOP_NAME}){`);
-  const scope0 = batchBlock.createScope(),
-        iBlock = scope0.Entry,
-        oBlock = scope0.Exit;
-  (0, _emitAttribute.emitAttribute)(pipeline, iBlock, extLib, pipelineData.vao, pipelineData.program.Attributes, pipelineData.attributeRecordSet, P0_NAME);
-  (0, _emitUniform.emitUniform)(pipeline, iBlock, oBlock, pipelineData.program.Uniforms, pipelineData.uniformRecordSet, P0_NAME);
-  (0, _emitElement.emitElement)(pipeline, extLib, pipelineData.vao, iBlock, pipelineData.element, instances);
-  batchBlock.push(`}`);
-};
-
-exports.emitBatch = emitBatch;
-},{"./emitAttribute":"../node_modules/pipegl/src/compiler/emitAttribute.ts","./emitElement":"../node_modules/pipegl/src/compiler/emitElement.ts","./emitUniform":"../node_modules/pipegl/src/compiler/emitUniform.ts"}],"../node_modules/pipegl/src/compiler/emitFramebuffer.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.emitFramebuffer = void 0;
-
-var _GFramebuffer = require("../res/GFramebuffer");
-
-const emitFramebuffer = (pipeline, iBlock, oBlock, framebuffer, extLib) => {
-  const GL_NAME = pipeline.getVariable('gl'),
-        FRAMEBUFFERSTATE_NAME = pipeline.getVariable('framebufferState'),
-        EXT_DRAWBUFFERS_NAME = extLib.get('WEBGL_draw_buffers') ? pipeline.def(`${pipeline.getVariable('extLib')}.get('WEBGL_draw_buffers')`) : null,
-        NEXT_NAME = `${FRAMEBUFFERSTATE_NAME}.Next`,
-        CURRENT_NAME = `${FRAMEBUFFERSTATE_NAME}.Current`;
-
-  if (framebuffer && framebuffer.framebuffer instanceof _GFramebuffer.GFramebuffer) {
-    const FRAMEBUFFER_NAME = pipeline.link(framebuffer.framebuffer);
-    const NEXT_FRAMEBUFFER_CACHED_NAME = iBlock.def(`${NEXT_NAME}`);
-    iBlock.push(`${NEXT_NAME}=${FRAMEBUFFER_NAME}`);
-    oBlock.push(`${NEXT_NAME}=${NEXT_FRAMEBUFFER_CACHED_NAME}`);
-    const cond0 = iBlock.createConditionT(`${FRAMEBUFFER_NAME}!==${CURRENT_NAME}`);
-    const cond0_1 = cond0.Then.createConditionTE(`${FRAMEBUFFER_NAME}`);
-    cond0_1.Then.push(`${FRAMEBUFFER_NAME}.bind()`);
-    if (EXT_DRAWBUFFERS_NAME) cond0_1.Then.push(`${EXT_DRAWBUFFERS_NAME}.drawBuffersWEBGL(${FRAMEBUFFER_NAME}.ColorDrawbuffers)`);
-    cond0_1.Else.push(`${GL_NAME}.bindFramebuffer(${GL_NAME}.FRAMEBUFFER, null)`);
-    iBlock.push(`${FRAMEBUFFERSTATE_NAME}.Current=${NEXT_NAME}`);
-  } else if (framebuffer && framebuffer.framebuffer) {
-    const FN_NAME = pipeline.link(framebuffer.framebuffer);
-    const FRAMEBUFFER_NAME = iBlock.def(`${FN_NAME}.call(this, ${pipeline.getVariable('performance')}, ${pipeline.BatchID})`);
-    const NEXT_FRAMEBUFFER_CACHED_NAME = iBlock.def(`${FRAMEBUFFERSTATE_NAME}.Next`);
-    oBlock.push(`${FRAMEBUFFERSTATE_NAME}.Next=${NEXT_FRAMEBUFFER_CACHED_NAME}`);
-    iBlock.push(`${FRAMEBUFFERSTATE_NAME}.Next=${NEXT_FRAMEBUFFER_CACHED_NAME}`);
-    const cond0 = iBlock.createConditionT(`${FRAMEBUFFER_NAME}&&${NEXT_NAME}!==${FRAMEBUFFERSTATE_NAME}.Current`);
-    const cond0_1 = cond0.Then.createConditionTE(`${FRAMEBUFFER_NAME}`);
-    cond0_1.Then.push(`${FRAMEBUFFER_NAME}.bind()`);
-    if (EXT_DRAWBUFFERS_NAME) cond0_1.Then.push(`${EXT_DRAWBUFFERS_NAME}.drawBuffersWEBGL(${FRAMEBUFFER_NAME}.ColorDrawbuffers)`);
-    cond0_1.Else.push(`${GL_NAME}.bindFramebuffer(${GL_NAME}.FRAMEBUFFER, null)`);
-    iBlock.push(`${FRAMEBUFFERSTATE_NAME}.Current=${NEXT_NAME}`);
-  } else {
-    const cond0 = iBlock.createConditionT(`${CURRENT_NAME}!==null`);
-    cond0.Then.push(`${GL_NAME}.bindFramebuffer(${GL_NAME}.FRAMEBUFFER, null)`);
-    cond0.Then.push(`${CURRENT_NAME}=null`);
-  }
-
-  if (framebuffer && framebuffer.color) iBlock.push(`${GL_NAME}.clearColor(${framebuffer.color})`);
-  if (framebuffer && framebuffer.clearBit) iBlock.push(`${GL_NAME}.clear(${framebuffer.clearBit})`);
-};
-
-exports.emitFramebuffer = emitFramebuffer;
-},{"../res/GFramebuffer":"../node_modules/pipegl/src/res/GFramebuffer.ts"}],"../node_modules/pipegl/src/compiler/emitProgram.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.emitProgram = void 0;
-
-const emitProgram = (pipeline, iBlock, pipelineData) => {
-  const PROGRAMSTATE_NAME = pipeline.getVariable('programState');
-  const cond = iBlock.createConditionT(`!${PROGRAMSTATE_NAME}.Current||${PROGRAMSTATE_NAME}.Current.ID!==${pipelineData.program.ID}`);
-  cond.Then.push(`${PROGRAMSTATE_NAME}.useProgram(${pipelineData.program.ID})`);
-};
-
-exports.emitProgram = emitProgram;
-},{}],"../node_modules/pipegl/src/compiler/emitStatus.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.emitStatus = void 0;
-
-const emitStatus = (pipeline, iBlock, status) => {
-  if (status) {
-    const STATUS_NAME = pipeline.link(status);
-    status.StatusList.forEach(v => {
-      const cond = iBlock.createConditionT(`${STATUS_NAME}.needRefresh('${v}')`);
-      cond.Then.push(`${STATUS_NAME}.refresh('${v}')`);
-    });
-  }
-};
-
-exports.emitStatus = emitStatus;
-},{}],"../node_modules/pipegl/src/core/Props.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Props = void 0;
-
-class Props {
-  constructor(key) {
-    this.key = `['${key}']`;
-  }
-
-  get KEY() {
-    return this.key;
-  }
-
-}
-
-exports.Props = Props;
-},{}],"../node_modules/pipegl/src/util/checkAttribute.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.checkAttribute = void 0;
-
-var _check = require("./check");
-
-var _isNDArray = require("./isNDArray");
-
-var _ = require("..");
-
-const checkAttribute = v => {
-  let checkResult = false;
-  if ((0, _isNDArray.isNDArray)(v)) checkResult = true;
-  if (v.buffer) checkResult = true;
-  if (v instanceof _.Props) checkResult = true;
-  (0, _check.check)(checkResult, `不支持的attribute类型，当前仅支持number[], number[][], number[][][], Props<T>, IAttributeBuffer类型`);
-};
-
-exports.checkAttribute = checkAttribute;
-},{"./check":"../node_modules/pipegl/src/util/check.ts","./isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts","..":"../node_modules/pipegl/src/index.ts"}],"../node_modules/pipegl/src/util/isTypedArray.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isTypedArray = void 0;
-
-const isTypedArray = v => {
-  return v instanceof Uint8Array || v instanceof Uint16Array || v instanceof Uint32Array || v instanceof Int8Array || v instanceof Int16Array || v instanceof Int32Array || v instanceof Float32Array || v instanceof Float64Array || v instanceof Uint8ClampedArray;
-};
-
-exports.isTypedArray = isTypedArray;
-},{}],"../node_modules/pipegl/src/util/isBufferArray.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isBufferArray = void 0;
-
-var _isNDArray = require("./isNDArray");
-
-var _isTypedArray = require("./isTypedArray");
-
-const isBufferArray = v => {
-  return Array.isArray(v) || (0, _isTypedArray.isTypedArray)(v) || (0, _isNDArray.isNDArray)(v);
-};
-
-exports.isBufferArray = isBufferArray;
-},{"./isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts","./isTypedArray":"../node_modules/pipegl/src/util/isTypedArray.ts"}],"../node_modules/pipegl/src/compiler/parseAttribute.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.parseAttribute = void 0;
-
-var _Constant = require("../core/Constant");
-
-var _Props = require("../core/Props");
-
-var _check = require("../util/check");
-
-var _checkAttribute = require("../util/checkAttribute");
-
-var _isBufferArray = require("../util/isBufferArray");
-
-const parseAttribute = opts => {
-  var _a;
-
-  const {
-    pipeline,
-    attributes,
-    extLib,
-    bufferState
-  } = opts;
-  const RECORD_SET = new Map();
-  (_a = Object.keys(attributes)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
-    const v = attributes[key];
-    (0, _checkAttribute.checkAttribute)(v);
-    const record = {
-      name: key
-    };
-
-    if ((0, _isBufferArray.isBufferArray)(v)) {
-      const v0 = v;
-      const buf = bufferState.createBuffer({
-        data: v0,
-        target: 'ARRAY_BUFFER'
-      });
-      record.buffer = buf;
-      record.component = buf.Component;
-      record.divisor = 0;
-      record.offset = 0;
-      record.stride = 0;
-      record.normalized = false;
-      record.ln = pipeline.link(buf);
-    } else if (v.buffer) {
-      const v0 = v;
-      const buf = (0, _isBufferArray.isBufferArray)(v0.buffer) ? bufferState.createBuffer({
-        data: v0.buffer,
-        target: 'ARRAY_BUFFER'
-      }) : v0.buffer;
-      record.offset = v0.offset | 0;
-      (0, _check.check)(record.offset >= 0, `offset只能是大于等于0的数字`);
-      record.stride = v0.stride | 0;
-      (0, _check.check)(record.stride >= 0 && record.stride < 256, `扫描线宽取值范围必须[0,255]`);
-      record.normalized = !!v0.normalized;
-      record.component = _Constant.CComponent[v0.component] || buf.Component;
-      (0, _check.check)(Object.values(_Constant.CComponent).indexOf(record.component) !== -1, `数据类型只能是${Object.values(_Constant.CComponent)}`);
-      (0, _check.check)(v0.divisor === 0 || extLib.get('ANGLE_instanced_arrays'), `不支持ANGLE_instanced_arrays插件，不能设置实例化参数divisor`);
-      (0, _check.check)(v0.divisor >= 0, `不支持的divisor值`);
-      record.divisor = v0.divisor || 0;
-      record.buffer = buf;
-      record.component = buf.Component;
-      record.ln = pipeline.link(buf);
-    } else if (v instanceof _Props.Props) {
-      record.p = v;
-      record.offset = 0;
-      record.stride = 0;
-      record.normalized = false;
-      record.component = _Constant.CComponent['FLOAT'];
-      record.divisor === 0;
-    }
-
-    RECORD_SET.set(record.name, record);
-  });
-  return RECORD_SET;
-};
-
-exports.parseAttribute = parseAttribute;
-},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../core/Props":"../node_modules/pipegl/src/core/Props.ts","../util/check":"../node_modules/pipegl/src/util/check.ts","../util/checkAttribute":"../node_modules/pipegl/src/util/checkAttribute.ts","../util/isBufferArray":"../node_modules/pipegl/src/util/isBufferArray.ts"}],"../node_modules/pipegl/src/compiler/parseElement.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.praseElements = void 0;
-
-var _isNDArray = require("../util/isNDArray");
-
-const praseElements = opts => {
-  const {
-    elements,
-    elementState
-  } = opts;
-
-  if (elements && (0, _isNDArray.isNDArray)(elements)) {
-    return elementState.createElementsbuffer({
-      data: elements,
-      component: 'UNSIGNED_SHORT',
-      primitive: opts.primitive || 'TRIANGLES'
-    });
-  }
-};
-
-exports.praseElements = praseElements;
-},{"../util/isNDArray":"../node_modules/pipegl/src/util/isNDArray.ts"}],"../node_modules/pipegl/src/compiler/parseFramebuffer.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.parseFramebuffer = void 0;
-
-var _check = require("../util/check");
-
-const parseFramebuffer = opts => {
-  if (!opts.framebuffer) return null;
-  const fb = opts.framebuffer,
-        gl = opts.gl;
-  const response = {};
-  response.framebuffer = opts.framebuffer.framebuffer;
-  const bit = gl.COLOR_BUFFER_BIT;
-
-  if (fb.clear && fb.clear.color) {
-    const color = fb.clear.color;
-    (0, _check.check)(color.length === 4, `Error: clear color must consist of 4`);
-    response.color = color;
-    response.clearBit = bit;
-  }
-
-  if (fb.clear && fb.clear.depth) response.clearBit = (response.clearBit || bit) | gl.DEPTH_BUFFER_BIT;
-  if (fb.clear && fb.clear.stencil) response.clearBit = (response.clearBit || bit) | gl.STENCIL_BUFFER_BIT;
-  return response;
-};
-
-exports.parseFramebuffer = parseFramebuffer;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts"}],"../node_modules/pipegl/src/compiler/parseProgram.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.parseProgram = void 0;
-
-const parseProgram = (opts, locations) => {
-  const {
-    frag,
-    vert,
-    stringState,
-    shaderState,
-    programState
-  } = opts;
-  const fragId = stringState.id(frag),
-        fragShader = shaderState.createShader('FRAGMENT_SHADER', fragId);
-  const vertId = stringState.id(vert),
-        vertShader = shaderState.createShader('VERTEX_SHADER', vertId);
-  const program = programState.createProgram(frag, vert, locations);
-  return {
-    fragId,
-    vertId,
-    fragShader,
-    vertShader,
-    program
-  };
-};
-
-exports.parseProgram = parseProgram;
-},{}],"../node_modules/pipegl/src/core/Status.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Status = void 0;
-
-var _check = require("./../util/check");
-
-var _Constant = require("./Constant");
-
-class Status {
-  constructor(gl) {
-    this.NEXT_FLAG_SET = new Map();
-    this.NEXT_VARIABLE_SET = new Map();
-    this.statusList = [];
-
-    this.needRefresh = key => {
-      if (_Constant.CWebGLStatusFLAG[key]) {
-        const k = key;
-        const cur = Status.CURRENT_FLAG_SET.get(k);
-        const next = this.NEXT_FLAG_SET.get(k);
-        return cur != next;
-      } else if (_Constant.CWebGLStatusVariable[key]) {
-        const k = key;
-        const cur = Status.CURRENT_VARIABLE_SET.get(k);
-        const next = this.NEXT_VARIABLE_SET.get(k);
-        if (!cur) return true;else if (cur.length !== next.length) return true;else return cur.join() !== next.join();
-      } else (0, _check.check)(false, `Status 错误: 不支持的webgl状态${key}修改，请检查状态是否合法`);
-    };
-
-    this.refresh = key => {
-      const gl = this.gl;
-
-      if (_Constant.CWebGLStatusFLAG[key]) {
-        const k = key;
-        const v = this.NEXT_FLAG_SET.get(k);
-        v ? gl.enable(gl[k]) : gl.disable(gl[k]);
-        Status.CURRENT_FLAG_SET.set(k, v);
-      } else if (_Constant.CWebGLStatusVariable[key]) {
-        const k = key;
-        const v = this.NEXT_VARIABLE_SET.get(k);
-        gl[k].apply(gl, v);
-        Status.CURRENT_VARIABLE_SET.set(k, v);
-      } else (0, _check.check)(false, `Status 错误: 不支持的webgl状态${key}修改，请检查状态是否合法`);
-    };
-
-    this.setFlag = (key, v) => {
-      this.NEXT_FLAG_SET.set(key, v);
-      this.statusList.push(key);
-    };
-
-    this.setVariable = (key, v) => {
-      this.NEXT_VARIABLE_SET.set(key, v.slice());
-      this.statusList.push(key);
-    };
-
-    this.gl = gl;
-    this.setFlag('DITHER', false);
-    this.setFlag('BLEND', false);
-    this.setVariable('blendColor', [0, 0, 0, 0]);
-    this.setVariable('blendEquationSeparate', [gl.FUNC_ADD, gl.FUNC_ADD]);
-    this.setVariable('blendFuncSeparate', [gl.ONE, gl.ZERO, gl.ONE, gl.ZERO]);
-    this.setFlag('DEPTH_TEST', true);
-    this.setVariable('depthFunc', [gl.LESS]);
-    this.setVariable('depthRange', [0, 1]);
-    this.setVariable('depthMask', [true]);
-    this.setVariable('colorMask', [true, true, true, true]);
-    this.setFlag('CULL_FACE', false);
-    this.setVariable('cullFace', [gl.BACK]);
-    this.setVariable('frontFace', [gl.CCW]);
-    this.setVariable('lineWidth', [1]);
-    this.setFlag('POLYGON_OFFSET_FILL', false);
-    this.setVariable('polygonOffset', [0, 0]);
-    this.setFlag('SAMPLE_ALPHA_TO_COVERAGE', false);
-    this.setFlag('SAMPLE_COVERAGE', false);
-    this.setVariable('sampleCoverage', [1, false]);
-    this.setFlag('STENCIL_TEST', false);
-    this.setVariable('stencilMask', [-1]);
-    this.setVariable('stencilOpSeparate', [gl.FRONT, gl.KEEP, gl.KEEP, gl.KEEP]);
-    this.setFlag('SCISSOR_TEST', false);
-    this.setVariable('scissor', [0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight]);
-    this.setVariable('viewport', [0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight]);
-  }
-
-  get StatusList() {
-    return this.statusList;
-  }
-
-}
-
-exports.Status = Status;
-Status.CURRENT_FLAG_SET = new Map();
-Status.CURRENT_VARIABLE_SET = new Map();
-},{"./../util/check":"../node_modules/pipegl/src/util/check.ts","./Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/compiler/parseStatus.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.parseStatus = void 0;
-
-var _check = require("../util/check");
-
-var _Status = require("../core/Status");
-
-var _Constant = require("../core/Constant");
-
-const parseStatus = opts => {
-  var _a;
-
-  const {
-    gl,
-    status
-  } = opts;
-  const s0 = new _Status.Status(gl);
-  (_a = Object.keys(status)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
-    const v = status[key];
-    if (_Constant.CWebGLStatusFLAG[key]) s0.setFlag(key, v);else if (_Constant.CWebGLStatusVariable[key]) s0.setVariable(key, v);else (0, _check.check)(false, `ParseStatus error:不支持的WebGL状态设置${key}`);
-  });
-  return s0;
-};
-
-exports.parseStatus = parseStatus;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Status":"../node_modules/pipegl/src/core/Status.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/isFunction.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isFunction = void 0;
-
-const isFunction = v => typeof v === 'function';
-
-exports.isFunction = isFunction;
-},{}],"../node_modules/pipegl/src/compiler/parseUniform.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.parseUniform = void 0;
-
-var _isFunction = require("../util/isFunction");
-
-var _Props = require("../core/Props");
-
-const parseUniform = opts => {
-  var _a;
-
-  const {
-    uniforms
-  } = opts;
-  const UNIFORMS = new Map();
-  uniforms && ((_a = Object.keys(uniforms)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
-    const v = uniforms[key];
-    const record = {
-      key: key
-    };
-    if ((0, _isFunction.isFunction)(v)) record.f = v;else if (v instanceof _Props.Props) record.p = v;else record.v = v;
-    UNIFORMS.set(key, record);
-  }));
-  return UNIFORMS;
-};
-
-exports.parseUniform = parseUniform;
-},{"../util/isFunction":"../node_modules/pipegl/src/util/isFunction.ts","../core/Props":"../node_modules/pipegl/src/core/Props.ts"}],"../node_modules/pipegl/src/compiler/CompilerCore.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CompilerCore = void 0;
-
-var _Constant = require("../core/Constant");
-
-var _Pipeline = require("../core/Pipeline");
-
-var _emitAttribute = require("./emitAttribute");
-
-var _emitBatch = require("./emitBatch");
-
-var _emitElement = require("./emitElement");
-
-var _emitFramebuffer = require("./emitFramebuffer");
-
-var _emitProgram = require("./emitProgram");
-
-var _emitStatus = require("./emitStatus");
-
-var _emitUniform = require("./emitUniform");
-
-var _parseAttribute = require("./parseAttribute");
-
-var _parseElement = require("./parseElement");
-
-var _parseFramebuffer = require("./parseFramebuffer");
-
-var _parseProgram = require("./parseProgram");
-
-var _parseStatus = require("./parseStatus");
-
-var _parseUniform = require("./parseUniform");
-
-class CompilerCore {
-  constructor(opts) {
-    this.perparePipelineData = opts => {
-      let elementbuffer = null,
-          attributeRecordSet = null;
-      const framebuffer = (0, _parseFramebuffer.parseFramebuffer)(opts);
-      const status = (0, _parseStatus.parseStatus)(opts);
-
-      if (!opts.vao) {
-        elementbuffer = (0, _parseElement.praseElements)(opts);
-        attributeRecordSet = (0, _parseAttribute.parseAttribute)(opts);
-      }
-
-      const uniformRecordSet = (0, _parseUniform.parseUniform)(opts);
-      const program = (0, _parseProgram.parseProgram)(opts, null);
-      const pipelineData = {
-        attributeRecordSet,
-        uniformRecordSet,
-        program: program.program,
-        fragShader: program.fragShader,
-        vertShader: program.vertShader,
-        fragId: program.fragId,
-        vertId: program.vertId,
-        status,
-        vao: opts.vao,
-        element: elementbuffer,
-        performance: this.performance,
-        framebuffer
-      };
-      opts.pipeline.append(pipelineData);
-      return pipelineData;
-    };
-
-    this.applyBatchProcPipelineData = opts => {
-      const {
-        pipeline,
-        pipelineData,
-        extLib,
-        instances
-      } = opts;
-      const drawProc = pipeline.proc('batch', 1);
-      const scope0 = drawProc.Entry.createScope();
-      const iBlock = scope0.Entry;
-      (0, _emitStatus.emitStatus)(pipeline, iBlock, pipelineData.status);
-      (0, _emitFramebuffer.emitFramebuffer)(pipeline, iBlock, scope0.Exit, pipelineData.framebuffer, extLib);
-      (0, _emitProgram.emitProgram)(pipeline, iBlock, pipelineData);
-      (0, _emitBatch.emitBatch)(pipeline, iBlock, pipelineData, extLib, instances);
-    };
-
-    this.applyDrawProcPipelineData = opts => {
-      const {
-        pipeline,
-        pipelineData,
-        extLib
-      } = opts;
-      const drawProc = pipeline.proc('draw', 1);
-      const scope0 = drawProc.Entry.createScope();
-      const scope1 = drawProc.Exit.createScope();
-      const iBlock = scope0.Entry;
-      const oBlock = scope1.Exit;
-      const P0_NAME = `p0`;
-      (0, _emitStatus.emitStatus)(pipeline, iBlock, pipelineData.status);
-      (0, _emitFramebuffer.emitFramebuffer)(pipeline, iBlock, oBlock, pipelineData.framebuffer, extLib);
-      (0, _emitProgram.emitProgram)(pipeline, iBlock, pipelineData);
-      (0, _emitAttribute.emitAttribute)(pipeline, iBlock, extLib, pipelineData.vao, pipelineData.program.Attributes, pipelineData.attributeRecordSet, P0_NAME);
-      (0, _emitUniform.emitUniform)(pipeline, iBlock, oBlock, pipelineData.program.Uniforms, pipelineData.uniformRecordSet, P0_NAME);
-      (0, _emitElement.emitElement)(pipeline, extLib, pipelineData.vao, iBlock, pipelineData.element, opts.instances);
-    };
-
-    this.compile = opts => {
-      const count = opts.count || 0,
-            offset = opts.offset || 0,
-            instances = opts.instances || 0,
-            framebuffer = opts.framebuffer || null,
-            primitive = _Constant.CPrimitive[opts.primitive || 'TRIANGLES'],
-            status = opts.status || {};
-      const pipeline = new _Pipeline.Pipeline({
-        gl: this.gl,
-        extLib: this.extLib,
-        limLib: this.limLib,
-        attributeState: this.attributeState,
-        bufferState: this.bufferState,
-        elementState: this.elementState,
-        programState: this.programState,
-        shaderState: this.shaderState,
-        stringState: this.stringState,
-        textureState: this.textureState,
-        renderbufferState: this.renderbufferState,
-        framebufferState: this.framebufferState,
-        performance: this.performance,
-        offset,
-        count,
-        primitive,
-        instances
-      });
-      const pipelineData = this.perparePipelineData({
-        gl: this.gl,
-        pipeline: pipeline,
-        attributes: opts.attributes,
-        uniforms: opts.uniforms,
-        elements: opts.elements,
-        frag: opts.frag,
-        vert: opts.vert,
-        extLib: this.extLib,
-        limLib: this.limLib,
-        attributeState: this.attributeState,
-        bufferState: this.bufferState,
-        elementState: this.elementState,
-        programState: this.programState,
-        shaderState: this.shaderState,
-        stringState: this.stringState,
-        textureState: this.textureState,
-        renderbufferState: this.renderbufferState,
-        framebufferState: this.framebufferState,
-        vao: opts.vao,
-        primitive: opts.primitive || 'TRIANGLES',
-        framebuffer,
-        status
-      });
-      this.applyDrawProcPipelineData({
-        pipeline,
-        pipelineData,
-        extLib: this.extLib,
-        count,
-        instances
-      });
-      this.applyBatchProcPipelineData({
-        pipeline,
-        pipelineData,
-        extLib: this.extLib,
-        count,
-        instances
-      });
-      return pipeline.compile();
-    };
-
-    this.gl = opts.gl;
-    this.stats = opts.stats;
-    this.performance = opts.performance;
-    this.extLib = opts.extLib;
-    this.limLib = opts.limLib;
-    this.bufferState = opts.bufferState;
-    this.textureState = opts.textureState;
-    this.elementState = opts.elementState;
-    this.attributeState = opts.attributeState;
-    this.stringState = opts.stringState;
-    this.shaderState = opts.shaderState;
-    this.programState = opts.programState;
-    this.renderbufferState = opts.renderbufferState;
-    this.framebufferState = opts.framebufferState;
-  }
-
-}
-
-exports.CompilerCore = CompilerCore;
-},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../core/Pipeline":"../node_modules/pipegl/src/core/Pipeline.ts","./emitAttribute":"../node_modules/pipegl/src/compiler/emitAttribute.ts","./emitBatch":"../node_modules/pipegl/src/compiler/emitBatch.ts","./emitElement":"../node_modules/pipegl/src/compiler/emitElement.ts","./emitFramebuffer":"../node_modules/pipegl/src/compiler/emitFramebuffer.ts","./emitProgram":"../node_modules/pipegl/src/compiler/emitProgram.ts","./emitStatus":"../node_modules/pipegl/src/compiler/emitStatus.ts","./emitUniform":"../node_modules/pipegl/src/compiler/emitUniform.ts","./parseAttribute":"../node_modules/pipegl/src/compiler/parseAttribute.ts","./parseElement":"../node_modules/pipegl/src/compiler/parseElement.ts","./parseFramebuffer":"../node_modules/pipegl/src/compiler/parseFramebuffer.ts","./parseProgram":"../node_modules/pipegl/src/compiler/parseProgram.ts","./parseStatus":"../node_modules/pipegl/src/compiler/parseStatus.ts","./parseUniform":"../node_modules/pipegl/src/compiler/parseUniform.ts"}],"../node_modules/pipegl/src/compiler/parseConfigure.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.parseConfigure = exports.defaultWebGLOptions = void 0;
-const defaultWebGLOptions = {
-  alpha: true,
-  antialias: false,
-  depth: true,
-  failIfMajorPerformanceCaveat: true,
-  powerPreference: 'high-performance',
-  premultipliedAlpha: false,
-  preserveDrawingBuffer: false,
-  stencil: true
-};
-exports.defaultWebGLOptions = defaultWebGLOptions;
-
-const createCanvasElement = (container, width, height, devicePixelRatio) => {
-  const canvas = document.createElement('canvas');
-  const w = width || container.clientWidth || window.innerWidth;
-  const h = height || container.clientHeight || window.innerHeight;
-  canvas.width = w * devicePixelRatio;
-  canvas.height = h * devicePixelRatio;
-  canvas.style.border = `0px`;
-  canvas.style.margin = `0px`;
-  canvas.style.padding = `0px`;
-  canvas.style.top = `0px`;
-  canvas.style.left = `0px`;
-  canvas.style.width = `${w}px`;
-  canvas.style.height = `${h}px`;
-  container === document.body ? canvas.style.position = 'absolute' : null;
-  container.appendChild(canvas);
-  return canvas;
-};
-
-const parseConfigure = (opts = {}) => {
-  opts.devicePixelRatio = opts.devicePixelRatio || devicePixelRatio || 1.0;
-  opts.webglOptions = opts.webglOptions || defaultWebGLOptions;
-  opts.container = opts.container || document.body;
-  opts.canvas = opts.gl ? opts.gl.canvas : opts.canvas ? opts.canvas : createCanvasElement(opts.container, opts.width, opts.height, opts.devicePixelRatio);
-  opts.width = parseInt(opts.canvas.style.width);
-  opts.height = parseInt(opts.canvas.style.height);
-  opts.gl = opts.gl || opts.canvas.getContext('webgl', opts.webglOptions);
-  opts.extensions = opts.extensions || [];
-  opts.profile = false;
-  return opts;
-};
-
-exports.parseConfigure = parseConfigure;
-},{}],"../node_modules/pipegl/src/res/GElementsbuffer.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.REGLELEMENTBUFFER_SET = exports.GElementsbuffer = void 0;
-
-var _Constant = require("../core/Constant");
-
-var _Dispose = require("../core/Dispose");
-
-const REGLELEMENTBUFFER_SET = new Map();
-exports.REGLELEMENTBUFFER_SET = REGLELEMENTBUFFER_SET;
-
-class GElementsbuffer extends _Dispose.Dispose {
-  constructor(reglBuffer, primitive = 'TRIANGLES') {
-    super();
-
-    this.subData = (data, offset) => {
-      this.reglBuffer.subData(data, offset);
-    };
-
-    this.paddingWithData = (data, usage, component) => {
-      this.reglBuffer.paddingWithData(data, usage, component);
-    };
-
-    this.bind = () => {
-      this.reglBuffer.bind();
-    };
-
-    this.vertCount = 0;
-    this.reglBuffer = reglBuffer;
-    this.primitive = _Constant.CPrimitive[primitive || 'TRIANGLES'];
-    REGLELEMENTBUFFER_SET.set(this.ID, this);
-  }
-
-  dispose() {
-    this;
-  }
-
-  decRef() {
-    throw new Error("Method not implemented.");
-  }
-
-  get Dimension() {
-    return this.reglBuffer.Dimension;
-  }
-
-  get ByteLength() {
-    return this.reglBuffer.ByteLength;
-  }
-
-  set Primitive(v) {
-    this.primitive = v;
-  }
-
-  get Primitive() {
-    return this.primitive;
-  }
-
-  get VertCount() {
-    return this.vertCount;
-  }
-
-  set VertCount(v) {
-    this.vertCount = v;
-  }
-
-  get Component() {
-    return this.reglBuffer.Component;
-  }
-
-}
-
-exports.GElementsbuffer = GElementsbuffer;
-},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts"}],"../node_modules/pipegl/src/util/detectComponent.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.detectComponent = void 0;
-
-const detectComponent = data => {
-  const ne = Object.prototype.toString.call(data);
-
-  switch (ne) {
-    case `[object Int8Array]`:
-      return 'BYTE';
-
-    case `[object ArrayBuffer]`:
-    case `[object Float64Array]`:
-    case `[object Uint8ClampedArray]`:
-    case `[object Uint8Array]`:
-      return 'UNSIGNED_BYTE';
-
-    case `[object Int16Array]`:
-      return 'SHORT';
-
-    case `[object Uint16Array]`:
-      return 'UNSIGNED_SHORT';
-
-    case `[object Int32Array]`:
-      return 'INT';
-
-    case `[object Uint32Array]`:
-      return 'UNSIGNED_INT';
-
-    case `[object Float32Array]`:
-      return 'FLOAT';
-
-    default:
-      return 'FLOAT';
-  }
-};
-
-exports.detectComponent = detectComponent;
-},{}],"../node_modules/pipegl/src/res/GBuffer.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.GBuffer = exports.BUFFER_SET = void 0;
-
-var _check = require("../util/check");
-
-var _Dispose = require("../core/Dispose");
-
-var _BufferPool = require("../pool/BufferPool");
-
-var _detectComponent = require("../util/detectComponent");
-
-var _getFlatten = require("../util/getFlatten");
-
-var _Constant = require("../core/Constant");
-
-const BUFFER_SET = new Map();
-exports.BUFFER_SET = BUFFER_SET;
-
-class GBuffer extends _Dispose.Dispose {
-  constructor(gl, target, usage = 'STATIC_DRAW', component = 'FLOAT', dimension = 'POINTS') {
-    super();
-
-    this.setSubData = (data, offset) => {
-      const gl = this.gl,
-            size = offset + data.byteLength;
-      (0, _check.check)(size <= this.byteLength, `subdata错误，写入数据长度${size}超过原始长度${this.byteLength},写入失败`);
-      gl.bufferSubData(this.target, offset, data);
-    };
-
-    this.bufferTypedArray = data => {
-      this.byteLength = data.byteLength;
-      this.gl.bufferData(this.target, data, this.usage);
-    };
-
-    this.paddingWithData = (data, usage, component) => {
-      this.usage = _Constant.CUsage[usage || 'STATIC_DRAW'];
-      const shape = (0, _getFlatten.getArrayShape)(data);
-      const d0 = shape.length === 1 ? data[0] : shape.length === 2 ? data[0][0] : shape.length === 3 ? data[0][0][0] : 0;
-      component = component || (0, _detectComponent.detectComponent)(d0) || 'FLOAT';
-      this.component = _Constant.CComponent[component];
-      const flatData = (0, _getFlatten.flattenArrayWithShape)(data, shape, component);
-      this.bufferTypedArray(flatData);
-
-      _BufferPool.bufferPool0.freeType(flatData);
-
-      return this;
-    };
-
-    this.subData = (data, offset = 0) => {
-      this.bind();
-      const shape = (0, _getFlatten.getArrayShape)(data);
-      const d0 = shape.length === 1 ? data[0] : shape.length === 2 ? data[0][0] : shape.length === 3 ? data[0][0][0] : 0;
-      const scomponent = (0, _detectComponent.detectComponent)(d0) || 'FLOAT';
-      this.component = _Constant.CComponent[scomponent];
-      const flatData = (0, _getFlatten.flattenArrayWithShape)(data, shape, scomponent);
-      this.setSubData(flatData, offset);
-
-      _BufferPool.bufferPool0.freeType(flatData);
-    };
-
-    this.bind = () => {
-      this.gl.bindBuffer(this.target, this.buffer);
-    };
-
-    this.unbind = () => {
-      this.gl.bindBuffer(this.target, null);
-      this.decRef();
-    };
-
-    this.gl = gl;
-    this.byteLength = 0;
-    this.buffer = gl.createBuffer();
-    this.target = _Constant.CArraybufferTarget[target];
-    this.usage = _Constant.CUsage[usage || 'STATIC_DRAW'];
-    this.dimension = _Constant.CDimension[dimension || 'POINTS'];
-    this.component = _Constant.CComponent[component || 'UNSIGNED_BYTE'];
-    BUFFER_SET.set(this.ID, this);
-  }
-
-  decRef() {
-    this.refCount--;
-  }
-
-  dispose() {
-    throw new Error('Method not implemented.');
-  }
-
-  get Dimension() {
-    return this.dimension;
-  }
-
-  get ByteLength() {
-    return this.byteLength;
-  }
-
-  get Component() {
-    return this.component;
-  }
-
-}
-
-exports.GBuffer = GBuffer;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts","../util/detectComponent":"../node_modules/pipegl/src/util/detectComponent.ts","../util/getFlatten":"../node_modules/pipegl/src/util/getFlatten.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/defaultValue.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultValue = void 0;
-
-const defaultValue = (v, dv) => {
-  return v === null || v === undefined ? dv : v;
-};
-
-exports.defaultValue = defaultValue;
-},{}],"../node_modules/pipegl/src/res/GVertexArrayObject.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.VAO_SET = exports.GVertexArrayObject = void 0;
-
-var _check = require("../util/check");
-
-var _GBuffer = require("./GBuffer");
-
-var _Dispose = require("../core/Dispose");
-
-var _defaultValue = require("../util/defaultValue");
-
-var _Constant = require("../core/Constant");
-
-const VAO_SET = new Map();
-exports.VAO_SET = VAO_SET;
-
-class GVertexArrayObject extends _Dispose.Dispose {
-  constructor(opts) {
-    super();
-    this.attributeSet = new Map();
-
-    this.refresh = opts => {
-      this.attributeSet = opts.recordSet || this.attributeSet;
-      this.elements = opts.elements || this.elements;
-      this.offset = (0, _defaultValue.defaultValue)(opts.offset, this.offset);
-      this.count = (0, _defaultValue.defaultValue)(opts.count, this.count);
-      this.instances = (0, _defaultValue.defaultValue)(opts.instances, this.instances);
-      this.primitive = (0, _defaultValue.defaultValue)(_Constant.CPrimitive[opts.primitive], this.primitive);
-      this.bindings = false;
-    };
-
-    this.bindAttrs = () => {
-      var _a;
-
-      this.refCount++;
-      this.extVAO.bindVertexArrayOES(this.vao);
-      if (this.bindings) return;
-      const gl = this.gl;
-      (_a = this.attributeSet) === null || _a === void 0 ? void 0 : _a.forEach((att, loc) => {
-        if (att.buffer) {
-          if (att.buffer instanceof _GBuffer.GBuffer) {
-            const act = this.programState.Current.AttActiveInfo.get(loc);
-            (0, _check.check)(act, `GVertexArrayObject 错误: VAO绑定属性与当前Program不一致`);
-            const pos = act.location;
-            const size = _Constant.CAttributeTS[act.info.type];
-            gl.vertexAttribPointer(pos, size, att.component, att.normalized, att.stride, att.offset);
-            gl.enableVertexAttribArray(pos);
-            if (this.extITA && att.divisor) this.extITA.vertexAttribDivisorANGLE(pos, att.divisor);
-          } else if (Array.isArray(att.buffer)) {
-            const act = this.programState.Current.AttActiveInfo.get(loc);
-            (0, _check.check)(act, `GVertexArrayObject 错误: VAO绑定属性与当前Program不一致`);
-            const pos = act.location;
-            gl.disableVertexAttribArray(pos);
-            gl.vertexAttrib4fv(pos, att.buffer);
-          }
-        }
-      });
-      this.elements ? gl.bindBuffer(_Constant.CArraybufferTarget['ELEMENT_ARRAY_BUFFER'], this.elements) : gl.bindBuffer(_Constant.CArraybufferTarget['ELEMENT_ARRAY_BUFFER'], null);
-      this.bindings = true;
-    };
-
-    this.gl = opts.gl;
-    this.extVAO = opts.extVAO;
-    this.extITA = opts.extITA;
-    this.programState = opts.programState;
-    this.instances = -1;
-    this.offset = 0;
-    this.count = 0;
-    this.bindings = false;
-    this.primitive = _Constant.CPrimitive['TRIANGLES'];
-    this.stats = opts.stats;
-    this.vao = this.extVAO.createVertexArrayOES();
-    this.stats.vaoCount++;
-    VAO_SET.set(this.ID, this);
-  }
-
-  dispose() {
-    throw new Error("Method not implemented.");
-  }
-
-  decRef() {
-    throw new Error("Method not implemented.");
-  }
-
-  set Elements(v) {
-    this.elements = v;
-  }
-
-  get Elements() {
-    return this.elements;
-  }
-
-  get Offset() {
-    return this.offset;
-  }
-
-  get Count() {
-    return this.count;
-  }
-
-  get Instances() {
-    return this.instances;
-  }
-
-  get Primitive() {
-    return this.primitive;
-  }
-
-}
-
-exports.GVertexArrayObject = GVertexArrayObject;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","./GBuffer":"../node_modules/pipegl/src/res/GBuffer.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../util/defaultValue":"../node_modules/pipegl/src/util/defaultValue.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/AttributeState.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AttributeState = void 0;
-
-var _check = require("../util/check");
-
-var _Constant = require("../core/Constant");
-
-var _isBufferArray = require("../util/isBufferArray");
-
-var _GElementsbuffer = require("../res/GElementsbuffer");
-
-var _checkAttribute = require("../util/checkAttribute");
-
-var _GVertexArrayObject = require("../res/GVertexArrayObject");
-
-class AttributeState {
-  constructor(gl, extLib, limLib, bufferState, elementState, programState, stats) {
-    this.getAttribute = i => {
-      return this.attributeBindings[i];
-    };
-
-    this.applyAttribute = attrs => {
-      var _a;
-
-      const RECORD_SET = new Map();
-      (_a = Object.keys(attrs)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
-        const v = attrs[key];
-        (0, _checkAttribute.checkAttribute)(v);
-        const record = {
-          name: key
-        };
-
-        if ((0, _isBufferArray.isBufferArray)(v)) {
-          const v0 = v;
-          const buf = this.bufferState.createBuffer({
-            data: v0,
-            target: 'ARRAY_BUFFER'
-          });
-          record.buffer = buf;
-          record.component = buf.Component;
-          record.divisor = 0;
-          record.offset = 0;
-          record.stride = 0;
-          record.normalized = false;
-        } else if (v.buffer) {
-          const v0 = v;
-          const buf = (0, _isBufferArray.isBufferArray)(v0.buffer) ? this.bufferState.createBuffer({
-            data: v0.buffer,
-            target: 'ARRAY_BUFFER'
-          }) : v0.buffer;
-          record.offset = v0.offset | 0;
-          (0, _check.check)(record.offset >= 0, `offset只能是大于等于0的数字`);
-          record.stride = v0.stride | 0;
-          (0, _check.check)(record.stride >= 0 && record.stride < 256, `扫描线宽取值范围必须[0,255]`);
-          record.normalized = !!v0.normalized;
-          record.component = _Constant.CComponent[v0.component] || buf.Component;
-          (0, _check.check)(Object.values(_Constant.CComponent).indexOf(record.component) !== -1, `数据类型只能是${Object.values(_Constant.CComponent)}`);
-          (0, _check.check)(v0.divisor === 0 || this.extLib.get('ANGLE_instanced_arrays'), `不支持ANGLE_instanced_arrays插件，不能设置实例化参数divisor`);
-          (0, _check.check)(v0.divisor >= 0, `不支持的divisor值`);
-          record.buffer = buf;
-          record.component = buf.Component;
-        }
-
-        RECORD_SET.set(record.name, record);
-      });
-      return RECORD_SET;
-    };
-
-    this.createREGLVertexArrayObject = (attrs, opts = {}) => {
-      const RECORD_SET = this.applyAttribute(attrs);
-      let ELEMENTS = null;
-
-      if (opts.elements) {
-        if (opts.elements instanceof _GElementsbuffer.GElementsbuffer) ELEMENTS = opts.elements;else ELEMENTS = this.elementState.createElementsbuffer({
-          data: opts.elements,
-          component: 'UNSIGNED_SHORT',
-          primitive: opts.primitive || 'TRIANGLES'
-        });
-      }
-
-      const vertexArrayObject = new _GVertexArrayObject.GVertexArrayObject({
-        gl: this.gl,
-        extVAO: this.extVAO,
-        extITA: this.extITA,
-        programState: this.programState,
-        stats: this.stats
-      });
-      vertexArrayObject.refresh({
-        recordSet: RECORD_SET,
-        elements: ELEMENTS,
-        offset: opts.offset,
-        count: opts.count,
-        instances: opts.instances,
-        primitive: opts.primitive
-      });
-      return vertexArrayObject;
-    };
-
-    this.setVAO = vao => {
-      var _a;
-
-      if (vao) this.current = vao;else {
-        (_a = this.Current) === null || _a === void 0 ? void 0 : _a.decRef();
-        this.current = null;
-      }
-    };
-
-    this.gl = gl;
-    this.extLib = extLib;
-    this.limLib = limLib;
-    this.bufferState = bufferState;
-    this.elementState = elementState;
-    this.programState = programState;
-    this.current = null;
-    this.extVAO = extLib.getByForce('OES_vertex_array_object');
-    this.extITA = extLib.getByForce('ANGLE_instanced_arrays');
-    this.attributeBindings = new Array(limLib.maxAttributes);
-
-    for (let i = 0; i < limLib.maxAttributes; i++) this.attributeBindings[i] = {};
-
-    this.stats = stats;
-  }
-
-  get Current() {
-    return this.current;
-  }
-
-}
-
-exports.AttributeState = AttributeState;
-AttributeState.VAO_SET = _GVertexArrayObject.VAO_SET;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../util/isBufferArray":"../node_modules/pipegl/src/util/isBufferArray.ts","../res/GElementsbuffer":"../node_modules/pipegl/src/res/GElementsbuffer.ts","../util/checkAttribute":"../node_modules/pipegl/src/util/checkAttribute.ts","../res/GVertexArrayObject":"../node_modules/pipegl/src/res/GVertexArrayObject.ts"}],"../node_modules/pipegl/src/state/BufferState.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.BufferState = void 0;
-
-var _GBuffer = require("../res/GBuffer");
-
-var _Constant = require("../core/Constant");
-
-class BufferState {
-  constructor(gl, stats) {
-    this.streamPool = [];
-
-    this.createBuffer = opts => {
-      const data = opts.data,
-            byteLength = opts.byteLength || 0,
-            usage = opts.usage || 'STATIC_DRAW',
-            component = opts.component || 'FLOAT',
-            dimension = opts.dimension || 'POINTS',
-            target = opts.target || 'ARRAY_BUFFER';
-      const buffer = new _GBuffer.GBuffer(this.gl, target, usage, component, dimension);
-      buffer.bind();
-      if (!data && byteLength > 0) this.gl.bufferData(_Constant.CArraybufferTarget[target], byteLength, _Constant.CUsage[usage]);else buffer.paddingWithData(data, usage, component);
-      this.reglBuffer = buffer;
-      this.stats.bufferCount++;
-      return buffer;
-    };
-
-    this.createStreambuffer = (data, target) => {
-      const usage = 'STREAM_DRAW',
-            component = 'FLOAT',
-            dimension = 'POINTS';
-      const buffer = this.streamPool.pop() || new _GBuffer.GBuffer(this.gl, target, usage, component, dimension);
-      buffer.bind();
-      buffer.paddingWithData(data, usage, component);
-      this.reglBuffer = buffer;
-      return buffer;
-    };
-
-    this.destoryStreambuffer = streambuffer => {
-      this.streamPool.push(streambuffer);
-    };
-
-    this.gl = gl;
-    this.stats = stats;
-  }
-
-}
-
-exports.BufferState = BufferState;
-BufferState.REGLBUFFER_SET = _GBuffer.BUFFER_SET;
-},{"../res/GBuffer":"../node_modules/pipegl/src/res/GBuffer.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/ElementState.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ElementsState = void 0;
-
-var _check = require("../util/check");
-
-var _Constant = require("../core/Constant");
-
-var _GElementsbuffer = require("../res/GElementsbuffer");
-
-class ElementsState {
-  constructor(gl, extLib, bufferState, stats) {
-    this.streamPool = [];
-
-    this.initElements = opts => {
-      opts.reglElementbuffer.bind();
-      opts.reglElementbuffer.paddingWithData(opts.data, opts.usage, opts.component);
-
-      if (!opts.primitive) {
-        opts.reglElementbuffer.Primitive = opts.reglElementbuffer.Dimension === 1 ? _Constant.CPrimitive['POINTS'] : opts.reglElementbuffer.Dimension === 2 ? _Constant.CPrimitive['LINES'] : opts.reglElementbuffer.Dimension === 3 ? _Constant.CPrimitive['TRIANGLES'] : _Constant.CPrimitive[opts.primitive];
-      } else opts.reglElementbuffer.Primitive = _Constant.CPrimitive[opts.primitive || 'TRIANGLES'];
-
-      opts.count = opts.count || opts.reglElementbuffer.ByteLength;
-      if (opts.component === 'UNSIGNED_SHORT') opts.count >>= 1;else if (opts.component === 'UNSIGNED_INT') opts.count >>= 2;
-      opts.reglElementbuffer.VertCount = opts.count;
-      return opts.reglElementbuffer;
-    };
-
-    this.fixComponent = component => {
-      switch (component) {
-        case 'UNSIGNED_BYTE':
-        case 'BYTE':
-          component = 'UNSIGNED_BYTE';
-          break;
-
-        case 'UNSIGNED_SHORT':
-        case 'SHORT':
-          component = 'UNSIGNED_SHORT';
-          break;
-
-        case 'UNSIGNED_INT':
-        case 'INT':
-          component = this.extLib.get('OES_element_index_uint') ? 'UNSIGNED_INT' : 'UNSIGNED_SHORT';
-          break;
-
-        default:
-          (0, _check.check)(false, `ElementsState Error: unvilade paramter ${component}`);
-      }
-
-      return component;
-    };
-
-    this.getElementsbuffer = id => {
-      return ElementsState.ELEMENTBUFFER_SET.get(id);
-    };
-
-    this.createElementsbuffer = opts => {
-      const data = opts.data,
-            count = opts.count || 0,
-            usage = opts.usage || 'STATIC_DRAW',
-            target = 'ELEMENT_ARRAY_BUFFER',
-            component = this.fixComponent(opts.component) || 'UNSIGNED_SHORT',
-            dimension = opts.dimension || 'TRIANGLES',
-            primitive = opts.primitive || 'TRIANGLES',
-            byteLength = opts.data.length;
-      const reglbuffer = this.bufferState.createBuffer({
-        target: target,
-        data: data,
-        usage: usage,
-        component: component,
-        dimension: dimension,
-        byteLength: byteLength
-      });
-      const reglElementbuffer = new _GElementsbuffer.GElementsbuffer(reglbuffer, primitive);
-      this.stats.elementsCount++;
-      return this.initElements({
-        reglElementbuffer: reglElementbuffer,
-        data: data,
-        component: component,
-        usage: usage,
-        primitive: primitive,
-        count: count
-      });
-    };
-
-    this.createStreamElementsbuffer = opts => {
-      const data = opts.data,
-            count = opts.count || 0,
-            usage = opts.usage || 'STREAM_DRAW',
-            target = 'ELEMENT_ARRAY_BUFFER',
-            component = this.fixComponent(opts.component) || 'UNSIGNED_SHORT',
-            dimension = opts.dimension || 'TRIANGLES',
-            primitive = opts.primitive || 'TRIANGLES',
-            byteLength = opts.data.length;
-      const reglbuffer = this.bufferState.createBuffer({
-        target: target,
-        data: data,
-        usage: usage,
-        component: component,
-        dimension: dimension,
-        byteLength: byteLength
-      });
-      const reglElementbuffer = new _GElementsbuffer.GElementsbuffer(reglbuffer, primitive);
-      this.stats.elementsCount++;
-      return this.initElements({
-        reglElementbuffer: reglElementbuffer,
-        data: data,
-        component: component,
-        usage: usage,
-        primitive: primitive,
-        count: count
-      });
-    };
-
-    this.destoryStreamElementsbuffer = streamElementbuffer => {
-      this.streamPool.push(streamElementbuffer);
-    };
-
-    this.gl = gl;
-    this.extLib = extLib;
-    this.bufferState = bufferState;
-    this.stats = stats;
-  }
-
-}
-
-exports.ElementsState = ElementsState;
-ElementsState.ELEMENTBUFFER_SET = _GElementsbuffer.REGLELEMENTBUFFER_SET;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../res/GElementsbuffer":"../node_modules/pipegl/src/res/GElementsbuffer.ts"}],"../node_modules/pipegl/src/res/GRenderbuffer.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.RENDERBUFFER_SET = exports.GRenderbuffer = void 0;
-
-var _Dispose = require("../core/Dispose");
-
-var _Constant = require("../core/Constant");
-
-const RENDERBUFFER_SET = new Map();
-exports.RENDERBUFFER_SET = RENDERBUFFER_SET;
-
-class GRenderbuffer extends _Dispose.Dispose {
-  constructor(gl, width, height, format, stats) {
-    super();
-
-    this.bind = () => {
-      const gl = this.gl;
-      gl.bindRenderbuffer(gl.RENDERBUFFER, this.renderbuffer);
-      gl.renderbufferStorage(gl.RENDERBUFFER, this.Format, this.width, this.height);
-      this.refCount++;
-    };
-
-    this.gl = gl;
-    this.renderbuffer = gl.createRenderbuffer();
-    this.format = format || 'RGBA4';
-    this.width = width;
-    this.height = height;
-    this.stats = stats;
-    this.stats.renderbufferCount++;
-    RENDERBUFFER_SET.set(this.ID, this);
-  }
-
-  dispose() {
-    const gl = this.gl;
-    const handler = this.renderbuffer;
-    gl.bindRenderbuffer(gl.RENDERBUFFER, null);
-    gl.deleteRenderbuffer(handler);
-    this.renderbuffer = null;
-    this.refCount = 0;
-    RENDERBUFFER_SET.delete(this.ID);
-    this.stats.renderbufferCount--;
-  }
-
-  decRef() {
-    if (--this.refCount <= 0) this.dispose();
-  }
-
-  get Width() {
-    return this.width;
-  }
-
-  get Height() {
-    return this.height;
-  }
-
-  get Renderbuffer() {
-    return this.renderbuffer;
-  }
-
-  get Format() {
-    return _Constant.CRenderbufferColor[this.format];
-  }
-
-}
-
-exports.GRenderbuffer = GRenderbuffer;
-},{"../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/res/GAttachment.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.GAttachment = void 0;
-
-var _Dispose = require("../core/Dispose");
-
-var _GTexture = require("./GTexture");
-
-var _GRenderbuffer = require("./GRenderbuffer");
-
-var _Constant = require("../core/Constant");
-
-class GAttachment extends _Dispose.Dispose {
-  constructor(gl, target, attach) {
-    var _a, _b, _c, _d;
-
-    super();
-
-    this.attach = location => {
-      const gl = this.gl;
-      if (this.reglTexture) gl.framebufferTexture2D(gl.FRAMEBUFFER, location, this.target, this.reglTexture.Texutre, 0);else gl.framebufferRenderbuffer(gl.FRAMEBUFFER, location, this.target, this.reglRenderbuffer.Renderbuffer);
-    };
-
-    this.gl = gl;
-    this.target = _Constant.CAttachmentTarget[target || 'TEXTURE_2D'] || 0;
-    if (attach instanceof _GTexture.GTexture) this.reglTexture = attach;else if (attach instanceof _GRenderbuffer.GRenderbuffer) this.reglRenderbuffer = attach;
-    this.width = ((_a = this.reglTexture) === null || _a === void 0 ? void 0 : _a.Width) || ((_b = this.reglRenderbuffer) === null || _b === void 0 ? void 0 : _b.Width) || 0;
-    this.height = ((_c = this.reglTexture) === null || _c === void 0 ? void 0 : _c.Height) || ((_d = this.reglRenderbuffer) === null || _d === void 0 ? void 0 : _d.Height) || 0;
-  }
-
-  dispose() {
-    throw new Error("Method not implemented.");
-  }
-
-  decRef() {
-    if (--this.refCount <= 0) this.dispose();
-  }
-
-  get Texture() {
-    return this.reglTexture;
-  }
-
-}
-
-exports.GAttachment = GAttachment;
-},{"../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","./GTexture":"../node_modules/pipegl/src/res/GTexture.ts","./GRenderbuffer":"../node_modules/pipegl/src/res/GRenderbuffer.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/FramebufferState.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FramebufferState = void 0;
-
-var _GAttachment = require("../res/GAttachment");
-
-var _GFramebuffer = require("../res/GFramebuffer");
-
-var _GTexture = require("../res/GTexture");
-
-const UINT8EMPTY0 = new Uint8Array(0);
-
-class FramebufferState {
-  constructor(gl, textureState, renderbufferState, extLib, limLib, stats) {
-    this.allocAttachment = opts => {
-      const gl = this.gl;
-
-      if (opts.isTexture) {
-        const texture = this.textureState.createTexture2D(UINT8EMPTY0, opts.w, opts.h, opts.c);
-        return new _GAttachment.GAttachment(gl, 'TEXTURE_2D', texture);
-      } else {
-        const rbo = this.renderbufferState.createRenderbuffer({
-          w: opts.w,
-          h: opts.h,
-          format: opts.format || 'RGBA4'
-        });
-        return new _GAttachment.GAttachment(gl, 'RENDERBUFFER', rbo);
-      }
-    };
-
-    this.createFramebuffer = opts => {
-      var _a;
-
-      const gl = this.gl;
-      const fbo = new _GFramebuffer.GFramebuffer(gl, this.limLib, this.stats);
-      const colorAttachments = [];
-      (_a = opts.colors) === null || _a === void 0 ? void 0 : _a.forEach(color => {
-        const TYPE = color instanceof _GTexture.GTexture ? 'TEXTURE_2D' : 'RENDERBUFFER';
-        colorAttachments.push(new _GAttachment.GAttachment(gl, TYPE, color));
-      });
-      const depthAttachment = !opts.depth ? null : new _GAttachment.GAttachment(gl, 'RENDERBUFFER', opts.depth);
-      const stencilAttachment = !opts.stencil ? null : new _GAttachment.GAttachment(gl, 'RENDERBUFFER', opts.stencil);
-      const depthStencilAttachment = !opts.depthStencil ? null : new _GAttachment.GAttachment(gl, 'RENDERBUFFER', opts.depthStencil);
-      fbo.refreshAttachment({
-        colorAttachments,
-        depthAttachment,
-        stencilAttachment,
-        depthStencilAttachment
-      });
-      fbo.updateFramebuffer();
-      return fbo;
-    };
-
-    this.gl = gl;
-    this.textureState = textureState;
-    this.renderbufferState = renderbufferState;
-    this.extLib = extLib;
-    this.limLib = limLib;
-    this.stats = stats;
-  }
-
-  set Current(v) {
-    this.current = v;
-  }
-
-  get Current() {
-    return this.current;
-  }
-
-  set Next(v) {
-    this.next = v;
-  }
-
-  get Next() {
-    return this.next;
-  }
-
-}
-
-exports.FramebufferState = FramebufferState;
-FramebufferState.FRAMEBUFFER_SET = _GFramebuffer.FRAMEBUFFER_SET;
-},{"../res/GAttachment":"../node_modules/pipegl/src/res/GAttachment.ts","../res/GFramebuffer":"../node_modules/pipegl/src/res/GFramebuffer.ts","../res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts"}],"../node_modules/pipegl/src/res/GProgram.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PROGRAM_SET = exports.GProgram = void 0;
-
-var _check = require("../util/check");
-
-var _Dispose = require("../core/Dispose");
-
-var _Constant = require("../core/Constant");
-
-const PROGRAM_SET = new Map();
-exports.PROGRAM_SET = PROGRAM_SET;
-
-class GProgram extends _Dispose.Dispose {
-  constructor(gl, shaderState, stringState, fragShaderId, vertShaderId, attribLocations) {
-    super();
-
-    this.use = () => {
-      (0, _check.check)(this.program, `Program错误，空的program无法切换使用`);
-      this.gl.useProgram(this.program);
-    };
-
-    this.link = attributeLocations => {
-      const gl = this.gl,
-            shaderState = this.shaderState,
-            fragId = this.fragId,
-            vertId = this.vertId;
-      const fragShader = shaderState.createShader('FRAGMENT_SHADER', fragId);
-      const vertShader = shaderState.createShader('VERTEX_SHADER', vertId);
-      const program = this.program = gl.createProgram();
-      gl.attachShader(program, fragShader.Shader);
-      gl.attachShader(program, vertShader.Shader);
-      attributeLocations === null || attributeLocations === void 0 ? void 0 : attributeLocations.forEach((v, i) => {
-        const binding = attributeLocations[i];
-        gl.bindAttribLocation(program, i, binding);
-      });
-      gl.linkProgram(program);
-      (0, _check.check)(gl.getProgramParameter(program, gl.LINK_STATUS), `Program错误，编译错误${gl.getProgramInfoLog(program)}`);
-      this.activeUniforms();
-      this.activeAttributes();
-    };
-
-    this.activeUniforms = () => {
-      const insertActvieInfo = info => {
-        for (let i = 0, len = this.uniforms.length; i < len; i++) {
-          if (this.uniforms[i].id === info.id) {
-            this.uniforms[i].location = info.location;
-            return;
-          }
-        }
-
-        this.uniforms.push(info);
-      };
-
-      const gl = this.gl,
-            program = this.program,
-            stringState = this.stringState;
-      const numUniforms = gl.getProgramParameter(program, _Constant.CActiveTarget['ACTIVE_UNIFORMS']);
-
-      for (let i = 0; i < numUniforms; ++i) {
-        const info = gl.getActiveUniform(program, i);
-
-        if (info) {
-          if (info.size > 1) {
-            for (let j = 0, len = info.size; j < len; ++j) {
-              const name = info.name.replace(`[0]`, `[${j}]`);
-              insertActvieInfo({
-                name: name,
-                id: stringState.id(name),
-                location: gl.getUniformLocation(program, name),
-                info: info
-              });
-            }
-          }
-
-          let uniName = info.name;
-
-          if (info.size > 1) {
-            uniName = uniName.replace('[0]', '');
-          }
-
-          insertActvieInfo({
-            name: uniName,
-            id: stringState.id(uniName),
-            location: gl.getUniformLocation(program, uniName),
-            info: info
-          });
-        }
-      }
-    };
-
-    this.activeAttributes = () => {
-      const insertActiveInfo = info => {
-        for (let i = 0, len = this.attributes.length; i < len; i++) {
-          if (this.attributes[i].id === info.id) {
-            this.attributes[i].location = info.location;
-            return;
-          }
-        }
-
-        this.attributes.push(info);
-      };
-
-      const gl = this.gl,
-            program = this.program;
-      const numAttributes = gl.getProgramParameter(program, _Constant.CActiveTarget['ACTIVE_ATTRIBUTES']);
-
-      for (let i = 0; i < numAttributes; ++i) {
-        const info = gl.getActiveAttrib(program, i);
-        if (info) insertActiveInfo({
-          name: info.name,
-          id: this.stringState.id(info.name),
-          location: gl.getAttribLocation(program, info.name),
-          info
-        });
-      }
-    };
-
-    this.gl = gl;
-    this.fragId = fragShaderId;
-    this.vertId = vertShaderId;
-    this.program = null;
-    this.uniforms = [];
-    this.attributes = [];
-    this.shaderState = shaderState;
-    this.stringState = stringState;
-    this.link(attribLocations);
-    PROGRAM_SET.set(this.ID, this);
-  }
-
-  dispose() {
-    throw new Error('Method not implemented.');
-  }
-
-  decRef() {
-    throw new Error('Method not implemented.');
-  }
-
-  get Uniforms() {
-    return this.uniforms;
-  }
-
-  get Attributes() {
-    return this.attributes;
-  }
-
-  get AttActiveInfo() {
-    if (!this.attPosition) {
-      this.attPosition = new Map();
-      this.attributes.forEach(att => {
-        this.attPosition.set(att.name, att);
-      });
-    }
-
-    return this.attPosition;
-  }
-
-}
-
-exports.GProgram = GProgram;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/ProgramState.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ProgramState = void 0;
-
-var _check = require("../util/check");
-
-var _GProgram = require("../res/GProgram");
-
-class ProgramState {
-  constructor(gl, shaderState, stringState) {
-    this.createProgram = (frag, vert, attribLocations) => {
-      (0, _check.check)(vert.length >= 0, `ProgramState error: vertex shader is missing`);
-      (0, _check.check)(frag.length >= 0, `ProgramState error: fragment shader is missing`);
-      const gl = this.gl,
-            shaderState = this.shaderState,
-            stringState = this.stringState;
-      const fragShader = shaderState.createShader('FRAGMENT_SHADER', stringState.id(frag));
-      const vertShader = shaderState.createShader('VERTEX_SHADER', stringState.id(vert));
-      const reglProgram = new _GProgram.GProgram(gl, shaderState, stringState, fragShader.ID, vertShader.ID, attribLocations);
-      return reglProgram;
-    };
-
-    this.useProgram = reglProgramId => {
-      const reglProgram = ProgramState.PROGRAM_SET.get(reglProgramId);
-      reglProgram.use();
-      this.reglProgram = reglProgram;
-    };
-
-    this.gl = gl;
-    this.shaderState = shaderState;
-    this.stringState = stringState;
-    this.reglProgram = null;
-  }
-
-  get Current() {
-    return this.reglProgram;
-  }
-
-}
-
-exports.ProgramState = ProgramState;
-ProgramState.PROGRAM_SET = _GProgram.PROGRAM_SET;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../res/GProgram":"../node_modules/pipegl/src/res/GProgram.ts"}],"../node_modules/pipegl/src/state/RenderbufferState.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.RenderbufferState = void 0;
-
-var _GRenderbuffer = require("../res/GRenderbuffer");
-
-var _check = require("../util/check");
-
-class RenderbufferState {
-  constructor(gl, extLib, limLib, stats) {
-    this.createRenderbuffer = opts => {
-      const gl = this.gl,
-            w = opts.w || 0,
-            h = opts.h || 0,
-            f = opts.format || 'RGBA4';
-      (0, _check.check)(w > 0 && h > 0 && w <= this.limLib.maxTextureSize && h <= this.limLib.maxTextureSize, `Renderbuffer error: 分辨率错误`);
-      const rbo = new _GRenderbuffer.GRenderbuffer(gl, w, h, f, this.stats);
-      rbo.bind();
-      return rbo;
-    };
-
-    this.gl = gl;
-    this.extLib = extLib;
-    this.limLib = limLib;
-    this.stats = stats;
-  }
-
-}
-
-exports.RenderbufferState = RenderbufferState;
-RenderbufferState.RENDERBUFFER_SET = _GRenderbuffer.RENDERBUFFER_SET;
-},{"../res/GRenderbuffer":"../node_modules/pipegl/src/res/GRenderbuffer.ts","../util/check":"../node_modules/pipegl/src/util/check.ts"}],"../node_modules/pipegl/src/res/GShader.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.VERTSHADER_SET = exports.GShader = exports.FRAGSHADER_SET = void 0;
-
-var _check = require("../util/check");
-
-var _Dispose = require("../core/Dispose");
-
-var _Constant = require("../core/Constant");
-
-const FRAGSHADER_SET = new Map();
-exports.FRAGSHADER_SET = FRAGSHADER_SET;
-const VERTSHADER_SET = new Map();
-exports.VERTSHADER_SET = VERTSHADER_SET;
-
-class GShader extends _Dispose.Dispose {
-  constructor(gl, id, source, target) {
-    super();
-    this.id = id;
-    this.gl = gl;
-    this.target = _Constant.CShaderTarget[target];
-    this.shader = gl.createShader(this.target);
-    this.source = source;
-    gl.shaderSource(this.shader, source);
-    gl.compileShader(this.shader);
-    (0, _check.check)(gl.getShaderParameter(this.shader, gl.COMPILE_STATUS), `shader编译错误 - ${gl.getShaderInfoLog(this.shader)}`);
-    this.target === _Constant.CShaderTarget['FRAGMENT_SHADER'] ? FRAGSHADER_SET.set(this.ID, this) : VERTSHADER_SET.set(this.ID, this);
-  }
-
-  dispose() {
-    throw new Error('Method not implemented.');
-  }
-
-  decRef() {
-    throw new Error('Method not implemented.');
-  }
-
-  get Shader() {
-    return this.shader;
-  }
-
-}
-
-exports.GShader = GShader;
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../core/Dispose":"../node_modules/pipegl/src/core/Dispose.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/state/ShaderState.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ShaderState = void 0;
-
-var _GShader = require("../res/GShader");
-
-class ShaderState {
-  constructor(gl, stringState, stats) {
-    this.createShader = (target, id) => {
-      const SHADER_SET = target === 'FRAGMENT_SHADER' ? ShaderState.FRAGSHADER_SET : ShaderState.VERTSHADER_SET;
-      let shader = SHADER_SET.get(id);
-
-      if (!shader) {
-        const source = this.stringState.str(id);
-        shader = new _GShader.GShader(this.gl, id, source, target);
-      }
-
-      return shader;
-    };
-
-    this.gl = gl;
-    this.stringState = stringState;
-    this.stats = stats;
-  }
-
-}
-
-exports.ShaderState = ShaderState;
-ShaderState.FRAGSHADER_SET = _GShader.FRAGSHADER_SET;
-ShaderState.VERTSHADER_SET = _GShader.VERTSHADER_SET;
-},{"../res/GShader":"../node_modules/pipegl/src/res/GShader.ts"}],"../node_modules/pipegl/src/state/StringState.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.StringState = void 0;
-
-class StringState {
-  constructor() {
-    this.stringValues = [];
-
-    this.id = str => {
-      let result = StringState.STRINGSTATE_SET.get(str);
-      if (result) return result;
-      result = this.stringValues.length;
-      StringState.STRINGSTATE_SET.set(str, result);
-      this.stringValues.push(str);
-      return result;
-    };
-
-    this.str = id => {
-      return this.stringValues[id];
-    };
-  }
-
-}
-
-exports.StringState = StringState;
-StringState.STRINGSTATE_SET = new Map();
-},{}],"../node_modules/pipegl/src/util/getExtendCopy.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getExtend = exports.getCopy = void 0;
-
-const getExtend = (target, ...exts) => {
-  exts.forEach(ext => {
-    const keys = Object.keys(ext);
-
-    for (let i = 0, len = keys.length; i < len; ++i) target[keys[i]] = ext[keys[i]];
-  });
-  return target;
-};
-
-exports.getExtend = getExtend;
-
-const getCopy = (target, ...exts) => {
-  exts.forEach(ext => {
-    var _a;
-
-    (_a = Object.keys(target)) === null || _a === void 0 ? void 0 : _a.forEach(key => {
-      target[key] = ext[key] || target[key];
-    });
-  });
-  return target;
-};
-
-exports.getCopy = getCopy;
-},{}],"../node_modules/pipegl/src/util/toHalfFloat.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.toHalfFloat = void 0;
-
-var _BufferPool = require("./../pool/BufferPool");
-
-const FLOAT = new Float32Array(1),
-      INT = new Uint32Array(FLOAT.buffer);
-
-const toHalfFloat = array => {
-  const len = array.length;
-
-  const ushorts = _BufferPool.bufferPool0.allocType('UNSIGNED_SHORT', len);
-
-  for (let i = 0; i < len; ++i) {
-    if (isNaN(array[i])) ushorts[i] = 0xffff;else if (array[i] === Infinity) ushorts[i] = 0x7c00;else if (array[i] === -Infinity) ushorts[i] = 0xfc00;else {
-      FLOAT[0] = array[i];
-      const x = INT[0];
-      const sgn = x >>> 31 << 15;
-      const exp = (x << 1 >>> 24) - 127;
-      const frac = x >> 13 & (1 << 10) - 1;
-      if (exp < -24) ushorts[i] = sgn;else if (exp < -14) {
-        const s = -14 - exp;
-        ushorts[i] = sgn + (frac + (1 << 10) >> s);
-      } else if (exp > 15) ushorts[i] = sgn + 0x7c00;else ushorts[i] = sgn + (exp + 15 << 10) + frac;
-    }
-  }
-
-  return ushorts;
-};
-
-exports.toHalfFloat = toHalfFloat;
-},{"./../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts"}],"../node_modules/pipegl/src/core/Transpose.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Transpose = void 0;
-
-var _BufferPool = require("../pool/BufferPool");
-
-var _toHalfFloat = require("../util/toHalfFloat");
-
-class Transpose {}
-
-exports.Transpose = Transpose;
-
-Transpose.preConvert = (image, size) => {
-  const component = image.component === 'HALF_FLOAT_OES' ? 'FLOAT' : image.component;
-  return _BufferPool.bufferPool0.allocType(component, size);
-};
-
-Transpose.postConvert = (image, data) => {
-  if (image.component === 'HALF_FLOAT_OES') {
-    image.data = (0, _toHalfFloat.toHalfFloat)(data);
-
-    _BufferPool.bufferPool0.freeType(data);
-  } else image.data = data;
-};
-
-Transpose.TransposeData = (image, arr, sx, sy, sc, offset) => {
-  if (!arr) return arr;
-  const w = image.width,
-        h = image.height,
-        c = image.channels,
-        size = w * h * c;
-  const data = Transpose.preConvert(image, size);
-  let p = 0;
-
-  for (let i = 0; i < h; ++i) for (let j = 0; j < w; ++j) for (let k = 0; k < c; ++k) data[p++] = arr[sx * j + sy * i + sc * k + offset];
-
-  Transpose.postConvert(image, data);
-};
-},{"../pool/BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts","../util/toHalfFloat":"../node_modules/pipegl/src/util/toHalfFloat.ts"}],"../node_modules/pipegl/src/util/isPowerOf2.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isPowerOf2 = void 0;
-
-const isPowerOf2 = n => {
-  return n > 0 && (n & n - 1) == 0;
-};
-
-exports.isPowerOf2 = isPowerOf2;
-},{}],"../node_modules/pipegl/src/util/getPixelSize.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getPixelSize = void 0;
-
-var _Constant = require("../core/Constant");
-
-const getPixelSize = (component, channels) => {
-  switch (component) {
-    case 'UNSIGNED_SHORT_4_4_4_4':
-    case 'UNSIGNED_SHORT_5_5_5_1':
-    case 'UNSIGNED_SHORT_5_6_5':
-      return 2;
-
-    case 'UNSIGNED_INT_24_8_WEBGL':
-      return 4;
-
-    default:
-      return _Constant.CTextureComponentSize[_Constant.CTextureComponent[component]] * channels;
-  }
-};
-
-exports.getPixelSize = getPixelSize;
-},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/checkTexture.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.checkTextureCube = exports.checkTexture2D = exports.checkMipmapTexture2D = void 0;
-
-var _check = require("./check");
-
-var _isPowerOf = require("./isPowerOf2");
-
-var _getPixelSize = require("./getPixelSize");
-
-var _Constant = require("../core/Constant");
-
-const checkTexture2D = (opts, extLib, limLib) => {
-  opts.component = opts.component || 'BYTE';
-  opts.width = opts.width || 1;
-  opts.height = opts.height || 1;
-  opts.texColor = opts.texColor || 'RGBA';
-  opts.channels = opts.channels || _Constant.CTextureChannelCount[_Constant.CTextureColor[opts.texColor]];
-  opts.compressed = _Constant.CTextureCompressed[opts.texColor] ? true : false;
-  (0, _check.check)(opts.component === 'FLOAT' && extLib.get('OES_texture_float'), `CheckTexture2D error: 指定纹理类型需要启用OES_texture_float插件`);
-  (0, _check.check)(opts.component === 'HALF_FLOAT_OES' && extLib.get('OES_texture_float'), `CheckTexture2D error: 指定纹理类型需要启用OES_texture_float插件`);
-  (0, _check.check)((opts.component === 'UNSIGNED_SHORT' || opts.component === 'UNSIGNED_INT' || opts.component === 'UNSIGNED_INT_24_8_WEBGL') && extLib.get('WEBGL_depth_texture'), `CheckTexture2D error: 指定纹理类型需要启用WEBGL_depth_texture插件`);
-  (0, _check.check)(opts.channels > 0 && opts.channels <= 4, `CheckTexture2D error: 纹理通道数错误`);
-  (0, _check.check)(opts.width > 0 && opts.width <= limLib.maxTextureSize && opts.height > 0 && opts.height <= limLib.maxTextureSize, `CheckTexture2D error: 纹理分辨率错误，长或宽超过设备支持上限${limLib.maxTextureSize}`);
-};
-
-exports.checkTexture2D = checkTexture2D;
-
-const checkMipmapTexture2D = (texInfo, mipData, extLib, limLib) => {
-  const w = mipData.width,
-        h = mipData.height,
-        c = mipData.channels;
-  (0, _check.check)(w > 0 && w <= limLib.maxTextureSize && h > 0 && h <= limLib.maxTextureSize, `CheckTexture2D error: 纹理分辨率错误，长或宽超过设备支持上限${limLib.maxTextureSize}`);
-  if (texInfo.wrapS !== 'CLAMP_TO_EDGE' || texInfo.wrapT !== 'CLAMP_TO_EDGE') (0, _check.check)((0, _isPowerOf.isPowerOf2)(w) && (0, _isPowerOf.isPowerOf2)(h), `CheckTexture2D error: 纹理模式非CLAMP时要求分辨率为2的幂`);
-
-  if (mipData.mipmask === 1) {
-    if (w !== 1 && h !== 1) (0, _check.check)(texInfo.minFilter !== 'LINEAR_MIPMAP_LINEAR' && texInfo.minFilter !== 'LINEAR_MIPMAP_NEAREST' && texInfo.minFilter !== 'NEAREST_MIPMAP_LINEAR' && texInfo.minFilter !== 'NEAREST_MIPMAP_NEAREST', `CheckTexture2D error: min filter必须是mimap类型`);
-  } else {
-    (0, _check.check)((0, _isPowerOf.isPowerOf2)(w) && (0, _isPowerOf.isPowerOf2)(h), `CheckTexture2D error:纹理模式非CLAMP时要求分辨率为2的幂`);
-    (0, _check.check)(mipData.mipmask === (w << 1) - 1, `CheckTexture2D error:丢失/不合法的mipmask`);
-  }
-
-  if (mipData.component === 'FLOAT') {
-    (0, _check.check)(extLib.get('OES_texture_float'), `CheckTexture2D error: FLOAT类型纹理需要开启OES_texture_float`);
-    (0, _check.check)((texInfo.minFilter !== 'NEAREST' || texInfo.magFilter !== 'NEAREST') && extLib.get('OES_texture_float_linear'), `CheckTexture2D error: filter 不支持非NEAREST插值，需开启OES_texture_float_linear`);
-    (0, _check.check)(!texInfo.genMipmaps, `CheckTexture2D error: mipmap生成不支持float纹理类型`);
-  }
-
-  for (let i = 0; i < 16; ++i) {
-    const mipimg = mipData.images[i];
-
-    if (mipimg) {
-      const mw = w >> i,
-            mh = h >> i;
-      (0, _check.check)(mipData.mipmask & 1 << i, `CheckTexture2D error: mipmap数据缺失`);
-      (0, _check.check)(mipimg.width === mw && mipimg.height === mh, `CheckTexture2D error: 错误的mipmap images shape信息`);
-      (0, _check.check)(mipimg.texColor === mipData.texColor && mipimg.inTexColor === mipData.inTexColor && mipimg.component === mipData.component, `CheckTexture2D error: 不合适的mipmap image数据类型`);
-
-      if (mipimg.compressed) {} else if (mipimg.data) {
-        const rowSize = Math.ceil((0, _getPixelSize.getPixelSize)(mipimg.component, c) * mw / mipimg.unpackAlignment) * mipimg.unpackAlignment;
-        (0, _check.check)(mipimg.data.byteLength === rowSize * mh, `CheckTexture2D error: 数据缓冲的大小与image格式对应的数据长度不一致`);
-      }
-    }
-  }
-
-  if (mipData.compressed) (0, _check.check)(!mipData.genMipmaps, `CheckTexture2D error: 纹理压缩格式不支持生成mipmap`);
-};
-
-exports.checkMipmapTexture2D = checkMipmapTexture2D;
-
-const checkTextureCube = (info, mipmap, faces, limLib) => {
-  const w = mipmap.width,
-        h = mipmap.height,
-        c = mipmap.channels;
-  (0, _check.check)(w > 0 && w <= limLib.maxTextureSize && h > 0 && h <= limLib.maxTextureSize, `checkTextureCube error: 超过设备支持纹理上限`);
-  (0, _check.check)(w === h, `checkTextureCube error: 立方体贴图必须是正方形`);
-  (0, _check.check)(info.wrapS === 'CLAMP_TO_EDGE' && info.wrapT === 'CLAMP_TO_EDGE', `checkTextureCube error: 立方体贴图wrap模式只支持CLAMP_TO_EDGE`);
-  faces.forEach(face => {
-    (0, _check.check)(face.width === w && face.height === h, `checkTextureCube error: 立方体每个纹理单元分辨率必须一致，${face}分辨率错误`);
-    const mipmaps = face.images;
-
-    for (let k = 0; k < 16; k++) {
-      const img = mipmaps[k];
-
-      if (img) {
-        const mw = w >> k,
-              mh = h >> k;
-        (0, _check.check)(face.mipmask & 1 << k, `checkTextureCube error: mipmap数据丢失`);
-        (0, _check.check)(img.width === mw && img.height === mh, `checkTextureCube error: mipmap纹理分辨率错误`);
-        (0, _check.check)(img.component === mipmap.component && img.inTexColor === mipmap.inTexColor && img.texColor === mipmap.texColor, `checkTextureCube error: 子图像参数需要一直，包括component/inTexColor/texColor`);
-
-        if (img.compressed) {} else if (img.data) {
-          (0, _check.check)(img.data.byteLength === mw * mh * Math.max((0, _getPixelSize.getPixelSize)(img.component, c), img.unpackAlignment), `checkTextureCube error: 为压缩格式生成mipmap失败`);
-        } else {}
-      }
-    }
-  });
-};
-
-exports.checkTextureCube = checkTextureCube;
-},{"./check":"../node_modules/pipegl/src/util/check.ts","./isPowerOf2":"../node_modules/pipegl/src/util/isPowerOf2.ts","./getPixelSize":"../node_modules/pipegl/src/util/getPixelSize.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/createTexFlag.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createTexFlag = void 0;
-
-const createTexFlag = () => {
-  const texFlags = {
-    inTexColor: 'RGBA',
-    texColor: 'RGBA',
-    component: 'UNSIGNED_BYTE',
-    compressed: false,
-    premultiplyAlpha: false,
-    flipY: false,
-    unpackAlignment: 1,
-    colorSpace: 'BROWSER_DEFAULT_WEBGL',
-    width: 0,
-    height: 0,
-    channels: 0
-  };
-  return texFlags;
-};
-
-exports.createTexFlag = createTexFlag;
-},{}],"../node_modules/pipegl/src/pool/TexImagePool.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.texImagePool0 = void 0;
-
-var _getExtendCopy = require("../util/getExtendCopy");
-
-var _BufferPool = require("./BufferPool");
-
-var _createTexFlag = require("./../util/createTexFlag");
-
-const createTexImage = () => {
-  return {
-    xOffset: 0,
-    yOffset: 0,
-    data: null,
-    neddsCopy: false,
-    neddsFree: false
-  };
-};
-
-class TexImagePool {
-  constructor() {
-    this.texImageQueue = [];
-
-    this.allocImage = () => {
-      if (this.texImageQueue.length > 0) return this.texImageQueue.pop();
-      const A = createTexImage(),
-            B = (0, _createTexFlag.createTexFlag)();
-      return (0, _getExtendCopy.getExtend)(A, B);
-    };
-
-    this.freeImage = texImage => {
-      if (texImage.neddsFree) _BufferPool.bufferPool0.free(texImage.data);
-      (0, _getExtendCopy.getExtend)(texImage, createTexImage());
-      this.texImageQueue.push(texImage);
-    };
-  }
-
-}
-
-const texImagePool0 = new TexImagePool();
-exports.texImagePool0 = texImagePool0;
-},{"../util/getExtendCopy":"../node_modules/pipegl/src/util/getExtendCopy.ts","./BufferPool":"../node_modules/pipegl/src/pool/BufferPool.ts","./../util/createTexFlag":"../node_modules/pipegl/src/util/createTexFlag.ts"}],"../node_modules/pipegl/src/pool/MipmapPool.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.mipmapPool0 = void 0;
-
-var _Constant = require("../core/Constant");
-
-var _createTexFlag = require("../util/createTexFlag");
-
-var _TexImagePool = require("./TexImagePool");
-
-class MipmapPool {
-  constructor() {
-    this.mipmapQueue = [];
-
-    this.allocMipmap = () => {
-      const mipmap = this.mipmapQueue.pop() || (0, _createTexFlag.createTexFlag)();
-      mipmap.genMipmaps = false;
-      mipmap.mipmapHint = _Constant.CMipmapHint['DONT_CARE'];
-      mipmap.mipmask = 0;
-      mipmap.images = new Array(16);
-      return mipmap;
-    };
-
-    this.freeMipmap = mipmap => {
-      const texImages = mipmap.images;
-
-      for (let i = 0, len = texImages.length; i < len; ++i) {
-        const texImage = texImages[i];
-        if (texImage) _TexImagePool.texImagePool0.freeImage(texImage);
-        texImages[i] = null;
-      }
-
-      this.mipmapQueue.push(mipmap);
-    };
-  }
-
-}
-
-const mipmapPool0 = new MipmapPool();
-exports.mipmapPool0 = mipmapPool0;
-},{"../core/Constant":"../node_modules/pipegl/src/core/Constant.ts","../util/createTexFlag":"../node_modules/pipegl/src/util/createTexFlag.ts","./TexImagePool":"../node_modules/pipegl/src/pool/TexImagePool.ts"}],"../node_modules/pipegl/src/state/TextureState.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.TextureState = void 0;
-
-var _check = require("../util/check");
-
-var _getExtendCopy = require("../util/getExtendCopy");
-
-var _Transpose = require("../core/Transpose");
-
-var _detectComponent = require("../util/detectComponent");
-
-var _checkTexture = require("../util/checkTexture");
-
-var _MipmapPool = require("../pool/MipmapPool");
-
-var _TexImagePool = require("../pool/TexImagePool");
-
-var _GTexture = require("../res/GTexture");
-
-var _Constant = require("../core/Constant");
-
-const GL_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FE;
-const GL_TEXTURE_CUBE_MAPS = ['TEXTURE_CUBE_MAP_POSITIVE_X', 'TEXTURE_CUBE_MAP_NEGATIVE_X', 'TEXTURE_CUBE_MAP_POSITIVE_Y', 'TEXTURE_CUBE_MAP_NEGATIVE_Y', 'TEXTURE_CUBE_MAP_POSITIVE_Z', 'TEXTURE_CUBE_MAP_NEGATIVE_Z'];
-const CHANNEL_TEX_COLOR = {
-  1: 'LUMINANCE',
-  2: 'LUMINANCE_ALPHA',
-  3: 'RGB',
-  4: 'RGBA'
-};
-
-class TextureState {
-  constructor(gl, extLib, limLib, stats) {
-    this.setImage = (info, target, mipLevel) => {
-      const gl = this.gl,
-            data = info.data,
-            inTexColor = info.inTexColor,
-            texColor = info.texColor,
-            component = info.component,
-            width = info.width,
-            height = info.height,
-            target0 = _Constant.CTextureMapTarget[target];
-
-      if (info.compressed) {
-        gl.compressedTexImage2D(target0, mipLevel, _Constant.CTextureColor[inTexColor], width, height, 0, data || null);
-      } else if (info.neddsCopy) {
-        gl.copyTexImage2D(target0, mipLevel, _Constant.CTextureColor[texColor], info.xOffset, info.yOffset, width, height, 0);
-      } else {
-        gl.texImage2D(target0, mipLevel, _Constant.CTextureColor[inTexColor], width, height, 0, _Constant.CTextureColor[texColor], _Constant.CTextureComponent[component], data || null);
-      }
-    };
-
-    this.setMipmap = (mimap, target) => {
-      const images = mimap.images;
-
-      for (let i = 0, len = images.length; i < len; i++) {
-        const image = images[i];
-        if (!image) return;
-        this.setImage(image, target, i);
-      }
-    };
-
-    this.setTexFlags = flags => {
-      const gl = this.gl;
-      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, flags.flipY);
-      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, flags.premultiplyAlpha);
-      gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL, _Constant.CColorSpace[flags.colorSpace]);
-      gl.pixelStorei(gl.UNPACK_ALIGNMENT, flags.unpackAlignment);
-    };
-
-    this.setTexInfo = (info, target) => {
-      const extLib = this.extLib,
-            gl = this.gl,
-            target0 = _Constant.CTextureMapTarget[target];
-      if (info.minFilter) gl.texParameteri(target0, gl.TEXTURE_MIN_FILTER, _Constant.CTextureMINFilter[info.minFilter]);
-      if (info.magFilter) gl.texParameteri(target0, gl.TEXTURE_MAG_FILTER, _Constant.CTextureMAGFilter[info.magFilter]);
-      if (info.wrapS) gl.texParameteri(target0, gl.TEXTURE_WRAP_S, _Constant.CTextureFillTarget[info.wrapS]);
-      if (info.wrapT) gl.texParameteri(target0, gl.TEXTURE_WRAP_T, _Constant.CTextureFillTarget[info.wrapT]);
-      if (info.anisotropic && extLib.get('EXT_texture_filter_anisotropic')) gl.texParameteri(target0, GL_TEXTURE_MAX_ANISOTROPY_EXT, info.anisotropic);
-
-      if (info.genMipmaps) {
-        gl.hint(gl.GENERATE_MIPMAP_HINT, info.mimmapHint);
-        gl.generateMipmap(target0);
-      }
-    };
-
-    this.fixTexInfo = opts => {
-      const texInfo = {
-        minFilter: 'NEAREST',
-        magFilter: 'NEAREST',
-        wrapS: 'CLAMP_TO_EDGE',
-        wrapT: 'CLAMP_TO_EDGE',
-        anisotropic: 1,
-        genMipmaps: false,
-        mimmapHint: _Constant.CMipmapHint['DONT_CARE']
-      };
-
-      if (opts.min) {
-        texInfo.minFilter = opts.min;
-        if (TextureState.MIPMAP_FILTERS.indexOf(_Constant.CTextureMINFilter[texInfo.minFilter]) >= 0) texInfo.genMipmaps = true;
-      }
-
-      if (opts.mag) {
-        texInfo.magFilter = opts.mag;
-      }
-
-      if (opts.wrapS) {
-        texInfo.wrapS = opts.wrapS;
-      }
-
-      if (opts.wrapT) {
-        texInfo.wrapT = opts.wrapT;
-      }
-
-      if (opts.anisotropic) {
-        const num = opts.anisotropic;
-        (0, _check.check)(num >= 1 && num <= this.limLib.maxAnisotropic, `TextureState error: 各项异性过滤不在可用范围[${1}, ${this.limLib.maxAnisotropic}]`);
-        texInfo.anisotropic = num;
-      }
-
-      if (opts.mipmap && !opts.min) texInfo.minFilter = 'NEAREST_MIPMAP_NEAREST';
-      return texInfo;
-    };
-
-    this.fixMipmap = (mipmap, arr, shape, stride, offset) => {
-      const imageData = mipmap.images[0] = _TexImagePool.texImagePool0.allocImage();
-
-      (0, _getExtendCopy.getCopy)(imageData, mipmap);
-      (0, _check.check)(!imageData.compressed || arr instanceof Uint8Array, `TextureState error: 压缩纹理必须以Uint8Array格式传输`);
-      imageData.component = mipmap.component = (0, _detectComponent.detectComponent)(arr);
-      const w = shape[0],
-            h = shape[1],
-            c = shape[2];
-      imageData.width = w;
-      imageData.height = h;
-      imageData.channels = c;
-      imageData.texColor = imageData.inTexColor = CHANNEL_TEX_COLOR[c];
-      imageData.neddsFree = true;
-
-      _Transpose.Transpose.TransposeData(imageData, arr, stride[0], stride[1], stride[2], offset);
-
-      (0, _getExtendCopy.getCopy)(mipmap, mipmap.images[0]);
-      return mipmap;
-    };
-
-    this.createTexture2D = (data, w, h, c, opts = {}) => {
-      const gl = this.gl;
-      const offset = opts.offset || 0;
-      const stride = opts.stride || [0, 0, 0];
-      const gTexture = new _GTexture.GTexture(gl, this.limLib, 'TEXTURE_2D', this.stats);
-      const texInfo = this.fixTexInfo(opts);
-      gTexture.TexInfo = texInfo;
-
-      const mipmap = _MipmapPool.mipmapPool0.allocMipmap();
-
-      const imageData = mipmap.images[0] = _TexImagePool.texImagePool0.allocImage();
-
-      mipmap.mipmask = 1;
-      imageData.width = mipmap.width = w;
-      imageData.height = mipmap.height = h;
-      imageData.channels = mipmap.channels = c || 4;
-
-      if (stride[0] === 0 && stride[1] === 0 && stride[2] === 0) {
-        stride[0] = imageData.channels;
-        stride[1] = imageData.channels * imageData.width;
-        stride[2] = 1;
-      }
-
-      (0, _check.check)(imageData.channels >= 1 && imageData.channels <= 4, `TextureState error: 纹理通道必须在1-4之间`);
-      if (gTexture.TexInfo.genMipmaps) mipmap.mipmask = (mipmap.width << 1) - 1;
-      gTexture.TexFlag = mipmap;
-      gTexture.Mipmap = this.fixMipmap(mipmap, data, [imageData.width, imageData.height, imageData.channels], stride, offset);
-      (0, _checkTexture.checkMipmapTexture2D)(texInfo, mipmap, this.extLib, this.limLib);
-      if (texInfo.genMipmaps) gTexture.Mipmap.mipmask = (mipmap.width << 1) - 1;
-      gTexture.tempBind();
-      this.setMipmap(gTexture.Mipmap, 'TEXTURE_2D');
-      this.setTexInfo(gTexture.TexInfo, 'TEXTURE_2D');
-      gTexture.tempRestore();
-
-      _MipmapPool.mipmapPool0.freeMipmap(mipmap);
-
-      return gTexture;
-    };
-
-    this.createTextureCube = (faces, w, h, c, opts = {}) => {
-      const offset = opts.offset || 0;
-      const stride = opts.stride || [0, 0, 0];
-      const gTexture = new _GTexture.GTexture(this.gl, this.limLib, 'TEXTURE_CUBE_MAP', this.stats);
-      const texInfo = this.fixTexInfo(opts);
-      gTexture.TexInfo = texInfo;
-      const gFaces = [];
-      Object.keys(faces).forEach(key => {
-        const data = faces[key];
-
-        const mipmap = _MipmapPool.mipmapPool0.allocMipmap();
-
-        const imageData = mipmap.images[0] = _TexImagePool.texImagePool0.allocImage();
-
-        mipmap.mipmask = 1;
-        imageData.width = mipmap.width = w;
-        imageData.height = mipmap.height = h;
-        imageData.channels = mipmap.channels = c || 4;
-
-        if (stride[0] === 0 && stride[1] === 0 && stride[2] === 0) {
-          stride[0] = imageData.channels;
-          stride[1] = imageData.channels * imageData.width;
-          stride[2] = 1;
-        }
-
-        (0, _check.check)(imageData.channels >= 1 && imageData.channels <= 4, `TextureState error: 纹理通道必须在1-4之间`);
-        this.fixMipmap(mipmap, data, [imageData.width, imageData.height, imageData.channels], stride, offset);
-        gFaces.push(mipmap);
-      });
-      gTexture.Mipmap = gFaces[0];
-      if (texInfo.genMipmaps) gTexture.Mipmap.mipmask = (gFaces[0].width << 1) - 1;else gTexture.Mipmap.mipmask = gFaces[0].mipmask;
-      gTexture.TexFlag = gFaces[0];
-      (0, _checkTexture.checkTextureCube)(texInfo, gTexture.Mipmap, gFaces, this.limLib);
-      gTexture.tempBind();
-      gFaces.forEach((mipmap, i) => {
-        this.setMipmap(mipmap, GL_TEXTURE_CUBE_MAPS[i]);
-      });
-      this.setTexInfo(texInfo, 'TEXTURE_CUBE_MAP');
-      gTexture.tempRestore();
-      gFaces.forEach(mipmap => {
-        _MipmapPool.mipmapPool0.freeMipmap(mipmap);
-      });
-      return gTexture;
-    };
-
-    this.gl = gl;
-    this.extLib = extLib;
-    this.limLib = limLib;
-    this.stats = stats;
-  }
-
-}
-
-exports.TextureState = TextureState;
-TextureState.TEXTURE_SET = _GTexture.TEXTURE_SET;
-TextureState.MIPMAP_FILTERS = [0x2700, 0x2702, 0x2701, 0x2703];
-},{"../util/check":"../node_modules/pipegl/src/util/check.ts","../util/getExtendCopy":"../node_modules/pipegl/src/util/getExtendCopy.ts","../core/Transpose":"../node_modules/pipegl/src/core/Transpose.ts","../util/detectComponent":"../node_modules/pipegl/src/util/detectComponent.ts","../util/checkTexture":"../node_modules/pipegl/src/util/checkTexture.ts","../pool/MipmapPool":"../node_modules/pipegl/src/pool/MipmapPool.ts","../pool/TexImagePool":"../node_modules/pipegl/src/pool/TexImagePool.ts","../res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts","../core/Constant":"../node_modules/pipegl/src/core/Constant.ts"}],"../node_modules/pipegl/src/util/createPerformance.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createPerformance = void 0;
-
-const createPerformance = () => {
-  const stats = {
-    gupTime: 0.0,
-    cpuTime: 0.0,
-    count: 0
-  };
-  return stats;
-};
-
-exports.createPerformance = createPerformance;
-},{}],"../node_modules/pipegl/src/util/createStats.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createStats = void 0;
-
-const createStats = () => {
-  const stats = {
-    vaoCount: 0,
-    bufferCount: 0,
-    elementsCount: 0,
-    framebufferCount: 0,
-    shaderCount: 0,
-    textureCount: 0,
-    cubeCount: 0,
-    renderbufferCount: 0,
-    maxTextureUnits: 0
-  };
-  return stats;
-};
-
-exports.createStats = createStats;
-},{}],"../node_modules/pipegl/src/core/Extension.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Extension = void 0;
-
-class Extension {
-  constructor(gl, ...extNames) {
-    this.get = extName => {
-      return this.extensions[extName];
-    };
-
-    this.getByForce = extName => {
-      const gl = this.gl,
-            extensions = this.extensions;
-      const ext = extensions[extName] = extensions[extName] || gl.getExtension(extName);
-      return ext;
-    };
-
-    this.gl = gl;
-    this.extensions = {};
-
-    for (let i = 0, len = extNames.length; i < len; i++) {
-      const extName = extNames[i];
-      const ext = gl.getExtension(extName);
-
-      if (!!ext) {
-        this.extensions[extName] = ext;
-        console.log(`pipegl extension ${extName} load successful`);
-      } else {
-        console.log(`pipegl extension ${extName} load fail`);
-      }
-    }
-  }
-
-}
-
-exports.Extension = Extension;
-},{}],"../node_modules/pipegl/src/core/Pipe.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PipeGL = void 0;
-
-var _Limit = require("./Limit");
-
-var _CompilerCore = require("../compiler/CompilerCore");
-
-var _parseConfigure = require("../compiler/parseConfigure");
-
-var _AttributeState = require("../state/AttributeState");
-
-var _BufferState = require("../state/BufferState");
-
-var _ElementState = require("../state/ElementState");
-
-var _FramebufferState = require("../state/FramebufferState");
-
-var _ProgramState = require("../state/ProgramState");
-
-var _RenderbufferState = require("../state/RenderbufferState");
-
-var _ShaderState = require("../state/ShaderState");
-
-var _StringState = require("../state/StringState");
-
-var _TextureState = require("../state/TextureState");
-
-var _check = require("../util/check");
-
-var _createPerformance = require("../util/createPerformance");
-
-var _createStats = require("../util/createStats");
-
-var _Extension = require("./Extension");
-
-class PipeGL {
-  constructor(opts) {
-    this.compile = opts => {
-      return this.compilerCore.compile(opts);
-    };
-
-    this.vao = (atts, opts = {}) => {
-      return this.attributeState.createREGLVertexArrayObject(atts, opts);
-    };
-
-    this.texture2D = (data, w, h, c, opts = {}) => {
-      return this.textureState.createTexture2D(data, w, h, c, opts);
-    };
-
-    this.texture2DEmpty = (w, h, c, opts = {}) => {
-      const emptyData = new Uint8Array(w * h * c);
-      return this.texture2D(emptyData, w, h, c, opts);
-    };
-
-    this.textureCube = (faces, w, h, c, opts = {}) => {
-      return this.textureState.createTextureCube(faces, w, h, c, opts);
-    };
-
-    this.renderbuffer = opts => {
-      return this.renderbufferState.createRenderbuffer(opts);
-    };
-
-    this.buffer = (data, opts = {}) => {
-      return this.bufferState.createBuffer({
-        data,
-        usage: opts.usage,
-        component: opts.component,
-        target: opts.target,
-        dimension: opts.dimension,
-        byteLength: opts.byteLength
-      });
-    };
-
-    this.framebuffer = opts => {
-      return this.framebufferState.createFramebuffer(opts);
-    };
-
-    this.clear = opts => {
-      const gl = this.gl;
-      const {
-        color,
-        depth,
-        stencil
-      } = opts;
-      (0, _check.check)(color.length === 4, `Error: clear color must consist of 4`);
-      gl.clearColor(color[0], color[1], color[2], color[3]);
-      let bit = gl.COLOR_BUFFER_BIT;
-      if (depth) bit = bit | gl.DEPTH_BUFFER_BIT;
-      if (stencil) bit = bit | gl.STENCIL_BUFFER_BIT;
-      gl.clear(bit);
-    };
-
-    this.stats = (0, _createStats.createStats)();
-    this.performance = (0, _createPerformance.createPerformance)();
-    this.configure = (0, _parseConfigure.parseConfigure)(opts);
-    this.extLib = new _Extension.Extension(this.gl, ...this.configure.extensions);
-    this.limLib = new _Limit.Limit(this.gl, this.extLib);
-    this.stringState = new _StringState.StringState();
-    this.bufferState = new _BufferState.BufferState(this.gl, this.stats);
-    this.textureState = new _TextureState.TextureState(this.gl, this.extLib, this.limLib, this.stats);
-    this.elementState = new _ElementState.ElementsState(this.gl, this.extLib, this.bufferState, this.stats);
-    this.shaderState = new _ShaderState.ShaderState(this.gl, this.stringState, this.stats);
-    this.programState = new _ProgramState.ProgramState(this.gl, this.shaderState, this.stringState);
-    this.attributeState = new _AttributeState.AttributeState(this.gl, this.extLib, this.limLib, this.bufferState, this.elementState, this.programState, this.stats);
-    this.renderbufferState = new _RenderbufferState.RenderbufferState(this.gl, this.extLib, this.limLib, this.stats);
-    this.framebufferState = new _FramebufferState.FramebufferState(this.gl, this.textureState, this.renderbufferState, this.extLib, this.limLib, this.stats);
-    this.compilerCore = new _CompilerCore.CompilerCore({
-      gl: this.gl,
-      stats: this.stats,
-      performance: this.performance,
-      extLib: this.extLib,
-      limLib: this.limLib,
-      bufferState: this.bufferState,
-      textureState: this.textureState,
-      elementState: this.elementState,
-      attributeState: this.attributeState,
-      stringState: this.stringState,
-      shaderState: this.shaderState,
-      programState: this.programState,
-      renderbufferState: this.renderbufferState,
-      framebufferState: this.framebufferState
-    });
-  }
-
-  get gl() {
-    return this.configure.gl;
-  }
-
-}
-
-exports.PipeGL = PipeGL;
-},{"./Limit":"../node_modules/pipegl/src/core/Limit.ts","../compiler/CompilerCore":"../node_modules/pipegl/src/compiler/CompilerCore.ts","../compiler/parseConfigure":"../node_modules/pipegl/src/compiler/parseConfigure.ts","../state/AttributeState":"../node_modules/pipegl/src/state/AttributeState.ts","../state/BufferState":"../node_modules/pipegl/src/state/BufferState.ts","../state/ElementState":"../node_modules/pipegl/src/state/ElementState.ts","../state/FramebufferState":"../node_modules/pipegl/src/state/FramebufferState.ts","../state/ProgramState":"../node_modules/pipegl/src/state/ProgramState.ts","../state/RenderbufferState":"../node_modules/pipegl/src/state/RenderbufferState.ts","../state/ShaderState":"../node_modules/pipegl/src/state/ShaderState.ts","../state/StringState":"../node_modules/pipegl/src/state/StringState.ts","../state/TextureState":"../node_modules/pipegl/src/state/TextureState.ts","../util/check":"../node_modules/pipegl/src/util/check.ts","../util/createPerformance":"../node_modules/pipegl/src/util/createPerformance.ts","../util/createStats":"../node_modules/pipegl/src/util/createStats.ts","./Extension":"../node_modules/pipegl/src/core/Extension.ts"}],"../node_modules/pipegl/src/index.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "GBuffer", {
-  enumerable: true,
-  get: function () {
-    return _GBuffer.GBuffer;
-  }
-});
-Object.defineProperty(exports, "GFramebuffer", {
-  enumerable: true,
-  get: function () {
-    return _GFramebuffer.GFramebuffer;
-  }
-});
-Object.defineProperty(exports, "GTexture", {
-  enumerable: true,
-  get: function () {
-    return _GTexture.GTexture;
-  }
-});
-Object.defineProperty(exports, "GVertexArrayObject", {
-  enumerable: true,
-  get: function () {
-    return _GVertexArrayObject.GVertexArrayObject;
-  }
-});
-Object.defineProperty(exports, "IAttributeBuffer", {
-  enumerable: true,
-  get: function () {
-    return _parseAttribute.IAttributeBuffer;
-  }
-});
-Object.defineProperty(exports, "IPerformance", {
-  enumerable: true,
-  get: function () {
-    return _createPerformance.IPerformance;
-  }
-});
-Object.defineProperty(exports, "IPipeCommand", {
-  enumerable: true,
-  get: function () {
-    return _Pipe.IPipeCommand;
-  }
-});
-Object.defineProperty(exports, "PipeGL", {
-  enumerable: true,
-  get: function () {
-    return _Pipe.PipeGL;
-  }
-});
-Object.defineProperty(exports, "Props", {
-  enumerable: true,
-  get: function () {
-    return _Props.Props;
-  }
-});
-Object.defineProperty(exports, "TAttribute", {
-  enumerable: true,
-  get: function () {
-    return _parseAttribute.TAttribute;
-  }
-});
-Object.defineProperty(exports, "TProps", {
-  enumerable: true,
-  get: function () {
-    return _Props.TProps;
-  }
-});
-Object.defineProperty(exports, "TUniform", {
-  enumerable: true,
-  get: function () {
-    return _parseUniform.TUniform;
-  }
-});
-
-var _Pipe = require("./core/Pipe");
-
-var _createPerformance = require("./util/createPerformance");
-
-var _GFramebuffer = require("./res/GFramebuffer");
-
-var _GTexture = require("./res/GTexture");
-
-var _GVertexArrayObject = require("./res/GVertexArrayObject");
-
-var _GBuffer = require("./res/GBuffer");
-
-var _Props = require("./core/Props");
-
-var _parseUniform = require("./compiler/parseUniform");
-
-var _parseAttribute = require("./compiler/parseAttribute");
-},{"./core/Pipe":"../node_modules/pipegl/src/core/Pipe.ts","./util/createPerformance":"../node_modules/pipegl/src/util/createPerformance.ts","./res/GFramebuffer":"../node_modules/pipegl/src/res/GFramebuffer.ts","./res/GTexture":"../node_modules/pipegl/src/res/GTexture.ts","./res/GVertexArrayObject":"../node_modules/pipegl/src/res/GVertexArrayObject.ts","./res/GBuffer":"../node_modules/pipegl/src/res/GBuffer.ts","./core/Props":"../node_modules/pipegl/src/core/Props.ts","./compiler/parseUniform":"../node_modules/pipegl/src/compiler/parseUniform.ts","./compiler/parseAttribute":"../node_modules/pipegl/src/compiler/parseAttribute.ts"}],"../src/util/raf.ts":[function(require,module,exports) {
+},{"./Globe":"../src/globe/Globe.ts","./../core/QuadtreeTile":"../src/core/QuadtreeTile.ts","./../core/QuadtreeTileSchema":"../src/core/QuadtreeTileSchema.ts"}],"../src/util/raf.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6888,9 +6999,9 @@ Tween.add = function (tween) {
 
 var _pipegl = require("pipegl");
 
-var _raf = require("../util/raf");
-
 var _Globe = require("./Globe");
+
+var _raf = require("../util/raf");
 
 var _Tween = require("../core/Tween");
 
@@ -6961,8 +7072,8 @@ _Globe.Globe.prototype.renderFrame = function (framestamp) {
   ctx3d.clear({
     color: [0.0, 0.0, 0.0, 1.0]
   });
-  g.callAuxtool(framestamp);
   g.emit('framestart', state.performance);
+  g.callAuxtool(framestamp);
   var skpds = g.Sketchpads;
   skpds === null || skpds === void 0 ? void 0 : skpds.forEach(function (skpd) {
     var r = skpd.Renderer;
@@ -6972,7 +7083,7 @@ _Globe.Globe.prototype.renderFrame = function (framestamp) {
 };
 
 _Globe.Globe.registerHook(_Globe.Globe.prototype.registerGlobeRenderer);
-},{"pipegl":"../node_modules/pipegl/src/index.ts","../util/raf":"../src/util/raf.ts","./Globe":"../src/globe/Globe.ts","../core/Tween":"../src/core/Tween.ts"}],"../src/core/Format.ts":[function(require,module,exports) {
+},{"pipegl":"../node_modules/pipegl/src/index.ts","./Globe":"../src/globe/Globe.ts","../util/raf":"../src/util/raf.ts","../core/Tween":"../src/core/Tween.ts"}],"../src/core/Format.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7107,9 +7218,9 @@ _Globe.Globe.registerHook(_Globe.Globe.prototype.registerPanHandlerHood);
 },{"kiwi.matrix":"../node_modules/kiwi.matrix/dist/bundle.js","./../Globe":"../src/globe/Globe.ts","../../util/split":"../src/util/split.ts","../../util/dom":"../src/util/dom.ts","../../core/Format":"../src/core/Format.ts"}],"../src/globe/handler/Globe.Handler.Zoom.ts":[function(require,module,exports) {
 "use strict";
 
-var _now = require("../../util/now");
-
 var _Globe = require("../Globe");
+
+var _now = require("../../util/now");
 
 var _Format = require("../../core/Format");
 
@@ -7190,7 +7301,7 @@ _Globe.Globe.prototype.processZoomWheel = function (e, g) {
 };
 
 _Globe.Globe.registerHook(_Globe.Globe.prototype.registerZoomHandlerHook);
-},{"../../util/now":"../src/util/now.ts","../Globe":"../src/globe/Globe.ts","../../core/Format":"../src/core/Format.ts","../../util/dom":"../src/util/dom.ts"}],"../src/globe/camera/Globe.Camera.FlyTo.ts":[function(require,module,exports) {
+},{"../Globe":"../src/globe/Globe.ts","../../util/now":"../src/util/now.ts","../../core/Format":"../src/core/Format.ts","../../util/dom":"../src/util/dom.ts"}],"../src/globe/camera/Globe.Camera.FlyTo.ts":[function(require,module,exports) {
 "use strict";
 
 var _Globe = require("../Globe");
@@ -7386,7 +7497,49 @@ _Globe.Globe.prototype.onWheelEnd = function () {
 };
 
 _Globe.Globe.registerHook(_Globe.Globe.prototype.registerCameraZoom);
-},{"../Globe":"../src/globe/Globe.ts","../../util/clamp":"../src/util/clamp.ts","../../core/Tween":"../src/core/Tween.ts","../../core/Format":"../src/core/Format.ts"}],"../src/util/llp.ts":[function(require,module,exports) {
+},{"../Globe":"../src/globe/Globe.ts","../../util/clamp":"../src/util/clamp.ts","../../core/Tween":"../src/core/Tween.ts","../../core/Format":"../src/core/Format.ts"}],"../src/util/rgba.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.rgba = void 0;
+
+var rgba = function rgba(uri) {
+  var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  return new Promise(function (resolve, reject) {
+    fetch(uri).then(function (res0) {
+      return res0.blob();
+    }).then(function (blob) {
+      return createImageBitmap(blob);
+    }).then(function (bitmap) {
+      var w = bitmap.width,
+          h = bitmap.height,
+          c = 4;
+      var CANVAS = document.createElement('canvas');
+      CANVAS.width = devicePixelRatio * w;
+      CANVAS.height = devicePixelRatio * h;
+      CANVAS.style.width = "".concat(w, "px");
+      CANVAS.style.height = "".concat(h, "px");
+      var CTX = CANVAS.getContext('2d');
+      CTX.drawImage(bitmap, 0, 0);
+      var uc8arr = CTX.getImageData(0, 0, w, h).data;
+      var buf = new Uint8Array(uc8arr);
+      resolve({
+        buf: buf,
+        w: w,
+        h: h,
+        c: c,
+        key: key
+      });
+    }).catch(function (reason) {
+      reject(reason);
+    });
+  });
+};
+
+exports.rgba = rgba;
+},{}],"../src/util/llp.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7459,49 +7612,7 @@ var llpElement = function llpElement() {
 };
 
 exports.llpElement = llpElement;
-},{"../core/Ellipsoid":"../src/core/Ellipsoid.ts","./../core/GeodeticCoordinate":"../src/core/GeodeticCoordinate.ts"}],"../src/util/rgba.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.rgba = void 0;
-
-var rgba = function rgba(uri) {
-  var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-  return new Promise(function (resolve, reject) {
-    fetch(uri).then(function (res0) {
-      return res0.blob();
-    }).then(function (blob) {
-      return createImageBitmap(blob);
-    }).then(function (bitmap) {
-      var w = bitmap.width,
-          h = bitmap.height,
-          c = 4;
-      var CANVAS = document.createElement('canvas');
-      CANVAS.width = devicePixelRatio * w;
-      CANVAS.height = devicePixelRatio * h;
-      CANVAS.style.width = "".concat(w, "px");
-      CANVAS.style.height = "".concat(h, "px");
-      var CTX = CANVAS.getContext('2d');
-      CTX.drawImage(bitmap, 0, 0);
-      var uc8arr = CTX.getImageData(0, 0, w, h).data;
-      var buf = new Uint8Array(uc8arr);
-      resolve({
-        buf: buf,
-        w: w,
-        h: h,
-        c: c,
-        key: key
-      });
-    }).catch(function (reason) {
-      reject(reason);
-    });
-  });
-};
-
-exports.rgba = rgba;
-},{}],"../src/render/Renderable.ts":[function(require,module,exports) {
+},{"../core/Ellipsoid":"../src/core/Ellipsoid.ts","./../core/GeodeticCoordinate":"../src/core/GeodeticCoordinate.ts"}],"../src/render/Renderable.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7640,9 +7751,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.TileLayer = void 0;
 
-var _llp = require("../../util/llp");
-
 var _rgba = require("../../util/rgba");
+
+var _llp = require("../../util/llp");
 
 var _Sektchpad = require("../Sektchpad");
 
@@ -7698,7 +7809,7 @@ function (_Sketchpad) {
         var key = "".concat(level, "-").concat(x, "-").concat(y);
 
         if (!CACHE.has(key)) {
-          var uri = "https://server.arcgisonline.com/arcgis/rest/services/NatGeo_World_Map/MapServer/tile/".concat(level, "/").concat(y, "/").concat(x);
+          var uri = "http://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=".concat(level, "&TILEROW=").concat(y, "&TILECOL=").concat(x, "&tk=65ac66b5243f941bc05a75bd61d12246");
           var vertices = (0, _llp.llpVertex)(boundary);
           var q = {
             key: key,
@@ -7746,7 +7857,7 @@ function (_Sketchpad) {
 }(_Sektchpad.Sketchpad);
 
 exports.TileLayer = TileLayer;
-},{"../../util/llp":"../src/util/llp.ts","../../util/rgba":"../src/util/rgba.ts","../Sektchpad":"../src/sketchpad/Sektchpad.ts"}],"../src/util/normal.ts":[function(require,module,exports) {
+},{"../../util/rgba":"../src/util/rgba.ts","../../util/llp":"../src/util/llp.ts","../Sektchpad":"../src/sketchpad/Sektchpad.ts"}],"../src/util/normal.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8008,7 +8119,428 @@ function (_SketchpadRenderer) {
 exports.TileLayerRenderer = TileLayerRenderer;
 
 _TileLayer.TileLayer.registerRenderer(_TileLayer.TileLayer.name, TileLayerRenderer);
-},{"pipegl":"../node_modules/pipegl/src/index.ts","../../util/normal":"../src/util/normal.ts","../SketchpadRenderer":"../src/sketchpad/SketchpadRenderer.ts","../../util/llp":"../src/util/llp.ts","./TileLayer":"../src/sketchpad/layer/TileLayer.ts"}],"../src/index.ts":[function(require,module,exports) {
+},{"pipegl":"../node_modules/pipegl/src/index.ts","../../util/normal":"../src/util/normal.ts","../SketchpadRenderer":"../src/sketchpad/SketchpadRenderer.ts","../../util/llp":"../src/util/llp.ts","./TileLayer":"../src/sketchpad/layer/TileLayer.ts"}],"../src/sketchpad/layer/GeometryLayer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GeometryLayer = void 0;
+
+var _Sektchpad = require("../Sektchpad");
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var GeometryLayer =
+/*#__PURE__*/
+function (_Sketchpad) {
+  _inherits(GeometryLayer, _Sketchpad);
+
+  var _super = _createSuper(GeometryLayer);
+
+  function GeometryLayer() {
+    var _this;
+
+    _classCallCheck(this, GeometryLayer);
+
+    _this = _super.call(this);
+    _this.geometrys = [];
+
+    _this.add = function (geometry) {
+      geometry.attach(_this.g);
+
+      _this.Renderer.prepare(geometry);
+    };
+
+    return _this;
+  }
+
+  return GeometryLayer;
+}(_Sektchpad.Sketchpad);
+
+exports.GeometryLayer = GeometryLayer;
+},{"../Sektchpad":"../src/sketchpad/Sektchpad.ts"}],"../src/sketchpad/layer/GeometryLayerRenderer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GeometryLayerRenderer = void 0;
+
+var _SketchpadRenderer2 = require("../SketchpadRenderer");
+
+var _GeometryLayer = require("./GeometryLayer");
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var GeometryLayerRenderer =
+/*#__PURE__*/
+function (_SketchpadRenderer) {
+  _inherits(GeometryLayerRenderer, _SketchpadRenderer);
+
+  var _super = _createSuper(GeometryLayerRenderer);
+
+  function GeometryLayerRenderer(layer, ctx3d) {
+    var _this;
+
+    _classCallCheck(this, GeometryLayerRenderer);
+
+    _this = _super.call(this, layer, ctx3d);
+    _this.CACHE = new Map();
+
+    _this.prepare = function (geometry) {
+      _this.CACHE.set('`', geometry);
+    };
+
+    _this.render = function (framestamp, camera) {
+      var _a;
+
+      (_a = _this.CACHE) === null || _a === void 0 ? void 0 : _a.forEach(function (geometry) {
+        geometry.Renderer.render(framestamp, camera);
+      });
+    };
+
+    return _this;
+  }
+
+  return GeometryLayerRenderer;
+}(_SketchpadRenderer2.SketchpadRenderer);
+
+exports.GeometryLayerRenderer = GeometryLayerRenderer;
+
+_GeometryLayer.GeometryLayer.registerRenderer(_GeometryLayer.GeometryLayer.name, GeometryLayerRenderer);
+},{"../SketchpadRenderer":"../src/sketchpad/SketchpadRenderer.ts","./GeometryLayer":"../src/sketchpad/layer/GeometryLayer.ts"}],"../src/sketchpad/layer/tileLayers/TiandituLayer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TiandituLayer = void 0;
+
+var _llp = require("../../../util/llp");
+
+var _TileLayerRenderer = require("../TileLayerRenderer");
+
+var _TileLayer2 = require("../TileLayer");
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var TiandituLayer =
+/*#__PURE__*/
+function (_TileLayer) {
+  _inherits(TiandituLayer, _TileLayer);
+
+  var _super = _createSuper(TiandituLayer);
+
+  function TiandituLayer() {
+    var _this;
+
+    _classCallCheck(this, TiandituLayer);
+
+    _this = _super.call(this);
+    _this.token = "65ac66b5243f941bc05a75bd61d12246";
+
+    _this.prepareData = function (tiles) {
+      _this.queue = [];
+      var CACHE = _this.CACHE;
+      tiles === null || tiles === void 0 ? void 0 : tiles.forEach(function (t) {
+        var x = t.X,
+            y = t.Y,
+            level = t.Level,
+            boundary = t.Boundary;
+        var key = "".concat(level, "-").concat(x, "-").concat(y);
+
+        if (!CACHE.has(key)) {
+          var uri = "http://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=".concat(level, "&TILEROW=").concat(y, "&TILECOL=").concat(x, "&tk=").concat(_this.token);
+          var vertices = (0, _llp.llpVertex)(boundary);
+          var q = {
+            key: key,
+            uri: uri,
+            vertices: vertices
+          };
+
+          _this.queue.unshift(q);
+        }
+      });
+    };
+
+    return _this;
+  }
+
+  return TiandituLayer;
+}(_TileLayer2.TileLayer);
+
+exports.TiandituLayer = TiandituLayer;
+TiandituLayer.registerRenderer(TiandituLayer.name, _TileLayerRenderer.TileLayerRenderer);
+},{"../../../util/llp":"../src/util/llp.ts","../TileLayerRenderer":"../src/sketchpad/layer/TileLayerRenderer.ts","../TileLayer":"../src/sketchpad/layer/TileLayer.ts"}],"../src/sketchpad/geometry/Hemisphere.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Hemisphere = void 0;
+
+var _kiwi = require("kiwi.matrix");
+
+var _Sektchpad = require("../Sektchpad");
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var Hemisphere =
+/*#__PURE__*/
+function (_Sketchpad) {
+  _inherits(Hemisphere, _Sketchpad);
+
+  var _super = _createSuper(Hemisphere);
+
+  function Hemisphere(coordinate, radius) {
+    var _this;
+
+    _classCallCheck(this, Hemisphere);
+
+    _this = _super.call(this);
+    _this.wCount = 24;
+    _this.hCount = 16;
+    _this.phiStart = 0;
+    _this.phiLength = Math.PI;
+    _this.thetaStart = 0;
+    _this.thetaLength = Math.PI;
+
+    _this.registerData = function () {
+      var _assertThisInitialize = _assertThisInitialized(_this),
+          phiStart = _assertThisInitialize.phiStart,
+          phiLength = _assertThisInitialize.phiLength,
+          thetaStart = _assertThisInitialize.thetaStart,
+          thetaLength = _assertThisInitialize.thetaLength,
+          wCount = _assertThisInitialize.wCount,
+          hCount = _assertThisInitialize.hCount,
+          radius = _assertThisInitialize.radius,
+          Globe = _assertThisInitialize.Globe,
+          coordinate = _assertThisInitialize.coordinate,
+          Renderer = _assertThisInitialize.Renderer;
+
+      var thetaEnd = Math.min(thetaStart + thetaLength, Math.PI);
+      var vertices = [],
+          normals = [],
+          uvs = [],
+          indices = [];
+      var grid = [];
+      var index = 0;
+
+      for (var iy = 0; iy <= hCount; iy++) {
+        var row = [];
+        var v = iy / hCount;
+        var uOffset = 0;
+        if (iy === 0 && thetaStart === 0) uOffset = 0.5 / wCount;else if (iy === hCount && thetaEnd === Math.PI) uOffset = -0.5 / wCount;
+
+        for (var ix = 0; ix <= wCount; ix++) {
+          var u = ix / wCount;
+          var x = -radius * Math.cos(phiStart + u * phiLength) * Math.sin(thetaStart + v * thetaLength);
+          var y = radius * Math.cos(thetaStart + v * thetaLength);
+          var z = radius * Math.sin(phiStart + u * phiLength) * Math.sin(thetaStart + v * thetaLength);
+          vertices.push([x, y, z]);
+          var normal = new _kiwi.Vec3().set(x, y, z).normalize();
+          normals.push(normal.value);
+          uvs.push([u + uOffset, 1 - v]);
+          row.push(index++);
+        }
+
+        grid.push(row);
+      }
+
+      for (var iiy = 0; iiy < hCount; iiy++) {
+        for (var iix = 0; iix < wCount; iix++) {
+          var a = grid[iiy][iix + 1];
+          var b = grid[iiy][iix];
+          var c = grid[iiy + 1][iix];
+          var d = grid[iiy + 1][iix + 1];
+          if (iiy !== 0 || thetaStart > 0) indices.push(a, b, d);
+          if (iiy !== hCount - 1 || thetaEnd < Math.PI) indices.push(b, c, d);
+        }
+      }
+
+      var modelMatrix = new _kiwi.Mat4().identity();
+      var position = Globe.geographicToSpaceCoordinate(coordinate);
+      modelMatrix.translate(position);
+      modelMatrix.rotateZ(_kiwi.GLMatrix.toRadian(_this.coordinate.Longitude - 90));
+      modelMatrix.rotateX(_kiwi.GLMatrix.toRadian(_this.coordinate.Latitude - 90));
+      Renderer.prepare({
+        vertices: vertices,
+        normals: normals,
+        uvs: uvs,
+        indices: indices,
+        modelMatrix: modelMatrix.value
+      });
+    };
+
+    _this.radius = radius;
+    _this.coordinate = coordinate;
+    return _this;
+  }
+
+  return Hemisphere;
+}(_Sektchpad.Sketchpad);
+
+exports.Hemisphere = Hemisphere;
+},{"kiwi.matrix":"../node_modules/kiwi.matrix/dist/bundle.js","../Sektchpad":"../src/sketchpad/Sektchpad.ts"}],"../src/sketchpad/geometry/HemisphereRenderer.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.HemisphereRenderer = void 0;
+
+var _pipegl = require("pipegl");
+
+var _Hemisphere = require("./Hemisphere");
+
+var _SketchpadRenderer2 = require("./../SketchpadRenderer");
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var HemisphereRenderer =
+/*#__PURE__*/
+function (_SketchpadRenderer) {
+  _inherits(HemisphereRenderer, _SketchpadRenderer);
+
+  var _super = _createSuper(HemisphereRenderer);
+
+  function HemisphereRenderer(geometry, ctx3d) {
+    var _this;
+
+    _classCallCheck(this, HemisphereRenderer);
+
+    _this = _super.call(this, geometry, ctx3d);
+
+    _this.prepare = function (data) {
+      var _assertThisInitialize = _assertThisInitialized(_this),
+          ctx3d = _assertThisInitialize.ctx3d;
+
+      _this.d0 = ctx3d.compile({
+        vert: "precision mediump float;\n            \n            attribute vec3 position;\n            attribute vec3 normal;\n\n            uniform float ratio;\n            uniform mat4 viewProjection, modelMatrix;\n\n            varying vec3 vNormal;\n            varying vec3 vPosition;\n\n            void main(){\n                vec3 vNormal = mat3(modelMatrix)*normal;\n                vec3 vPosition = ratio * position;\n                gl_Position = viewProjection * modelMatrix * vec4(vPosition, 1.0);\n            }",
+        frag: "precision mediump float;\n\n            const vec3 lightPosition = vec3(0.0, 12756274.0, 12756274.0);\n            const vec3 lightColor = vec3(1.0, 1.0, 1.0);\n\n            uniform float alpha;\n\n            varying vec3 vNormal;\n            varying vec3 vPosition;\n\n            void main(){\n                vec3 lightDir = normalize(lightPosition-vPosition);\n                float diff = max(dot(vNormal, lightDir), 0.0);\n                gl_FragColor = vec4(0.8, 0.1, 0.0, 0.8*(1.0-alpha));\n                // gl_FragColor = vec4(diff/255.0, diff/255.0, diff/255.0, 0.5);\n            }",
+        attributes: {
+          position: data.vertices,
+          normal: data.normals
+        },
+        uniforms: {
+          viewProjection: new _pipegl.Props('viewProjection'),
+          modelMatrix: data.modelMatrix,
+          ratio: new _pipegl.Props('ratio'),
+          alpha: new _pipegl.Props('alpha')
+        },
+        elements: data.indices,
+        status: {
+          DEPTH_TEST: false,
+          BLEND: true,
+          blendFunc: [0x0302, 0x0303]
+        }
+      });
+    };
+
+    _this.render = function (framestamp, camera) {
+      var d0 = _this.d0;
+      var batch = [];
+      var r = Math.tan(framestamp * 0.0008);
+      var ratio = r > 1 ? 1 : r < 0 ? 1 : r;
+      batch.push({
+        viewProjection: camera.ViewProjectionMatrix.value,
+        ratio: ratio,
+        alpha: ratio
+      });
+      d0.batch(batch);
+    };
+
+    return _this;
+  }
+
+  return HemisphereRenderer;
+}(_SketchpadRenderer2.SketchpadRenderer);
+
+exports.HemisphereRenderer = HemisphereRenderer;
+
+_Hemisphere.Hemisphere.registerRenderer(_Hemisphere.Hemisphere.name, HemisphereRenderer);
+},{"pipegl":"../node_modules/pipegl/src/index.ts","./Hemisphere":"../src/sketchpad/geometry/Hemisphere.ts","./../SketchpadRenderer":"../src/sketchpad/SketchpadRenderer.ts"}],"../src/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8020,10 +8552,22 @@ Object.defineProperty(exports, "GeodeticCoordinate", {
     return _GeodeticCoordinate.GeodeticCoordinate;
   }
 });
+Object.defineProperty(exports, "GeometryLayer", {
+  enumerable: true,
+  get: function () {
+    return _GeometryLayer.GeometryLayer;
+  }
+});
 Object.defineProperty(exports, "Globe", {
   enumerable: true,
   get: function () {
     return _Globe.Globe;
+  }
+});
+Object.defineProperty(exports, "Hemisphere", {
+  enumerable: true,
+  get: function () {
+    return _Hemisphere.Hemisphere;
   }
 });
 Object.defineProperty(exports, "Projection", {
@@ -8054,6 +8598,12 @@ Object.defineProperty(exports, "Rectangle", {
   enumerable: true,
   get: function () {
     return _Rectangle.Rectangle;
+  }
+});
+Object.defineProperty(exports, "TiandituLayer", {
+  enumerable: true,
+  get: function () {
+    return _TiandituLayer.TiandituLayer;
   }
 });
 Object.defineProperty(exports, "TileLayer", {
@@ -8089,6 +8639,8 @@ Object.defineProperty(exports, "split", {
 
 var _Globe = require("./globe/Globe");
 
+require("./globe/auxiliar/Globe.auxiliar.Cursor");
+
 require("./globe/Globe.Camera");
 
 require("./globe/Globe.Handler");
@@ -8111,6 +8663,16 @@ var _TileLayer = require("./sketchpad/layer/TileLayer");
 
 require("./sketchpad/layer/TileLayerRenderer");
 
+var _GeometryLayer = require("./sketchpad/layer/GeometryLayer");
+
+require("./sketchpad/layer/GeometryLayerRenderer");
+
+var _TiandituLayer = require("./sketchpad/layer/tileLayers/TiandituLayer");
+
+var _Hemisphere = require("./sketchpad/geometry/Hemisphere");
+
+require("./sketchpad/geometry/HemisphereRenderer");
+
 var _clamp = require("./util/clamp");
 
 var _isNode = require("./util/isNode");
@@ -8128,23 +8690,27 @@ var _Rectangle = require("./core/Rectangle");
 var _QuadtreeTile = require("./core/QuadtreeTile");
 
 var _QuadtreeTileSchema = require("./core/QuadtreeTileSchema");
-},{"./globe/Globe":"../src/globe/Globe.ts","./globe/Globe.Camera":"../src/globe/Globe.Camera.ts","./globe/Globe.Handler":"../src/globe/Globe.Handler.ts","./globe/Globe.Quadtree":"../src/globe/Globe.Quadtree.ts","./globe/Globe.Renderer":"../src/globe/Globe.Renderer.ts","./globe/handler/Globe.Handler.Pan":"../src/globe/handler/Globe.Handler.Pan.ts","./globe/handler/Globe.Handler.Zoom":"../src/globe/handler/Globe.Handler.Zoom.ts","./globe/camera/Globe.Camera.FlyTo":"../src/globe/camera/Globe.Camera.FlyTo.ts","./globe/camera/Globe.Camera.Pan":"../src/globe/camera/Globe.Camera.Pan.ts","./globe/camera/Globe.Camera.Zoom":"../src/globe/camera/Globe.Camera.Zoom.ts","./sketchpad/layer/TileLayer":"../src/sketchpad/layer/TileLayer.ts","./sketchpad/layer/TileLayerRenderer":"../src/sketchpad/layer/TileLayerRenderer.ts","./util/clamp":"../src/util/clamp.ts","./util/isNode":"../src/util/isNode.ts","./util/split":"../src/util/split.ts","./core/Ray":"../src/core/Ray.ts","./core/GeodeticCoordinate":"../src/core/GeodeticCoordinate.ts","./core/Projection":"../src/core/Projection.ts","./core/Rectangle":"../src/core/Rectangle.ts","./core/QuadtreeTile":"../src/core/QuadtreeTile.ts","./core/QuadtreeTileSchema":"../src/core/QuadtreeTileSchema.ts"}],"index.ts":[function(require,module,exports) {
+},{"./globe/Globe":"../src/globe/Globe.ts","./globe/auxiliar/Globe.auxiliar.Cursor":"../src/globe/auxiliar/Globe.auxiliar.Cursor.ts","./globe/Globe.Camera":"../src/globe/Globe.Camera.ts","./globe/Globe.Handler":"../src/globe/Globe.Handler.ts","./globe/Globe.Quadtree":"../src/globe/Globe.Quadtree.ts","./globe/Globe.Renderer":"../src/globe/Globe.Renderer.ts","./globe/handler/Globe.Handler.Pan":"../src/globe/handler/Globe.Handler.Pan.ts","./globe/handler/Globe.Handler.Zoom":"../src/globe/handler/Globe.Handler.Zoom.ts","./globe/camera/Globe.Camera.FlyTo":"../src/globe/camera/Globe.Camera.FlyTo.ts","./globe/camera/Globe.Camera.Pan":"../src/globe/camera/Globe.Camera.Pan.ts","./globe/camera/Globe.Camera.Zoom":"../src/globe/camera/Globe.Camera.Zoom.ts","./sketchpad/layer/TileLayer":"../src/sketchpad/layer/TileLayer.ts","./sketchpad/layer/TileLayerRenderer":"../src/sketchpad/layer/TileLayerRenderer.ts","./sketchpad/layer/GeometryLayer":"../src/sketchpad/layer/GeometryLayer.ts","./sketchpad/layer/GeometryLayerRenderer":"../src/sketchpad/layer/GeometryLayerRenderer.ts","./sketchpad/layer/tileLayers/TiandituLayer":"../src/sketchpad/layer/tileLayers/TiandituLayer.ts","./sketchpad/geometry/Hemisphere":"../src/sketchpad/geometry/Hemisphere.ts","./sketchpad/geometry/HemisphereRenderer":"../src/sketchpad/geometry/HemisphereRenderer.ts","./util/clamp":"../src/util/clamp.ts","./util/isNode":"../src/util/isNode.ts","./util/split":"../src/util/split.ts","./core/Ray":"../src/core/Ray.ts","./core/GeodeticCoordinate":"../src/core/GeodeticCoordinate.ts","./core/Projection":"../src/core/Projection.ts","./core/Rectangle":"../src/core/Rectangle.ts","./core/QuadtreeTile":"../src/core/QuadtreeTile.ts","./core/QuadtreeTileSchema":"../src/core/QuadtreeTileSchema.ts"}],"index.ts":[function(require,module,exports) {
 "use strict";
 
 var _index = require("../src/index");
 
 var map = new _index.Globe({
-  width: window.innerWidth - 18,
-  height: window.innerHeight - 24,
+  width: window.innerWidth - 30,
+  height: window.innerHeight - 20,
   zoom: 3,
   canvas: "mapCanvas",
-  coordinate: new _index.GeodeticCoordinate(114.2344412, 33.23313241234342, 10000)
+  coordinate: new _index.GeodeticCoordinate(116.3958, 39.828)
 });
-var layer = new _index.TileLayer();
+var layer = new _index.TiandituLayer();
 map.add(layer);
-setTimeout(function () {
-  map.flyTo(new _index.GeodeticCoordinate(114, 30.5), 10, 1000);
-}, 1000);
+var geometryLayer = new _index.GeometryLayer();
+map.add(geometryLayer);
+var g0 = new _index.Hemisphere(new _index.GeodeticCoordinate(114, 30.5), 1000000);
+geometryLayer.add(g0);
+map.on('frameend', function (performance) {
+  document.getElementById('frameLabel').textContent = "\u5E27\u7387:".concat((+performance).toFixed(2));
+});
 },{"../src/index":"../src/index.ts"}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -8173,7 +8739,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60173" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58205" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
